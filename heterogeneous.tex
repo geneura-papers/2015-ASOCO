@@ -535,6 +535,43 @@ In order to deal with the operating system and architecture heterogeneity (diffe
 The three main objectives of parallel programming are to tackle large computational problems, increase the performance of algorithms in a finite time, or reduce computational time to solve the problem (reaching the optimum). In this work, we focus in the last objective.
 As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the performance of a parallel EA by the number of fitness function evaluations required to attain a solution may be misleading. In our case, for example, the evaluation time is different in each node of the heterogeneous cluster, so the real algorithm speed could not be reflected correctly. However, the number of evaluations has been included in this section to better understand the results. The total number of generations carried out by all nodes, and the maximum number of generations required by the faster node in each configuration are also shown. It is difficult to compare the performance of HoHa and HeHa for the same reason: the evaluation time is different in each system (and even in each node). Thus, in this work, our aim is not making the heterogeneous cluster comparable or better in time than the homogeneous one (because they are, obviously, different), but showing that the same parameter configuration can improve performance in time on heterogeneous clusters and could not have an effect on homogeneous ones.
 
+
+
+
+		MMDP															
+		Heterogeneous Hardware									Homogeneous Hardware						
+		HoSi			HeSi			AdSi			HoSi				HeSi		
+4	150	23691,400	$\pm$	20349,375	12123,575	$\pm$	10535,090	30285,875	$\pm$	33552,447	11560,800	$\pm$	26072,141	$\pm$	5500,600	$\pm$	12350,129
+	240	347048,675	$\pm$	192450,028	199975,150	$\pm$	146997,836	417145,600	$\pm$	269732,017	198431,289	$\pm$	160166,862	$\pm$	358710,025	$\pm$	248159,908
+	300	1061136,564	$\pm$	373629,143	882104,872	$\pm$	465160,080	1228869,800	$\pm$	413829,829	1069118,750	$\pm$	666688,697	$\pm$	1264568,050	$\pm$	647531,978
+8	150	11348,200	$\pm$	6881,718	8055,550	$\pm$	5941,888	11888,525	$\pm$	12928,340	4314,100	$\pm$	10816,704	$\pm$	6298,025	$\pm$	12192,268
+	240	115213,275	$\pm$	96734,707	106284,375	$\pm$	66143,938	146685,800	$\pm$	77926,241	109498,425	$\pm$	98623,989	$\pm$	143193,550	$\pm$	165182,806
+	300	351729,250	$\pm$	167077,357	383083,975	$\pm$	249783,901	434478,025	$\pm$	200879,857	521163,050	$\pm$	304559,018	$\pm$	595276,077	$\pm$	355235,861
+		ONEMAX															
+		Heterogeneous Hardware									Homogeneous Hardware						
+		HoSi			HeSi			AdSi			HoSi				HeSi		
+4	5000	105413,125	$\pm$	2381,213	122794,675	$\pm$	3285,982	137947,400	$\pm$	2716,859	141176,100	$\pm$	2493,730	$\pm$	109562,650	$\pm$	2470,219
+	10000	427977,875	$\pm$	10484,174	538730,250	$\pm$	5669,626	329484,825	$\pm$	9937,048	598873,429	$\pm$	18937,129	$\pm$	437625,225	$\pm$	7912,703
+	15000	1087096,550	$\pm$	18047,257	1415919,250	$\pm$	20477,570	666451,500	$\pm$	17877,417	1510952,275	$\pm$	21107,828	$\pm$	1068212,300	$\pm$	25097,388
+8	5000	48739,750	$\pm$	1171,984	54762,400	$\pm$	779,721	42908,250	$\pm$	1953,038	85041,450	$\pm$	1147,126	$\pm$	65303,900	$\pm$	1156,825
+	10000	173929,125	$\pm$	2726,059	198988,750	$\pm$	2777,299	175120,825	$\pm$	9428,557	320557,300	$\pm$	4661,152	$\pm$	235143,225	$\pm$	5530,272
+	15000	397398,125	$\pm$	7076,647	444353,350	$\pm$	5952,183	430550,775	$\pm$	14095,819	738570,900	$\pm$	10834,293	$\pm$	539734,575	$\pm$	8473,574
+		CEC															
+		Heterogeneous Hardware									Homogeneous Hardware						
+		HoSi			HeSi			AdSi			HoSi				HeSi		
+4	10	53352,500	$\pm$	27765,191	63905,825	$\pm$	26795,632	72567,025	$\pm$	39079,540	144064,750	$\pm$	59634,750	$\pm$	133317,350	$\pm$	53464,402
+	30	233582,125	$\pm$	159454,007	187654,125	$\pm$	133253,223	268306,800	$\pm$	212295,411	225579,325	$\pm$	76117,466	$\pm$	273459,025	$\pm$	87878,437
+	50	431820,850	$\pm$	294081,294	344285,475	$\pm$	205736,331	461542,775	$\pm$	300039,633	411643,275	$\pm$	65338,206	$\pm$	553531,700	$\pm$	198818,335
+8	10	136191,400	$\pm$	79714,749	99235,500	$\pm$	64553,242	64515,275	$\pm$	29709,340		$\pm$		$\pm$		$\pm$	
+	30	220603,675	$\pm$	99104,552	139196,425	$\pm$	137089,954	158356,275	$\pm$	105886,233		$\pm$		$\pm$		$\pm$	
+	50	252010,950	$\pm$	106664,020	210020,025	$\pm$	128371,826	283033,825	$\pm$	169912,769		$\pm$		$\pm$		$\pm$	
+
+
+
+
+
+
+
 \subsection{MMDP results}
 % No tiene mucho sentido hablar de los resultados de los dos problemas
 % por separado, porque el objetivo no es resolver ese problema, sino
