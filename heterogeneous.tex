@@ -185,7 +185,7 @@ In distributed EAs a set of nodes executes simultaneously the EA, working with d
 
 \begin{figure}[htb]
 \centering
-\epsfig{file=1.eps, width = 7cm}
+\epsfig{file=ring.eps, width = 7cm}
 \caption{Island model scheme using a neighborhood ring topology.}
 \label{fig:islands}
 \end{figure}
@@ -535,37 +535,42 @@ In order to deal with the operating system and architecture heterogeneity (diffe
 The three main objectives of parallel programming are to tackle large computational problems, increase the performance of algorithms in a finite time, or reduce computational time to solve the problem (reaching the optimum). In this work, we focus in the last objective.
 As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the performance of a parallel EA by the number of fitness function evaluations required to attain a solution may be misleading. In our case, for example, the evaluation time is different in each node of the heterogeneous cluster, so the real algorithm speed could not be reflected correctly. However, the number of evaluations has been included in this section to better understand the results. The total number of generations carried out by all nodes, and the maximum number of generations required by the faster node in each configuration are also shown. It is difficult to compare the performance of HoHa and HeHa for the same reason: the evaluation time is different in each system (and even in each node). Thus, in this work, our aim is not making the heterogeneous cluster comparable or better in time than the homogeneous one (because they are, obviously, different), but showing that the same parameter configuration can improve performance in time on heterogeneous clusters and could not have an effect on homogeneous ones.
 
-
-
-
-		MMDP															
-		Heterogeneous Hardware									Homogeneous Hardware						
-		HoSi			HeSi			AdSi			HoSi				HeSi		
-4	150	23691,400	$\pm$	20349,375	12123,575	$\pm$	10535,090	30285,875	$\pm$	33552,447	11560,800	$\pm$	26072,141	$\pm$	5500,600	$\pm$	12350,129
-	240	347048,675	$\pm$	192450,028	199975,150	$\pm$	146997,836	417145,600	$\pm$	269732,017	198431,289	$\pm$	160166,862	$\pm$	358710,025	$\pm$	248159,908
-	300	1061136,564	$\pm$	373629,143	882104,872	$\pm$	465160,080	1228869,800	$\pm$	413829,829	1069118,750	$\pm$	666688,697	$\pm$	1264568,050	$\pm$	647531,978
-8	150	11348,200	$\pm$	6881,718	8055,550	$\pm$	5941,888	11888,525	$\pm$	12928,340	4314,100	$\pm$	10816,704	$\pm$	6298,025	$\pm$	12192,268
-	240	115213,275	$\pm$	96734,707	106284,375	$\pm$	66143,938	146685,800	$\pm$	77926,241	109498,425	$\pm$	98623,989	$\pm$	143193,550	$\pm$	165182,806
-	300	351729,250	$\pm$	167077,357	383083,975	$\pm$	249783,901	434478,025	$\pm$	200879,857	521163,050	$\pm$	304559,018	$\pm$	595276,077	$\pm$	355235,861
-		ONEMAX															
-		Heterogeneous Hardware									Homogeneous Hardware						
-		HoSi			HeSi			AdSi			HoSi				HeSi		
-4	5000	105413,125	$\pm$	2381,213	122794,675	$\pm$	3285,982	137947,400	$\pm$	2716,859	141176,100	$\pm$	2493,730	$\pm$	109562,650	$\pm$	2470,219
-	10000	427977,875	$\pm$	10484,174	538730,250	$\pm$	5669,626	329484,825	$\pm$	9937,048	598873,429	$\pm$	18937,129	$\pm$	437625,225	$\pm$	7912,703
-	15000	1087096,550	$\pm$	18047,257	1415919,250	$\pm$	20477,570	666451,500	$\pm$	17877,417	1510952,275	$\pm$	21107,828	$\pm$	1068212,300	$\pm$	25097,388
-8	5000	48739,750	$\pm$	1171,984	54762,400	$\pm$	779,721	42908,250	$\pm$	1953,038	85041,450	$\pm$	1147,126	$\pm$	65303,900	$\pm$	1156,825
-	10000	173929,125	$\pm$	2726,059	198988,750	$\pm$	2777,299	175120,825	$\pm$	9428,557	320557,300	$\pm$	4661,152	$\pm$	235143,225	$\pm$	5530,272
-	15000	397398,125	$\pm$	7076,647	444353,350	$\pm$	5952,183	430550,775	$\pm$	14095,819	738570,900	$\pm$	10834,293	$\pm$	539734,575	$\pm$	8473,574
-		CEC															
-		Heterogeneous Hardware									Homogeneous Hardware						
-		HoSi			HeSi			AdSi			HoSi				HeSi		
-4	10	53352,500	$\pm$	27765,191	63905,825	$\pm$	26795,632	72567,025	$\pm$	39079,540	144064,750	$\pm$	59634,750	$\pm$	133317,350	$\pm$	53464,402
-	30	233582,125	$\pm$	159454,007	187654,125	$\pm$	133253,223	268306,800	$\pm$	212295,411	225579,325	$\pm$	76117,466	$\pm$	273459,025	$\pm$	87878,437
-	50	431820,850	$\pm$	294081,294	344285,475	$\pm$	205736,331	461542,775	$\pm$	300039,633	411643,275	$\pm$	65338,206	$\pm$	553531,700	$\pm$	198818,335
-8	10	136191,400	$\pm$	79714,749	99235,500	$\pm$	64553,242	64515,275	$\pm$	29709,340		$\pm$		$\pm$		$\pm$	
-	30	220603,675	$\pm$	99104,552	139196,425	$\pm$	137089,954	158356,275	$\pm$	105886,233		$\pm$		$\pm$		$\pm$	
-	50	252010,950	$\pm$	106664,020	210020,025	$\pm$	128371,826	283033,825	$\pm$	169912,769		$\pm$		$\pm$		$\pm$	
-
+\begin{table*}
+\centering
+\caption{Results TERMINA}
+\resizebox{14cm}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|} \hline
+				\multicolumn{7}{|c|}{MMDP}																										\\ \hline												
+\multicolumn{2}{|c|}{}	&	\multicolumn{3}{|c|}{Heterogeneous Hardware}												& \multicolumn{2}{|c|}{Homogeneous Hardware}							\\ \hline
+\multicolumn{2}{|c|}{}	&	Homogeneous Size			&	Heterogeneous Size			&	Adaptive Size				& Homogeneous Size				& Heterogeneous Size				\\ \hline
+4	&	150	&	23691,400	$\pm$	20349,375	&	12123,575	$\pm$	10535,090	&	30285,875	$\pm$	33552,447	&	11560,800	$\pm$	26072,141	&	5500,600	$\pm$	12350,129	\\ \hline
+	&	240	&	347048,675	$\pm$	192450,028	&	199975,150	$\pm$	146997,836	&	417145,600	$\pm$	269732,017	&	198431,289	$\pm$	160166,862	&	358710,025	$\pm$	248159,908	\\ \hline
+	&	300	&	1061136,564	$\pm$	373629,143	&	882104,872	$\pm$	465160,080	&	1228869,800	$\pm$	413829,829	&	1069118,750	$\pm$	666688,697	&	1264568,050	$\pm$	647531,978	\\ \hline
+8	&	150	&	11348,200	$\pm$	6881,718	&	8055,550	$\pm$	5941,888	&	11888,525	$\pm$	12928,340	&	4314,100	$\pm$	10816,704	&	6298,025	$\pm$	12192,268	\\ \hline
+	&	240	&	115213,275	$\pm$	96734,707	&	106284,375	$\pm$	66143,938	&	146685,800	$\pm$	77926,241	&	109498,425	$\pm$	98623,989	&	143193,550	$\pm$	165182,806	\\ \hline
+	&	300	&	351729,250	$\pm$	167077,357	&	383083,975	$\pm$	249783,901	&	434478,025	$\pm$	200879,857	&	521163,050	$\pm$	304559,018	&	595276,077	$\pm$	355235,861	\\ \hline
+				\multicolumn{7}{|c|}{OneMax}																										\\ \hline
+\multicolumn{2}{|c|}{}	&	\multicolumn{3}{|c|}{Heterogeneous Hardware}												& \multicolumn{2}{|c|}{Homogeneous Hardware}							\\ \hline			
+\multicolumn{2}{|c|}{}	&	Homogeneous Size			&	Heterogeneous Size			&	Adaptive Size				& Homogeneous Size				& Heterogeneous Size				\\ \hline
+4	&	5000	&	105413,125	$\pm$	2381,213	&	122794,675	$\pm$	3285,982	&	137947,400	$\pm$	2716,859	&	141176,100	$\pm$	2493,730	&	109562,650	$\pm$	2470,219	\\ \hline
+	&	10000	&	427977,875	$\pm$	10484,174	&	538730,250	$\pm$	5669,626	&	329484,825	$\pm$	9937,048	&	598873,429	$\pm$	18937,129	&	437625,225	$\pm$	7912,703	\\ \hline
+	&	15000	&	1087096,550	$\pm$	18047,257	&	1415919,250	$\pm$	20477,570	&	666451,500	$\pm$	17877,417	&	1510952,275	$\pm$	21107,828	&	1068212,300	$\pm$	25097,388	\\ \hline
+8	&	5000	&	48739,750	$\pm$	1171,984	&	54762,400	$\pm$	779,721		&	42908,250	$\pm$	1953,038	&	85041,450	$\pm$	1147,126	&	65303,900	$\pm$	1156,825	\\ \hline
+	&	10000	&	173929,125	$\pm$	2726,059	&	198988,750	$\pm$	2777,299	&	175120,825	$\pm$	9428,557	&	320557,300	$\pm$	4661,152	&	235143,225	$\pm$	5530,272	\\ \hline
+	&	15000	&	397398,125	$\pm$	7076,647	&	444353,350	$\pm$	5952,183	&	430550,775	$\pm$	14095,819	&	738570,900	$\pm$	10834,293	&	539734,575	$\pm$	8473,574	\\ \hline
+				\multicolumn{7}{|c|}{Shifted Rosenbrock's Function}																							\\ \hline
+\multicolumn{2}{|c|}{}	&	\multicolumn{3}{|c|}{Heterogeneous Hardware}												& \multicolumn{2}{|c|}{Homogeneous Hardware}							\\ \hline				
+\multicolumn{2}{|c|}{}	&	Homogeneous Size			&	Heterogeneous Size			&	Adaptive Size				& Homogeneous Size				& Heterogeneous Size				\\ \hline
+4	&	10	&	53352,500	$\pm$	27765,191	&	63905,825	$\pm$	26795,632	&	72567,025	$\pm$	39079,540	&	144064,750	$\pm$	59634,750	&	133317,350	$\pm$	53464,402	\\ \hline
+	&	30	&	233582,125	$\pm$	159454,007	&	187654,125	$\pm$	133253,223	&	268306,800	$\pm$	212295,411	&	225579,325	$\pm$	76117,466	&	273459,025	$\pm$	87878,437	\\ \hline
+	&	50	&	431820,850	$\pm$	294081,294	&	344285,475	$\pm$	205736,331	&	461542,775	$\pm$	300039,633	&	411643,275	$\pm$	65338,206	&	553531,700	$\pm$	198818,335	\\ \hline
+8	&	10	&	136191,400	$\pm$	79714,749	&	99235,500	$\pm$	64553,242	&	64515,275	$\pm$	29709,340	&	117962,75	$\pm$	35741,647	&	135527,725	$\pm$	38170,154	\\ \hline
+	&	30	&	220603,675	$\pm$	99104,552	&	139196,425	$\pm$	137089,954	&	158356,275	$\pm$	105886,233	&		$\pm$		&		$\pm$		\\ \hline
+	&	50	&	252010,950	$\pm$	106664,020	&	210020,025	$\pm$	128371,826	&	283033,825	$\pm$	169912,769	&		$\pm$		&		$\pm$		\\ \hline
+\end{tabular}
+}
+\label{tab:resultsTIMEall}
+\end{table*}
 
 
 
@@ -576,7 +581,7 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
 % No tiene mucho sentido hablar de los resultados de los dos problemas
 % por separado, porque el objetivo no es resolver ese problema, sino
 % probar cómo funciona en algoritmo. Se pueden comentar los dos juntos
-% y se debería hacer - JJ 
+% y se debería hacer - JJ FERGU: okis, poniéndolo todo junto.
 
 Table \ref{tab:resultsMMDP} shows the results for the MMDP problem. These results are also shown in the boxplots of Figure \ref{fig:timeMMDP} (time) and Figure \ref{fig:evalsMMDP} (evaluations). Table \ref{tab:significanceMMDP} shows the statistical significance of the results. First, a Kolmogorov-Smirnov test is performed to assess the normality of the distributions. As all distributions are not normal, we use non-parametric tests. To compare between two methods (HoSi and HeSi in the homogeneous cluster) a Wilcoxon test has been applied. For a three methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a Kruskal-Wallis test has been used. %If the results fit a normal distribution, then a Student's T-Test is calculated. Otherwise, the non-parametric Wilcoxon test is applied (see \cite{TUTORIAL} for a tutorial for comparing EAs).
 
@@ -612,72 +617,16 @@ HeSi/HoHa   & 5411.92 $\pm$15608.81    & 10689.15  $\pm$  30790.7 & 1844908.1 $\
 
 
 
-\begin{figure}[ht]
-\centering
 
-\subfigure[Heterogeneous cluster]{
-   \includegraphics[scale =0.35] {3a.eps}
-   \label{fig:subfig1}
- }
-\subfigure[Homogeneous cluster]{
-   \includegraphics[scale =0.35] {3b.eps}
-   \label{fig:subfig2}
- }
-\caption{Time to obtain the optimum in the MMDP problem
-  (milliseconds).}
-%No se ve nada, deberías usar log-y - JJ 
-\label{fig:timeMMDP}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-
-\subfigure[Heterogeneous cluster]{
-   \includegraphics[scale =0.35] {4a.eps}
-   \label{fig:subfig1}
- }
-\subfigure[Homogeneous cluster]{
-   \includegraphics[scale =0.35] {4b.eps}
-   \label{fig:subfig2}
- }
-\caption{Number of evaluations for MMDP problem.}
-\label{fig:evalsMMDP}
-\end{figure}
 
 
 
 To see the differences on how the evolution is being performed, the average fitness in each node of HeHa is shown in Figures \ref{fig:hosiheha} and \ref{fig:hesiheha}. As it can be seen, with the HeSi (Figure \ref{fig:hesiheha}), the local optima are overtaken in less time than HoSi (Figure \ref{fig:hosiheha}).  This can be explained because in HeSi, the migration from HeN4 to HeN1 is performed faster, adding more heterogeneity to the whole system. Gaps in the figures correspond to the time spent in the nodes for sending the migrant individual to other nodes (not while they are receiving them). In the HoHa configurations, the evolution of sub-population is performed at the same time, being the average fitness similar in all nodes during all run. % The natural migration period variation from a processor to another is also giving more diversity to the populations that migrating at the same time of the homogeneous
 
 
-\begin{figure}[htb]
-\centering
-\epsfig{file=5.eps, angle=-90, width = 13cm}
-\caption{Average fitness in the first 1000 milliseconds of execution of the four nodes of the heterogeneous cluster with the same sub-population sizes (HoSi/HeHa) for the MMDP problem.}
-\label{fig:hosiheha}
-\end{figure}
-
-\begin{figure}[htb]
-\centering
-\epsfig{file=6.eps, angle=-90, width = 13cm} %Era 9
-\caption{Average fitness in the first 1000 milliseconds of execution of the four nodes of the heterogeneous cluster with different sub-population sizes (HeSi/HeHa) for the MMDP problem.}
-\label{fig:hesiheha}
-\end{figure}
 
 Regarding to AdSi/HeHa, results are significantly  equal (p-value 0.139) to HeSi/HeHa (and, therefore, better than HoSi/HeHa), but this time no previous tuning has been required.  Average sub-population sizes in each node are shown in Table \ref{table:sizesMMDP}. The proportions of size are similar to the proportions in Table \ref{table:generations}. Figure \ref{fig:sizesMMDP} plots all the possible sizes in each node during all the runs. This figure shows that the variation of the sub-population sizes lies proportionally to the computational power of each node. The outliers in boxplots are produced during the size changing, as it can be seen in Figure \ref{fig:sizesMMDP1ejec}. As N4 is the slower node with difference it keeps its size always close to the minimum (16 individuals).
 
-\begin{figure}[htb]
-\centering
-\epsfig{file=7.eps, width = 9cm}
-\caption{Boxplots of the sub-population sizes in each node during all the runs for the MMDP problem.}
-\label{fig:sizesMMDP}
-\end{figure}
-
-\begin{figure}[htb]
-\centering
-\epsfig{file=8.eps, width = 13cm}
-\caption{Population size in each node during one execution to solve the MMDP problem.}
-\label{fig:sizesMMDP1ejec}
-\end{figure}
 
 \begin{table*}
 \centering{
@@ -700,11 +649,6 @@ Summarizing, adapting the population sizes to the
   not applicable here because there are no differences of generations
   during runtime.
 
-
-Summarizing, adapting the sub-population sizes to the computational power of each machine (offline and online) has reduced the time to obtain the optimum. The same heterogeneous fixed sizes in the homogeneous cluster does not produces a significant decrease of running time, so the improvement is produced by the heterogeneity and not due to the different island sizes. Moreover, the AdSi proposal is not applicable in HoHa because there are not differences of generations during runtime.
-
-% no entiendo lo de que no haya "diferencias de
-                   % generaciones" - JJ 
 
 % este junto con el anterior y un párrafo al final de los dos a
 % comentar conjuntamente los resultados obtenidos. - JJ
@@ -758,68 +702,30 @@ HeSi/HoHa   & 13698.12 $\pm$ 406.85 & 16012.625 $\pm$  482.61 & 895698.2 $\pm$  
 
 
 
-\begin{figure}[ht]
-\centering
+%\begin{figure}[ht]
+%\centering
 
-\subfigure[Heterogeneous cluster]{
-   \includegraphics[scale =0.35] {9a.eps}
-   \label{fig:subfig1}
- }
-\subfigure[Homogeneous cluster]{
-   \includegraphics[scale =0.35] {9b.eps}
-   \label{fig:subfig2}
- }
-\caption{Time to obtain the optimum in the OneMax problem (milliseconds).}
-\label{fig:timeOneMax}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-
-\subfigure[Heterogeneous cluster]{
-   \includegraphics[scale =0.35] {10a.eps}
-   \label{fig:subfig1}
- }
-\subfigure[Homogeneous cluster]{
-   \includegraphics[scale =0.35] {10b.eps}
-   \label{fig:subfig2}
- }
-\caption{Number of evaluations for OneMax problem.}
-\label{fig:evalsOneMax}
-\end{figure}
+%\subfigure[Heterogeneous cluster]{
+%   \includegraphics[scale =0.35] {9a.eps}
+%   \label{fig:subfig1}
+% }
+%\subfigure[Homogeneous cluster]{
+%   \includegraphics[scale =0.35] {9b.eps}
+%   \label{fig:subfig2}
+% }
+%\caption{Time to obtain the optimum in the OneMax problem (milliseconds).}
+%\label{fig:timeOneMax}
+%\end{figure}
 
 
 
-\begin{figure}[htb]
-\centering
-\epsfig{file=11.eps, angle=-90, width = 13cm}
-\caption{Average fitness in the first 15000 milliseconds of execution of the four nodes of the heterogeneous cluster with the same sub-population sizes (HoSi/HeHa) for the OneMax problem.}
-\label{fig:gensonemaxhomosize}
-\end{figure}
 
-\begin{figure}[htb]
-\centering
-\epsfig{file=12.eps, angle=-90, width = 13cm}
-\caption{Average fitness in the first 15000 milliseconds of execution of the four nodes of the heterogeneous cluster with different sub-population sizes (HeSi/HeHa) for the OneMax problem.}
-\label{fig:gensonemaxheterosize}
-\end{figure}
+
 
 
 In the AdSi/HeHa configuration significantly better results in terms of execution time (and number of evaluations) are also attained, and even better than those obtained with HeSi. Average sizes (Table \ref{table:sizesONEMAX}) and boxplots (in Figure \ref{fig:sizesONEMAX}) during all the runs also show proportionality to the computational power of each machine. As in MMDP case, some oscillations (outliers in boxplots) may appear during the execution (as it can be seen in Figure \ref{fig:sizesONEMAX1ejec}).
 
-\begin{figure}[htb]
-\centering
-\epsfig{file=13.eps, width = 9cm}
-\caption{Boxplots of the sub-population sizes in each node during all the runs for the OneMax problem.}
-\label{fig:sizesONEMAX}
-\end{figure}
 
-\begin{figure}[htb]
-\centering
-\epsfig{file=14.eps, width = 13cm}
-\caption{Sub-population size in each node during one execution to solve the OneMax problem.}
-\label{fig:sizesONEMAX1ejec}
-\end{figure}
 
 \begin{table*}
 \centering{
@@ -904,19 +810,7 @@ it must be taken into account that the duration of each part of the
 algorithm is not related to the time to attain the optimum, but rather to
 how the diversity and search guidance is maintained in the whole system.  
 
-\begin{figure}[htb]
-\centering
-\epsfig{file=15.eps, width = 14cm}
-\caption{Average running time in each stage of the algorithm for the MMDP problem.}
-\label{fig:MMDPbars}
-\end{figure}
 
-\begin{figure}[htb]
-\centering
-\epsfig{file=16.eps, width = 14cm}
-\caption{Average running time in each stage of the algorithm for the ONEMAX problem.}
-\label{fig:ONEMAXbars}
-\end{figure}
 
 \begin{table}[htb]
 \centering
