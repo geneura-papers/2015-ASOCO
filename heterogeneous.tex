@@ -163,7 +163,6 @@ Adapting algorithm parameters to available computational resources leads to impr
 
 Evolutionary Algorithms are a general technique for solving optimization and search problems based on the evolution of species and natural selection. These algorithms are formed by a population of possible solutions, called {\em individuals}, that compete using their {\em fitness} (quality of adaptation) with the rest of solutions. Every iteration of the algorithm (or {\em generation}) the population evolves by means of selection and recombination/mutation to create a new set of candidates, until a {\em stop criterion} (e.g. number of generations) is met. Fitness function is a quality function that gives the grade of adaptation of an individual respect the others. This function usually describes the problem to solve.
 
-% Metes muchos the al principio de plural, es incorrecto - JJ - FERGU: Ya veo. Lo cambio en el resto del paper (por ejemplo, en el párrafo de abajo)
 New trends in distributed computing such as Cloud Computing \cite{CLOUD}, GRID
 \cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
 leading to heterogeneous computational devices, including for instance, laptops,
@@ -286,8 +285,9 @@ results than homogeneous periods, as explained by Salto and Alba in
 
 
 
-In this work we focus in the sub-population sizes, as this parameter has been previously studied in different works, because it have a huge impact in the results. In \cite{DifferentialWeber09} two different sub-population sizes are used: size alpha (higher values for exploration) and a variable size beta (lower values for exploitation). In \cite{AdaptationSizesSchlierkamp96} . However, those works are based in the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not the machines that are executing the parallel EAs.
+In this work we focus in the sub-population sizes, as this parameter has been previously studied in different works because it have a huge impact in the results. In \cite{DifferentialWeber09} two different sub-population sizes are used: size alpha (higher values for exploration) and a variable size beta (lower values for exploitation). In \cite{AdaptationSizesSchlierkamp96} a quality measure is used for each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, those works are based in the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not the machines that are executing the parallel EAs.
 
+%OJO! En AdaptationSizesSchlierkamp96 dicen que cuando no ponen tamaño global fijo, el tamaño de las subpoblaciones y los resultados son menos claros (usarlo más alante)
 %TODO reescribe bien lo siguiente
 In our work, a parameter (size of the sub-populations) of a dEA is adapted (offline and online) to the computational power of each machine, using the information obtained from the algorithm itself, and compared in different hardware systems.
  To the best of our knowledge, there are no works that
