@@ -141,15 +141,47 @@
 
 
 \begin{abstract}
-In order to increase performance, distributed algorithms on heterogeneous clusters should be adapted to take advantage of the available resources. In distributed Evolutionary Algorithms the population size is one of the factors that mainly affects the execution time, because it directly influences the iterations necessary to find the solution. In this paper, we present a study to adapt this parameter to computational power of the nodes of a heterogeneous cluster, in order to reduce execution time. Two size adaptation schemes have been proposed: an offline and an online parameter setting, and two problems with different characteristics and computational demands (MMDP and OneMax) have been tested. Results show that setting the population size according to the computational power of the nodes in the heterogeneous cluster decreases the time and evaluations required to obtain the optimum. Meanwhile, the same set of different size values could not improve the time in a homogeneous cluster, so the improvement is due to the interaction of the different resources with the algorithm. In addition, a study of the influence of the different population sizes on each stage of the algorithm is presented. This opens a new research line on the adaptation (offline or online) of parameters to the computational power of the devices.
-
+Most scientists have access to a network of heterogeneous nodes, but
+designing distributed algorithms for
+heterogeneous clusters so that they take advantage of the
+available resources is still an issue. We are mainly concerned with
+distributed evolutionary algorithms, which include a whole range of
+parameters with an influence in the performance, however, the size of the
+population  is one of the most important, since it influences the
+number of iterations
+necessary to find the solution. 
+% Por favor, mucho cuidado con el argumento aquí, porque no está nada
+% claro por dónde va. Hay que enmarcar claramente el problema y por
+% qué a la segunda frase del abstract estamos hablando de la población
+% En todo caso, en la introducción habrá que dejar claro por qué nos
+% centramos en la población y no en otras cosas. ¿Qué estamos
+% buscando? ¿Que se sincronicen todos los nodos? Si es así hay que
+% decirlo arriba. - JJ
+In this paper, we present a study to
+adapt this parameter to computational power of the nodes of a
+heterogeneous cluster, in order to reduce execution time. 
+% or to be able to synchronize all nodes? - JJ
+Two size
+adaptation schemes have been proposed: an offline and an online
+parameter setting, and two problems with different characteristics and
+computational demands have been tested. Results show
+that setting the population size according to the computational power
+of the nodes in the heterogeneous cluster decreases the time and
+evaluations required to obtain the optimum. Meanwhile, the same set of
+different size values could not improve the time in a homogeneous
+cluster, so the improvement is due to the interaction of the different
+resources with the algorithm. In addition, a study of the influence of
+the different population sizes on each stage of the algorithm is
+presented. This opens a new research line on the adaptation (offline
+or online) of parameters to the computational power of the devices.  
+ 
 %Quitado: The total number of individuals is divided taking into account the computational power of each node.
 \end{abstract}
 
 \begin{keyword}
 %% keywords here, in the form: keyword \sep keyword
 %Service Oriented Architecture \sep OSGi \sep Java \sep Context Management \sep e-health
-Evolutionary Algorithms \sep Genetic Algorithms \sep Heterogeneous computation \sep Distributed computing \sep Parameter Tuning \sep Parameter Control
+Evolutionary Algorithms \sep Genetic Algorithms \sep Heterogeneous distributed computation \sep Distributed computing \sep Parameter Tuning \sep Parameter Control
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
 \end{keyword}
@@ -159,9 +191,45 @@ Evolutionary Algorithms \sep Genetic Algorithms \sep Heterogeneous computation \
 \section{Introduction}
 \label{sec:intro}
 
-Adapting algorithm parameters to available computational resources leads to improved performance \cite{AutomaticallyConfiguringStyles12}. An easy way to take advantage of the available resources is the load balancing \cite{PARALLELIMPLEMENTATION} to distribute workloads across multiple elements. However, assigning equal tasks  to each node on heterogeneous clusters may result in suboptimal performance \cite{LoadBalancingBohn02}. Parameters of an algorithm could also be adapted to increase the performance of the whole system. For example, the population size in Evolutionary Algorithms (EAs) is the key to obtain good performance, because it have effect on the quality of the solution and the time spent during the run \cite{ShrinkageLaredo09}. This parameter has been studied as a fixed \cite{SizingHarik99} or adaptive parameter during runtime \cite{AdaptiveLobo07,SelfRegulatedSizeFernandes06}, but without taking into account the computational power of each machine in a heterogeneous cluster. In this paper we have investigated whether adapting the population size of the islands of a distributed Evolutionary Algorithm (dEA) \cite{MULTIKULTI} can leverage the capability of a heterogeneous cluster.
+Adapting algorithm parameters to available computational resources
+leads to improved performance
+\cite{AutomaticallyConfiguringStyles12}. An easy way to take advantage
+of the available resources is  balancing the load
+\cite{PARALLELIMPLEMENTATION} so that workloads are to distributed across multiple
+elements. However, assigning equal tasks  to each node in
+heterogeneous clusters may result in suboptimal performance
+\cite{LoadBalancingBohn02}. Parameters of an algorithm could also be
+adapted to increase the performance of the whole system. For example,
+the population size in Evolutionary Algorithms (EAs)
+% Aquí aparece por primera vez el algoritmo evolutivo -> 
+ is the key to
+obtain good performance, because it have effect on the quality of the
+solution and the time spent during the run
+\cite{ShrinkageLaredo09}. This parameter has been studied as a fixed
+\cite{SizingHarik99} or adaptive parameter during runtime
+\cite{AdaptiveLobo07,SelfRegulatedSizeFernandes06}, but without taking
+into account the computational power of each machine in a
+heterogeneous cluster. In this paper we have investigated whether
+adapting the population size of the islands of a distributed
+Evolutionary Algorithm (dEA) \cite{MULTIKULTI} can leverage the
+capability of a heterogeneous cluster. 
 
-Evolutionary Algorithms are a general technique for solving optimization and search problems based on the evolution of species and natural selection. These algorithms are formed by a population of possible solutions, called {\em individuals}, that compete using their {\em fitness} (quality of adaptation) with the rest of solutions. Every iteration of the algorithm (or {\em generation}) the population evolves by means of selection and recombination/mutation to create a new set of candidates, until a {\em stop criterion} (e.g. number of generations) is met. Fitness function is a quality function that gives the grade of adaptation of an individual respect the others. This function usually describes the problem to solve.
+% -> y aquí explicas lo que son. O pones este párrafo como primer
+% párrafo para enmarcar el trabajo, o lo abrevias y lo pones arriba
+% donde lo menciones - JJ
+Evolutionary Algorithms are a general method for solving
+optimization and search problems inspired on the evolution of species
+and its underlying mechanism, natural selection. These algorithms work
+on a population of encoded
+possible solutions, called {\em individuals}, that compete using their
+{\em fitness} (quality or cost of the solution they encode) with the
+rest of the
+population. Every iteration of the algorithm (or {\em generation}) the
+population evolves by means of selection and recombination/mutation to
+create a new set of candidates, until a {\em stop criterion}
+(e.g. number of generations) is met. Fitness function is a quality
+function that gives the grade of adaptation of an individual respect
+the others. This function usually describes the problem to solve. 
 
 New trends in distributed computing such as Cloud Computing \cite{CLOUD}, GRID
 \cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
