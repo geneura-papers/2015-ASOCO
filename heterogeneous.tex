@@ -231,21 +231,37 @@ create a new set of candidates, until a {\em stop criterion}
 function that gives the grade of adaptation of an individual respect
 the others. This function usually describes the problem to solve. 
 
+% Y seguimos con las introducciones... todo esto no lleva a nada. Y si
+% lleva, tiene que estar en el primer párrafo: ¿cuál es el marco?
+% ¿Nodos heterogéneos? ¿Computación distribuida? Pues al principio - JJ
 New trends in distributed computing such as Cloud Computing \cite{CLOUD}, GRID
 \cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
 leading to heterogeneous computational devices, including for instance, laptops,
 tablets or desktop PCs, working in the same
-environment. Thus, many laboratories, which do not count with classic
-clusters but the usual workstations used by scientists, can leverage
+environment. Thus, many laboratories, which do not include classic
+clusters but the usual desktop and laptop computers used by
+scientists, should be able to leverage
 this motley set as a heterogeneous cluster. Distributed Evolutionary
 Algorithms \cite{MULTIKULTI,PARALLELGRIDHETEROGENEOUS} have been tested successfully in this
 type of systems \cite{HETEROGENEOUSHARD} and they have become very popular because their implementation is
 not complex.
 The most extended model exploits a coarse grained parallelism with sporadic
  communications, being fit to be executed in distributed architectures
- such as clusters or GRIDs \cite{PLATO}.
+ such as clusters or GRIDs \cite{PLATO}. %¿Quién dice que es el "most
+                                %extended"? - JJ
 
-In distributed EAs a set of nodes executes simultaneously the EA, working with different sub-populations (or islands) at the same time. Every certain number of generations one or more individuals are interchanged (migrated) between sub-populations, which are connected following a specific topology. Figure \ref{fig:islands} shows this model with a ring topology.  
+%Estabas hablando de computación distribuida y ahora hablas de algo
+%totalmente diferente. Cada párrafo va por su lado. No hay una
+%narrativa.
+% Escribe tu argumento en tres o cuatro frases y desarrolla ese
+% argumento, cada frase en un párrafo. La argumentación debe quedar
+% clara. - JJ
+In distributed EAs a set of nodes executes simultaneously the EA,
+working with different sub-populations (or islands) at the same
+time. Every certain number of generations one or more individuals are
+interchanged (migrated) between sub-populations, which are connected
+following a specific topology. Figure \ref{fig:islands} shows this
+model with a ring topology.   
 
 
 
@@ -259,12 +275,11 @@ In distributed EAs a set of nodes executes simultaneously the EA, working with d
 
 
 
-
-
-
-
-Distributed EAs can be executed on homogeneous clusters with the same parameters in all nodes (homogeneous dEAs), or with different parameters or nodes' features (heterogeneous dEAs).
-It  has also been showed \cite{HETEROGENEOUSHARD} that dEAs with the same parameter configuration are even
+Distributed EAs can be executed on homogeneous clusters with the same
+parameters in all nodes (homogeneous dEAs), or with different
+parameters or nodes' features (heterogeneous dEAs), in fact,
+parameters can be random \cite{garcia2014randomized,tanabe2013evaluation}
+It  has also been shown \cite{HETEROGENEOUSHARD} that dEAs with the same parameter configuration are even
 more efficient in time and evaluations on heterogeneous hardware configurations than on clusters with
 homogeneous devices. This can be explained by different reasons, such
 as different memory access times, cache sizes, 
@@ -275,13 +290,17 @@ Heterogeneous parameter
 configuration  has also been shown to be more  efficient time-wise than a fixed
 set 
 of parameters for different problems
-\cite{HETEROGENEOUSPARAMETERS}.   
+\cite{HETEROGENEOUSPARAMETERS}.  % so what? - JJ 
 
 
-These facts have motivated us to study a combination of both ideas in this paper: dEAs on a heterogeneous set of nodes with different parameter values adapted to each node. In this study, the parameter to adapt to the computational power of each node has been the sub-population size of each island.
+These facts have motivated us to study a combination of both ideas in
+this paper: dEAs on a heterogeneous set of nodes with different
+parameter values adapted to each node. In this study, the parameter to
+adapt to the computational power of each node has been the
+sub-population size of each island. %why?????? - JJ 
 
 
-In this work, a heterogeneous distributed system has been used to give an insight to the following questions:
+In this work, a heterogeneous distributed system has been used to give an answer to the following questions:
 \begin{itemize}
  \item Can a distributed EA be adapted to leverage the capability of a
    heterogeneous cluster? 
@@ -291,6 +310,10 @@ In this work, a heterogeneous distributed system has been used to give an insigh
    configurations?
 \end{itemize}
 
+%Hasta aquí no has dicho nada de que lo que vas buscando es una
+%sincronización de los nodos o, para el caso, si lo que usas es un
+%algoritmo síncrono o asíncrono. Lo que será importante luego para
+%explicar los resultados. - JJ
 
 The rest of the work is structured as follows: after a presentation of
 the state of
