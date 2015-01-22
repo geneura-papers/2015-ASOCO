@@ -122,6 +122,8 @@
 
 \author[ugr]{Pablo Garc\'ia-S\'anchez}
 \ead{pgarcia@atc.ugr.es}
+\author[ugr]{Gustavo Romero}
+\ead{gustavo@ugr.es}
 \author[ugr]{Jes\'us Gonz\'alez}
 \ead{jesusgonzalez@ugr.es}
 \author[ugr]{Antonio Miguel Mora}
@@ -156,7 +158,7 @@ necessary to find the solution.
 % En todo caso, en la introducción habrá que dejar claro por qué nos
 % centramos en la población y no en otras cosas. ¿Qué estamos
 % buscando? ¿Que se sincronicen todos los nodos? Si es así hay que
-% decirlo arriba. - JJ
+% decirlo arriba. - JJ FERGU: No, no se busca una sincronización tal cual, escribo al principio de la intro un argumento y desarrollaré desde allí.
 In this paper, we present a study to
 adapt this parameter to computational power of the nodes of a
 heterogeneous cluster, in order to reduce execution time. 
@@ -191,6 +193,25 @@ Evolutionary Algorithms \sep Genetic Algorithms \sep Heterogeneous distributed c
 \section{Introduction}
 \label{sec:intro}
 
+%ARGUMENTO: 
+% 1) Existen nuevas tendencias que usan nodos heterogéneos
+% 2) Adaptar parámetros de un algoritmo (general) a la potencia de esas máquinas heterogéneas puede hacer que mejore el tiempo de ejecución
+% 3) En concreto, los EAs pueden adaptarse a estas máquinas 
+
+
+% Y seguimos con las introducciones... todo esto no lleva a nada. Y si
+% lleva, tiene que estar en el primer párrafo: ¿cuál es el marco?
+% ¿Nodos heterogéneos? ¿Computación distribuida? Pues al principio - JJ FERGU: adaptándome al ARGUMENTO (arriba) (Nota, la intro la escribí antes de que me revisaras la tesis, así que por eso no está bien hilado :)
+
+New trends in distributed computing such as Cloud Computing \cite{CLOUD}, GRID
+\cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
+leading to heterogeneous computational devices, including for instance, laptops,
+tablets or desktop PCs, working in the same
+environment. Thus, many laboratories, which do not include classic
+clusters but the usual desktop and laptop computers used by
+scientists, should be able to leverage
+this motley set as a heterogeneous cluster. 
+
 Adapting algorithm parameters to available computational resources
 leads to improved performance
 \cite{AutomaticallyConfiguringStyles12}. An easy way to take advantage
@@ -198,25 +219,28 @@ of the available resources is  balancing the load
 \cite{PARALLELIMPLEMENTATION} so that workloads are to distributed across multiple
 elements. However, assigning equal tasks  to each node in
 heterogeneous clusters may result in suboptimal performance
-\cite{LoadBalancingBohn02}. Parameters of an algorithm could also be
-adapted to increase the performance of the whole system. For example,
-the population size in Evolutionary Algorithms (EAs)
-% Aquí aparece por primera vez el algoritmo evolutivo -> 
- is the key to
-obtain good performance, because it have effect on the quality of the
-solution and the time spent during the run
-\cite{ShrinkageLaredo09}. This parameter has been studied as a fixed
-\cite{SizingHarik99} or adaptive parameter during runtime
-\cite{AdaptiveLobo07,SelfRegulatedSizeFernandes06}, but without taking
-into account the computational power of each machine in a
-heterogeneous cluster. In this paper we have investigated whether
-adapting the population size of the islands of a distributed
-Evolutionary Algorithm (dEA) \cite{MULTIKULTI} can leverage the
-capability of a heterogeneous cluster. 
+\cite{LoadBalancingBohn02}. 
+
+
+
+
+Distributed Evolutionary
+Algorithms \cite{MULTIKULTI,PARALLELGRIDHETEROGENEOUS} have been tested successfully in this
+type of systems \cite{HETEROGENEOUSHARD} and they have become very popular because their implementation is
+not complex.
+The most extended model exploits a coarse grained parallelism with sporadic
+ communications, being fit to be executed in distributed architectures
+ such as clusters or GRIDs \cite{PLATO}.
+
+
 
 % -> y aquí explicas lo que son. O pones este párrafo como primer
 % párrafo para enmarcar el trabajo, o lo abrevias y lo pones arriba
-% donde lo menciones - JJ
+% donde lo menciones - JJ FERGU: Reestructurada la intro
+
+
+
+
 Evolutionary Algorithms are a general method for solving
 optimization and search problems inspired on the evolution of species
 and its underlying mechanism, natural selection. These algorithms work
@@ -231,23 +255,29 @@ create a new set of candidates, until a {\em stop criterion}
 function that gives the grade of adaptation of an individual respect
 the others. This function usually describes the problem to solve. 
 
-% Y seguimos con las introducciones... todo esto no lleva a nada. Y si
-% lleva, tiene que estar en el primer párrafo: ¿cuál es el marco?
-% ¿Nodos heterogéneos? ¿Computación distribuida? Pues al principio - JJ
-New trends in distributed computing such as Cloud Computing \cite{CLOUD}, GRID
-\cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
-leading to heterogeneous computational devices, including for instance, laptops,
-tablets or desktop PCs, working in the same
-environment. Thus, many laboratories, which do not include classic
-clusters but the usual desktop and laptop computers used by
-scientists, should be able to leverage
-this motley set as a heterogeneous cluster. Distributed Evolutionary
-Algorithms \cite{MULTIKULTI,PARALLELGRIDHETEROGENEOUS} have been tested successfully in this
-type of systems \cite{HETEROGENEOUSHARD} and they have become very popular because their implementation is
-not complex.
-The most extended model exploits a coarse grained parallelism with sporadic
- communications, being fit to be executed in distributed architectures
- such as clusters or GRIDs \cite{PLATO}. %¿Quién dice que es el "most
+
+
+
+
+Parameters of an algorithm could also be
+adapted to increase the performance of the whole system. For example,
+the population size in EAs
+% Aquí aparece por primera vez el algoritmo evolutivo -> 
+ is the key to
+obtain good performance, because it have effect on the quality of the
+solution and the time spent during the run
+\cite{ShrinkageLaredo09}. This parameter has been studied as a fixed
+\cite{SizingHarik99} or adaptive parameter during runtime
+\cite{AdaptiveLobo07,SelfRegulatedSizeFernandes06}, but without taking
+into account the computational power of each machine in a
+heterogeneous cluster. In this paper we have investigated whether
+adapting the population size of the islands of a distributed
+Evolutionary Algorithm (dEA) \cite{MULTIKULTI} can leverage the
+capability of a heterogeneous cluster. 
+
+
+
+ %¿Quién dice que es el "most
                                 %extended"? - JJ
 
 %Estabas hablando de computación distribuida y ahora hablas de algo
@@ -255,7 +285,7 @@ The most extended model exploits a coarse grained parallelism with sporadic
 %narrativa.
 % Escribe tu argumento en tres o cuatro frases y desarrolla ese
 % argumento, cada frase en un párrafo. La argumentación debe quedar
-% clara. - JJ
+% clara. - JJ FERGU: reestructurando 
 In distributed EAs a set of nodes executes simultaneously the EA,
 working with different sub-populations (or islands) at the same
 time. Every certain number of generations one or more individuals are
