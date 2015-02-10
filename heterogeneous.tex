@@ -146,11 +146,11 @@
 \begin{abstract}
 Most scientists have access to a network of heterogeneous nodes, but
 designing distributed algorithms for
-heterogeneous clusters so that they take advantage of the
+heterogeneous clusters so that they leverage all
 available resources is still an issue. We are mainly concerned with
 distributed evolutionary algorithms, which include a whole range of
 parameters with an influence in the performance, however, the size of the
-population  is one of the most important, since it influences the
+population  is one of the most important, since it has a diirect relationship with the
 number of iterations
 necessary to find the solution. 
 % Por favor, mucho cuidado con el argumento aquí, porque no está nada
@@ -160,23 +160,53 @@ necessary to find the solution.
 % centramos en la población y no en otras cosas. ¿Qué estamos
 % buscando? ¿Que se sincronicen todos los nodos? Si es así hay que
 % decirlo arriba. - JJ FERGU: No, no se busca una sincronización tal cual, escribo al principio de la intro un argumento y desarrollaré desde allí.
+% El argumento sigue sin estar claro. ``Estamos preocupados con AEs
+% distribuidos... donde la población es muy importante''. ¿Qué tiene
+% esto que ver con los sistemas heterogéneos? Para empezar, el marco
+% debería estar en la primera frase: estamos hablando de algoritmos
+% evolutivos distribuidos. Para seguir, el problema es usar todos los
+% recursos. Para usar todos los recursos, debemos ¿qué? ¿Que los nodos
+% funcionen de forma síncrona? ¿Que las prestaciones sean similares?
+% ¿Qué tiene que ver esto con las prestaciones= Y para hacer eso, lo más importante es
+% controlar la población... Por favor, déjalo bien claro porque la
+% línea de argumentación es lo más importante del paper - JJ
 In this paper, we present a study to
-adapt this parameter to computational power of the nodes of a
+adapt this parameter to the computational power of the nodes of a
 heterogeneous cluster, in order to reduce execution time. 
 % or to be able to synchronize all nodes? - JJ
+% reduce total? Reduce single-node? Why is reducing execution time
+% important? Was not the most important thing to leverage all
+% available resources? The OBJECTIVE of the paper must be clear and
+% the steps taken to make it sure too - JJ
 Two size
 adaptation schemes have been proposed: an offline and an online
 parameter setting, and two problems with different characteristics and
-computational demands have been tested. Results show
+computational demands have been tested. % why only two? Are these
+                                % enough? Do they cover a whole range
+                                % of possible situations? If they
+                                % don't you're up for trouble on the
+                                % reviewer front: they can ask for 3,
+                                % 4 or $n$ - JJ
+Results show
 that setting the population size according to the computational power
 of the nodes in the heterogeneous cluster decreases the time and
-evaluations required to obtain the optimum. Meanwhile, the same set of
-different size values could not improve the time in a homogeneous
+evaluations required to obtain the optimum. %Two different things:
+                                %time and evaluations. If they
+                                %decrease time due to evaluations,
+                                %then it's something: the algorithm
+                                %varies. Besides, usually number of
+                                %evaluations decrease with the
+                                %population in single-population
+                                %algorithm. - JJ
+ Meanwhile, the same set of
+different size values could not improve the time %Improve with respect
+                                %to what? - JJ
+ in a homogeneous
 cluster, so the improvement is due to the interaction of the different
 resources with the algorithm. In addition, a study of the influence of
 the different population sizes on each stage of the algorithm is
 presented. This opens a new research line on the adaptation (offline
-or online) of parameters to the computational power of the devices.  
+or online) of parameters to the computational power of the devices.  % Never done before? If it has, it should go to the state of the art - JJ
  
 %Quitado: The total number of individuals is divided taking into account the computational power of each node.
 \end{abstract}
@@ -309,8 +339,9 @@ homogeneous devices. This can be explained by different reasons, such
 as different memory access times, cache sizes, 
 or even implementation
 languages or compilers in each machine, leading to a different
-exploitation/exploration rate of the search space. 
-Heterogeneous parameter
+exploitation/exploration rate of the search space. % Ein? Sez who?
+                                % Why? - JJ
+An heterogeneous parameter
 configuration  has also been shown to be more  efficient time-wise than a fixed
 set 
 of parameters for different problems
