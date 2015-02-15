@@ -150,7 +150,7 @@ heterogeneous clusters so that they leverage all
 available resources is still an issue. We are mainly concerned with
 distributed evolutionary algorithms, which include a whole range of
 parameters with an influence in the performance, however, the size of the
-population  is one of the most important, since it has a diirect relationship with the
+population  is one of the most important, since it has a direct relationship with the
 number of iterations
 necessary to find the solution. 
 % Por favor, mucho cuidado con el argumento aquÃ­, porque no estÃ¡ nada
@@ -499,11 +499,13 @@ Although results may be independent of the problem because an adaptive algorithm
 
 The problems to evaluate are the Massively Multimodal Deceptive
 Problem (MMDP) \cite{goldberg92massive}  the OneMax problem
-\cite{ONEMAX} and the Rosenbrock Function \cite{}. Each one requires different actions/abilities by the GA
+\cite{ONEMAX} and the Rosenbrock's Function \cite{CEC2005_Benchmark}. 
+% Antonio - Rosenbrock's o 'Shifted Rosenbrock'?
+Each one requires different actions/abilities by the GA
 at the level of population sizing, individual selection and
 building-blocks mixing. 
 
-These problems have been previously used in other parameter adaptation algorithms, such as \cite{ParallelGATongchim02} (MMDP and OneMax) and \cite{DifferentialWeber09,AdaptationSizesSchlierkamp96} (Rosenbrock). 
+These problems have been previously used in other parameter adaptation algorithms, such as \cite{ParallelGATongchim02} (MMDP and OneMax) and \cite{DifferentialWeber09,AdaptationSizesSchlierkamp96} (Rosenbrock's). 
 
 %TODO ESTO DE ARRIBA TIENE QUE PONERSE MEJOR
 
@@ -544,7 +546,21 @@ Unitation&Subfunction value\\
 \end{table}
 %%%%%%%%%%%%%%%%%%
 
+The Shifted Rosenbrock's Function is defined as:
 
+
+\begin{equation}\label{eq:rosenbrock}
+F_{Rosenbrock}(x)= \sum_{i=1}^{D-1} (100 \cdot (z_{i}^{2}-z_{i+1}^{2}) + 
+                                     (z_{i}-1)^2)+f_{bias}
+\end{equation}
+
+With $z=x-o+1$ and $x=[x_1,x_2,...,x_D]$, and considering $D$ as the number of dimensions, and $o=[o_1,o_2,...,o_D]$ as the shifted global optimum.
+
+This is a multi-modal shifted function, which is non-separable and scalable. It presents a very narrow valley from local optimum to global optimum.
+
+% Antonio - Fergu, ¿Necesitas poner el óptimo aquí?
+
+%%%%%%%%%%%%%%%%%
 
 The fitness value is defined as the sum of the $s_i$ subproblems with an optimum of $k$ (Equation \ref{eq:mmdp}).
 The search space is composed of $2^{6k}$ combinations from which there
@@ -679,7 +695,7 @@ Number of individuals to migrate & 1 \\ \hline
 Stop criterion & Optimum found \\ \hline
 Individual size for MMDP & 150, 240 and 300  \\ \hline
 Individual size for OneMax & 5000, 10000 and 15000 \\ \hline
-Individual size for Rosenbrock & 10, 30 and 40 \\ \hline
+Individual size for Rosenbrock's & 10, 30 and 40 \\ \hline
 Runs per configuration & 40 \\ \hline
 \hline
 Total individuals in HoSi and HeSi & 1024\\ \hline \hline
@@ -847,7 +863,7 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
    \includegraphics[scale =0.5] {boxplots/ROSENBROCK_50_TIME.eps}
    \label{fig:50time}
  }
-\caption{Time to obtain the optimum in the Rosenbrock function problem (milliseconds).}
+\caption{Time to obtain the optimum in the Rosenbrock's function problem (milliseconds).}
 \label{fig:timeROSENBROCK}
 \end{figure}
 
@@ -913,7 +929,7 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
    \includegraphics[scale =0.5] {boxplots/ROSENBROCK_50_EVALS.eps}
    \label{fig:50evals}
  }
-\caption{Evaluations to obtain the optimum in the Rosenbrock function problem.}
+\caption{Evaluations to obtain the optimum in the Rosenbrock's function problem.}
 \label{fig:evalsROSENBROCK}
 \end{figure}
 
