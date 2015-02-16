@@ -57,6 +57,7 @@
 \usepackage{color}
 \usepackage{amsmath}
 \usepackage{pifont}
+\usepackage{multirow}
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
 
@@ -153,23 +154,23 @@ parameters with an influence in the performance, however, the size of the
 population  is one of the most important, since it has a direct relationship with the
 number of iterations
 necessary to find the solution. 
-% Por favor, mucho cuidado con el argumento aqu√≠, porque no est√° nada
-% claro por d√≥nde va. Hay que enmarcar claramente el problema y por
-% qu√© a la segunda frase del abstract estamos hablando de la poblaci√≥n
-% En todo caso, en la introducci√≥n habr√° que dejar claro por qu√© nos
-% centramos en la poblaci√≥n y no en otras cosas. ¬øQu√© estamos
-% buscando? ¬øQue se sincronicen todos los nodos? Si es as√≠ hay que
-% decirlo arriba. - JJ FERGU: No, no se busca una sincronizaci√≥n tal cual, escribo al principio de la intro un argumento y desarrollar√© desde all√≠.
+% Por favor, mucho cuidado con el argumento aquÌ, porque no est· nada
+% claro por dÛnde va. Hay que enmarcar claramente el problema y por
+% quÈ a la segunda frase del abstract estamos hablando de la poblaciÛn
+% En todo caso, en la introducciÛn habr· que dejar claro por quÈ nos
+% centramos en la poblaciÛn y no en otras cosas. øQuÈ estamos
+% buscando? øQue se sincronicen todos los nodos? Si es asÌ hay que
+% decirlo arriba. - JJ FERGU: No, no se busca una sincronizaciÛn tal cual, escribo al principio de la intro un argumento y desarrollarÈ desde allÌ.
 % El argumento sigue sin estar claro. ``Estamos preocupados con AEs
-% distribuidos... donde la poblaci√≥n es muy importante''. ¬øQu√© tiene
-% esto que ver con los sistemas heterog√©neos? Para empezar, el marco
-% deber√≠a estar en la primera frase: estamos hablando de algoritmos
+% distribuidos... donde la poblaciÛn es muy importante''. øQuÈ tiene
+% esto que ver con los sistemas heterogÈneos? Para empezar, el marco
+% deberÌa estar en la primera frase: estamos hablando de algoritmos
 % evolutivos distribuidos. Para seguir, el problema es usar todos los
-% recursos. Para usar todos los recursos, debemos ¬øqu√©? ¬øQue los nodos
-% funcionen de forma s√≠ncrona? ¬øQue las prestaciones sean similares?
-% ¬øQu√© tiene que ver esto con las prestaciones= Y para hacer eso, lo m√°s importante es
-% controlar la poblaci√≥n... Por favor, d√©jalo bien claro porque la
-% l√≠nea de argumentaci√≥n es lo m√°s importante del paper - JJ
+% recursos. Para usar todos los recursos, debemos øquÈ? øQue los nodos
+% funcionen de forma sÌncrona? øQue las prestaciones sean similares?
+% øQuÈ tiene que ver esto con las prestaciones= Y para hacer eso, lo m·s importante es
+% controlar la poblaciÛn... Por favor, dÈjalo bien claro porque la
+% lÌnea de argumentaciÛn es lo m·s importante del paper - JJ
 In this paper, we present a study to
 adapt this parameter to the computational power of the nodes of a
 heterogeneous cluster, in order to reduce execution time. 
@@ -225,14 +226,14 @@ Evolutionary Algorithms \sep Genetic Algorithms \sep Heterogeneous distributed c
 \label{sec:intro}
 
 %ARGUMENTO: 
-% 1) Existen nuevas tendencias que usan nodos heterog√©neos
-% 2) Adaptar par√°metros de un algoritmo (general) a la potencia de esas m√°quinas heterog√©neas puede hacer que mejore el tiempo de ejecuci√≥n
-% 3) En concreto, los EAs pueden adaptarse a estas m√°quinas 
+% 1) Existen nuevas tendencias que usan nodos heterogÈneos
+% 2) Adaptar par·metros de un algoritmo (general) a la potencia de esas m·quinas heterogÈneas puede hacer que mejore el tiempo de ejecuciÛn
+% 3) En concreto, los EAs pueden adaptarse a estas m·quinas 
 
 
 % Y seguimos con las introducciones... todo esto no lleva a nada. Y si
-% lleva, tiene que estar en el primer p√°rrafo: ¬øcu√°l es el marco?
-% ¬øNodos heterog√©neos? ¬øComputaci√≥n distribuida? Pues al principio - JJ FERGU: adapt√°ndome al ARGUMENTO (arriba) (Nota, la intro la escrib√≠ antes de que me revisaras la tesis, as√≠ que por eso no est√° bien hilado :)
+% lleva, tiene que estar en el primer p·rrafo: øcu·l es el marco?
+% øNodos heterogÈneos? øComputaciÛn distribuida? Pues al principio - JJ FERGU: adapt·ndome al ARGUMENTO (arriba) (Nota, la intro la escribÌ antes de que me revisaras la tesis, asÌ que por eso no est· bien hilado :)
 
 New trends in distributed computing such as Cloud Computing \cite{CLOUD}, GRID
 \cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
@@ -265,9 +266,9 @@ The most extended model exploits a coarse grained parallelism with sporadic
 
 
 
-% -> y aqu√≠ explicas lo que son. O pones este p√°rrafo como primer
-% p√°rrafo para enmarcar el trabajo, o lo abrevias y lo pones arriba
-% donde lo menciones - JJ FERGU: Reestructurada la intro y movido este p√°rrafo
+% -> y aquÌ explicas lo que son. O pones este p·rrafo como primer
+% p·rrafo para enmarcar el trabajo, o lo abrevias y lo pones arriba
+% donde lo menciones - JJ FERGU: Reestructurada la intro y movido este p·rrafo
 
 Evolutionary Algorithms are a general method for solving
 optimization and search problems inspired on the evolution of species
@@ -290,7 +291,7 @@ the others. This function usually describes the problem to solve.
 Parameters of this kind of algorithms could also be
 adapted to increase the performance of the whole system. For example,
 the population size in EAs
-% Aqu√≠ aparece por primera vez el algoritmo evolutivo -> FERGU: movido de sitio
+% AquÌ aparece por primera vez el algoritmo evolutivo -> FERGU: movido de sitio
  is the key to
 obtain good performance, because it have effect on the quality of the
 solution and the time spent during the run
@@ -304,11 +305,11 @@ Evolutionary Algorithm (dEA) \cite{MULTIKULTI} can leverage the
 capability of a heterogeneous cluster. 
 
 
-%Estabas hablando de computaci√≥n distribuida y ahora hablas de algo
-%totalmente diferente. Cada p√°rrafo va por su lado. No hay una
+%Estabas hablando de computaciÛn distribuida y ahora hablas de algo
+%totalmente diferente. Cada p·rrafo va por su lado. No hay una
 %narrativa.
 % Escribe tu argumento en tres o cuatro frases y desarrolla ese
-% argumento, cada frase en un p√°rrafo. La argumentaci√≥n debe quedar
+% argumento, cada frase en un p·rrafo. La argumentaciÛn debe quedar
 % clara. - JJ FERGU: reestructurando 
 In distributed EAs a set of nodes executes simultaneously the EA,
 working with different sub-populations (or islands) at the same
@@ -365,9 +366,9 @@ In this work, a heterogeneous distributed system has been used to give an answer
    configurations?
 \end{itemize}
 
-%Hasta aqu√≠ no has dicho nada de que lo que vas buscando es una
-%sincronizaci√≥n de los nodos o, para el caso, si lo que usas es un
-%algoritmo s√≠ncrono o as√≠ncrono. Lo que ser√° importante luego para
+%Hasta aquÌ no has dicho nada de que lo que vas buscando es una
+%sincronizaciÛn de los nodos o, para el caso, si lo que usas es un
+%algoritmo sÌncrono o asÌncrono. Lo que ser· importante luego para
 %explicar los resultados. - JJ
 
 The rest of the work is structured as follows: after a presentation of
@@ -433,7 +434,7 @@ results than homogeneous periods, as explained by Salto and Alba in
 
 In this work we focus in the sub-population sizes, as this parameter has been previously studied in different works because it have a huge impact in the results. In \cite{DifferentialWeber09} two different sub-population sizes are used: size alpha (higher values for exploration) and a variable size beta (lower values for exploitation). In \cite{AdaptationSizesSchlierkamp96} a quality measure is used for each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, those works are based in the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not the machines that are executing the parallel EAs.
 
-%OJO! En AdaptationSizesSchlierkamp96 dicen que cuando no ponen tama√±o global fijo, el tama√±o de las subpoblaciones y los resultados son menos claros (usarlo m√°s alante)
+%OJO! En AdaptationSizesSchlierkamp96 dicen que cuando no ponen tamaÒo global fijo, el tamaÒo de las subpoblaciones y los resultados son menos claros (usarlo m·s alante)
 %TODO reescribe bien lo siguiente
 In our work, a parameter (size of the sub-populations) of a dEA is adapted (offline and online) to the computational power of each machine, using the information obtained from the algorithm itself, and compared in different hardware systems.
  To the best of our knowledge, there are no works that
@@ -456,8 +457,8 @@ In this section we propose two different parameter adaptation schemes to test if
 The experimentation is centered in a distributed GA, one of the most used EAs \cite{GeneticAlgorithmsEiben03}. Figure \ref{fig:EA} shows the pseudo-code of the used algorithm.
 The algorithm is steady-state, i.e. every generation the offspring is mixed with the parents and the worst individuals are removed. The used neighborhood topology for migration between islands (nodes) is a ring (see Figure \ref{fig:islands}). The best individual is sent to the neighbour in the ring, after a fixed number of generations in each island. The algorithm stops when the optimum (the solution to the problem) is found.  
 
-%Tienes que justificarlo absolutamente todo. ¬øSi se usa otro
-%algoritmo, cambiar√≠an los resultados? ¬øPor qu√© se ha usado
+%Tienes que justificarlo absolutamente todo. øSi se usa otro
+%algoritmo, cambiarÌan los resultados? øPor quÈ se ha usado
 %precisamente este? - JJ
 
 
@@ -469,15 +470,24 @@ The algorithm is steady-state, i.e. every generation the offspring is mixed with
     \STATE parents $\gets$ selection(population)
     \STATE offspring $\gets$ recombination(parents)
     \STATE offspring $\gets$ mutation(offspring)
+    \STATE O $\gets$ offspring.size
     \STATE population $\gets$ population + offspring
+    
     \IF {time to migrate}
       \STATE migrants $\gets$ selectMigrants(population)
       \STATE remoteBuffer.send(migrants)
     \ENDIF
+
+    \IF {localBuffer.size $\neq$ zero}
+      \STATE immigrants $\gets$ localBuffer.read()
+      \STATE I $\gets$ immigrants.size()
+      \STATE population $\gets$ population + immigrants
+    \ENDIF
+    
     \IF {localBuffer.size $\neq$ zero}
       \STATE population $\gets$ population + localBuffer.read()
     \ENDIF
-    \STATE population $\gets$ removeWorst(population)
+    \STATE population $\gets$ population - population.getTheWorst(O + I)
 \ENDWHILE
 
 \end{algorithmic}
@@ -490,12 +500,13 @@ The algorithm is steady-state, i.e. every generation the offspring is mixed with
 
 \subsection{Problems}
 %No empieces con "the problems to evaluate". Di que los resultados
-%deber√≠an ser m√°s o menos independientes del problema, pero se han
+%deberÌan ser m·s o menos independientes del problema, pero se han
 %elegido estos por tal y cual. Tienes que justificar que con estos es
-%suficientes, para que no te digan el cl√°sico "Prueba otro algoritmo"
+%suficientes, para que no te digan el cl·sico "Prueba otro algoritmo"
 %- JJ %TODO TERMINAR Y ENLAZAR
 
-Although results may be independent of the problem because an adaptive algorithm can not replace a specific problem adaptation \cite{PanaceasClune05}, different types of problems will be used in this work.
+Although results may be independent of the problem because an adaptive algorithm can not replace a specific problem adaptation \cite{PanaceasClune05}, different types of problems that cover different characteristics
+and computational demands will be used in this work.
 
 The problems to evaluate are the Massively Multimodal Deceptive
 Problem (MMDP) \cite{goldberg92massive}  the OneMax problem
@@ -545,23 +556,7 @@ Unitation&Subfunction value\\
 
 
 \end{table}
-%%%%%%%%%%%%%%%%%%
 
-The Shifted Rosenbrock function is defined as:
-
-
-\begin{equation}\label{eq:rosenbrock}
-F_{Rosenbrock}(x)= \sum_{i=1}^{D-1} (100 \cdot (z_{i}^{2}-z_{i+1}^{2}) + 
-                                     (z_{i}-1)^2)+f_{bias}
-\end{equation}
-
-With $z=x-o+1$ and $x=[x_1,x_2,...,x_D]$, and considering $D$ as the number of dimensions, and $o=[o_1,o_2,...,o_D]$ as the shifted global optimum.
-
-This is a multi-modal shifted function, which is non-separable and scalable. It presents a very narrow valley from local optimum to global optimum.
-
-% Antonio - Fergu, øNecesitas poner el Ûptimo aquÌ?
-
-%%%%%%%%%%%%%%%%%
 
 The fitness value is defined as the sum of the $s_i$ subproblems with an optimum of $k$ (Equation \ref{eq:mmdp}).
 The search space is composed of $2^{6k}$ combinations from which there
@@ -578,15 +573,33 @@ OneMax is a simple linear problem that consists in maximising the number of ones
 f_{OneMax}(\vec{x}) = \sum_{i=1}^{N}{x_{i}}
 \end{equation}
 
+%%%%%%%%%%%%%%%%%%
+
+Finally, the Shifted Rosenbrock function is defined as:
+
+
+\begin{equation}\label{eq:rosenbrock}
+F_{Rosenbrock}(x)= \sum_{i=1}^{D-1} (100 \cdot (z_{i}^{2}-z_{i+1}^{2}) + 
+                                     (z_{i}-1)^2)+f_{bias}
+\end{equation}
+
+With $z=x-o+1$ and $x=[x_1,x_2,...,x_D]$, and considering $D$ as the number of dimensions, and $o=[o_1,o_2,...,o_D]$ as the shifted global optimum.
+
+This is a multi-modal shifted function, which is non-separable and scalable and it presents a very narrow valley from local optimum to global optimum. It is part of the CEC Benchmark \cite{CEC2005_Benchmark}, and the optimum is set to the value 390.
+
+% Antonio - Fergu, øNecesitas poner el Ûptimo aquÌ?
+
+%%%%%%%%%%%%%%%%%
+
 
 \subsection{Hardware and parameter configurations}
 
 
- % ¬øPor qu√©? ¬øCubren el objetivo
-                                % del art√≠culo? Si no, siempre llegar√°
+ % øPor quÈ? øCubren el objetivo
+                                % del artÌculo? Si no, siempre llegar·
                                 % el revisor que te diga "Prueba, no
-                                % s√©, "migraci√≥n de poblaciones
-                                % completas" o vaya ust√© a saber... -
+                                % sÈ, "migraciÛn de poblaciones
+                                % completas" o vaya ustÈ a saber... -
                                 % JJ FERGU: explicado con la siguiente frase
 
 As we are going to test parameter adaptation to hardware, different configurations should be used to compare and validate if the change in the parameters depends only of the parameters, the hardware heterogeneity, or the combination of both.
@@ -626,29 +639,96 @@ HeN8  &                &  &   &        \\ \hline
 }
 \end{table*}
 
-Also, to study the scalability, two different number of nodes have been used: 4 (from H1 to H4) and 8 (from H1 to H8).
+Also, to study the scalability, two different number of nodes have been used in each problem/configuration: 4 nodes (from H1 to H4, defined {\em 4X} configuration for the rest of the paper) and 8 nodes (from H1 to H8, defined {\em 8X} configuration).
 
 \subsubsection{Homogeneous Size configuration}
 
 
 
-In this configuration, each node has the same number of individuals (so, the total amount is 1024). This value has been chosen empirically, as it is big enough to test different sub-population sizes in 4 and 8 nodes. After executing the algorithm 40 times per problem on the heterogeneous cluster, we have obtained the average number of generations in each node, as it can be seen in Table \ref{table:generations}. Note how the generations attained (and their proportion in every node) to reach the optimum depends on the problem considered (besides the hardware).
+In this configuration, each node has the same number of individuals (so, the total amount is 1024). This value has been chosen empirically, as it is big enough to test different sub-population sizes in 4 and 8 nodes. After executing the algorithm 40 times per problem on the heterogeneous cluster, we have obtained the average number of generations in each node, as it can be seen in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained (and their proportion in every node) to reach the optimum depends on the problem considered (besides the hardware).
 
 \begin{table*}
 \centering{
 \caption{Average number of generations in each node needed to find the
-  optimum on the heterogeneous cluster with heterogeneous size.}
-% Y la desviaci√≥n? - JJ
-\begin{tabular}{|c|c|c|c|c|} \hline
-Node        & HeN1     & HeN2      & HeN3     & HeN4   \\ \hline
-\multicolumn{5}{|c|}{MMDP problem} \\ \hline
-Generations & 10990.25 & 10732.075 &  7721.15 & 717.95 \\ \hline
-Proportion  & 36.43    & 35.58    & 25.59    & 2.38    \\ \hline
-\multicolumn{5}{|c|}{OneMax problem} \\ \hline
-Generations & 2430.27 & 2353.77 & 1423.77 & 91.5 \\ \hline
-Proportion  & 38.58   & 37.36   & 22.6   & 1.45 \\ \hline
+  optimum on the heterogeneous cluster with homogeneous size using 4 nodes.}
+% Y la desviaciÛn? - JJ
+\begin{tabular}{|c|c|c|c|c|c|} \hline
+Instance &         & HeN1     & HeN2      & HeN3     & HeN4   \\ \hline
+\multicolumn{6}{|c|}{MMDP problem} \\ \hline
+\multirow{3}{*}{150} & Generations   & 25438  & 17515  &  14030  & 642 \\ \cline{2-6}
+                     & Proportion    & 44.14  & 30.39  & 24.34   &  1.11   \\ \cline{2-6}
+                     & Sub-pop. size & 452    & 311    & 249     &  12       \\ \hline
+\multirow{3}{*}{240} & Generations   & 214425 & 159545 & 122233  & 6899  \\ \cline{2-6}
+                     & Proportion    & 42.62  &  31.71 &  24.30  & 1.37       \\ \cline{2-6}
+                     & Sub-pop. size & 436    &  324   & 248     & 14      \\ \hline
+\multirow{3}{*}{300} & Generations   & 380205 & 276780 & 203157  & 7730     \\ \cline{2-6}
+                     & Proportion    & 43.81  & 31.89  & 23.41   & 0.89    \\ \cline{2-6}
+                     & Sub-pop. size & 448    &  326   & 240     & 10    \\ \hline                     
+\multicolumn{6}{|c|}{OneMax problem} \\ \hline
+\multirow{3}{*}{5000} & Generations   & 2486  &  1575  & 1377    & 512      \\ \cline{2-6}
+                     & Proportion    &  41.78 &  26.47 &  23.14  & 8.61   \\ \cline{2-6}
+                     & Sub-pop. size &  428   &   272  & 236     & 88    \\ \hline    
+\multirow{3}{*}{10000} & Generations   & 5135 & 2862   & 2658    & 1125      \\ \cline{2-6}
+                     & Proportion    &  43.59 &  24.30 &  22.56  & 9.55     \\ \cline{2-6}
+                     & Sub-pop. size &  446   & 248    &  232    & 98   \\ \hline    
+\multirow{3}{*}{15000} & Generations & 7922   & 4068   & 4092    & 1653      \\ \cline{2-6}
+                     & Proportion    &  44.67 &  22.94 &  23.07  & 9.32     \\ \cline{2-6}
+                     & Sub-pop. size & 457    & 235    & 236 & 96      \\ \hline    
+\multicolumn{6}{|c|}{Rosenbrock's problem} \\ \hline
+\multirow{3}{*}{10} & Generations   & 74736   &47019   & 52293   & 601     \\ \cline{2-6}
+                     & Proportion    & 42.79  &  26.92 &   29.94 &   0.34    \\ \cline{2-6}
+                     & Sub-pop. size &  441  & 270     & 309     & 4      \\ \hline    
+\multirow{3}{*}{30} & Generations   &  241543 &   142761 & 156516 & 3175     \\ \cline{2-6}
+                     & Proportion    & 44.40 &   26.24   & 28.77  & 0.58   \\ \cline{2-6}
+                     & Sub-pop. size & 451 &  276 & 291 & 6       \\ \hline    
+\multirow{3}{*}{50} & Generations   &  344159 &  211725 & 212865 & 5898    \\ \cline{2-6}
+                     & Proportion    & 44.43  &  27.33  & 27.48  & 0.76     \\ \cline{2-6}
+                     & Sub-pop. size & 456 & 280 & 280 & 8      \\ \hline  
 \end{tabular}
-\label{table:generations}
+\label{table:generations4X}
+}
+\end{table*}
+
+\begin{table*}
+\centering{
+\caption{Average number of generations in each node needed to find the
+  optimum on the heterogeneous cluster with homogeneous size using 8 nodes.}
+\resizebox{14cm}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+Instance &                       & HeN1   & HeN2   & HeN3    & HeN4  & HeN5     & HeN6      & HeN7    & HeN8  \\ \hline
+\multicolumn{10}{|c|}{MMDP problem} \\ \hline
+\multirow{3}{*}{150} & Generations   &   5315 &  3808.52 &    3385.95 & 85.625 & 6644.525   & 4341.85 & 5696.875  &  5278    \\ \cline{2-10}
+                     & Proportion    &   15.38&  11.02  & 9.80   & 0.25  &  19.23  & 12.56  & 16.49 &  15.27    \\ \cline{2-10}
+                     & Sub-pop. size &   157  &  113   & 100     & 4  & 197 & 128 & 169 & 156             \\ \hline
+\multirow{3}{*}{240} & Generations   &   60946.95 &  58732.60  &  54923.65 &   1559.03 & 65228.90  &  53067.33 &   60614.33   & 63086.53            \\ \cline{2-10}
+                     & Proportion    &   14.58 & 14.05  & 13.13  & 0.37   & 15.60  & 12.69   & 14.50  & 15.09    \\ \cline{2-10}
+                     & Sub-pop. size &   149  &  143 & 134&  4 &  159&  130 & 148 & 154           \\ \hline
+\multirow{3}{*}{300} & Generations   &   202994.90 & 149616.83 &  121461.65 &  5109.53& 269693.13 &  126157.25 &  243472.45   &222575.30        \\ \cline{2-10}
+                     & Proportion    &   15.14  & 11.16 &  9.06 &   0.38  &  20.11&   9.41  &  18.15  & 16.60    \\ \cline{2-10}
+                     & Sub-pop. size &   155    & 114 &93  &4  & 206& 96 & 186 &170       \\ \hline                     
+\multicolumn{10}{|c|}{OneMax problem} \\ \hline
+\multirow{3}{*}{5000} & Generations  &  2138.28  & 1547.13  & 1226.78  & 331.28  &  3203.85 &  1075.45  & 2978.15 &  2561.90     \\ \cline{2-10}
+                     & Proportion    &  14.20  &   10.27  &   8.14   &   2.20   &   21.27   &  7.14  &    19.77  &   17.01          \\ \cline{2-10}
+                     & Sub-pop. size &  145  & 105  & 83 &   24  &  218 &  73  &  202  & 174         \\ \hline    
+\multirow{3}{*}{10000} & Generations &  4173.28 &  2837.33  & 2399.25  & 770.00  &  6460.45  & 2220.53  & 5618.03 &  4977.83         \\ \cline{2-10}
+                     & Proportion    &  14.17  &   9.63   &   8.15    &  2.61  &    21.93    & 7.54  &    19.07  &   16.90          \\ \cline{2-10}
+                     & Sub-pop. size &   145    &  99  &  84  &  27  &  224  & 77 &   195  & 173          \\ \hline    
+\multirow{3}{*}{15000} & Generations &   6420.63  &    4059.58  & 3374.20  & 1315.00  & 9734.38  & 3378.35  & 8823.65  & 7584.18       \\ \cline{2-10}
+                     & Proportion    &   14.37  &  9.08   &   7.55   &   2.94   &   21.78   &  7.56   &   19.74   &  16.97    \\ \cline{2-10}
+                     & Sub-pop. size &   147   &   93  &  77  &  30  &  223  & 78  &  202 &  174           \\ \hline    
+\multicolumn{10}{|c|}{Rosenbrock's problem} \\ \hline
+\multirow{3}{*}{10} & Generations    &  191564.30   &  156714.43  &   164188.25   &  1734.53  & 222300.15  &   177448.80  &   196226.95  &   185116.10          \\ \cline{2-10}
+                     & Proportion    &  14.79   &  12.10   &  12.68   &  0.13   &   17.16   &  13.70  &   15.15  &   14.29       \\ \cline{2-10}
+                     & Sub-pop. size &  151  & 122 &  129  & 6  &   175 &  140  & 155  & 146         \\ \hline    
+\multirow{3}{*}{30} & Generations    &  259845.00   &  194660.95   &  206544.43  &   2908.28 &  316523.85   &  215456.53   &  279712.25   &  259487.13          \\ \cline{2-10}
+                     & Proportion    &  14.98  &   11.22  &   11.90  &   0.17   &   18.24  &  12.42  &   16.12   &  14.95    \\ \cline{2-10}
+                     & Sub-pop. size &  154 &  114  & 121 &  4  &   186 &  127  & 165  & 153      \\ \hline    
+\multirow{3}{*}{50} & Generations    &  258336.70  &   181412.48   &  183367.28   &  3799.03  & 318174.65   &  188494.30  &   281520.05  &   260924.05         \\ \cline{2-10}
+                     & Proportion    &  15.41   &  10.82  &   10.94  &   0.23   &   18.98  &   11.25  &   16.80   &  15.57  \\ \cline{2-10}
+                     & Sub-pop. size &  157 &  110 &  112 &  6   &  194 &  115  & 171  & 159        \\ \hline  
+\end{tabular}
+}
+\label{table:generations8X}
 }
 \end{table*}
 
@@ -674,7 +754,48 @@ Finally, in order to validate the hypothesis that adapt the sub-population sizes
 size'_{N}=\dfrac{Gen_{N}}{Gen_{N-1}}size_{N}
 \end{equation}
 
-If the new size is larger than the actual size, new individuals are added to the sub-population cloning random existent ones. Otherwise, the sub-population must be reduced and thus, the worst are removed.
+If the new size is larger than the actual size, new individuals are added to the sub-population cloning random existent ones. Otherwise, the sub-population must be reduced and thus, the worst are removed. The algorithm from Figure \ref{fig:EA} is now updated as shown in Figure \ref{fig:EAadaptive}.
+
+\begin{figure}[htb]
+
+\begin{algorithmic}
+\STATE N $\gets$ initialPopulationSize
+\STATE population $\gets$ initializePopulation(N)
+\WHILE {stop criterion not met}
+    \STATE G $\gets$ G + 1
+    \STATE parents $\gets$ selection(population)
+    \STATE offspring $\gets$ recombination(parents)
+    \STATE offspring $\gets$ mutation(offspring)
+    \STATE population $\gets$ population + offspring
+    \STATE O $\gets$ offspring.size
+    \IF {time to migrate}
+      \STATE migrants $\gets$ selectMigrants(population)
+      \STATE remoteBuffer.send(migrants)
+    \ENDIF
+
+    \STATE I $\gets$ 0
+    \IF {localBuffer.size $\neq$ zero}
+      \STATE immigrants $\gets$ localBuffer.read()
+      \STATE iG $\gets$ immigrants.getGeneration()
+      \STATE I $\gets$ immigrants.size()
+      \STATE population $\gets$ population + immigrants
+    \ENDIF
+
+    \STATE population $\gets$ population - population.getTheWorst(O + I)
+
+    \STATE newSize $\gets$ calculateNewSize(iG, G, N)
+    \IF {newSize $>$ N}
+        \STATE population $\gets$ population + population.getRandomClones(newSize - N)
+    \ELSE
+        \STATE population $\gets$ population - population.getTheWorst(N - newSize)
+    \ENDIF
+    \STATE N $\gets$ newSize
+\ENDWHILE
+
+\end{algorithmic}
+\caption{Pseudo-code of the used dEA: a distributed Genetic Algorithm (dGA) with automatic size adaptation mechanism.}
+\label{fig:EAadaptive}
+\end{figure}
 
 With this possible online adaptation scheme, each node only requires to receive information of one of the neighbours and not from the whole system. Thus, each node tends to have a number of individuals proportional to their computational power with respect to the other nodes. Experiments on homogeneous cluster do not alter the sub-population sizes, as the number of current generations are equal in all nodes during runtime.
 
@@ -702,8 +823,7 @@ Runs per configuration & 40 \\ \hline
 Total individuals in HoSi and HeSi & 1024\\ \hline \hline
 Sub-population size in each node in HoSi (4x) & 256  \\ \hline
 Sub-population size in each node in HoSi (8x) & 128  \\ \hline
-Sub-population sizes in HeSi for MMDP & 374, 364, 262 and 24 (from N1 to N4)\\ \hline
-Sub-population sizes in HeSi for OneMax & 396,  382, 232 and 14 (from N1 to N4)\\ \hline
+Sub-population sizes in HeSi & See Tables \ref{table:generations4X} and \ref{table:generations8X}\\ \hline
 \hline
 Maximum island size in AdSi & 1024 \\ \hline
 Minimum island size in AdSi (4x) & 16 \\ \hline
@@ -939,8 +1059,8 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
 
 % No tiene mucho sentido hablar de los resultados de los dos problemas
 % por separado, porque el objetivo no es resolver ese problema, sino
-% probar c√≥mo funciona en algoritmo. Se pueden comentar los dos juntos
-% y se deber√≠a hacer - JJ FERGU: okis, poni√©ndolo todo junto.
+% probar cÛmo funciona en algoritmo. Se pueden comentar los dos juntos
+% y se deberÌa hacer - JJ FERGU: okis, poniÈndolo todo junto.
 
 Table \ref{tab:resultsMMDP} shows the results for the MMDP problem. These results are also shown in the boxplots of Figure \ref{fig:timeMMDP} (time) and Figure \ref{fig:evalsMMDP} (evaluations). Table \ref{tab:significanceMMDP} shows the statistical significance of the results. First, a Kolmogorov-Smirnov test is performed to assess the normality of the distributions. As all distributions are not normal, we use non-parametric tests. To compare between two methods (HoSi and HeSi in the homogeneous cluster) a Wilcoxon test has been applied. For a three methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a Kruskal-Wallis test has been used. %If the results fit a normal distribution, then a Student's T-Test is calculated. Otherwise, the non-parametric Wilcoxon test is applied (see \cite{TUTORIAL} for a tutorial for comparing EAs).
 
@@ -991,7 +1111,7 @@ Summarizing, adapting the population sizes to the
   during runtime.
 
 
-% este junto con el anterior y un p√°rrafo al final de los dos a
+% este junto con el anterior y un p·rrafo al final de los dos a
 % comentar conjuntamente los resultados obtenidos. - JJ
 
 
@@ -1008,9 +1128,9 @@ on hard functions fail on easier ones. As it can be seen in Figure
 \ref{fig:gensonemaxhomosize}, the average fitness of all sub-populations
 are increasing in linear way in the HoSi/HeHa configuration. However,
 the slower node evaluates extremely fewer times.  On the other
-% qu√© diablos es un lower processor? slower processor? FERGU: cambiado a slower node y luego m√°s adelante tambi√©n
+% quÈ diablos es un lower processor? slower processor? FERGU: cambiado a slower node y luego m·s adelante tambiÈn
 % por favor revisa muy bien todo esto, que tienes muchos errores
-% gramaticales - JJ Fergu: el p√°rrafo anterior lo escribi√≥ Carlos, as√≠ que creo que est√° bien, lo siguiente lo hice yo. He cambiado pronombres err√≥neos y eses en plurales
+% gramaticales - JJ Fergu: el p·rrafo anterior lo escribiÛ Carlos, asÌ que creo que est· bien, lo siguiente lo hice yo. He cambiado pronombres errÛneos y eses en plurales
 side, in Figure \ref{fig:gensonemaxheterosize}, smaller sub-population
 sizes make that slower nodes increase the number of evaluations,
 but the average fitness is also maintained in linear way (and in
@@ -1175,19 +1295,19 @@ HeSi HoN4 &   0.007 $\pm$  0.008 &  1.215  $\pm$ 1.133  & 2.470  $\pm$ 0.098  & 
 
 In this paper we describe a study on the adaptation of the sub-population sizes of a distributed EA to the computational power of the different nodes of an heterogeneous cluster. Two adaptation schemes (offline and online) that use information of the computational load of the algorithm have been tested.
  				% No. Tratamos de
-                                % probar un objetivo, dilo aqu√≠!!!!!
+                                % probar un objetivo, dilo aquÌ!!!!!
 Results show that adapting (online or offline) the sub-population size to the computational power of each node in the heterogeneous cluster yields significantly
 better results in time than keeping the same parameter in all nodes. This advantage is due to the combination of the heterogeneous parameters with the heterogeneity of the machines. On the contrary, the same (heterogeneous) parameter setting in all islands of the homogeneous cluster could not improve the results than considering the same parameter value in all nodes.
 
 
  % o sea, tener
-                                % maquinas heterog√©neas y par√°metros
-                                % heterog√©neos es mejor porque usamos
-                                % par√°metros heterog√©neos en m√°quinas
-                                % heterog√©neas. Di en qu√© puede
+                                % maquinas heterogÈneas y par·metros
+                                % heterogÈneos es mejor porque usamos
+                                % par·metros heterogÈneos en m·quinas
+                                % heterogÈneas. Di en quÈ puede
                                 % influir eso en la mejora de los
-                                % resultados y discute por qu√© podr√≠a
-                                % ser as√≠ y prop√≥n experimentos para
+                                % resultados y discute por quÈ podrÌa
+                                % ser asÌ y propÛn experimentos para
                                 % probar que efectivamente se trata de
                                 % eso. - JJ
 
@@ -1200,9 +1320,9 @@ to the average number of generations of the homogeneous parameter set. Moreover,
 online the sub-population sizes has been performed comparing the current generation with
  the neighbour generation. These results are a promising starting for adapting EAs to the
 performance of each execution node, using more adequate benchmarks or in a dynamic way. 
-% Falta una discusi√≥n sobre si las mejoras se deben exclusivamente al
-% n√∫mero de evaluaciones o hay alg√∫n otro factor ¬ømenos overhead?
-% ¬ønodos m√°s r√°pidos? - JJ FERGU: no, de hecho el n√∫mero de evaluaciones no siempre disminuye, lo digo arriba.
+% Falta una discusiÛn sobre si las mejoras se deben exclusivamente al
+% n√∫mero de evaluaciones o hay alg√∫n otro factor ømenos overhead?
+% ønodos m·s r·pidos? - JJ FERGU: no, de hecho el n√∫mero de evaluaciones no siempre disminuye, lo digo arriba.
 
 In the future it would be interesting to check the scalability of this
 approach, using more computational nodes and larger problem
