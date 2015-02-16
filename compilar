@@ -6,5 +6,5 @@ rm *.blg
 rm *.log
 rm *~
 rm *.dvi
-
+										#este es bibtex
 latex heterogeneous.tex && latex heterogeneous.tex &&  latex heterogeneous.tex && bibtex heterogeneous && latex heterogeneous.tex && latex heterogeneous.tex && latex heterogeneous.tex && echo "-----------------------------" && dvips heterogeneous.dvi -o && ps2pdf heterogeneous.ps && echo " "
