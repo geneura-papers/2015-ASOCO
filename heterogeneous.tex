@@ -432,7 +432,7 @@ In this section we propose two different parameter adaptation schemes to test if
 
 
 \subsection{Algorithm used}
-The experimentation is centered in a distributed GA, one of the most used EAs \cite{GeneticAlgorithmsEiben03}. Figure \ref{fig:EA} shows the pseudo-code of the used algorithm.
+The experimentation is centered in a distributed GA, one of the most used EAs \cite{GeneticAlgorithmsEiben03}. Algorithm \ref{alg:EA} shows the pseudo-code of the used algorithm.
 The algorithm is steady-state, i.e. every generation the offspring is mixed with the parents and the worst individuals are removed. The used neighborhood topology for migration between islands (nodes) is a ring (see Figure \ref{fig:islands}). The best individual is sent to the neighbour in the ring, after a fixed number of generations in each island. The algorithm stops when the optimum (the solution to the problem) is found.  
 
 %Tienes que justificarlo absolutamente todo. ¿Si se usa otro
@@ -440,7 +440,7 @@ The algorithm is steady-state, i.e. every generation the offspring is mixed with
 %precisamente este? - JJ FERGU: TODO
 
 
-\begin{figure}[htb]
+\begin{algorithm}[htb]
 
 \begin{algorithmic}
 \STATE population $\gets$ initializePopulation()
@@ -469,9 +469,10 @@ The algorithm is steady-state, i.e. every generation the offspring is mixed with
 \ENDWHILE
 
 \end{algorithmic}
+
 \caption{Pseudo-code of the used dEA: a distributed Genetic Algorithm (dGA).}
-\label{fig:EA}
-\end{figure}
+\label{alg:EA}
+\end{algorithm}
 
 
 
@@ -510,8 +511,8 @@ the number of ones (unitation) $s_i$ takes the values shown in Table \ref{table:
 \label{table:mmdpvalues}
 \begin{tabular}{|c|c|}
 \hline
-Unitation&Subfunction value\\
-\hline
+{\em Unitation} & {\em Subfunction value}\\
+\hline \hline
 0 & 1.000000 \\
 \hline
 1 & 0.000000 \\
@@ -563,8 +564,6 @@ With $z=x-o+1$ and $x=[x_1,x_2,...,x_D]$, and considering $D$ as the number of d
 
 This is a multi-modal shifted function, which is non-separable and scalable and it presents a very narrow valley from local optimum to global optimum. It is part of the CEC Benchmark \cite{CEC2005_Benchmark}, and the optimum is set to the value 390.
 
-% Antonio - Fergu, ¿Necesitas poner el óptimo aquí?
-
 %%%%%%%%%%%%%%%%%
 
 
@@ -596,20 +595,20 @@ Two different computational systems have been used: a {\em heterogeneous cluster
 \begin{table*}
 \centering{\scriptsize
 \caption{Details of the clusters used: a homogeneous cluster (Ho), and a heterogeneous cluster (He)}
-\begin{tabular}{|c|c|c|c|c|} \hline
-Name     & Processor  & Memory  & Operating System  & Network  \\ \hline
-\multicolumn{5}{|c|}{Homogeneous cluster} \\ \hline
-HoN[1-4] &  Intel(R) Xeon(R) CPU   E5320  @ 1.86GHz       & 4GB & CentOS 6.7    &   Gigabit Ethernet    \\ \hline
+\begin{tabular}{|c|c|c|c|c|c|} \hline
+{\em Name}     & {\em Processor}  & {\em Memory}  & {\em Operating System}  & {\em Network} & {\em Storage}  \\ \hline
+\multicolumn{6}{|c|}{Homogeneous cluster} \\ \hline
+HoN[1-4] &  Intel(R) Xeon(R) CPU   E5320  @ 1.86GHz       & 4GB & CentOS 6.7    &   Gigabit Ethernet    & Local\\ \hline
 \hline
-\multicolumn{5}{|c|}{Heterogeneous cluster} \\ \hline
-HeN1  &                &  &   &        \\ \hline
-HeN2  &  Intel(R) Core(TM)2 Quad CPU    Q6600  @ 2.40GHz    & 4GB   & Ubuntu 11.04 (64 bits)  & Gigabit Ethernet      \\ \hline
-HeN3  &  AMD Phenom(tm) 9950 Quad-Core Processor @ 1.30Ghz    & 3GB   & Ubuntu 10.10 (32 bits)  & 100MB Ethernet      \\ \hline
-HeN4  &                &  &   &        \\ \hline
-HeN5  &                &  &   &        \\ \hline
-HeN6  &  Intel(R) Core(TM)2 Quad CPU    Q6600  @ 2.40GHz    & 4GB   & Ubuntu 11.10 (64 bits)  & Gigabit Ethernet      \\ \hline
-HeN7  &                &  &   &        \\ \hline
-HeN8  &                &  &   &        \\ \hline
+\multicolumn{6}{|c|}{Heterogeneous cluster} \\ \hline
+HeN1  &  AMD A10-7700K APU                       @ 3.4GHz  & 7GB   & Fedora 21      (64 bits)&  Gigabit Ethernet & Local      \\ \hline
+HeN2  &  Intel(R) Core(TM)2 Quad CPU    Q6600    @ 2.4GHz  & 4GB   & Ubuntu 12.04 (64 bits)  & Gigabit Ethernet  & Local    \\ \hline
+HeN3  &  AMD Phenom(tm) 9950 Quad-Core Processor @ 1.3Ghz  & 4GB   & Ubuntu 13.10 (32 bits)  & 100MB Ethernet    & Local  \\ \hline
+HeN4  &  Intel(R) Pentium(R) D CPU               @ 2.4GHz  & 2GB   & Fedora 19     (64 bits) &  Gigabit Ethernet & NAS      \\ \hline
+HeN5  &  Intel(R) Core(TM) i5-4430 CPU           @ 3.00GHz & 16GB  & Ubuntu 14.04 (64 bits)  &  Gigabit Ethernet & Local      \\ \hline
+HeN6  &  Intel(R) Core(TM)2 Quad CPU    Q6600  @ 2.40GHz   & 8GB   & Ubuntu 11.10 (64 bits)  & 100MB Ethernet    & Local  \\ \hline
+HeN7  &  Intel(R) Core(TM) i7 CPU         870  @ 2.93GHz   & 8GB   & Fedora 17     (64 bits) &  Gigabit Ethernet & Local      \\ \hline
+HeN8  &  Intel(R) Core(TM)2 Quad  CPU   Q8200  @ 2.33GHz   & 4GB   & Ubuntu 14.04  (64 bits) &  Gigabit Ethernet & Local      \\ \hline
 \end{tabular}
 \label{tabcomputers}
 }
@@ -628,8 +627,8 @@ In this configuration, each node has the same number of individuals (so, the tot
 \caption{Average number of generations in each node of the HeHa/HoSi/4X configuration when the optimum is found. These values are used to set proportionally the sub-population sizes in HeSi/4X.}
 % Y la desviación? - JJ
 \begin{tabular}{|c|c|c|c|c|c|} \hline
-Instance &         & HeN1     & HeN2      & HeN3     & HeN4   \\ \hline
-\multicolumn{6}{|c|}{MMDP problem} \\ \hline
+{\em Instance} &         & {\em HeN1}     & {\em HeN2 }     & {\em HeN3 }    & {\em HeN4 }  \\ \hline
+\multicolumn{6}{|c|}{{\em MMDP problem}} \\ \hline
 \multirow{3}{*}{150} & Generations   & 25438  & 17515  &  14030  & 642 \\ \cline{2-6}
                      & Proportion    & 44.14  & 30.39  & 24.34   &  1.11   \\ \cline{2-6}
                      & Sub-pop. size & 452    & 311    & 249     &  12       \\ \hline
@@ -639,7 +638,7 @@ Instance &         & HeN1     & HeN2      & HeN3     & HeN4   \\ \hline
 \multirow{3}{*}{300} & Generations   & 380205 & 276780 & 203157  & 7730     \\ \cline{2-6}
                      & Proportion    & 43.81  & 31.89  & 23.41   & 0.89    \\ \cline{2-6}
                      & Sub-pop. size & 448    &  326   & 240     & 10    \\ \hline                     
-\multicolumn{6}{|c|}{OneMax problem} \\ \hline
+\multicolumn{6}{|c|}{{\em OneMax problem}} \\ \hline
 \multirow{3}{*}{5000} & Generations   & 2486  &  1575  & 1377    & 512      \\ \cline{2-6}
                      & Proportion    &  41.78 &  26.47 &  23.14  & 8.61   \\ \cline{2-6}
                      & Sub-pop. size &  428   &   272  & 236     & 88    \\ \hline    
@@ -649,7 +648,7 @@ Instance &         & HeN1     & HeN2      & HeN3     & HeN4   \\ \hline
 \multirow{3}{*}{15000} & Generations & 7922   & 4068   & 4092    & 1653      \\ \cline{2-6}
                      & Proportion    &  44.67 &  22.94 &  23.07  & 9.32     \\ \cline{2-6}
                      & Sub-pop. size & 457    & 235    & 236 & 96      \\ \hline    
-\multicolumn{6}{|c|}{Rosenbrock's problem} \\ \hline
+\multicolumn{6}{|c|}{{\em Rosenbrock's problem}} \\ \hline
 \multirow{3}{*}{10} & Generations   & 74736   &47019   & 52293   & 601     \\ \cline{2-6}
                      & Proportion    & 42.79  &  26.92 &   29.94 &   0.34    \\ \cline{2-6}
                      & Sub-pop. size &  441  & 270     & 309     & 4      \\ \hline    
@@ -669,8 +668,8 @@ Instance &         & HeN1     & HeN2      & HeN3     & HeN4   \\ \hline
 \caption{Average number of generations in each node of the HeHa/HoSi/8X configuration when the optimum is found. These values are used to set proportionally the sub-population sizes in HeSi/8X.}
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
-Instance &                       & HeN1   & HeN2   & HeN3    & HeN4  & HeN5     & HeN6      & HeN7    & HeN8  \\ \hline
-\multicolumn{10}{|c|}{MMDP problem} \\ \hline
+{\em Instance} &                       & {\em HeN1}   & {\em HeN2}   & {\em HeN3}    & {\em HeN4}  & {\em HeN5}     & {\em HeN6}      & {\em HeN7}    & {\em HeN8}  \\ \hline
+\multicolumn{10}{|c|}{{\em MMDP problem}} \\ \hline
 \multirow{3}{*}{150} & Generations   &   5315 &  3808.52 &    3385.95 & 85.625 & 6644.525   & 4341.85 & 5696.875  &  5278    \\ \cline{2-10}
                      & Proportion    &   15.38&  11.02  & 9.80   & 0.25  &  19.23  & 12.56  & 16.49 &  15.27    \\ \cline{2-10}
                      & Sub-pop. size &   157  &  113   & 100     & 4  & 197 & 128 & 169 & 156             \\ \hline
@@ -680,7 +679,7 @@ Instance &                       & HeN1   & HeN2   & HeN3    & HeN4  & HeN5     
 \multirow{3}{*}{300} & Generations   &   202994.90 & 149616.83 &  121461.65 &  5109.53& 269693.13 &  126157.25 &  243472.45   &222575.30        \\ \cline{2-10}
                      & Proportion    &   15.14  & 11.16 &  9.06 &   0.38  &  20.11&   9.41  &  18.15  & 16.60    \\ \cline{2-10}
                      & Sub-pop. size &   155    & 114 &93  &4  & 206& 96 & 186 &170       \\ \hline                     
-\multicolumn{10}{|c|}{OneMax problem} \\ \hline
+\multicolumn{10}{|c|}{{\em OneMax problem}} \\ \hline
 \multirow{3}{*}{5000} & Generations  &  2138.28  & 1547.13  & 1226.78  & 331.28  &  3203.85 &  1075.45  & 2978.15 &  2561.90     \\ \cline{2-10}
                      & Proportion    &  14.20  &   10.27  &   8.14   &   2.20   &   21.27   &  7.14  &    19.77  &   17.01          \\ \cline{2-10}
                      & Sub-pop. size &  145  & 105  & 83 &   24  &  218 &  73  &  202  & 174         \\ \hline    
@@ -690,7 +689,7 @@ Instance &                       & HeN1   & HeN2   & HeN3    & HeN4  & HeN5     
 \multirow{3}{*}{15000} & Generations &   6420.63  &    4059.58  & 3374.20  & 1315.00  & 9734.38  & 3378.35  & 8823.65  & 7584.18       \\ \cline{2-10}
                      & Proportion    &   14.37  &  9.08   &   7.55   &   2.94   &   21.78   &  7.56   &   19.74   &  16.97    \\ \cline{2-10}
                      & Sub-pop. size &   147   &   93  &  77  &  30  &  223  & 78  &  202 &  174           \\ \hline    
-\multicolumn{10}{|c|}{Rosenbrock's problem} \\ \hline
+\multicolumn{10}{|c|}{{\em Rosenbrock's problem}} \\ \hline
 \multirow{3}{*}{10} & Generations    &  191564.30   &  156714.43  &   164188.25   &  1734.53  & 222300.15  &   177448.80  &   196226.95  &   185116.10          \\ \cline{2-10}
                      & Proportion    &  14.79   &  12.10   &  12.68   &  0.13   &   17.16   &  13.70  &   15.15  &   14.29       \\ \cline{2-10}
                      & Sub-pop. size &  151  & 122 &  129  & 6  &   175 &  140  & 155  & 146         \\ \hline    
@@ -728,9 +727,9 @@ Finally, in order to validate the hypothesis that adapt the sub-population sizes
 size'_{N}=\dfrac{Gen_{N}}{Gen_{N-1}}size_{N}
 \end{equation}
 
-If the new size is larger than the actual size, new individuals are added to the sub-population cloning random existent ones. Otherwise, the sub-population must be reduced and thus, the worst are removed. The algorithm from Figure \ref{fig:EA} is now updated as shown in Figure \ref{fig:EAadaptive}.
+If the new size is larger than the actual size, new individuals are added to the sub-population cloning random existent ones. Otherwise, the sub-population must be reduced and thus, the worst are removed. The algorithm from Figure \ref{fig:EA} is now updated as shown in Algorithm \ref{alg:EAadaptive}.
 
-\begin{figure}[htb]
+\begin{algorithm}[htb]
 
 \begin{algorithmic}
 \STATE N $\gets$ initialPopulationSize
@@ -768,8 +767,8 @@ If the new size is larger than the actual size, new individuals are added to the
 
 \end{algorithmic}
 \caption{Pseudo-code of the used dEA: a distributed Genetic Algorithm (dGA) with automatic size adaptation mechanism.}
-\label{fig:EAadaptive}
-\end{figure}
+\label{alg:EAadaptive}
+\end{algorithm}
 
 With this possible online adaptation scheme, each node only requires to receive information of one of the neighbours and not from the whole system. Thus, each node tends to have a number of individuals proportional to their computational power with respect to the other nodes. Experiments on homogeneous cluster do not alter the sub-population sizes, as the number of current generations are equal in all nodes during runtime.
 
@@ -779,7 +778,7 @@ Table \ref{table:parameters} summarizes all the parameters used in the experimen
 \centering
 \caption{Parameters used in all configurations.}
 \begin{tabular}{|c|c|} \hline
-Name & Value\\ \hline
+{\em Name} & {\em Value}\\ \hline \hline
 
 Crossover type & Two-points crossover \\ \hline
 Crossover rate & 0.5\\ \hline
@@ -1130,9 +1129,32 @@ ANALISIS DEL TAMAÑO ADAPTATIVO
 
 \subsection{Running time analysis}
 
-This sub-section analyses the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi). Figures \ref{fig:MMDPbars}, \ref{fig:ONEMAXbars} and \ref{fig:ROSENBROCKbars} graphically compare these results. As it can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa. This happens because we are using the multi-purpose laboratory network to communicate the nodes, instead of the specific one used in the HoHa system. Note that the standard deviation of the migration is larger in the HeHa cluster because the network is having real conditions of traffic during the experiment. In the MMDP problem (Table \ref{tab:mmdptimes}) changing the sub-population size does not affect the migration time, but it affects the rest of the algorithm's stages. However, with larger data communications (individuals of 5000 elements of the OneMax problem), the sub-population size affects the migration time of all nodes. This might be due to the synchronization of migration buffers: if the slowest machine is sending/receiving, bottlenecks can be propagated (as it can be seen in Figure \ref{fig:gensonemaxhomosize}). 
+This sub-section analyses the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi). For clarity in results, and due to the lack of space, we only focus in 4X configuration for the smallest instance of each problem problem. Figure \ref{fig:bars} graphically compare these results. As it can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
+Also, the node HeN4 requires a lot of time in the replacement stage, as it is the only one that writes into the log files. This node was the only one that use a network storage (see Table \ref{tabcomputers}).
+%TODO Comprobar esto!!
+This happens because we are using the multi-purpose laboratory network to communicate the nodes, instead of the specific one used in the HoHa system.
+% Note that the standard deviation of the migration is larger in the HeHa cluster because the network is having real conditions of traffic during the experiment.
+ In the MMDP problem (Table \ref{tab:mmdptimes}) changing the sub-population size does not affect the migration time, but it affects the rest of the algorithm's stages. However, with larger data communications (individuals of 5000 elements of the OneMax problem), the sub-population size affects the migration time of all nodes. This might be due to the synchronization of migration buffers: if the slowest machine is sending/receiving, bottlenecks can be propagated.
 
-FALTAN LAS FIGURAS
+\begin{figure}[ht]
+\centering
+\subfigure{
+   \includegraphics[scale =0.3] {bars/mmdpbars.eps}
+   \label{subfig:mmdpbars}
+ }
+\subfigure{
+   \includegraphics[scale =0.3] {bars/onemaxbars.eps}
+   \label{subfig:onemaxbars}
+ }
+ \subfigure{
+   \includegraphics[scale =0.3] {bars/rosenbrockbars.eps}
+   \label{subfig:rosenbrockbars}
+ }
+\caption{Average time spent in each section of the algorithm for each node (milliseconds).}
+\label{fig:bars}
+\end{figure}
+
+
 
 Results also show how the stages of the algorithms depends on the node
 of execution. For example, recombination needs more time than mutation
