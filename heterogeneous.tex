@@ -333,7 +333,7 @@ this paper: dEAs on a heterogeneous set of nodes with different
 parameter values adapted to each node. In this study, the parameter to
 adapt to the computational power of each node has been the
 sub-population size of each island. %why?????? - JJ FERGU: TODO
-EXPLICAR MEJOR EL POR QUÉ USAR EL TAMAÑO
+%EXPLICAR MEJOR EL POR QUÉ USAR EL TAMAÑO
 
 In this work, a heterogeneous distributed system has been used to give an answer to the following questions:
 \begin{itemize}
@@ -653,7 +653,7 @@ Instance &         & HeN1     & HeN2      & HeN3     & HeN4   \\ \hline
 \multirow{3}{*}{10} & Generations   & 74736   &47019   & 52293   & 601     \\ \cline{2-6}
                      & Proportion    & 42.79  &  26.92 &   29.94 &   0.34    \\ \cline{2-6}
                      & Sub-pop. size &  441  & 270     & 309     & 4      \\ \hline    
-\multirow{3}{*}{30} & Generations   &  241543 &   142761 & 156516 & 3175     \\ \cline{2-6}
+\multirow{3}{*}{30} & Generations   	&  241543 &   142761 & 156516 & 3175     \\ \cline{2-6}
                      & Proportion    & 44.40 &   26.24   & 28.77  & 0.58   \\ \cline{2-6}
                      & Sub-pop. size & 451 &  276 & 291 & 6       \\ \hline    
 \multirow{3}{*}{50} & Generations   &  344159 &  211725 & 212865 & 5898    \\ \cline{2-6}
@@ -695,8 +695,8 @@ Instance &                       & HeN1   & HeN2   & HeN3    & HeN4  & HeN5     
                      & Proportion    &  14.79   &  12.10   &  12.68   &  0.13   &   17.16   &  13.70  &   15.15  &   14.29       \\ \cline{2-10}
                      & Sub-pop. size &  151  & 122 &  129  & 6  &   175 &  140  & 155  & 146         \\ \hline    
 \multirow{3}{*}{30} & Generations    &  259845.00   &  194660.95   &  206544.43  &   2908.28 &  316523.85   &  215456.53   &  279712.25   &  259487.13          \\ \cline{2-10}
-                     & Proportion    &  14.98  &   11.22  &   11.90  &   0.17   &   18.24  &  12.42  &   16.12   &  14.95    \\ \cline{2-10}
-                     & Sub-pop. size &  154 &  114  & 121 &  4  &   186 &  127  & 165  & 153      \\ \hline    
+                     & Proportion    &  14.98  	&   11.22  &   11.90  &   0.17   &   18.24  &  12.42  &   16.12   &  14.95    \\ \cline{2-10}
+                     & Sub-pop. size &  154 	&  114  & 121 &  4  &   186 &  127  & 165  & 153      \\ \hline    
 \multirow{3}{*}{50} & Generations    &  258336.70  &   181412.48   &  183367.28   &  3799.03  & 318174.65   &  188494.30  &   281520.05  &   260924.05         \\ \cline{2-10}
                      & Proportion    &  15.41   &  10.82  &   10.94  &   0.23   &   18.98  &   11.25  &   16.80   &  15.57  \\ \cline{2-10}
                      & Sub-pop. size &  157 &  110 &  112 &  6   &  194 &  115  & 171  & 159        \\ \hline  
@@ -1042,6 +1042,8 @@ These results, grouped by problem, are also plotted in the boxplots of Figures \
 
 The results show that there exist significant difference depending on the problem, configuration or number of nodes. For example, for problem MMDP in the HeHa system, adapting offline the sub-population to the computational
  power of each node makes the algorithm finish significantly earlier in all instances of the problem in the 4X configuration, and also, needing a lower number of evaluations to reach the solution. However, in the 8X configuration the time is significantly lower in the 150 instance. This can be explained because the nature of this problem, EXPLICAR AQUI PORQUE PASA (ENCUENTRA SOLUCION PRONTO)
+
+%Maribel, esto va a ser duro de explicar, quizás porque al haber más nodos, hay muchos más individuos y por lo tanto más diversidad y la diversidad es clave en este problema porque si no hay bloques buenos, da igual el mucho tiempo que lo evoluciones, que no se llegan a conseguir, pero con muchos individuos, tienes mucha diversidad y tienes disponibles bloques buenos que van combinándose mucho más rápido.
 
  On the other hand, in the HoHa system,
  setting the same sub-population heterogeneous sizes makes no difference in time, that is, changing this parameter has no influence in the
