@@ -148,13 +148,13 @@
 
 
 Distributed Evolutionary Algorithms (dEAs) are usually executed in homogeneous dedicated clusters, 
-but most scientists only have access to networks of heterogeneous nodes (for example, desktop PCs in a lab). 
+although most scientists only have access to networks of heterogeneous nodes (for example, desktop PCs in a lab). 
 However, adapting this kind of algorithms to these environments so that they can take advantage of their heterogeneity to save execution time is still an issue.
 The different computational power of the nodes may affect the performance of the algorithm, and a proper tuning or adaptation of the algorithm to each node could reduce execution time.
 
-As the dEAs include a whole range of parameters with an influence in the performance, we propose an study on the size of the
-population, as it is one of the most important, since it has a direct relationship with the
-number of iterations necessary to find the solution. Two size adaptation schemes have been tested: an offline and an online
+Since the dEAs include a whole range of parameters with an influence in the performance, we propose a study on the size of the
+population, as it is one of the most important, because it has a direct relationship with the
+number of iterations necessary to find the solution. Two size adaptation schemes have been tested- an offline and an online
 parameter setting, and three problems with different characteristics and
 computational demands have been used.
 
@@ -162,10 +162,10 @@ Results show
 that setting the population size according to the computational power
 of the nodes in the heterogeneous cluster decreases the time required to obtain the optimum.
 Meanwhile, the same set of
-different size values could not improve the time time to reach the optimum 
+different size values could not improve the time  to reach the optimum 
  in a homogeneous
 cluster with respect to the same size in all islands, so the improvement is due to the interaction of the different
-resources with the algorithm. In addition, a study of the influence of
+resources with the algorithm. In addition, a study on the influence of
 the different population sizes on each stage of the algorithm is
 presented. This opens a new research line on the adaptation (offline
 or online) of parameters to the computational power of the devices.
@@ -246,28 +246,27 @@ Evolutionary Algorithms \sep Genetic Algorithms \sep Heterogeneous distributed c
 % donde lo menciones - JJ FERGU: Reestructurada la intro y movido este párrafo al principio
 
 Evolutionary Algorithms are a general method for solving
-optimization and search problems inspired on the evolution of species
+optimization and search problems inspired by the evolution of species
 and its underlying mechanism, natural selection. These algorithms work
 on a population of encoded
-possible solutions, called {\em individuals}, that compete using their
+possible solutions, called {\em individuals}, each one competing with the other according to their
 {\em fitness} (quality or cost of the solution they encode) with the
 rest of the
-population. Every iteration of the algorithm (or {\em generation}) the
+population. Every iteration of the algorithm (or {\em generation}), the
 population evolves by means of selection and recombination/mutation to
 create a new set of candidates, until a {\em stop criterion}
-(e.g. number of generations) is met. Fitness function is a quality
+(e.g. number of generations) is met. The fitness function is a quality
 function that gives the grade of adaptation of an individual respect
 the others. This function usually describes the problem to solve. 
 
-Parameters of this kind of algorithms could also be
+The parameters of this kind of algorithms can also be
 adapted to increase the performance of the whole system. For example,
 the population size in EAs
 % Aquí aparece por primera vez el algoritmo evolutivo -> FERGU: movido de sitio al principio
- is the key to
-obtain good performance, because it have effect on the quality of the
-solution and the time spent during the run
+ is the a key factor in the performance, because it has effect on the quality of the
+solution and the running-time
 \cite{ShrinkageLaredo09}. This parameter has been studied as a fixed
-\cite{SizingHarik99} or adaptive parameter during runtime
+\cite{SizingHarik99} or adaptive 
 \cite{AdaptiveLobo07,SelfRegulatedSizeFernandes06}, but without taking
 into account the computational power of each machine in a
 heterogeneous cluster. In this paper we have investigated whether
@@ -283,7 +282,7 @@ capability of a heterogeneous cluster.
 % clara. - JJ FERGU: reestructurando la intro
 In distributed EAs a set of nodes executes simultaneously the EA,
 working with different sub-populations (or islands) at the same
-time. Every certain number of generations one or more individuals are
+time. Periodically one or more individuals are
 interchanged (migrated) between sub-populations, which are connected
 following a specific topology. Figure \ref{fig:islands} shows this
 model with a ring topology.   
@@ -296,25 +295,24 @@ model with a ring topology.
 \label{fig:islands}
 \end{figure}
 
-This kind of algorithms have been usually executed in homogeneous clusters \cite{MULTIKULTI}, being executed with the same
+This kind of algorithms have been usually executed in homogeneous clusters \cite{MULTIKULTI}, being used with the same
 parameters in all nodes (homogeneous dEAs), or with different
 parameters (heterogeneous dEAs) \cite{garcia2014randomized,tanabe2013evaluation,HETEROGENEOUSPARAMETERS}. These configurations can be more  efficient time-wise than a fixed
 set of parameters for different problems.
 
 However, new trends in distributed computing such as Cloud Computing \cite{CLOUD}, GRID
 \cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
-leading to heterogeneous computational devices, including for instance, laptops,
+leading to heterogeneous computational devices, like laptops,
 tablets or desktop PCs, working in the same
 environment. Thus, many laboratories, which do not include classic
-clusters but the usual desktop and laptop computers used by
-scientists, should be able to leverage
+clusters but the usual desktop and laptop computers, should be able to leverage
 this motley set as a heterogeneous cluster. 
 
 Adapting algorithm parameters to available heterogeneous computational resources
 leads to improved performance
 \cite{AutomaticallyConfiguringStyles12}. An easy way to take advantage
 of the available resources is  balancing the load
-\cite{PARALLELIMPLEMENTATION} so that workloads are to distributed across multiple
+\cite{PARALLELIMPLEMENTATION} so that workloads are distributed across multiple
 elements. However, assigning equal tasks  to each node in
 heterogeneous clusters may result in suboptimal performance
 \cite{LoadBalancingBohn02}. 
@@ -332,8 +330,9 @@ These facts have motivated us to study a combination of both ideas in
 this paper: dEAs on a heterogeneous set of nodes with different
 parameter values adapted to each node. In this study, the parameter to
 adapt to the computational power of each node has been the
-sub-population size of each island. %why?????? - JJ FERGU: TODO
-%EXPLICAR MEJOR EL POR QUÉ USAR EL TAMAÑO
+sub-population size of each island. %why?????? - JJ FERGU: Abajo (by Carlos)
+
+The population size is of capital importance in the accuracy and convergence speed of an EA. The population is a repository of the building-blocks that an evolutionary computational process recombines and mutates in order to improve the average fitness of the population and, hopefully, find the optimal solution to the target-problem. If the supply of building-blocks is insufficient, selection and genetic drift will probably guide the search to premature convergence to a local optimum (or the EA becomes too dependent on the randomness of the mutation operator). Larger populations guarantee a more diverse supply of building-blocks (higher genetic diversity) and are more likely to overcome premature convergence. However, in large populations, convergence speed is the payoff for accuracy: in general, when the population size of an EA grows, the convergence speed is reduced. When having different processors with different computational power computing sub-populations of an EA, it may be a good policy to distribute the individuals in a way that less efficient nodes are assigned with smaller populations. This solution not only integrates within an EA two different types of evolutionary search (fast, with the smaller populations, and accurate, with the larger), but also puts on the most efficient nodes the burden of computing larger sub-populations. 
 
 In this work, a heterogeneous distributed system has been used to give an answer to the following questions:
 \begin{itemize}
@@ -624,7 +623,7 @@ In this configuration, each node has the same number of individuals (so, the tot
 
 \begin{table*}
 \centering{
-\caption{Average number of generations in each node of the HeHa/HoSi/4X configuration when the optimum is found. These values are used to set proportionally the sub-population sizes in HeSi/4X.}
+\caption{Average number of generations (and proportion) in each node of the HeHa/HoSi/4X configuration when the optimum is found. These values are used to set proportionally the sub-population sizes in HeSi/4X.}
 % Y la desviación? - JJ
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 {\em Instance} &         & {\em HeN1}     & {\em HeN2 }     & {\em HeN3 }    & {\em HeN4 }  \\ \hline
@@ -665,7 +664,7 @@ In this configuration, each node has the same number of individuals (so, the tot
 
 \begin{table*}
 \centering{
-\caption{Average number of generations in each node of the HeHa/HoSi/8X configuration when the optimum is found. These values are used to set proportionally the sub-population sizes in HeSi/8X.}
+\caption{Average number of generations (and proportion) in each node of the HeHa/HoSi/8X configuration when the optimum is found. These values are used to set proportionally the sub-population sizes in HeSi/8X.}
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
 {\em Instance} &                       & {\em HeN1}   & {\em HeN2}   & {\em HeN3}    & {\em HeN4}  & {\em HeN5}     & {\em HeN6}      & {\em HeN7}    & {\em HeN8}  \\ \hline
@@ -708,10 +707,10 @@ In this configuration, each node has the same number of individuals (so, the tot
 
 \subsubsection{Heterogeneous Size configuration}
 
-Our aim consists in validating the following hypothesis: adapting the sub-population size to the computational power of the heterogeneous cluster nodes presents an improvement in execution time. 
+Our aim consists in validating the following hypothesis: adapting the sub-population size to the computational power of the heterogeneous cluster nodes presents an improvement in running time. 
 
 
-In this work, for a possible offline way to calculate the computational performance of each node, we have used the average number of generations obtained in the HoSi/HeHa configuration for both problems to determine the computational power of the heterogeneous machines. This comparison takes into account all the evolutionary process in a fair manner (proportional to the memory, processor and network usage), instead a traditional benchmark that usually relies only on the CPU speed. Although this is not obviously the best way, it is a possible way to establish the computational power for the experiments of this work and to determine if changing the sub-population size according the computational power reduces the computing time of the whole approach. It should be considered that the contribution of this work is not the way we have computed these sizes, but compare the algorithm with parameters adapted to their power.
+In this work, for a possible offline way to calculate the computational performance of each node, we have used the average number of generations obtained in the HoSi/HeHa configuration for both problems to determine the computational power of the heterogeneous machines. This comparison takes into account all the evolutionary process in a fair manner (proportional to the memory, processor and network usage), instead a traditional benchmark that usually relies only on the CPU speed. Although this is not obviously the ideal way, it is a possible way to establish the computational power for the experiments of this work and to determine if changing the sub-population size according the computational power reduces the computing time of the whole approach. It should be considered that the contribution of this work is not the way we have computed these sizes, but compare the algorithm with parameters adapted to their power.
 
 Thus, we have used the obtained average number of generations in the previous sub-section (Tables \ref{table:generations4X} and \ref{table:generations8X}) to set proportionally the sizes in the HeSi/HeHa and HeSi/HoHa configurations, by dividing the total number of individuals (1024). Note that, even having two nodes with the same processors and memory (HeN1 and HeN2), they could have different computational power: this may be produced by different operating systems, virtual machine versions, or number of processes being executed (inside a node).
 
@@ -727,7 +726,7 @@ Finally, in order to validate the hypothesis that adapt the sub-population sizes
 size'_{N}=\dfrac{Gen_{N}}{Gen_{N-1}}size_{N}
 \end{equation}
 
-If the new size is larger than the actual size, new individuals are added to the sub-population cloning random existent ones. Otherwise, the sub-population must be reduced and thus, the worst are removed. The algorithm from Figure \ref{fig:EA} is now updated as shown in Algorithm \ref{alg:EAadaptive}.
+If the new size is larger than the actual size, new individuals are added to the sub-population cloning  existent ones randomly. Otherwise, the sub-population must be reduced and thus, the worst are removed. The algorithm from Figure \ref{fig:EA} is now updated as shown in Algorithm \ref{alg:EAadaptive}.
 
 \begin{algorithm}[htb]
 
@@ -838,7 +837,7 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
             \multicolumn{7}{|c|}{OneMax}                                                                 \\ \hline
 \multicolumn{2}{|c|}{}        &  \multicolumn{3}{|c|}{Heterogeneous Hardware}                                     &  \multicolumn{2}{|c|}{Homogeneous Hardware}                        \\ \hline
 \multicolumn{2}{|c|}{}        &  Homogeneous Size        &  Heterogeneous Size            &  Adaptive Size           &  Homogeneous Size        &  Heterogeneous Size            \\ \hline
-4  &  5000  &  105413.125  $\pm$ 2381.213 &  122794.675  $\pm$ 3285.982 \ding{115}  &  137947.400  $\pm$ 2716.859 \ding{116}  &  141176.100  $\pm$ 2493.730 &  109562.650  $\pm$ 2470.219 \ding{116}  \\ \hline
+4  &  5000  &  105413.125  $\pm$ 2381.213 &  122794.675  $\pm$ 3285.982 \ding{115}  &  137947.400  $\pm$ 2716.859 \ding{115}  &  141176.100  $\pm$ 2493.730 &  109562.650  $\pm$ 2470.219 \ding{116}  \\ \hline
    &  10000 &  427977.875  $\pm$ 10484.174   &  538730.250  $\pm$ 5669.626 \ding{115}  &  329484.825  $\pm$ 9937.048 \ding{116}  &  598873.429  $\pm$ 18937.129   &  437625.225  $\pm$ 7912.703 \ding{116}  \\ \hline
    &  15000 &  1087096.550 $\pm$ 18047.257   &  1415919.250 $\pm$ 20477.570   \ding{115}  &  666451.500  $\pm$ 17877.417   \ding{116}  &  1510952.275 $\pm$ 21107.828   &  1068212.300 $\pm$ 25097.388   \ding{116}  \\ \hline
 8  &  5000  &  48739.750   $\pm$ 1171.984 &  54762.400   $\pm$ 779.721  \ding{115}  &  42908.250   $\pm$ 1953.038 \ding{116}  &  85041.450   $\pm$ 1147.126 &  65303.900   $\pm$ 1156.825 \ding{116}  \\ \hline
