@@ -295,7 +295,7 @@ model with a ring topology.
 \label{fig:islands}
 \end{figure}
 
-This kind of algorithms have been usually executed in homogeneous clusters \cite{MULTIKULTI}, being used with the same
+This kind of algorithms have been usually executed in homogeneous clusters \cite{MULTIKULTI,Wakunda97EVA}, being used with the same
 parameters in all nodes (homogeneous dEAs), or with different
 parameters (heterogeneous dEAs) \cite{garcia2014randomized,tanabe2013evaluation,HETEROGENEOUSPARAMETERS}. These configurations can be more  efficient time-wise than a fixed
 set of parameters for different problems.
@@ -358,7 +358,7 @@ Then, the results of the experiments are shown (Section \ref{sec:results}), foll
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SOA  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\section{State of the art}
+\section{Background on adaption in heterogeneous clusters}
 \label{sec:soa}
 
 
@@ -374,7 +374,7 @@ of the algorithm in order to distribute individuals of an Evolutionary Strategy
  represent the correct load of the algorithm, so, as proposed in this paper, information 
  about the algorithm itself should be used for calibration.
 
-In other works, there are not direct relation with the algorithm parameters and 
+In other works, there is not direct relation with the algorithm parameters and 
 computational resources of the nodes. For example, Dom\'inguez et al. \cite{HYDROCM} 
 divided the available devices in ``faster'' and ``slower'' nodes to create a distributed hybrid 
 meta-heuristic that combines two different EAs: Genetic Algorithms (GAs) and Simulated
@@ -410,7 +410,7 @@ results than homogeneous periods, as explained by Salto and Alba in
 
 
 
-In this work we focus in the sub-population sizes, as this parameter has been previously studied in different works because it have a huge impact in the results. In the work of Weber et al. \cite{DifferentialWeber09} two different sub-population sizes are used: size alpha (higher values for exploration) and a variable size beta (lower values for exploitation). Schlierkamp-Voosen et al. \cite{AdaptationSizesSchlierkamp96} proposed a quality measure to be used in each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, those works are based in the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not the machines that are executing the parallel EAs.
+In this work we focus in the sub-population sizes, as this parameter has been previously studied in different works because it has a huge impact in the results. In the work of Weber et al. \cite{DifferentialWeber09} two different sub-population sizes are used: size alpha (higher values for exploration) and a variable size beta (lower values for exploitation). Schlierkamp-Voosen et al. \cite{AdaptationSizesSchlierkamp96} proposed a quality measure to be used in each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, those works are based in the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not the machines that are executing the parallel EAs.
 
 %OJO! En AdaptationSizesSchlierkamp96 dicen que cuando no ponen tamaño global fijo, el tamaño de las subpoblaciones y los resultados son menos claros (usarlo más alante)
 %TODO reescribe bien lo siguiente
@@ -426,7 +426,7 @@ In our work, a parameter (size of the sub-populations) of a dEA is adapted (offl
 %%%%%%%%%%%%%%%%%%  Experiments  %%%%%%%%%%%%%%%%%%%
 \section{Experimental setup}
 \label{sec:experiments}
-In this section we propose two different parameter adaptation schemes to test if adapting the sub-population sizes of a dEA to the nodes of a  heterogeneous clusters reduces time. In the field of  Evolutionary Computation (EC) there are two different approaches about the algorithm parameter setting: {\em parameter tuning} and {\em parameter control} \cite{PARAMETERTUNING}. The first one consists in establishing a good set of parameters before the run (offline), and do not change them during the execution. The parameter control refers to setting up a number of parameters of the EA  and changing these values in running time (online). For the first approach, a dEA has been executed in the heterogeneous cluster. The obtained results have been used, to distribute the number of individual among the nodes (that is, offline). The same sizes set is used in the homogeneous cluster to validate if the changes in performance are dued to the parameters or the adaptation to the nodes. Finally, an online parameter setting that extract relative information of the performance of the nodes has been tested to validate our approach. %TODO esto de validate our approach no mola
+In this section we propose two different parameter adaptation schemes to test if adapting the sub-population sizes of a dEA to the nodes of a  heterogeneous clusters can reduce time. In the field of  Evolutionary Computation (EC) there are two different approaches about the algorithm parameter setting: {\em parameter tuning} and {\em parameter control} \cite{PARAMETERTUNING}. The first one consists in establishing a good set of parameters before the run (offline), and do not change them during the execution. The parameter control refers to setting up a number of parameters of the EA  and changing these values in running time (online). For the first approach, a dEA has been executed in the heterogeneous cluster. The obtained results have been used, to distribute the number of individual among the nodes (that is, offline). The same sizes set is used in the homogeneous cluster to validate if the changes in performance are dued to the parameters or the adaptation to the nodes. Finally, an online parameter setting that extract relative information of the performance of the nodes has been tested to validate our approach. %TODO esto de validate our approach no mola
 
 
 
@@ -619,7 +619,7 @@ Also, to study the scalability, two different number of nodes have been used in 
 
 
 
-In this configuration, each node has the same number of individuals (so, the total amount is 1024). This value has been chosen empirically, as it is big enough to test different sub-population sizes in different number of nodes (4 and 8). After executing the algorithm 40 times per problem on the heterogeneous cluster, we have obtained the average number of generations in each node, as it can be seen in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained (and their proportion in every node) to reach the optimum depends on the problem considered (besides the hardware).
+In this configuration, each node has the same number of individuals (so, the total amount is 1024). This value has been chosen empirically, as it is big enough to test different sub-population sizes in different number of nodes (4 and 8). The chosen stop criterion along this work is to find the optimum of the problem (so, all runs in this work have always finished when the optimum have been found in one of the nodes). We have used this stop criterion as Alba et al. did in \cite{EVALUATIONPARALLEL}, since it offers a fair way to compare the execution time and behaviour of the configurations to compare.  After executing the algorithm 40 times per problem on the heterogeneous cluster, we have obtained the average number of generations in each node, as it can be seen in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained (and their proportion in every node) to reach the optimum depends on the problem considered (besides the hardware).
 
 \begin{table*}
 \centering{
@@ -819,39 +819,55 @@ In order to deal with the operating system and architecture heterogeneity (diffe
 The three main objectives of parallel programming are to tackle large computational problems, increase the performance of algorithms in a finite time, or reduce computational time to solve the problem (reaching the optimum). In this work, we focus in the last objective.
 As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the performance of a parallel EA by the number of fitness function evaluations required to attain a solution may be misleading. In our case, for example, the evaluation time is different in each node of the heterogeneous cluster, so the real algorithm speed (in time)could not be reflected correctly. However, the number of evaluations has been included in this section to better understand the results. It is difficult to compare the performance of HoHa and HeHa for the same reason: the evaluation time is different in each system (and even in each node). Thus, in this work, our aim is not making the heterogeneous cluster comparable or better in time than the homogeneous one (because they are, obviously, different), but showing that the same parameter configuration can improve performance in time on heterogeneous clusters and could not have an effect on homogeneous ones.
 
+
+
+
+% No tiene mucho sentido hablar de los resultados de los dos problemas
+% por separado, porque el objetivo no es resolver ese problema, sino
+% probar cómo funciona en algoritmo. Se pueden comentar los dos juntos
+% y se debería hacer - JJ FERGU: okis, poniéndolo todo junto.
+
+Table \ref{tab:resultsTIMEall} shows the execution times for the all the problems and configurations, while Table \ref{tab:resultsEVALSall} shows the total number of evaluations. To compare between two methods (HoSi and HeSi in the homogeneous cluster) a Wilcoxon test has been applied. For a three methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a Kruskal-Wallis test has been used. A mark in the tables indicates if the comparison with the base configuration of each cluster (HoSi/HeHa and HoSi/HoHa respectively) is significantly higher (\ding{115}), significantly lower  (\ding{116}), or no significant difference found (\ding{117}).
+
+
+
 \begin{table*}
 \centering
 \caption{Time to reach the optimum (average $\pm$ std. dev. of 30 runs)  for each configuration. and comparison with the base configuration (HoSi): \ding{115} significantly higher. \ding{116} significantly lower. \ding{117} = no significant difference}
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|} \hline
 
-            \multicolumn{7}{|c|}{MMDP}                                                                \\ \hline
-\multicolumn{2}{|c|}{}        &  \multicolumn{3}{|c|}{Heterogeneous Hardware}                                     &  \multicolumn{2}{|c|}{Homogeneous Hardware}                        \\ \hline
-\multicolumn{2}{|c|}{}        &  Homogeneous Size        &  Heterogeneous Size            &  Adaptive Size           &  Homogeneous Size        &  Heterogeneous Size            \\ \hline
-4  &  150   &  23691.400   $\pm$ 20349.375   &  12123.575   $\pm$ 10535.090   \ding{116}  &  30285.875   $\pm$ 33552.447   \ding{117}  &  11560.800   $\pm$ 26072.141   &  5500.600 $\pm$ 12350.129   \ding{117}  \\ \hline
-   &  240   &  347048.675  $\pm$ 192450.028  &  199975.150  $\pm$ 146997.836  \ding{116}  &  417145.600  $\pm$ 269732.017  \ding{117}  &  198431.289  $\pm$ 160166.862  &  358710.025  $\pm$ 248159.908  \ding{115}  \\ \hline
-   &  300   &  1061136.564 $\pm$ 373629.143  &  882104.872  $\pm$ 465160.080  \ding{116}  &  1228869.800 $\pm$ 413829.829  \ding{115}  &  1069118.750 $\pm$ 666688.697  &  1264568.050 $\pm$ 647531.978  \ding{117}  \\ \hline
-8  &  150   &  11348.200   $\pm$ 6881.718 &  8055.550 $\pm$ 5941.888 \ding{116}  &  11888.525   $\pm$ 12928.340   \ding{117}  &  4314.100 $\pm$ 10816.704   &  6298.025 $\pm$ 12192.268   \ding{117}  \\ \hline
-   &  240   &  115213.275  $\pm$ 96734.707   &  106284.375  $\pm$ 66143.938   \ding{117}  &  146685.800  $\pm$ 77926.241   \ding{117}  &  109498.425  $\pm$ 98623.989   &  143193.550  $\pm$ 165182.806  \ding{117}  \\ \hline
-   &  300   &  351729.250  $\pm$ 167077.357  &  383083.975  $\pm$ 249783.901  \ding{117}  &  434478.025  $\pm$ 200879.857  \ding{115}  &  521163.050  $\pm$ 304559.018  &  595276.077  $\pm$ 355235.861  \ding{117}  \\ \hline
-            \multicolumn{7}{|c|}{OneMax}                                                                 \\ \hline
-\multicolumn{2}{|c|}{}        &  \multicolumn{3}{|c|}{Heterogeneous Hardware}                                     &  \multicolumn{2}{|c|}{Homogeneous Hardware}                        \\ \hline
-\multicolumn{2}{|c|}{}        &  Homogeneous Size        &  Heterogeneous Size            &  Adaptive Size           &  Homogeneous Size        &  Heterogeneous Size            \\ \hline
-4  &  5000  &  105413.125  $\pm$ 2381.213 &  122794.675  $\pm$ 3285.982 \ding{115}  &  137947.400  $\pm$ 2716.859 \ding{115}  &  141176.100  $\pm$ 2493.730 &  109562.650  $\pm$ 2470.219 \ding{116}  \\ \hline
-   &  10000 &  427977.875  $\pm$ 10484.174   &  538730.250  $\pm$ 5669.626 \ding{115}  &  329484.825  $\pm$ 9937.048 \ding{116}  &  598873.429  $\pm$ 18937.129   &  437625.225  $\pm$ 7912.703 \ding{116}  \\ \hline
-   &  15000 &  1087096.550 $\pm$ 18047.257   &  1415919.250 $\pm$ 20477.570   \ding{115}  &  666451.500  $\pm$ 17877.417   \ding{116}  &  1510952.275 $\pm$ 21107.828   &  1068212.300 $\pm$ 25097.388   \ding{116}  \\ \hline
-8  &  5000  &  48739.750   $\pm$ 1171.984 &  54762.400   $\pm$ 779.721  \ding{115}  &  42908.250   $\pm$ 1953.038 \ding{116}  &  85041.450   $\pm$ 1147.126 &  65303.900   $\pm$ 1156.825 \ding{116}  \\ \hline
-   &  10000 &  173929.125  $\pm$ 2726.059 &  198988.750  $\pm$ 2777.299 \ding{115}  &  175120.825  $\pm$ 9428.557 \ding{117}  &  320557.300  $\pm$ 4661.152 &  235143.225  $\pm$ 5530.272 \ding{116}  \\ \hline
-   &  15000 &  397398.125  $\pm$ 7076.647 &  444353.350  $\pm$ 5952.183 \ding{115}  &  430550.775  $\pm$ 14095.819   \ding{115}  &  738570.900  $\pm$ 10834.293   &  539734.575  $\pm$ 8473.574 \ding{116}  \\ \hline
-            \multicolumn{7}{|c|}{Shifted Rosenbrock Function}                                                                 \\ \hline
-\multicolumn{2}{|c|}{}        &  \multicolumn{3}{|c|}{Heterogeneous Hardware}                                     &  \multicolumn{2}{|c|}{Homogeneous Hardware}                        \\ \hline
-\multicolumn{2}{|c|}{}        &  Homogeneous Size        &  Heterogeneous Size            &  Adaptive Size           &  Homogeneous Size        &  Heterogeneous Size            \\ \hline
-4  &  10 &  53352.500   $\pm$ 27765.191   &  63905.825   $\pm$ 26795.632   \ding{115}  &  72567.025   $\pm$ 39079.540   \ding{115}  &  144064.750  $\pm$ 59634.750   &  133317.350  $\pm$ 53464.402   \ding{117}  \\ \hline
-   &  30 &  233582.125  $\pm$ 159454.007  &  187654.125  $\pm$ 133253.223  \ding{117}  &  268306.800  $\pm$ 212295.411  \ding{115}  &  225579.325  $\pm$ 76117.466   &  273459.025  $\pm$ 87878.437   \ding{115}  \\ \hline
-   &  50 &  431820.850  $\pm$ 294081.294  &  344285.475  $\pm$ 205736.331  \ding{117}  &  461542.775  $\pm$ 300039.633  \ding{117}  &  411643.275  $\pm$ 65338.206   &  553531.700  $\pm$ 198818.335  \ding{115}  \\ \hline
-8  &  10 &  136191.400  $\pm$ 79714.749   &  99235.500   $\pm$ 64553.242   \ding{116}  &  64515.275   $\pm$ 29709.340   \ding{116}  &  117962.75   $\pm$ 35741.64  &  135527.725  $\pm$ 38170.154  \ding{117}  \\ \hline
-   &  30 &  220603.675  $\pm$ 99104.552   &  139196.425  $\pm$ 137089.954  \ding{116}  &  158356.275  $\pm$ 105886.233  \ding{116}  &  216103.4 $\pm$    21323.04  &  224968.575  $\pm$ 39149.218  \ding{117}  \\ \hline
-   &  50 &  252010.950  $\pm$ 106664.020  &  210020.025  $\pm$ 128371.826  \ding{116}  &  283033.825  $\pm$ 169912.769  \ding{117}  &  312136.7 $\pm$    81755.296  &  372139.1 $\pm$ 63905.477  \ding{115}  \\ \hline
+
+
+                \multicolumn{7}{|c|}{MMDP}                                                                                      \\ \hline
+\multicolumn{2}{|c|}{}          &   \multicolumn{3}{|c|}{Heterogeneous Hardware}                                                    &   \multicolumn{2}{|c|}{Homogeneous Hardware}                              \\ \hline
+\multicolumn{2}{|c|}{}          &   Homogeneous Size    0   0   &   Heterogeneous Size              &   Adaptive Size               &   Homogeneous Size            &   Heterogeneous Size              \\ \hline
+\multirow{3}{*}{4}  &   150 &   18691   $\pm$   20349   &   7124    $\pm$   10535   \ding{116}  &   25286   $\pm$   33552   \ding{117}  &   11561   $\pm$   26072   &   5501    $\pm$   12350   \ding{117}  \\ \cline{2-7}
+    &   240 &   347049  $\pm$   192450  &   194975  $\pm$   146998  \ding{116}  &   412146  $\pm$   269732  \ding{117}  &   198431  $\pm$   160167  &   358710  $\pm$   248160  \ding{115}  \\ \cline{2-7}
+    &   300 &   1061137 $\pm$   373629  &   877105  $\pm$   465160  \ding{116}  &   1223870 $\pm$   413830  \ding{115}  &   1069119 $\pm$   666689  &   1264568 $\pm$   647532  \ding{117}  \\ \hline
+\multirow{3}{*}{8}  &   150 &   6348    $\pm$   6882    &   3056    $\pm$   5942    \ding{116}  &   6889    $\pm$   12928   \ding{117}  &   4314    $\pm$   10817   &   6298    $\pm$   12192   \ding{117}  \\ \cline{2-7}
+    &   240 &   110213  $\pm$   96735   &   101284  $\pm$   66144   \ding{117}  &   141686  $\pm$   77926   \ding{117}  &   109498  $\pm$   98624   &   143194  $\pm$   165183  \ding{117}  \\ \cline{2-7}
+    &   300 &   346729  $\pm$   167077  &   378084  $\pm$   249784  \ding{117}  &   429478  $\pm$   200880  \ding{115}  &   521163  $\pm$   304559  &   595276  $\pm$   355236  \ding{117}  \\ \hline
+                \multicolumn{7}{|c|}{OneMax}                                                                                        \\ \hline
+\multicolumn{2}{|c|}{}          &   \multicolumn{3}{|c|}{Heterogeneous Hardware}                                                    &   \multicolumn{2}{|c|}{Homogeneous Hardware}                              \\ \hline
+\multicolumn{2}{|c|}{}          &   Homogeneous Size            &   Heterogeneous Size              &   Adaptive Size               &   Homogeneous Size            &   Heterogeneous Size              \\ \hline
+\multirow{3}{*}{4}  &   5000    &   100413  $\pm$   2381    &   117795  $\pm$   3286    \ding{115}  &   132947  $\pm$   2717    \ding{115}  &   141176  $\pm$   2494    &   104563  $\pm$   2470    \ding{116}  \\ \cline{2-7}
+    &   10000   &   427978  $\pm$   10484   &   533730  $\pm$   5670    \ding{115}  &   324485  $\pm$   9937    \ding{116}  &   593873  $\pm$   18937   &   432625  $\pm$   7913    \ding{116}  \\ \cline{2-7}
+    &   15000   &   1082097 $\pm$   18047   &   1410919 $\pm$   20478   \ding{115}  &   661452  $\pm$   17877   \ding{116}  &   1505952 $\pm$   21108   &   1063212 $\pm$   25097   \ding{116}  \\ \hline
+\multirow{3}{*}{8}  &   5000    &   43740   $\pm$   1172    &   49762   $\pm$   780 \ding{115}  &   37908   $\pm$   1953    \ding{116}  &   80041   $\pm$   1147    &   60304   $\pm$   1157    \ding{116}  \\ \cline{2-7}
+    &   10000   &   168929  $\pm$   2726    &   193989  $\pm$   2777    \ding{115}  &   170121  $\pm$   9429    \ding{117}  &   315557  $\pm$   4661    &   230143  $\pm$   5530    \ding{116}  \\ \cline{2-7}
+    &   15000   &   392398  $\pm$   7077    &   439353  $\pm$   5952    \ding{115}  &   425551  $\pm$   14096   \ding{115}  &   733571  $\pm$   10834   &   534735  $\pm$   8474    \ding{116}  \\ \hline
+                \multicolumn{7}{|c|}{Shifted Rosenbrock's Function}                                                                                     \\ \hline
+\multicolumn{2}{|c|}{}          &   \multicolumn{3}{|c|}{Heterogeneous Hardware}                                                    &   \multicolumn{2}{|c|}{Homogeneous Hardware}                              \\ \hline
+\multicolumn{2}{|c|}{}          &   Homogeneous Size            &   Heterogeneous Size              &   Adaptive Size               &   Homogeneous Size            &   Heterogeneous Size              \\ \hline
+\multirow{3}{*}{4}  &   10  &   48353   $\pm$   27765   &   58906   $\pm$   26796   \ding{115}  &   67567   $\pm$   39080   \ding{115}  &   139065  $\pm$   59635   &   128317  $\pm$   53464   \ding{117}  \\ \cline{2-7}
+    &   30  &   228582  $\pm$   159454  &   182654  $\pm$   133253  \ding{117}  &   263307  $\pm$   212295  \ding{115}  &   220579  $\pm$   76117   &   268459  $\pm$   87878   \ding{115}  \\ \cline{2-7}
+    &   50  &   426821  $\pm$   294081  &   339285  $\pm$   205736  \ding{117}  &   456543  $\pm$   300040  \ding{117}  &   406643  $\pm$   65338   &   548532  $\pm$   198818  \ding{115}  \\ \hline
+\multirow{3}{*}{8}  &   10  &   131191  $\pm$   79715   &   94236   $\pm$   64553   \ding{116}  &   59515   $\pm$   29709   \ding{116}  &   112963  $\pm$   35742   &   130528  $\pm$   38170   \ding{117}  \\ \cline{2-7}
+    &   30  &   215604  $\pm$   99105   &   134196  $\pm$   137090  \ding{116}  &   153356  $\pm$   105886  \ding{116}  &   211103  $\pm$   21323   &   219969  $\pm$   39149   \ding{117}  \\ \cline{2-7}
+    &   50  &   247011  $\pm$   106664  &   205020  $\pm$   128372  \ding{116}  &   278034  $\pm$   169913  \ding{117}  &   307137  $\pm$   81755   &   367139  $\pm$   63905   \ding{115}  \\ \hline
+
+
 
 
 \end{tabular}
@@ -862,37 +878,41 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
 
 \begin{table*}
 \centering
-\caption{Number of evaluations (average $\pm$ std. dev. of 30 runs)  for each configuration. and comparison with the base configuration (HoSi): \ding{115} significantly higher. \ding{116} significantly lower. \ding{117} = no significant difference}
+\caption{Number of evaluations (average $\pm$ std. dev. of 30 runs)  for each configuration, and comparison with the base configuration (HoSi): \ding{115} significantly higher. \ding{116} significantly lower. \ding{117} = no significant difference}
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|} \hline
 
-            \multicolumn{7}{|c|}{MMDP}                                                                         \\ \hline
-\multicolumn{2}{|c|}{}        &  \multicolumn{3}{|c|}{Heterogeneous Hardware}                                           &  \multicolumn{2}{|c|}{Homogeneous Hardware}                           \\ \hline
-\multicolumn{2}{|c|}{}        &  Homogeneous Size        &  Heterogeneous Size               &  Adaptive Size              &  Homogeneous Size        &  Heterogeneous Size               \\ \hline
-4  &  150   &  3321990.4   $\pm$  3640752.796  &  1318095.1   $\pm$ 1945414.545  \ding{116}     &  4495540  $\pm$    6076330.842  \ding{117}     &  1314204.8   $\pm$      2963639.113 &       593926.5 $\pm$        1344934.779  \ding{115}     \\ \hline
-   &  240   &  43465120    $\pm$ 24350006.278  &  24865324.65 $\pm$ 18722527.744  \ding{116}     &  51918846 $\pm$    33924352.604   \ding{117}     &  20141093.052  $\pm$ 16264249.553  &  29297987.6  $\pm$  20289861.289  \ding{115}     \\ \hline
-   &  300   &  112163404.8 $\pm$ 40760641.082  &  94824634.45 $\pm$ 43726167.176   \ding{117}     &  126292378.1 $\pm$ 42772727.879  \ding{117}     &  91090851.2  $\pm$       56752255.807  &  86123573.45 $\pm$  44098884.083  \ding{117}     \\ \hline
-8  &  150   &  2212630.4   $\pm$  2402352.533  &  1143879.95  $\pm$ 2251876.900  \ding{116}     &  2133441  $\pm$    4344042.555  \ding{117}     &  769020.8 $\pm$          1968495.881  &  1045242.85  $\pm$  2044957.133  \ding{117}     \\ \hline
-   &  240   &  33820148.8  $\pm$ 29651523.050  &  33028780.4  $\pm$ 21576055.525  \ding{117}     &  44303976.55 $\pm$ 24510225.672  \ding{117}     &  17062513.6  $\pm$       15386147.559  &  19772115.75 $\pm$  22806815.899  \ding{115}     \\ \hline
-   &  300   &  85830209.6  $\pm$ 41366325.301  &  92198558.85 $\pm$ 60854343.022  \ding{117}     &  110130432.3 $\pm$ 50703413.222  \ding{117}     &  71996897.6  $\pm$       42054877.579  &  72278155.12  $\pm$ 43134165.117  \ding{117}     \\ \hline
-            \multicolumn{7}{|c|}{OneMax}                                                                          \\ \hline
-\multicolumn{2}{|c|}{}        &  \multicolumn{3}{|c|}{Heterogeneous Hardware}                                           &  \multicolumn{2}{|c|}{Homogeneous Hardware}                           \\ \hline
-\multicolumn{2}{|c|}{}        &  Homogeneous Size        &  Heterogeneous Size               &  Adaptive Size              &  Homogeneous Size        &  Heterogeneous Size               \\ \hline
-4  &  5000  &  762841.6    $\pm$ 16566.019  &  910877.55   $\pm$ 21772.716  \ding{115}     &  916197.45   $\pm$  23011.217  \ding{115}     &  911238.4 $\pm$      16014.892  &  681001.65   $\pm$ 14423.215  \ding{116}     \\ \hline
-   &  10000 &  1509209.6   $\pm$ 38518.094  &  1845115.85  $\pm$ 22200.410  \ding{115}     &  1057320.85  $\pm$  35026.167  \ding{116}     &  1194003.4   $\pm$   29300.446  &  874954.2875 $\pm$ 15848.262  \ding{115}     \\ \hline
-   &  15000 &  2271324.8   $\pm$ 46631.097  &  2854326.95  $\pm$ 43874.970  \ding{115}     &  1388917.95  $\pm$  46410.417  \ding{116}     &  3021651.76   $\pm$ 42266.984  &  2134754.8   $\pm$ 49238.440  \ding{116}     \\ \hline
-8  &  5000  &  1022355.2   $\pm$ 27173.857  &  1191468.65  $\pm$ 18848.880  \ding{115}     &  876971.15   $\pm$  53281.452  \ding{116}     &  1060456     $\pm$  14202.837  &  783309.6 $\pm$ 13667.556   \ding{115}     \\ \hline
-   &  10000 &  1990523.2   $\pm$ 33071.283  &  2310726.55  $\pm$ 35550.662  \ding{115}     &  1943270.05  $\pm$ 109736.643  \ding{117}     &  2104908.8   $\pm$ 31371.894   &  1500722.6   $\pm$ 32442.965  \ding{115}     \\ \hline
-   &  15000 &  2992969.6   $\pm$ 56187.847  &  3447571.1   $\pm$ 49039.431  \ding{115}     &  3164844.6   $\pm$ 112128.458  \ding{115}     &  3189692.8   $\pm$ 48537.530  &  2275397.35  $\pm$ 37727.264  \ding{115}     \\ \hline
-            \multicolumn{7}{|c|}{Shifted Rosenbrock Function}                                                                          \\ \hline
-\multicolumn{2}{|c|}{}        &  \multicolumn{3}{|c|}{Heterogeneous Hardware}                                           &  \multicolumn{2}{|c|}{Homogeneous Hardware}                           \\ \hline
-\multicolumn{2}{|c|}{}        &  Homogeneous Size        &  Heterogeneous Size               &  Adaptive Size              &  Homogeneous Size        &  Heterogeneous Size               \\ \hline
-4  &  10 &  22355824    $\pm$ 12904481.344  &  30266762.2  $\pm$ 13813479.010  \ding{115}     &  33547324.1  $\pm$ 19863897.742  \ding{115}     &  37341065.6  $\pm$ 16047434.437  &  30153466.3  $\pm$ 12576709.796  \ding{116}     \\ \hline
-   &  30 &  69538364.8  $\pm$ 48304416.398  &  59728382.4  $\pm$ 43501832.250  \ding{117}     &  88388447.15 $\pm$ 71317459.548  \ding{117}     &  46161708.8  $\pm$ 15934477.472  &  47148156.65 $\pm$ 15375823.195   \ding{115}     \\ \hline
-   &  50 &  99155420.8  $\pm$ 68311226.248  &  84094769.2  $\pm$ 50765873.592  \ding{117}     &  117038182.7 $\pm$ 77175066.543   \ding{117}     &  68457408    $\pm$ 11020886.010  &  76027870.2  $\pm$ 27583556.014  \ding{117}     \\ \hline
-8  &  10 &  93296334.4  $\pm$ 56652940.874  &  72985728.55 $\pm$ 50098410.959  \ding{117}     &  27464762.4  $\pm$ 14325583.024  \ding{116}     &  29918763.2  $\pm$  9461803.701  &  33237782.15 $\pm$  9691812.091  \ding{117}     \\ \hline
-   &  30 &  124082083.2 $\pm$ 56744693.550  &  72921017.2  $\pm$ 44154090.205  \ding{116}     &  76865581.95 $\pm$ 51105012.648  \ding{116}     &  50067939.2  $\pm$  5035938.893  &  49326413.85 $\pm$  8797658.463  \ding{117}     \\ \hline
-   &  50 &  118758705.6 $\pm$ 51402559.633  &  105989246.15$\pm$ 66396359.623  \ding{117}     &  119654538.5 $\pm$ 73281480.758  \ding{117}     &  64545646.4  $\pm$ 17131983.221  &  68750401.21 $\pm$ 17422479.166  \ding{117}     \\ \hline
+
+
+                \multicolumn{7}{|c|}{MMDP}                                                                                                  \\ \hline
+\multicolumn{2}{|c|}{}          &   \multicolumn{3}{|c|}{Heterogeneous Hardware}                                                            &   \multicolumn{2}{|c|}{Homogeneous Hardware}                                  \\ \hline
+\multicolumn{2}{|c|}{}          &   Homogeneous Size            &   Heterogeneous Size                  &   Adaptive Size                   &   Homogeneous Size            &   Heterogeneous Size                  \\ \hline
+\multirow{3}{*}{4}  &   150.00  &   3321990.40  $\pm$   3640752.80  &   1318095.10  $\pm$   1945414.55  \ding{116}      &   4495540.00  $\pm$   6076330.84  \ding{117}      &   1314204.80  $\pm$   2963639.11  &   593926.50   $\pm$   1344934.78  \ding{115}      \\ \cline{2-7}
+    &   240.00  &   43465120.00 $\pm$   24350006.28 &   24865324.65 $\pm$   18722527.74 \ding{116}      &   51918846.00 $\pm$   33924352.60 \ding{117}      &   20141093.05 $\pm$   16264249.55 &   29297987.60 $\pm$   20289861.29 \ding{115}      \\ \cline{2-7}
+    &   300.00  &   112163404.80    $\pm$   40760641.08 &   94824634.45 $\pm$   43726167.18 \ding{117}      &   126292378.10    $\pm$   42772727.88 \ding{117}      &   91090851.20 $\pm$   56752255.81 &   86123573.45 $\pm$   44098884.08 \ding{117}      \\ \hline
+\multirow{3}{*}{8}  &   150.00  &   2212630.40  $\pm$   2402352.53  &   1143879.95  $\pm$   2251876.90  \ding{116}      &   2133441.00  $\pm$   4344042.56  \ding{117}      &   769020.80   $\pm$   1968495.88  &   1045242.85  $\pm$   2044957.13  \ding{117}      \\ \cline{2-7}
+    &   240.00  &   33820148.80 $\pm$   29651523.05 &   33028780.40 $\pm$   21576055.53 \ding{117}      &   44303976.55 $\pm$   24510225.67 \ding{117}      &   17062513.60 $\pm$   15386147.56 &   19772115.75 $\pm$   22806815.90 \ding{115}      \\ \cline{2-7}
+    &   300.00  &   85830209.60 $\pm$   41366325.30 &   92198558.85 $\pm$   60854343.02 \ding{117}      &   110130432.30    $\pm$   50703413.22 \ding{117}      &   71996897.60 $\pm$   42054877.58 &   72278155.13 $\pm$   43134165.12 \ding{117}      \\ \hline
+                \multicolumn{7}{|c|}{OneMax}                                                                                                    \\ \hline
+\multicolumn{2}{|c|}{}          &   \multicolumn{3}{|c|}{Heterogeneous Hardware}                                                            &   \multicolumn{2}{|c|}{Homogeneous Hardware}                                  \\ \hline
+\multicolumn{2}{|c|}{}          &   Homogeneous Size            &   Heterogeneous Size                  &   Adaptive Size                   &   Homogeneous Size            &   Heterogeneous Size                  \\ \hline
+\multirow{3}{*}{4}  &   5000.00 &   762841.60   $\pm$   16566.02    &   910877.55   $\pm$   21772.72    \ding{115}      &   916197.45   $\pm$   23011.22    \ding{116}      &   911238.40   $\pm$   16014.89    &   681001.65   $\pm$   14423.22    \ding{116}      \\ \cline{2-7}
+    &   10000.00    &   1509209.60  $\pm$   38518.09    &   1845115.85  $\pm$   22200.41    \ding{115}      &   1057320.85  $\pm$   35026.17    \ding{116}      &   1194003.40  $\pm$   29300.45    &   874954.29   $\pm$   15848.26    \ding{115}      \\ \cline{2-7}
+    &   15000.00    &   2271324.80  $\pm$   46631.10    &   2854326.95  $\pm$   43874.97    \ding{115}      &   1388917.95  $\pm$   46410.42    \ding{116}      &   3021651.76  $\pm$   42266.98    &   2134754.80  $\pm$   49238.44    \ding{116}      \\ \hline
+\multirow{3}{*}{8}  &   5000.00 &   1022355.20  $\pm$   27173.86    &   1191468.65  $\pm$   18848.88    \ding{115}      &   876971.15   $\pm$   53281.45    \ding{116}      &   1060456.00  $\pm$   14202.84    &   783309.60   $\pm$   13667.56    \ding{115}      \\ \cline{2-7}
+    &   10000.00    &   1990523.20  $\pm$   33071.28    &   2310726.55  $\pm$   35550.66    \ding{115}      &   1943270.05  $\pm$   109736.64   \ding{117}      &   2104908.80  $\pm$   31371.89    &   1500722.60  $\pm$   32442.97    \ding{115}      \\ \cline{2-7}
+    &   15000.00    &   2992969.60  $\pm$   56187.85    &   3447571.10  $\pm$   49039.43    \ding{115}      &   3164844.60  $\pm$   112128.46   \ding{115}      &   3189692.80  $\pm$   48537.53    &   2275397.35  $\pm$   37727.26    \ding{115}      \\ \hline
+                \multicolumn{7}{|c|}{Shifted Rosenbrock's Function}                                                                                                 \\ \hline
+\multicolumn{2}{|c|}{}          &   \multicolumn{3}{|c|}{Heterogeneous Hardware}                                                            &   \multicolumn{2}{|c|}{Homogeneous Hardware}                                  \\ \hline
+\multicolumn{2}{|c|}{}          &   Homogeneous Size            &   Heterogeneous Size                  &   Adaptive Size                   &   Homogeneous Size            &   Heterogeneous Size                  \\ \hline
+\multirow{3}{*}{4}  &   10.00   &   22355824.00 $\pm$   12904481.34 &   30266762.20 $\pm$   13813479.01 \ding{115}      &   33547324.10 $\pm$   19863897.74 \ding{115}      &   37341065.60 $\pm$   16047434.44 &   30153466.30 $\pm$   12576709.80 \ding{116}      \\ \cline{2-7}
+    &   30.00   &   69538364.80 $\pm$   48304416.40 &   59728382.40 $\pm$   43501832.25 \ding{117}      &   88388447.15 $\pm$   71317459.55 \ding{117}      &   46161708.80 $\pm$   15934477.47 &   47148156.65 $\pm$   15375823.20 \ding{115}      \\ \cline{2-7}
+    &   50.00   &   99155420.80 $\pm$   68311226.25 &   84094769.20 $\pm$   50765873.59 \ding{117}      &   117038182.70    $\pm$   77175066.54 \ding{117}      &   68457408.00 $\pm$   11020886.01 &   76027870.20 $\pm$   27583556.01 \ding{117}      \\ \hline
+\multirow{3}{*}{8}  &   10.00   &   93296334.40 $\pm$   56652940.87 &   72985728.55 $\pm$   50098410.96 \ding{117}      &   27464762.40 $\pm$   14325583.02 \ding{116}      &   29918763.20 $\pm$   9461803.70  &   33237782.15 $\pm$   9691812.09  \ding{117}      \\ \cline{2-7}
+    &   30.00   &   124082083.20    $\pm$   56744693.55 &   72921017.20 $\pm$   44154090.21 \ding{116}      &   76865581.95 $\pm$   51105012.65 \ding{116}      &   50067939.20 $\pm$   5035938.89  &   49326413.85 $\pm$   8797658.46  \ding{117}      \\ \cline{2-7}
+    &   50.00   &   118758705.60    $\pm$   51402559.63 &   105989246.15    $\pm$   66396359.62 \ding{117}      &   119654538.50    $\pm$   73281480.76 \ding{117}      &   64545646.40 $\pm$   17131983.22 &   68750401.21 $\pm$   17422479.17 \ding{117}      \\ \hline
+
+
 
 
 \end{tabular}
@@ -902,62 +922,36 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
 
 
 
-
-\begin{figure}[ht]
+%%%%%%MMDP
+\begin{figure}[htb]
 \centering
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/MMDP_150_TIME.eps}
+   \label{subfig:150time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/MMDP_150_EVALS.eps}
+   \label{subfig:150evals}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/MMDP_240_TIME.eps}
+   \label{subfig:240time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/MMDP_240_EVALS.eps}
+   \label{subfig:240evals}
+}
 
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/MMDP_150_TIME.eps}
-   \label{fig:150time}
- }
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/MMDP_240_TIME.eps}
-   \label{fig:240time}
- }
- \subfigure{
-   \includegraphics[scale =0.3] {boxplots/MMDP_300_TIME.eps}
-   \label{fig:240time}
- }
-\caption{Time to obtain the optimum in the MMDP problem (milliseconds).}
-\label{fig:timeMMDP}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/ONEMAX_5000_TIME.eps}
-   \label{fig:5000time}
- }
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/ONEMAX_10000_TIME.eps}
-   \label{fig:10000time}
- }
- \subfigure{
-   \includegraphics[scale =0.3] {boxplots/ONEMAX_15000_TIME.eps}
-   \label{fig:15000time}
- }
-\caption{Time to obtain the optimum in the OneMax problem (milliseconds).}
-\label{fig:timeONEMAX}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/ROSENBROCK_10_TIME.eps}
-   \label{fig:10time}
- }
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/ROSENBROCK_30_TIME.eps}
-   \label{fig:30time}
- }
- \subfigure{
-   \includegraphics[scale =0.3] {boxplots/ROSENBROCK_50_TIME.eps}
-   \label{fig:50time}
- }
-\caption{Time needed to obtain the optimum in the Rosenbrock function problem (milliseconds).}
-\label{fig:timeROSENBROCK}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/MMDP_300_TIME.eps}
+    \label{subfig:300time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/MMDP_300_EVALS.eps}
+    \label{subfig:300evals}
+}
+\caption{Time (ms) and evalutions needed to obtain the optimum for the MMDP problem.}
+\label{fig:boxplotsMMDP}
 \end{figure}
 
 
@@ -969,92 +963,104 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
 
 
 
-\begin{figure}[ht]
+
+%%%%%ONEMAX
+
+\begin{figure}[htb]
 \centering
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ONEMAX_5000_TIME.eps}
+   \label{subfig:5000time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ONEMAX_5000_EVALS.eps}
+   \label{subfig:5000evals}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ONEMAX_10000_TIME.eps}
+   \label{subfig:10000time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ONEMAX_10000_EVALS.eps}
+   \label{subfig:10000evals}
+}
 
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/MMDP_150_EVALS.eps}
-   \label{fig:150evals}
- }
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/MMDP_240_EVALS.eps}
-   \label{fig:240evals}
- }
- \subfigure{
-   \includegraphics[scale =0.3] {boxplots/MMDP_300_EVALS.eps}
-   \label{fig:240evals}
- }
-\caption{Evaluations to obtain the optimum in the MMDP problem.}
-\label{fig:evalsMMDP}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/ONEMAX_5000_EVALS.eps}
-   \label{fig:5000evals}
- }
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/ONEMAX_10000_EVALS.eps}
-   \label{fig:10000evals}
- }
- \subfigure{
-   \includegraphics[scale =0.3] {boxplots/ONEMAX_15000_EVALS.eps}
-   \label{fig:15000evals}
- }
-\caption{Evaluations to obtain the optimum in the OneMax problem.}
-\label{fig:evalsONEMAX}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/ROSENBROCK_10_EVALS.eps}
-   \label{fig:10evals}
- }
-\subfigure{
-   \includegraphics[scale =0.3] {boxplots/ROSENBROCK_30_EVALS.eps}
-   \label{fig:30evals}
- }
- \subfigure{
-   \includegraphics[scale =0.3] {boxplots/ROSENBROCK_50_EVALS.eps}
-   \label{fig:50evals}
- }
-\caption{Evaluations needed to obtain the optimum in the Rosenbrock function problem.}
-\label{fig:evalsROSENBROCK}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ONEMAX_15000_TIME.eps}
+    \label{subfig:15000time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ONEMAX_15000_EVALS.eps}
+    \label{subfig:15000evals}
+}
+\caption{Time (ms) and evalutions needed to obtain the optimum for the OneMax problem.}
+\label{fig:boxplotsONEMAX}
 \end{figure}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%GRAPHS
+%%ROSENBROCK
+\begin{figure}[htb]
+\centering
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ROSENBROCK_10_TIME.eps}
+   \label{subfig:150time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ROSENBROCK_10_EVALS.eps}
+   \label{subfig:150evals}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ROSENBROCK_30_TIME.eps}
+   \label{subfig:240time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ROSENBROCK_30_EVALS.eps}
+   \label{subfig:240evals}
+}
+
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ROSENBROCK_50_TIME.eps}
+    \label{subfig:300time}
+}
+\subfigure[]{
+    \includegraphics[width =6cm] {boxplots/ROSENBROCK_50_EVALS.eps}
+    \label{subfig:300evals}
+}
+\caption{Time (ms) and evalutions needed to obtain the optimum for the Rosenbrock function problem.}
+\label{fig:boxplotsROSENBROCK}
+\end{figure}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%GUSTVAO'S GRAPHS %%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[htb]
 \centering
 \subfigure[150 MMDP HeHa]{
-    \includegraphics[width =5cm] {graphs/mmdp-size-150-mut-0.006-xover-1-heterohardware.eps}
+    \includegraphics[width =6cm] {graphs/mmdp-size-150-mut-0.006-xover-1-heterohardware.eps}
    \label{subfig:graph150MMDPHeHa}
 }
 \subfigure[150 MMDP HoHa]{
-    \includegraphics[width =5cm] {graphs/mmdp-size-150-mut-0.006-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/mmdp-size-150-mut-0.006-xover-1-homohardware.eps}
    \label{subfig:graph150MMDPHoHa}
 }
 \subfigure[240 MMDP HeHa]{
-    \includegraphics[width =5cm] {graphs/mmdp-size-240-mut-0.004-xover-1-heterohardware.eps}
+    \includegraphics[width =6cm] {graphs/mmdp-size-240-mut-0.004-xover-1-heterohardware.eps}
    \label{subfig:graph150MMDPHoHa}
 }
 \subfigure[240 MMDP HoHa]{
-    \includegraphics[width =5cm] {graphs/mmdp-size-240-mut-0.004-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/mmdp-size-240-mut-0.004-xover-1-homohardware.eps}
    \label{subfig:graph240MMDPHoHa}
 }
 
 \subfigure[300 MMDP HeHa]{
-    \includegraphics[width =5cm] {graphs/mmdp-size-300-mut-0.003-xover-1-heterohardware.eps}
+    \includegraphics[width =6cm] {graphs/mmdp-size-300-mut-0.003-xover-1-heterohardware.eps}
 
    \label{subfig:graph300MMDPHeHa}
 }
 \subfigure[300 MMDP HoHa]{
-    \includegraphics[width =5cm] {graphs/mmdp-size-300-mut-0.003-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/mmdp-size-300-mut-0.003-xover-1-homohardware.eps}
     \label{subfig:graph300MMDPHoHa}
 }
 \caption{Average evolution of the individuals for MMDP problem in 8X/HeHa and 8X/HoHa.}
@@ -1075,29 +1081,29 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
 \begin{figure}[htb]
 \centering
 \subfigure[5000 ONEMAX HeHa]{
-    \includegraphics[width =5cm] {graphs/onemax-size-5000-mut-0.0002-xover-1-heterohardware.eps}
+    \includegraphics[width =6cm] {graphs/onemax-size-5000-mut-0.0002-xover-1-heterohardware.eps}
    \label{subfig:graph150ONEMAXHeHa}
 }
 \subfigure[5000 ONEMAX HoHa]{
-    \includegraphics[width =5cm] {graphs/onemax-size-5000-mut-0.0002-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/onemax-size-5000-mut-0.0002-xover-1-homohardware.eps}
    \label{subfig:graph150ONEMAXHoHa}
 }
 \subfigure[5000 ONEMAX HeHa]{
-    \includegraphics[width =5cm] {graphs/onemax-size-10000-mut-0.0001-xover-1-heterohardware.eps}
+    \includegraphics[width =6cm] {graphs/onemax-size-10000-mut-0.0001-xover-1-heterohardware.eps}
    \label{subfig:graph150ONEMAXHoHa}
 }
 \subfigure[10000 ONEMAX HoHa]{
-    \includegraphics[width =5cm] {graphs/onemax-size-10000-mut-0.0001-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/onemax-size-10000-mut-0.0001-xover-1-homohardware.eps}
    \label{subfig:graph240ONEMAXHoHa}
 }
 
 \subfigure[15000 ONEMAX HeHa]{
-    \includegraphics[width =5cm] {graphs/onemax-size-15000-mut-0.00006-xover-1-heterohardware.eps}
+    \includegraphics[width =6cm] {graphs/onemax-size-15000-mut-0.00006-xover-1-heterohardware.eps}
 
    \label{subfig:graph300ONEMAXHeHa}
 }
 \subfigure[15000 ONEMAX HoHa]{
-    \includegraphics[width =5cm] {graphs/onemax-size-15000-mut-0.00006-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/onemax-size-15000-mut-0.00006-xover-1-homohardware.eps}
     \label{subfig:graph300ONEMAXHoHa}
 }
 \caption{Average evolution of the individuals for ONEMAX problem in 8X/HeHa and 8X/HoHa.}
@@ -1115,46 +1121,44 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
 \begin{figure}[htb]
 \centering
 \subfigure[10 ROSENBROCK HeHa]{
-    \includegraphics[width =5cm] {graphs/cec-size-10-mut-0.1-xover-1-heterohardware.eps}
+    \includegraphics[width =6cm] {graphs/cec-size-10-mut-0.1-xover-1-heterohardware.eps}
    \label{subfig:graph10ROSENBROCKHeHa}
 }
 \subfigure[10 ROSENBROCK HoHa]{
-    \includegraphics[width =5cm] {graphs/cec-size-10-mut-0.1-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/cec-size-10-mut-0.1-xover-1-homohardware.eps}
    \label{subfig:graph10ROSENBROCKHoHa}
 }
 \subfigure[30 ROSENBROCK HeHa]{
-    \includegraphics[width =5cm] {graphs/cec-size-30-mut-0.03-xover-1-heterohardware.eps}
-   \label{subfig:graph30ROSENBROCKHoHa}
+    \includegraphics[width =6cm] {graphs/cec-size-30-mut-0.03-xover-1-heterohardware.eps}
+   \label{subfig:graph30ROSENBROCKHeHa}
 }
 \subfigure[30 ROSENBROCK HoHa]{
-    \includegraphics[width =5cm] {graphs/cec-size-30-mut-0.03-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/cec-size-30-mut-0.03-xover-1-homohardware.eps}
    \label{subfig:graph30ROSENBROCKHoHa}
 }
 
 \subfigure[50 ROSENBROCK HeHa]{
-    \includegraphics[width =5cm] {graphs/cec-size-50-mut-0.02-xover-1-heterohardware.eps}
+    \includegraphics[width =6cm] {graphs/cec-size-50-mut-0.02-xover-1-heterohardware.eps}
 
    \label{subfig:graph50ROSENBROCKHeHa}
 }
 \subfigure[50 ROSENBROCK HoHa]{
-    \includegraphics[width =5cm] {graphs/cec-size-50-mut-0.02-xover-1-homohardware.eps}
+    \includegraphics[width =6cm] {graphs/cec-size-50-mut-0.02-xover-1-homohardware.eps}
     \label{subfig:graph50ROSENBROCKHoHa}
 }
 \caption{Average evolution of the individuals for ROSENBROCK problem in 8X/HeHa and 8X/HoHa.}
 \label{fig:graphsROSENBROCK}
 \end{figure}
 
-% No tiene mucho sentido hablar de los resultados de los dos problemas
-% por separado, porque el objetivo no es resolver ese problema, sino
-% probar cómo funciona en algoritmo. Se pueden comentar los dos juntos
-% y se debería hacer - JJ FERGU: okis, poniéndolo todo junto.
 
-Table \ref{tab:resultsTIMEall} shows the execution times for the all the problems and configurations, while Table \ref{tab:resultsEVALSall} shows the total number of evaluations. To compare between two methods (HoSi and HeSi in the homogeneous cluster) a Wilcoxon test has been applied. For a three methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a Kruskal-Wallis test has been used. A mark in the tables indicates if the comparison with the base configuration of each cluster (HoSi/HeHa and HoSi/HoHa respectively) is significantly higher (\ding{115}), significantly lower  (\ding{116}), or no significant difference found (\ding{117}).
 
-These results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:timeMMDP}, \ref{fig:timeONEMAX} and \ref{fig:timeROSENBROCK} (time) and Figures \ref{fig:evalsMMDP}, \ref{fig:evalsONEMAX} and \ref{fig:evalsROSENBROCK} (evaluations).
+These results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:boxplotsMMDP}, \ref{fig:boxplotsONEMAX} and \ref{fig:boxplotsROSENBROCK}, for a better understanding of the behaviour of each configuration.
 
-The results show that there exist significant difference depending on the problem, configuration or number of nodes. For example, for problem MMDP in the HeHa system, adapting offline the sub-population to the computational
- power of each node makes the algorithm finish significantly earlier in all instances of the problem in the 4X configuration, and also, needing a lower number of evaluations to reach the solution. However, in the 8X configuration the time is significantly lower in the 150 instance. This can be explained because the nature of this problem, EXPLICAR AQUI PORQUE PASA (ENCUENTRA SOLUCION PRONTO)
+The results show that there exist significant difference depending on the problem, configuration or number of nodes. Also, they shown that the number of evaluations may not be a good indicator when comparing heterogeneous environments. For example, for the OneMax problem (Figure \ref{fig:boxplotONEMAX}), using 8 nodes instead of 4 requires more evaluations to finish, and yet, less time to achieve the optimum.
+
+
+ For example, for problem MMDP in the HeHa system, adapting offline the sub-population to the computational
+ power of each node makes the algorithm finish significantly earlier in all instances of the problem in the 4X configuration. However, in the 8X configuration the time is significantly lower in the 150 instance. This can be explained because the nature of this problem, EXPLICAR AQUI PORQUE PASA (ENCUENTRA SOLUCION PRONTO). Figure \ref{fig:graphsMMDP} shows that the EL GRAFIIIIICOOOO
 
 %Maribel, esto va a ser duro de explicar, quizás porque al haber más nodos, hay muchos más individuos y por lo tanto más diversidad y la diversidad es clave en este problema porque si no hay bloques buenos, da igual el mucho tiempo que lo evoluciones, que no se llegan a conseguir, pero con muchos individuos, tienes mucha diversidad y tienes disponibles bloques buenos que van combinándose mucho más rápido.
 
@@ -1174,11 +1178,11 @@ The results show that there exist significant difference depending on the proble
 
 
 
-Results for this problem are shown in Table \ref{tab:onemaxresults} and Figures  \ref{fig:timeOneMax} and \ref{fig:evalsOneMax}. In this case, adapting offline the sub-population sizes significantly decreases  the running time for solving it in the heterogeneous cluster, but this time, the number of evaluations is increased (see statistical significance in Table \ref{tab:significanceONEMAX}). In the homogeneous system, the effect of changing the sub-population sizes is clearer, and this time the number of evaluations (and therefore, the time) are reduced (both significantly). 
+In case of the OneMax problem, adapting offline the sub-population sizes significantly increase  the running time for solving it in the heterogeneous cluster. On the contrary, the homogeneous system, the effect of changing the sub-population sizes decreases the time. The usage of a dynamic adaptation system in the Heterogeneous clusters may TERMINA
 
-The efficiency on OneMax problem depends mainly on the ability to mix
+This can be explained because the efficiency on OneMax problem depends mainly on the ability to mix
 the building-blocks, and less on the genetic diversity and size of the
-population (as with MMDP). No genetic diversity is particularly
+population (as with MMDP or Rosenbrock). No genetic diversity is particularly
 required. When properly tuned, a simple Genetic Algorithm is able to
 solve OneMax in linear time. Sometimes, problems like OneMax are used
 as control functions, in order to check if very efficient algorithms
@@ -1243,7 +1247,7 @@ ANALISIS DEL TAMAÑO ADAPTATIVO
 
 \subsection{Running time analysis}
 
-This sub-section analyses the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi). For clarity in results, and due to the lack of space, we only focus in 4X configuration for the smallest instance of each problem problem. Figure \ref{fig:bars} graphically compare these results. As it can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
+This sub-section analyses the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi). For clarity in results, and due to the lack of space, we only focus in 4X configuration for the smallest instance of each problem. Figure \ref{fig:bars} graphically compare these results. As it can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
 Also, the node HeN4 requires a lot of time in the replacement stage, as it is the only one that writes into the log files. This node was the only one that use a network storage (see Table \ref{tabcomputers}).
 %TODO Comprobar esto!!
 This happens because we are using the multi-purpose laboratory network to communicate the nodes, instead of the specific one used in the HoHa system.
