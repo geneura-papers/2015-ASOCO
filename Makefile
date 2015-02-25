@@ -17,7 +17,7 @@ clean:
 	latexmk -C
 
 realclean: clean
-	$(RM) *.aux *.bbl *.tdo *~
+	$(RM) *.aux *.bbl *.blg *.tdo *.spl *~
 
 ###############################################################################
 
