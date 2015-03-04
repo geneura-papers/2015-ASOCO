@@ -783,7 +783,8 @@ Table \ref{table:parameters} summarizes all the parameters used in the experimen
 \begin{tabular}{|c|c|} \hline
 {\em Name} & {\em Value}\\ \hline \hline
 
-Crossover type & Two-points crossover \\ \hline
+Crossover type for MMDP and OneMax& Two-points crossover \\ \hline
+Crossover type for Rosenbrock& BLX-0.5 \\ \hline
 Crossover rate & 0.5\\ \hline
 Mutation probability of each gene & 1/individual size\\ \hline
 Selection & 2-tournament \\ \hline
@@ -845,7 +846,7 @@ Table \ref{tab:resultsTIMEall} shows the average execution times for  all the co
 
                 \multicolumn{7}{|c|}{MMDP}                                                                                      \\ \hline
 \multicolumn{2}{|c|}{}          &   \multicolumn{3}{|c|}{Heterogeneous Hardware}                                                    &   \multicolumn{2}{|c|}{Homogeneous Hardware}                              \\ \hline
-\multicolumn{2}{|c|}{}          &   Homogeneous Size    0   0   &   Heterogeneous Size              &   Adaptive Size               &   Homogeneous Size            &   Heterogeneous Size              \\ \hline
+\multicolumn{2}{|c|}{}          &   Homogeneous Size       &   Heterogeneous Size              &   Adaptive Size               &   Homogeneous Size            &   Heterogeneous Size              \\ \hline
 \multirow{3}{*}{4}  &   150 &   18691   $\pm$   20349   &   7124    $\pm$   10535   \ding{116}  &   25286   $\pm$   33552   \ding{117}  &   11561   $\pm$   26072   &   5501    $\pm$   12350   \ding{117}  \\ \cline{2-7}
     &   240 &   347049  $\pm$   192450  &   194975  $\pm$   146998  \ding{116}  &   412146  $\pm$   269732  \ding{117}  &   198431  $\pm$   160167  &   358710  $\pm$   248160  \ding{115}  \\ \cline{2-7}
     &   300 &   1061137 $\pm$   373629  &   877105  $\pm$   465160  \ding{116}  &   1223870 $\pm$   413830  \ding{115}  &   1069119 $\pm$   666689  &   1264568 $\pm$   647532  \ding{117}  \\ \hline
@@ -954,7 +955,7 @@ Table \ref{tab:resultsTIMEall} shows the average execution times for  all the co
     \includegraphics[width =6cm] {boxplots/MMDP_300_EVALS.eps}
     \label{subfig:300evals}
 }
-\caption{Time (ms) and evalutions needed to obtain the optimum for the MMDP problem.}
+\caption{Time (ms) and evaluations needed to obtain the optimum for the MMDP problem.}
 \label{fig:boxplotsMMDP}
 \end{figure}
 
@@ -997,7 +998,7 @@ Table \ref{tab:resultsTIMEall} shows the average execution times for  all the co
     \includegraphics[width =6cm] {boxplots/ONEMAX_15000_EVALS.eps}
     \label{subfig:15000evals}
 }
-\caption{Time (ms) and evalutions needed to obtain the optimum for the OneMax problem.}
+\caption{Time (ms) and evaluations needed to obtain the optimum for the OneMax problem.}
 \label{fig:boxplotsONEMAX}
 \end{figure}
 
@@ -1156,27 +1157,26 @@ Table \ref{tab:resultsTIMEall} shows the average execution times for  all the co
 
 
 
-These results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:boxplotsMMDP}, \ref{fig:boxplotsONEMAX} and \ref{fig:boxplotsROSENBROCK}, for a better understanding of the behaviour of each configuration. To show the evolution in each configuration the average fitness during all the runs has been plotted into evolution graphs (Figures \ref{fig:graphsMMDP}, \ref{fig:graphsONEMAX} and \ref{fig:graphsROSENBROCK}). As heterogeneous nodes are evolving asynchronously the individuals, the comparison is done using the execution time, and not the number of generations. Also, to not extend too much the paper extension only the 8X graphs have been shown.
+These results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:boxplotsMMDP}, \ref{fig:boxplotsONEMAX} and \ref{fig:boxplotsROSENBROCK}, for a better understanding of the behaviour of each configuration. To show the evolution in each configuration the average population fitness during all the runs has been plotted using boxplots into evolution graphs, with the best individual of all the runs and the average fitness of each method (Figures \ref{fig:graphsMMDP}, \ref{fig:graphsONEMAX} and \ref{fig:graphsROSENBROCK}). %As heterogeneous nodes are evolving asynchronously the individuals, the comparison is done using the execution time, and not the number of generations. %TODO descomentar esto si los gráficos tienen tiempo
+Also, to not extend too much the paper extension only the 8X graphs have been shown.
 
-The results show that, in general, there exist significant differences depending on the problem, configuration or number of nodes. Also, they show that the number of evaluations may not be a good indicator when comparing heterogeneous environments. For example, for the OneMax problem (Figure \ref{fig:boxplotsONEMAX}), using 8 nodes instead of 4 requires more evaluations to finish, and yet, less time to achieve the optimum.
+The results show that, in general, there exist significant differences depending on the problem, configuration or number of nodes. Also, they show that the number of evaluations may not be a good indicator when comparing heterogeneous environments. For example, for the OneMax problem (Figure \ref{fig:boxplotsONEMAX}), using 8 nodes instead of 4 requires more evaluations to finish, and yet, less time to achieve the optimum. Also, the average amount of time necessary to solve the problems may vary in larger ranges for MMDP and Rosenbrock. 
 
-At a first glance, and as expected \cite{Wolpert97NFL}, adapting the population sub-sizes to heterogeneous clusters do not always imply an improvement in time. This parameter setting can improve time in the MMDP and Rosenbrock, but in case of the OneMax problem, adapting offline the sub-population sizes significantly increase  the running time for solving it in the heterogeneous cluster. On the contrary, in the homogeneous system, the effect of changing the sub-population sizes decreases the time. The usage of a dynamic adaptation system in the heterogeneous cluster may TERMINAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA %TODO
-
- As can be seen in the evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHa configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHa the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time.
+At a first glance, and as expected \cite{Wolpert97NFL}, adapting the population sub-sizes to heterogeneous clusters do not always imply an improvement in time. The HeSi parameter setting can improve time in the MMDP and Rosenbrock for HeHa, but in case of the OneMax problem, adapting offline the sub-population sizes significantly increase  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHa configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHa the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) do not converge as smoothly as in HoH.
 This can be explained because the efficiency on OneMax problem depends mainly on the ability to mix
 the building-blocks, and less on the genetic diversity and size of the
 population (as with MMDP or Rosenbrock). No genetic diversity is particularly
 required. When properly tuned, a simple Genetic Algorithm is able to solve OneMax in super-linear time, i.e., $l \times log(l)$, with $l$ being the string length) \cite{Verma09MapReduce}. Sometimes, problems like OneMax are used
 as control functions, in order to check if very efficient algorithms
-on hard functions fail on easier ones.
+on hard functions fail on easier ones. 
 
-The number of nodes used also have an influence in the behaviour of the algorithms. For MMDP in the HeHa system, adapting offline the sub-population to the computational  power of each node makes the algorithm finish significantly earlier in all instances of the problem in the 4X configuration. However, in the 8X configuration the time is significantly lower in the 150 instance. This can be explained because the nature of this problem, EXPLICAR AQUI PORQUE PASA (ENCUENTRA SOLUCION PRONTO). Figure \ref{fig:graphsMMDP} shows that the EL GRAFIIIIICOOOO %TODO
+For the MMDP and Rosenbrock, in the HoHa system, setting heterogeneous sizes to sub-populations makes no difference in time, that is, changing this parameter has no influence in the  algorithm's performance.
+
+The number of nodes used also have an influence in the behaviour of the algorithms. For MMDP in the HeHa system, adapting offline the sub-population to the computational  power of each node makes the algorithm finish significantly earlier in all instances of the problem in the 4X configuration. However, in the 8X configuration the time is significantly lower only in the 150 instance. This can be explained because the nature of this problem, as the population fitness may stagnate if the optimum is not found at the first steps (see the black line in Figure \ref{fig:graphsMMDP} with respect to the average population fitness boxplots). This behaviour is opposite with the Rosenbrock function, where using a larger number of nodes improves the time with HeSi. %TODO
 
 %Maribel, esto va a ser duro de explicar, quizás porque al haber más nodos, hay muchos más individuos y por lo tanto más diversidad y la diversidad es clave en este problema porque si no hay bloques buenos, da igual el mucho tiempo que lo evoluciones, que no se llegan a conseguir, pero con muchos individuos, tienes mucha diversidad y tienes disponibles bloques buenos que van combinándose mucho más rápido.
 
- On the other hand, in the HoHa system,
- setting  heterogeneous sizes to sub-populations makes no difference in time, that is, changing this parameter has no influence in the
- algorithm's performance.
+ 
 
 
 
@@ -1190,48 +1190,6 @@ The number of nodes used also have an influence in the behaviour of the algorith
 
 
 
-
-
-%As it can be seen in Figure
-%\ref{fig:gensonemaxhomosize}, the average fitness of all sub-populations
-%are increasing in linear way in the HoSi/HeHa configuration. However,
-%the slower node evaluates extremely fewer times.  On the other
-%side, in Figure \ref{fig:gensonemaxheterosize}, smaller sub-population
-%sizes make that slower nodes increase the number of evaluations,
-%but the average fitness is also maintained in linear way (and in
-%smaller increase rate) between migrations. Nevertheless, the other
-%nodes still perform a higher number of evaluations. That is the
-%reason why the number of evaluations is higher in HeHa, and lower in
-%HoHa. Computational time is more efficiently spent in faster nodes,
-%having a higher chance to cross the individuals. In addition, due to
-%the larger size of  individuals in the OneMax problem (5000 bits
-%vs. 150 of the MMDP), the transmission time is larger, (white gaps in the
-%figures). It also implies that HeN4 sends its best individual to
-%HeN1 in an extremely large amount of time when using HoSi (every 64
-%generations). 
-
-
-
-
-
-%\begin{figure}[ht]
-%\centering
-
-%\subfigure[Heterogeneous cluster]{
-%   \includegraphics[scale =0.35] {9a.eps}
-%   \label{fig:subfig1}
-% }
-%\subfigure[Homogeneous cluster]{
-%   \includegraphics[scale =0.35] {9b.eps}
-%   \label{fig:subfig2}
-% }
-%\caption{Time to obtain the optimum in the OneMax problem (milliseconds).}
-%\label{fig:timeOneMax}
-%\end{figure}
-
-EXPLICAR LOS RESULTADOS DE ONEMAX Y ROSENBROCK
-
-
 Summarizing, adapting the population sizes to the
   computational power of each machine (offline and online) can reduce
   the time to obtain the optimum. The same heterogeneous fixed sizes
@@ -1243,7 +1201,7 @@ Summarizing, adapting the population sizes to the
 
 \subsection{Adaptive size}
 
-ANALISIS DEL TAMAÑO ADAPTATIVO
+Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each problem of the AdSi/HeHa runs. As can be seen, the behaviour of these sizes is also affected by the problem used. In OneMax...
 
 
 
@@ -1253,7 +1211,6 @@ ANALISIS DEL TAMAÑO ADAPTATIVO
 \subsection{Running time analysis}
 
 This sub-section analyses the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi). For clarity in results, and due to the lack of space, the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} graphically compare these results. As it can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
-Also, the node HeN4 requires a lot of time in the replacement stage, as it is the only one that writes into the log files. This node was the only one using a network storage (see Table \ref{tabcomputers}).
 %TODO Comprobar esto!!
 This happens because a multi-purpose laboratory network to communicate the nodes is being used, instead of the specific one used in the HoHa system.
 % Note that the standard deviation of the migration is larger in the HeHa cluster because the network is having real conditions of traffic during the experiment.
@@ -1280,8 +1237,12 @@ This happens because a multi-purpose laboratory network to communicate the nodes
 
 
 Results also show how the stages of the algorithms depend on the execution
-node. For example, recombination needs more time than mutation
-in CUAAAAAAALES problems only in the node HeN4. The reason might be the
+node. For example, the node HeN4 requires a lot of time in the replacement stage,
+ as it is the only one that writes into the log files. This node was the only one
+  using a network storage (see Table \ref{tabcomputers}).
+
+Different proportion of times can be spent in each section depending on the problem.
+The reason might be the
 creation of new objects (memory allocation), which in Java and with
 limited memory (and swapping) requires more time than the iteration of
 elements previously created (for example, in the mutation). Adapting
