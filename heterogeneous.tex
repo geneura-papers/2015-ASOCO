@@ -148,15 +148,18 @@
 
 
 Distributed Evolutionary Algorithms (dEAs) are usually executed in homogeneous dedicated clusters, 
-although most scientists only have access to networks of heterogeneous nodes (for example, desktop PCs in a lab). 
-However, adapting this kind of algorithms to these environments so that they can take advantage of their heterogeneity to save execution time is still an issue.
+although most scientists mainly have access to networks of heterogeneous nodes (for example, desktop PCs in a lab). 
+However, adapting this kind of algorithms to these environments, so that they can take advantage of their heterogeneity to save running time, is still an issue.
 The different computational power of the nodes may affect the performance of the algorithm, and a proper tuning or adaptation of the algorithm to each node could reduce execution time.
 
-Since the dEAs include a whole range of parameters with an influence in the performance, this paper proposes a study on the size of the
-population. This parameter  is one of the most important, since it has a direct relationship with the
-number of iterations necessary to find the solution, as it affects the exploration factor of the algorithm. Two size adaptation schemes have been tested- an offline and an online
-parameter setting, and three problems with different characteristics and
-computational demands have been used.
+Since the dEAs include a whole range of parameters with an influence in the performance, 
+this paper proposes a study on the size of the population. This parameter  is one of the most important, 
+since it has a direct relationship with the number of iterations needed to find the solution, as it affects
+the exploration factor of the algorithm. 
+The aim of this paper consists in validating the following hypothesis: adapting the sub-population size 
+to the computational power of the heterogeneous cluster nodes presents an improvement in running time. 
+Two size parameter setting schemes have been tested, an offline and an online parameter setting, and three 
+problems with different characteristics and computational demands have been used.
 
 Results show
 that setting the population size according to the computational power
@@ -254,7 +257,7 @@ possible solutions, called {\em individuals}, each one competing with the other 
 rest of the
 population. Every iteration of the algorithm (or {\em generation}), the
 population evolves by means of selection and recombination/mutation operators to
-create a new set of candidates, until a {\em stop criterion}
+create a new set of candidates, until a {\em stopping criterion}
 (e.g. number of generations) is met. The fitness function is a quality
 function that gives the grade of adaptation of an individual respect
 the others. This function usually describes the problem being solved. 
@@ -280,7 +283,7 @@ computational capabilities of a heterogeneous cluster.
 % Escribe tu argumento en tres o cuatro frases y desarrolla ese
 % argumento, cada frase en un párrafo. La argumentación debe quedar
 % clara. - JJ FERGU: reestructurando la intro
-In distributed EAs a set of nodes executes simultaneously the EA,
+In distributed EAs the algorithm is run in a set of nodes simultaneously,
 working with different sub-populations (or islands) at the same
 time. Periodically one or more individuals are
 interchanged (migrated) between sub-populations, which are connected
@@ -328,7 +331,7 @@ exploitation/exploration rate of the search space. % Ein? Sez who? FERGU: Alba e
 
 These facts have motivated us to study a combination of both ideas in
 this paper: dEAs on a heterogeneous set of nodes with different
-parameter values adapted to each node. In this study, the parameter to
+parameter values adapted to each node. In this case, the parameter to
 be adapted to the computational power of each node has been the
 sub-population size of each island. %why?????? - JJ FERGU: Abajo (by Carlos)
 
@@ -338,7 +341,7 @@ In this work, a heterogeneous distributed system has been used to  answer  the f
 \begin{itemize}
  \item Can a distributed EA be adapted to leverage the capability of a
    heterogeneous cluster? 
- \item How the adaptation of the sub-population size to the computational power affect the execution time and number of evaluations?
+ \item How the adaptation of the sub-population size to the computational power affect the running time and number of evaluations?
  \item Is there any difference between using the same sub-population sizes in a homogeneous and a heterogeneous cluster?
  \item How is each stage of the algorithm (selection, recombination, mutation, replacement and migration) affected by the different
    configurations?
@@ -356,12 +359,12 @@ Then, the results of the experiments are shown (Section \ref{sec:results}), foll
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SOA  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\section{Background on adaptation in heterogeneous clusters}
+\section{Background on tuning and adaptation in heterogeneous clusters}
 \label{sec:soa}
 
 
 
-One of the problems in parameter adaptation in heterogeneous clusters is 
+One of the problems in parameter tuning and adaptation in heterogeneous clusters is 
 the computational load representation. It depends on the algorithm, size of the problem, 
 language, compiler or hardware characteristics, so the results obtained from artificial 
 benchmarks (such as  Linpack \cite{LinpackEndo10}) should not be extolled as identificative 
@@ -375,9 +378,9 @@ of the algorithm in order to distribute individuals of an Evolutionary Strategy
 In other works, there is not a direct relation between the algorithm parameters and the
 computational resources of the nodes. For example, Dom\'inguez et al. \cite{HYDROCM} 
 divided the available devices in ``faster'' and ``slower'' nodes to create a distributed hybrid 
-meta-heuristic that combines two different EAs: Genetic Algorithms (GAs) and Simulated
+meta-heuristic that combines two different methods: Genetic Algorithms (GAs) and Simulated
 Annealing (SA). Their system executes the heavy (in computational
-terms) algorithms (GAs) in the faster nodes (computational devices), and
+terms) algorithms (GAs) in the faster nodes, and
 simpler meta-heuristics (SA) in the slower ones, obtaining better results
 than other configurations.  Gong et al. in \cite{HETEROGENEOUSTOPOLOGY} also ordered 
 the nodes by their computational power to test different topology configurations in a distributed EA.
@@ -387,32 +390,32 @@ cluster to validate if the adaptation takes advantage of the heterogeneity
 of the cluster, as proposed in this paper.
 
 The heterogeneous computational performance of nodes or network speed can affect the performance of an algorithm. In \cite{HETEROGENEOUSHARD},
- Alba et al. compared a distributed Genetic Algorithm (dGA), 
+ Alba et al. compared a dGA, 
  on homogeneous and heterogeneous clusters. 
- Super-linear performance in terms of number of iterations to find the optimum was obtained in the heterogeneous ones,
+ Super-linear performance in terms of number of iterations to find the optimum was obtained on the heterogeneous ones,
  being more efficient than the same algorithm running on homogeneous
  machines. However, the parameter setting was the same in both
- clusters and they did not adapt the parameters to the machines used. 
+ clusters and authors did not adapt the parameters to the machines used. 
 
 
 
 Adapting algorithm parameters to computational nodes derives in heterogeneous parameter sets. These sets can improve the results in homogeneous hardware, for example, setting a random set of parameters in each homogeneous node can also increase the
-performance of a distributed Genetic Algorithm, as explained by Gong
+performance of a dGA, as explained by Gong
 and Fukunaga in \cite{HETEROGENEOUSPARAMETERS}. That model
 outperformed a tuned canonical dGA with the same parameter values in
-all islands. Other approaches \cite{PanaceasClune05,ParallelGATongchim02} optimize sets of heterogeneous parameters using meta-GAs. Single parameter adaptation have been also studied. For example, adapting the migration rate produced better
+all islands. Other approaches \cite{PanaceasClune05,ParallelGATongchim02} optimize sets of heterogeneous parameters using meta-GAs. Single parameter adaptation have also been  studied. For example, adapting the migration rate produced better
 results than homogeneous periods, as explained by Salto and Alba in
 \cite{HETEROGENEOUSMIGRATION}. This indicates that heterogeneous parameters
- may lead to an increase of performance, so it is necessary to valid if the 
+ may lead to an increase of performance, so it is necessary to validate if the 
  performance is due to the parameter set or by the heterogeneous devices combination.
 
 
 
-This work is focused on the sub-population sizes, as this parameter has been previously studied in different works because it has a huge impact in the results. In the work of Weber et al. \cite{DifferentialWeber09} two different sub-population sizes are used: size alpha (higher size value for exploration) and a variable size beta (lower value for exploitation). Schlierkamp-Voosen et al. \cite{AdaptationSizesSchlierkamp96} proposed a quality measure to be used in each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, those works are based on the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not from the machines that are executing the distributed EAs.
+This work is focused on the sub-population sizes, as this parameter has been previously studied in different works due to its huge impact in the results. In the work of Weber et al. \cite{DifferentialWeber09} two different sub-population sizes are used: higher size value for exploration, and a variable lower size value for exploitation. Schlierkamp-Voosen et al. \cite{AdaptationSizesSchlierkamp96} proposed a quality measure to be used in each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, those works are based on the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not from the machines that are executing the distributed EAs.
 
 %OJO! En AdaptationSizesSchlierkamp96 dicen que cuando no ponen tamaño global fijo, el tamaño de las subpoblaciones y los resultados son menos claros (usarlo más alante)
 %TODO reescribe bien lo siguiente
-In this work, a parameter (size of the sub-populations) of a dEA is adapted (offline and online) to the computational power of each machine, using the information obtained from the algorithm itself, and compared in different hardware systems.
+In this work, the sizes of the sub-populations of a dEA are adapted (offline and online) to the computational power of each machine, using the information obtained from the algorithm itself, and compared in different hardware systems.
  To the best of our knowledge, there are no works that
  modify parameters of the EA (such as the size) depending on the
  node where the island is being executed, and taking into account information provided by the execution of the algorithm. 
@@ -424,9 +427,9 @@ In this work, a parameter (size of the sub-populations) of a dEA is adapted (off
 %%%%%%%%%%%%%%%%%%  Experiments  %%%%%%%%%%%%%%%%%%%
 \section{Experimental setup}
 \label{sec:experiments}
-In this section two different parameter adaptation schemes are proposed to test if adapting the sub-population sizes of a dEA to the nodes of a  heterogeneous clusters can reduce time. In the field of  Evolutionary Computation (EC) there are two different approaches about the algorithm parameter setting: {\em parameter tuning} and {\em parameter control} \cite{PARAMETERTUNING}. The first one consists in establishing a good set of parameters before the run (offline), and do not change them during the execution. The parameter control refers to setting up a number of parameters of the EA  and changing these values in running time (online). 
+In this section two different parameter setting schemes are proposed to test if adapting the sub-population sizes of a dEA to the nodes of a  heterogeneous cluster leads to time reduction. In the field of  Evolutionary Computation (EC) there are two different approaches about the algorithm parameter setting: {\em parameter tuning} and {\em parameter control} \cite{PARAMETERTUNING}. The former consists in establishing a good set of parameters before the run (offline), and do not change them during the execution. On the other hand, parameter control refers to setting up a number of  the EA parameters  and changing these values in running time (online). 
 
-For the first approach, a dEA with the same sub-population sizes (baseline) has been executed in the heterogeneous cluster until the optimal solution is found. Then, the obtained number of generations have been used, to proportionally distribute the number of individual among the nodes (that is, offline). The same set of sizes is used in the homogeneous cluster to validate if the changes in performance are due to the parameters or the adaptation to the nodes. Finally, an online parameter setting that extract relative information of the performance of the nodes has been tested to validate our approach. %TODO esto de validate our approach no mola, cambiarlo también en las contestaciones a los revisores
+In this study, a dEA with the same sub-population sizes (baseline) has been executed in the heterogeneous cluster until the optimal solution is found. Then, the obtained number of generations have been used, to proportionally distribute the number of individual among the nodes, that is, offline. The same set of sizes is used in the homogeneous cluster to validate if the changes in performance are due to the parameters or the adaptation to the nodes. Finally, an online parameter setting that extract relative information about the performance of the nodes has been tested to validate our approach. %TODO esto de validate our approach no mola, cambiarlo también en las contestaciones a los revisores
 
 
 
@@ -443,7 +446,7 @@ It is a steady-state approach, i.e. every generation the offspring is mixed with
 
 \begin{algorithmic}
 \STATE population $\gets$ initializePopulation()
-\WHILE {stop criterion not met}
+\WHILE {stopping criterion not met}
     \STATE parents $\gets$ selection(population)
     \STATE offspring $\gets$ recombination(parents)
     \STATE offspring $\gets$ mutation(offspring)
@@ -483,12 +486,12 @@ It is a steady-state approach, i.e. every generation the offspring is mixed with
 %suficientes, para que no te digan el clásico "Prueba otro algoritmo"
 %- JJ %TODO TERMINAR Y ENLAZAR
 
-Although results may be independent of the problem because an adaptive algorithm can not replace a specific problem adaptation \cite{PanaceasClune05}, different types of problems that cover different characteristics
+Although results may be independent of the problem as an adaptive algorithm can not replace a specific problem adaptation \cite{PanaceasClune05}, different types of problems that cover different characteristics
 and computational demands have been used in this work.
 
-The problems to evaluate are the Massively Multimodal Deceptive
+In these experiments, the Massively Multimodal Deceptive
 Problem (MMDP) \cite{goldberg92massive},  the OneMax problem
-\cite{ONEMAX}, and the Rosenbrock Function \cite{CEC2005_Benchmark}. 
+\cite{ONEMAX}, and the Rosenbrock Function \cite{CEC2005_Benchmark} have been used. 
 % Antonio - Rosenbrock's o 'Shifted Rosenbrock'?
 % Rosenbrock. - JJ
 Each one requires different actions/abilities by the GA
@@ -545,15 +548,15 @@ f_{MMDP}(\vec s)= \sum_{i=1}^{k} fitness_{s_i}
 \end{equation}
 
 
-OneMax is a simple linear problem that consists in maximising the number of ones in a binary string. That is, maximise the expression:
-\begin{equation}
+OneMax is a simple linear problem that consists in maximising the number of ones in a binary string. That is, maximise the expression specified in Equation \ref{eq:onemax}.
+\begin{equation}\label{eq:onemax}
 f_{OneMax}(\vec{x}) = \sum_{i=1}^{N}{x_{i}}
 \end{equation}
 
-Three different string sizes have been used: 5000, 10000 and 15000.
+In this case, three different string sizes have been used: 5000, 10000 and 15000.
 %%%%%%%%%%%%%%%%%%
 
-Finally, the Shifted Rosenbrock function is defined as:
+Finally, the Shifted Rosenbrock function is defined in Equation \ref{eq:rosenbrock}.
 
 
 \begin{equation}\label{eq:rosenbrock}
@@ -578,7 +581,7 @@ This is a multi-modal shifted function, which is non-separable and scalable and 
                                 % completas" o vaya usté a saber... -
                                 % JJ FERGU: explicado con la siguiente frase
 
-As this study is going to test parameter adaptation to hardware, different configurations should be used to compare and validate if the change in the parameters depends only on the parameters, the hardware heterogeneity, or the combination of both.
+The main objective of this work is testing parameter adaptation to hardware. Thus, different configurations should be used to compare and validate if the change in the parameters depends only on the parameters, the hardware heterogeneity, or the combination of both.
 Five configurations of hardware and parameter settings have been tested:
 
 
@@ -615,15 +618,15 @@ HeN8  &  Intel(R) Core(TM)2 Quad  CPU   Q8200  @ 2.33GHz   & 4GB   & Ubuntu 14.0
 }
 \end{table*}
 
-Also, to study the scalability, two different number of nodes have been used in each problem/configuration: 4 nodes (from H1 to H4, referred as  {\em 4X} configuration for the rest of the paper) and 8 nodes (from H1 to H8, referred {\em 8X} configuration). These numbers of nodes have been previously used in other works on dEAs in heterogeneous environments \cite{HETEROGENEOUSHARD,HYDROCM,Salto13Distributed}.
+To study the scalability, two different number of nodes have been used in each problem/configuration: 4 nodes (from H1 to H4, referred as  {\em 4X} configuration for the rest of the paper) and 8 nodes (from H1 to H8, referred {\em 8X} configuration). The same amount of nodes been previously used in other works on dEAs in heterogeneous environments \cite{HETEROGENEOUSHARD,HYDROCM,Salto13Distributed}.
 
-The global population size has been set to 1024 individuals. Other researchers that investigate in dEAs in heterogeneous environments have used 512 individuals (see the works \cite{HYDROCM,Dominguez13HydroCM,Salto13Distributed}). However, using 512 individuals in first preliminary runs obtained extremely low sub-population sizes, so a larger value has been used. 1024 individuals is a number big enough to test different sub-population sizes in different number of computational nodes (4 and 8), allowing an easier distribution among them. The chosen stop criterion for all approaches used in this work is to find the optimum of the problem (so, all runs in this work have always finished when the optimum have been found in one of the nodes). This stop criterion as been considered as Alba et al. did in \cite{EVALUATIONPARALLEL}, since it offers a fair way to compare the execution time and behaviour of the tested configurations. Two-point crossover has been chosen, as it has been used previously in studies on parallel GAs  for binary problems \cite{CantuPazTopologies99}, and BLX-0.5 for real coded dEAs \cite{Robles09ParallelFuzzy}.
+The global population size has been set to 1024 individuals. Other researchers that investigate in dEAs in heterogeneous environments have used 512 individuals (see the works \cite{HYDROCM,Dominguez13HydroCM,Salto13Distributed}). However, as using 512 individuals in  preliminary runs obtained extremely low sub-population sizes, a larger value has been used. 1024 individuals is a number big enough to test different sub-population sizes in different number of computational nodes (4 and 8), allowing an easier distribution among them. The stopping criterion for all approaches used in this work is to find the optimum of the problem, so that all runs have always finished when the optimum has been found in one of the nodes. This stopping criterion has been considered as Alba et al. did in \cite{EVALUATIONPARALLEL}, since it offers a fair way to compare the running time and behaviour of the tested configurations. Two-point crossover has been chosen, as it has been used previously in studies on parallel GAs  for binary problems \cite{CantuPazTopologies99}, and BLX-0.5 for real coded dEAs \cite{Robles09ParallelFuzzy}.
 
 \subsubsection{Homogeneous Size configuration}
 
 
 
-In this configuration, each node has the same number of individuals (so, the total amount is 1024).  The algorithm has been executed 40 times per problem instance on the homogeneous (HoHa) and heterogeneous clusters (HeHa).  The average number of generations in each node of the HeHa cluster can be seen in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained (and their proportion in every node) to reach the optimum depends on the problem considered (besides the hardware).
+In this configuration, each node has the same number of individuals, so the total amount is 1024.  The algorithm has been run 40 times per problem instance on the homogeneous (HoHa) and heterogeneous clusters (HeHa).  The average number of generations in each node of the HeHa cluster are shown in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained and their proportion in every node to reach the optimum depends on the problem considered, besides the hardware.
 
 \begin{table*}
 \centering{
@@ -716,7 +719,7 @@ Our aim consists in validating the following hypothesis: adapting the sub-popula
 
 In this work, for a possible offline way to calculate the computational performance of each node, the average number of generations obtained in the HoSi/HeHa configuration for the three problems is used in order to determine the computational power of the heterogeneous machines. This comparison takes into account all the evolutionary process in a fair manner (proportional to the memory, processor and network usage), instead a traditional benchmark that usually relies only on the CPU speed. Although this is not obviously the ideal way, it is a possible way to establish the computational power for the experiments of this work, and to determine if changing the sub-population size according the computational power reduces the computing time of the whole approach. It should be considered that the contribution of this work is not the method to compute these sizes, but the comparison and analysis of the algorithm with parameters adapted to their power.
 
-Thus, the obtained average number of generations in the previous sub-section (Tables \ref{table:generations4X} and \ref{table:generations8X}) is used to set proportionally the sizes in the HeSi/HeHa and HeSi/HoHa configurations. This has been done by dividing the total number of individuals (1024) proportionally to the number of generations spent by each node in HoSi/HeHa to solve the same problem. Note that, even having two nodes with the same processors and memory (HeN1 and HeN2), they could have different computational power: this may be produced by different operating systems, virtual machine versions, or number of processes being executed (inside a node).
+Thus, the obtained average number of generations in the previous sub-section (Tables \ref{table:generations4X} and \ref{table:generations8X}) is used to set proportionally the sizes in the HeSi/HeHa and HeSi/HoHa configurations. This has been done by dividing the total number of individuals (1024) proportionally to the number of generations spent by each node in HoSi/HeHa to solve the same problem. Note that, even having two nodes with the same processors and memory (HeN1 and HeN2), they might have different computational power: this may be produced by different operating systems, virtual machine versions, or number of processes being executed (inside a node).
 
 
 
@@ -724,20 +727,20 @@ Thus, the obtained average number of generations in the previous sub-section (Ta
 
 
 
-Finally, in order to validate the hypothesis that adapting the sub-population sizes to computational resources of a heterogeneous cluster leads to decrease of time to obtain the solution, a third configuration is proposed. In this approach, the adaptation of the sub-population size to the computational power of the islands (nodes) is performed during runtime (online).  Each time a node ($N$) receives an individual, it compares its current number of generations ($Gen_{N}$) with the ones of the node who sent the individual (node $N-1$ in the ring). Then, the sub-population size is adapted proportionally to the difference in the number of generations, following the next equation:
+Finally, in order to validate the hypothesis that adapting the sub-population sizes to computational resources of a heterogeneous cluster leads to a time decreasing to obtain the solution, a third configuration is proposed. In this approach, the adaptation of the sub-population size to the computational power of the islands (nodes) is performed during runtime (online).  Each time a node ($N$) receives an individual, it compares its current number of generations ($Gen_{N}$) with the ones of the node who sent the individual (node $N-1$ in the ring). Then, the sub-population size is adapted proportionally to the difference in the number of generations, following the next equation:
 
 \begin{equation}
 size'_{N}=\dfrac{Gen_{N}}{Gen_{N-1}}size_{N}
 \end{equation}
 
-If the new size is larger than the actual size, new individuals are added to the sub-population cloning  existent ones randomly. Otherwise, the sub-population must be reduced and thus, the worst are removed. The algorithm listed in Algorithm \ref{alg:EA} is now updated as shown in Algorithm \ref{alg:EAadaptive}.
+If the new size is larger than the current size, new individuals are added to the sub-population, cloning  existent ones randomly. Otherwise, the sub-population must be reduced and thus, the worst are removed. The algorithm listed in Algorithm \ref{alg:EA} is now updated as shown in Algorithm \ref{alg:EAadaptive}.
 
 \begin{algorithm}[htb]
 
 \begin{algorithmic}
 \STATE N $\gets$ initialPopulationSize
 \STATE population $\gets$ initializePopulation(N)
-\WHILE {stop criterion not met}
+\WHILE {stopping criterion not met}
     \STATE G $\gets$ G + 1
     \STATE parents $\gets$ selection(population)
     \STATE offspring $\gets$ recombination(parents)
@@ -773,13 +776,13 @@ If the new size is larger than the actual size, new individuals are added to the
 \label{alg:EAadaptive}
 \end{algorithm}
 
-With this possible online adaptation scheme, each node only requires to receive information of one of the neighbours and not from the whole system. Thus, each node tends to have a number of individuals proportional to its computational power with respect to the other nodes. Experiments on homogeneous cluster do not alter the sub-population sizes, as the number of current generations are equal in all nodes during runtime.
+Using this possible online adaptation scheme, each node only requires to receive information about one of the neighbours and not from the whole system. Thus, each node tends to have a number of individuals proportional to its computational power with respect to the other nodes. Experiments on homogeneous cluster do not affect the sub-population sizes, as the number of current generations are equal in all nodes during runtime.
 
-Table \ref{table:parameters} summarizes all the parameters used in the experiments.
+Table \ref{table:parameters} summarizes  the parameter set used in the experiments.
 
 \begin{table}
 \centering
-\caption{Parameters used in all configurations.}
+\caption{Parameter set used in described experiments.}
 \begin{tabular}{|c|c|} \hline
 {\em Name} & {\em Value}\\ \hline \hline
 
@@ -791,7 +794,7 @@ Selection & 2-tournament \\ \hline
 Replacement & Worst are removed\\ \hline
 Generations to migrate & 64 \\ \hline
 Number of individuals to migrate & 1 \\ \hline
-Stop criterion & Optimum found \\ \hline
+Stopping criterion & Optimum found \\ \hline
 Individual size for MMDP & 150, 240 and 300  \\ \hline
 Individual size for OneMax & 5000, 10000 and 15000 \\ \hline
 Individual size for Rosenbrock & 10, 30 and 50 \\ \hline
@@ -812,7 +815,7 @@ Initial island size in AdSi (8x) & 128 \\ \hline
 \end{table}
 
 \subsection{Framework}
-In order to deal with the operating system and architecture heterogeneity (different operating systems and versions, processors, compilers, etc.), the OSGiLiath framework \cite{SOASOCO}, based on Java, has been used in this work. This is a service-oriented evolutionary framework that automatically configures the services to be used in a local network. In this case, each node offers a migration buffer to accept foreign individuals. Also, in order to reduce bottlenecks in distributed executions, asynchronous communication has been provided to avoid idle time using reception buffers (that is, the algorithm does not wait until new individuals arrive, but the buffers cannot be used again until the reception is done). This kind of communication offers an excellent performance when working with different nodes and operating systems, as proved in \cite{HETEROGENEOUSHARD,AsynchronousMerelo08}. The transmission mechanism is based on ECF Generic server (over TCP)\footnote{\url{http://www.eclipse.org/ecf/}}.  The source code of the algorithms used in this work is available in \url{http://www.osgiliath.org} under a LGPL V3 License. 
+In order to deal with the operating system and architecture heterogeneity (different operating systems and versions, processors, compilers, etc.), the OSGiLiath framework \cite{SOASOCO}, based on Java, has been used in this work. This is a service-oriented evolutionary framework that automatically configures the services to be used in a local network. In this case, each node offers a migration buffer to accept foreign individuals. Also, in order to reduce bottlenecks in distributed runs, asynchronous communication has been provided to avoid idle time using reception buffers (that is, the algorithm does not wait until new individuals arrive, but the buffers cannot be used again until the reception is done). This kind of communication offers an excellent performance when working with different nodes and operating systems, as proved in \cite{HETEROGENEOUSHARD,AsynchronousMerelo08}. The transmission mechanism is based on ECF Generic server (over TCP)\footnote{\url{http://www.eclipse.org/ecf/}}.  The source code of the algorithms used in this work is available at \url{http://www.osgiliath.org} under a LGPL V3 License. 
 
 %%%%%%%%%%%%%%%%%%  Results  %%%%%%%%%%%%%%%%%%%
 
@@ -822,7 +825,7 @@ In order to deal with the operating system and architecture heterogeneity (diffe
 
 
 The three main objectives of parallel programming are to tackle large computational problems, increase the performance of algorithms in a finite time, or reduce computational time to solve the problem (reaching the optimum) \cite{EVALUATIONPARALLEL}.  This work is focused on the third one.
-As stated by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the performance of a parallel EA by the number of fitness function evaluations required to attain a solution may be misleading. In our case, for example, the evaluation time is different in each node of the heterogeneous cluster, so the real algorithm speed (in time) could not be reflected correctly. However, the number of evaluations has been included in this section to better understand the results. It is difficult to compare the performance of HoHa and HeHa for the same reason: the evaluation time is different in each system (and even in each node). Thus, in this work, our aim is not making the heterogeneous cluster comparable or better in time than the homogeneous one (because they are, obviously, different), but showing that the same parameter configuration can improve performance in time on heterogeneous clusters and could not have an effect on homogeneous ones.
+As stated by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the performance of a parallel EA by the number of fitness function evaluations required to attain a solution may be misleading. In our case, for example, the evaluation time is different in each node of the heterogeneous cluster, so the actual algorithm speed (in running time) could not be reflected correctly. However, the number of evaluations has been included in this section to better understand the results. It is difficult to compare the performance of HoHa and HeHa for the same reason: the evaluation time is different in each system (and even in each node). Thus, in this work, our aim is not making the heterogeneous cluster comparable or better in time than the homogeneous one (because they are, obviously, different), but showing that the same parameter configuration can improve performance in time on heterogeneous clusters and could not have an effect on homogeneous ones.
 
 
 
@@ -832,7 +835,7 @@ As stated by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the performa
 % probar cómo funciona en algoritmo. Se pueden comentar los dos juntos
 % y se debería hacer - JJ FERGU: okis, poniéndolo todo junto.
 
-Table \ref{tab:resultsTIMEall} shows the average execution times for  all the configurations and problems, while Table \ref{tab:resultsEVALSall} shows the total number of evaluations. In order to compare statistically  two methods (HoSi and HeSi in the homogeneous cluster) a Wilcoxon test has been applied. For a three methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a Kruskal-Wallis test has been used. A mark in the tables indicates if the comparison with the base configuration of each cluster (HoSi/HeHa and HoSi/HoHa respectively) is significantly higher (\ding{115}), significantly lower  (\ding{116}), or no significant difference found (\ding{117}). Since the aim to reduce the computational time, the lower results the better.
+Table \ref{tab:resultsTIMEall} shows the average running times for  all the configurations and problems, while Table \ref{tab:resultsEVALSall} shows the total number of evaluations. In order to compare statistically  two methods (HoSi and HeSi in the homogeneous cluster) a Wilcoxon test has been applied. For a three methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a Kruskal-Wallis test has been used. A mark in the tables indicates if the comparison with the base configuration of each cluster (HoSi/HeHa and HoSi/HoHa respectively) is significantly higher (\ding{115}), significantly lower  (\ding{116}), or no significant difference found (\ding{117}). Since the aim is to reduce the computational time, the lower results the better.
 
 
 
@@ -1157,22 +1160,22 @@ Table \ref{tab:resultsTIMEall} shows the average execution times for  all the co
 
 
 
-These results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:boxplotsMMDP}, \ref{fig:boxplotsONEMAX} and \ref{fig:boxplotsROSENBROCK}, for a better understanding of the behaviour of each configuration. To show the evolution in each configuration the average population fitness during all the runs has been plotted using boxplots into evolution graphs, with the best individual of all the runs and the average fitness of each method (Figures \ref{fig:graphsMMDP}, \ref{fig:graphsONEMAX} and \ref{fig:graphsROSENBROCK}). %As heterogeneous nodes are evolving asynchronously the individuals, the comparison is done using the execution time, and not the number of generations. %TODO descomentar esto si los gráficos tienen tiempo
-Also, to not extend too much the paper extension only the 8X graphs have been shown.
+Obtained results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:boxplotsMMDP}, \ref{fig:boxplotsONEMAX} and \ref{fig:boxplotsROSENBROCK}, for a better understanding of the behaviour of each configuration. To show the evolution in each configuration the average population fitness during all the runs has been plotted using boxplots into evolution graphs, with the best individual of all the runs and the average fitness of each method (Figures \ref{fig:graphsMMDP}, \ref{fig:graphsONEMAX} and \ref{fig:graphsROSENBROCK}). %As heterogeneous nodes are evolving asynchronously the individuals, the comparison is done using the execution time, and not the number of generations. %TODO descomentar esto si los gráficos tienen tiempo
+Only the 8X graphs have been shown in order to not extend too much the paper extension. %TODO ponemos que el 4X shows similar behaviours?
 
-The results show that, in general, there exist significant differences depending on the problem, configuration or number of nodes. Also, they show that the number of evaluations may not be a good indicator when comparing heterogeneous environments. For example, for the OneMax problem (Figure \ref{fig:boxplotsONEMAX}), using 8 nodes instead of 4 requires more evaluations to finish, and yet, less time to achieve the optimum. Also, the average amount of time necessary to solve the problems may vary in larger ranges for MMDP and Rosenbrock. 
+The results show that, in general, there exist significant differences depending on the problem, configuration or number of nodes. Also, it can be seen that the number of evaluations may not be a good indicator when comparing heterogeneous environments. For example, for the OneMax problem (Figure \ref{fig:boxplotsONEMAX}), using 8 nodes instead of 4 requires more evaluations to finish, and yet, less time to achieve the optimum. Also, the average amount of time needed to solve the problems may vary in larger ranges for MMDP and Rosenbrock. 
 
-At a first glance, and as expected \cite{Wolpert97NFL}, adapting the population sub-sizes to heterogeneous clusters do not always imply an improvement in time. The HeSi parameter setting can improve time in the MMDP and Rosenbrock for HeHa, but in case of the OneMax problem, adapting offline the sub-population sizes significantly increase  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHa configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHa the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) do not converge as smoothly as in HoH.
+At a first glance, and as expected \cite{Wolpert97NFL}, adapting the population sub-sizes to heterogeneous clusters do not always imply an improvement in time. The HeSi parameter setting can improve time in the MMDP and Rosenbrock for HeHa, but in case of the OneMax problem, adapting offline the sub-population sizes significantly increase  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHa configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHa the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) do not converge as smoothly as in HoHa.
 This can be explained because the efficiency on OneMax problem depends mainly on the ability to mix
 the building-blocks, and less on the genetic diversity and size of the
 population (as with MMDP or Rosenbrock). No genetic diversity is particularly
-required. When properly tuned, a simple Genetic Algorithm is able to solve OneMax in super-linear time, i.e., $l \times log(l)$, with $l$ being the string length \cite{Verma09MapReduce}. Sometimes, problems like OneMax are used
+required. When properly tuned, a simple GA is able to solve OneMax in super-linear time, i.e., $l \times log(l)$, with $l$ being the string length \cite{Verma09MapReduce}. Sometimes, problems like OneMax are used
 as control functions, in order to check if very efficient algorithms
 on hard functions fail on easier ones. 
 
 On the contrary, for the MMDP and Rosenbrock, in the HoHa system, setting heterogeneous sizes to sub-populations makes no difference in time, that is, changing this parameter has no influence in the  algorithm's performance.
 
-The number of nodes used also have an influence in the behaviour of the algorithms. For MMDP in the HeHa system, adapting offline the sub-population to the computational  power of each node makes the algorithm finish significantly earlier in all instances of the problem in the 4X configuration. However, in the 8X configuration the time is significantly lower only in the 150 instance. This can be explained because the nature of this problem, as the population fitness may stagnate if the optimum is not found at the first steps (see the black line in Figure \ref{fig:graphsMMDP} with respect to the average population fitness boxplots). This behaviour is opposite with the Rosenbrock function, where using a larger number of nodes improves the time with HeSi and AdSi. %TODO
+Finally, the number of nodes affect the behaviour of the algorithms. In the case of MMDP in the HeHa system, adapting offline the sub-population to the computational  power of each node makes the algorithm finish significantly earlier in all instances of the problem in the 4X configuration. However, in the 8X configuration the time is significantly lower only in the 150 instance. This can be due to the nature of this problem, as the population fitness may stagnate if the optimum is not found at the first steps (see the black line in Figure \ref{fig:graphsMMDP} with respect to the average population fitness boxplots). This behaviour is opposite in the case of the Rosenbrock function, where using a larger number of nodes improves the time with HeSi and AdSi. %TODO
 
 %Maribel, esto va a ser duro de explicar, quizás porque al haber más nodos, hay muchos más individuos y por lo tanto más diversidad y la diversidad es clave en este problema porque si no hay bloques buenos, da igual el mucho tiempo que lo evoluciones, que no se llegan a conseguir, pero con muchos individuos, tienes mucha diversidad y tienes disponibles bloques buenos que van combinándose mucho más rápido.
 
@@ -1210,7 +1213,7 @@ Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each pr
 
 \subsection{Running time analysis}
 
-This sub-section analyses the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi). For clarity in results, and due to the lack of space, the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} graphically compare these results. As it can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
+In this sub-section the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi) is analysed. For the shake of clarity in results, and due to the lack of space, the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} graphically compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
 %TODO Comprobar esto!!
 This happens because a multi-purpose laboratory network to communicate the nodes is being used, instead of the specific one used in the HoHa system.
 % Note that the standard deviation of the migration is larger in the HeHa cluster because the network is having real conditions of traffic during the experiment.
@@ -1244,13 +1247,13 @@ node. For example, the node HeN4 requires a lot of time in the replacement stage
 Different proportion of times can be spent in each section depending on the problem.
 The reason might be the
 creation of new objects (memory allocation), which in Java and with
-limited memory (and swapping) requires more time than the iteration of
+limited memory (and swapping) requires higher time than the iteration of
 elements previously created (for example, in the mutation). Adapting
 the sub-population size makes the slower node of HeHa behave in similar
 way than the other nodes (same time in each stage). Moreover, the size
 of the individuals affects to some parts of the EA; for example, in 
-OneMax the mutation requires more time than the replacement. However,
-it must be taken into account that the duration of each part of the
+OneMax the mutation requires higher time than the replacement. However,
+it must be taken into account that the time spent in each part of the
 algorithm is not related to the time to attain the optimum, but rather to
 how the diversity and search guidance is maintained in the whole system.  
 
@@ -1261,12 +1264,12 @@ how the diversity and search guidance is maintained in the whole system.
 
 
 
-This paper describes a study on the adaptation of the sub-population sizes of a distributed EA to the computational power of the different nodes of an heterogeneous cluster. Two adaptation schemes (offline and online) that use information of the computational load of the algorithm have been tested.
+This paper presents a study on the adaptation of the sub-population sizes of a distributed EA to the computational power of the different nodes of an heterogeneous cluster. Two parameter setting schemes (offline and online) that use information of the computational load of the algorithm have been tested.
  				% No. Tratamos de
                                 % probar un objetivo, dilo aquí!!!!!
-Results show that adapting (online or offline) the sub-population size to the computational power of each node in the heterogeneous cluster
-can reduce significantly the execution time compared to keep
-the same parameter value in all nodes. This advantage is due to the combination of the heterogeneous parameters with the heterogeneity of the machines. On the contrary, the same (heterogeneous) parameter setting in all islands of the homogeneous cluster could not improve the results than considering the same parameter value in all nodes.
+Results show that adapting online or offline the sub-population size to the computational power of each node in the heterogeneous cluster
+can reduce significantly the running time compared to keep
+the same parameter value in all nodes. This advantage is due to the combination of the heterogeneous parameters with the heterogeneity of the machines. On the contrary, the same heterogeneous parameter setting in all islands of the homogeneous cluster could not improve the results than considering the same parameter value in all nodes.
 
 
  % o sea, tener
@@ -1288,12 +1291,12 @@ In this work, as a possible offline parameter setting, the computational power o
 to the average number of generations required to find the optimum with the homogeneous parameter set. Moreover, a possible way to adapt 
 online the sub-population sizes has been performed comparing the current generation 
 number between each node and its previous neighbour. These results are a promising starting for adapting EAs to the
-performance of each execution node, using more adequate benchmarks or in a dynamic way. 
+performance of each  node, using more suitable benchmarks or even in a dynamic way. 
 % Falta una discusión sobre si las mejoras se deben exclusivamente al
 % nÃºmero de evaluaciones o hay algÃºn otro factor ¿menos overhead?
 % ¿nodos más rápidos? - JJ FERGU: no, de hecho el nÃºmero de evaluaciones no siempre disminuye, lo digo arriba.
 
-In future, other parameters such as migration rate or
+As future work, other parameters such as migration rate or
 crossover probability could be adapted to the execution
 nodes. Other appropriate benchmarks to analyse the algorithm will be also used to lead to automatic
 parameter adaptation in runtime (online), with different nodes entering or
@@ -1301,7 +1304,7 @@ exiting in the topology, or adapting the parameters to the current load of the
 system. 
 
 \section*{Acknowledgements}
-This work has been supported in part by SIPESCA (Programa Operativo FEDER de Andalucía 2007-2013), TIN2011-28627-C04-02 (Spanish Ministry of Economy and Competitivity), SPIP2014-01437 (Direcci{\'o}n General de Tr{\'a}fico), PRY142/14 (Fundaci{\'o}n P{\'u}blica Andaluza Centro de Estudios Andaluces en la IX Convocatoria de Proyectos de Investigaci{\'o}n), TIN2014-56494-C4-3-P, and PYR-2014-17 GENIL project (CEI-BIOTIC Granada). Authors wish to thank reviewers' comments, whose suggestion and guidelines have contributed to improve this work.
+This work has been supported in part by SIPESCA (Programa Operativo FEDER de Andalucía 2007-2013), TIN2011-28627-C04-02 and TIN2014-56494-C4-3-P (Spanish Ministry of Economy and Competitivity), SPIP2014-01437 (Direcci{\'o}n General de Tr{\'a}fico), PRY142/14 (Fundaci{\'o}n P{\'u}blica Andaluza Centro de Estudios Andaluces en la IX Convocatoria de Proyectos de Investigaci{\'o}n), and PYR-2014-17 GENIL project (CEI-BIOTIC Granada). Authors wish to thank reviewers' comments, whose suggestion and guidelines have contributed to improve this work.
 
 
 
