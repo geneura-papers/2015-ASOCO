@@ -1203,11 +1203,56 @@ Summarizing, fitting the population sizes to the
   %not applicable here because there are no differences of generations
   %during runtime.
 
-\subsection{Adaptive size}
+\subsection{Adaptive sub-population sizes during evolution}
 
-Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each problem of the AdSi/HeHa runs. As can be seen, the behaviour of these sizes is also affected by the problem used. In OneMax...
+Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each problem of the AdSi/HeHa runs, focusing only in the larger problem instances for the 8X configuration, as the other instances behave in similar way. These graphs show the average sizes of all the populations during all the runs (boxplots), and the average size of each node (lines). As can be seen, the behaviour of these sizes is also affected by the problem used. In OneMax, Figure \ref{subfig:adaptONEMAX15000}, the average sizes of all runs increase during running time, covering almost all the values available for the size (from 8 to 256).  In this case, the faster nodes (HeN5, HeN7, HeN8 and HeN1) are using the maximum size at the same time, but as explained before, the nature of this problem requires faster nodes with less diversity. In the case of MMDP and Rosenbrock the average sizes are always under the size of 128 (original HoSi sizes), however, in the MMDP, the maximum size (256) is not always in one of the nodes (Figure \ref{subfig:adaptMMDP300}) as in Rosenbrock evolution (Figure \ref{subfig:adaptROSENBROCK50}), so it can affect the required diversity for these kind of problems. A common behaviour in all problems, is that the slower node (HeN4) converges to the lower size (8) and do not change during all the run. Therefore, in future new methods to take into account extra information of the sub-population (such as the diversity) should be used in conjunction with the generations attained by each node.
 
 
+\begin{figure}[htb]
+\centering
+%\subfigure[150 MMDP ]{
+%    \includegraphics[width =4cm] {graphs/mmdp-size-150-mut-0.006-xover-1-heterohardware-adaptsize.eps}
+%   \label{subfig:adaptMMDP150}
+%}
+%\subfigure[240 MMDP ]{
+%    \includegraphics[width =4cm] {graphs/mmdp-size-240-mut-0.004-xover-1-heterohardware-adaptsize.eps}
+%   \label{subfig:adaptMMDP240}
+%}
+\subfigure[300 MMDP]{
+    \includegraphics[width =6cm] {graphs/mmdp-size-300-mut-0.003-xover-1-heterohardware-adaptsize.eps}
+   \label{subfig:adaptMMDP300}
+}
+%\newline
+%\subfigure[5000 OneMax]{
+%    \includegraphics[width =4cm] {graphs/onemax-size-5000-mut-0.0002-xover-1-heterohardware-adaptsize.eps}
+%   \label{subfig:adaptONEMAX5000}
+%}
+%\subfigure[10000 OneMax]{
+%    \includegraphics[width =4cm] {graphs/onemax-size-10000-mut-0.0001-xover-1-heterohardware-adaptsize.eps}%
+
+%   \label{subfig:adaptONEMAX10000}
+%}
+\subfigure[15000 OneMax]{
+    \includegraphics[width =6cm] {graphs/onemax-size-15000-mut-0.00006-xover-1-heterohardware-adaptsize.eps}
+    \label{subfig:adaptONEMAX15000}
+}
+%\newline
+%\subfigure[10 Rosenbrock]{
+%    \includegraphics[width =4cm] {graphs/cec-size-10-mut-0.1-xover-1-heterohardware-adaptsize.eps}
+%   \label{subfig:adaptROSENBROCK10}
+%}
+%\subfigure[30 Rosenbrock]{
+%    \includegraphics[width =4cm] {graphs/cec-size-30-mut-0.03-xover-1-heterohardware-adaptsize.eps}%
+
+%   \label{subfig:adaptROSENBROCK30}
+%}
+\subfigure[50 Rosenbrock]{
+    \includegraphics[width =6cm] {graphs/cec-size-50-mut-0.02-xover-1-heterohardware-adaptsize.eps}
+    \label{subfig:adaptROSENBROCK50}
+}
+\caption{Average sizes of all the sub-populations during all the runs (boxplots), and the average size of each node sub-population (lines), for the 8X/AdSi.}
+\label{fig:adaptivesize}
+\end{figure}
 
 
 
@@ -1265,12 +1310,15 @@ how the diversity and search guidance is maintained in the whole system.
 
 
 
-This paper presents a study on the fitting of the sub-population sizes of a distributed EA to the computational power of the different nodes of an heterogeneous cluster. Two parameter setting schemes (offline and online) that use information of the computational load of the algorithm have been tested.
- 				% No. Tratamos de
-                                % probar un objetivo, dilo aquí!!!!!
+The objective of this paper is to study if fitting the sub-population size of a distributed EA to the computational power of a heterogeneous cluster nodes presents an improvement in running time. Two parameter setting schemes (offline and online) that use information of the computational load of the algorithm have been tested, and three different problems that cover different characteristics and computational demands have been used. In this work, as a possible offline parameter setting, the computational power of each node has been calculated proportionally 
+to the average number of generations required to find the optimum with the homogeneous parameter set. Moreover, a possible way to fit 
+online the sub-population sizes has been performed comparing the current generation 
+number between each node and its previous neighbour.
+
+ 				% No. Tratamos de probar un objetivo, dilo aquí!!!!! FERGU: puesto el objetivo, reordenadas conclusiones
 Results show that fitting online or offline the sub-population size to the computational power of each node in the heterogeneous cluster
 can reduce significantly the running time compared to keep
-the same parameter value in all nodes. This advantage is due to the combination of the heterogeneous parameters with the heterogeneity of the machines. On the contrary, the same heterogeneous parameter setting in all islands of the homogeneous cluster could not improve the results than considering the same parameter value in all nodes.
+the same parameter value in all nodes. This advantage is due to the combination of the heterogeneous parameters with the heterogeneity of the machines, leading to different exploitation/exploration rates of the search space. On the contrary, the same heterogeneous parameter setting in all islands of the homogeneous cluster could not improve the results than considering the same parameter value in all nodes.
 
 
  % o sea, tener
@@ -1282,22 +1330,17 @@ the same parameter value in all nodes. This advantage is due to the combination 
                                 % resultados y discute por qué podría
                                 % ser así y propón experimentos para
                                 % probar que efectivamente se trata de
-                                % eso. - JJ
+                                % eso. - JJ FERGU: puestos nuevos experimentos y explicado
 
 Furthermore, changing the sub-population size affects to stages
 of the algorithm that are independent of this parameter, such as
-the migration. The sub-population size fitting is also affected by the problem being solved.
-
-In this work, as a possible offline parameter setting, the computational power of each node has been calculated proportionally 
-to the average number of generations required to find the optimum with the homogeneous parameter set. Moreover, a possible way to fit 
-online the sub-population sizes has been performed comparing the current generation 
-number between each node and its previous neighbour. These results are a promising starting for fitting EAs to the
+the migration. The sub-population size fitting is also affected by the problem being solved. These results are a promising starting for fitting EAs to the
 performance of each  node, using more suitable benchmarks or even in a dynamic way. 
 % Falta una discusión sobre si las mejoras se deben exclusivamente al
 % nÃºmero de evaluaciones o hay algÃºn otro factor ¿menos overhead?
 % ¿nodos más rápidos? - JJ FERGU: no, de hecho el nÃºmero de evaluaciones no siempre disminuye, lo digo arriba.
 
-As future work, other parameters such as migration rate or
+In future works, new methods to adapt online the sub-population sizes taking into account the nature of the problem will be used (for example, measuring the population diversity at the same time than the number of generations). Also, other parameters such as migration rate or
 crossover probability could be fit to the execution
 nodes. Other appropriate benchmarks to analyse the algorithm will be also used to lead to automatic
 parameter fit in runtime (online), with different nodes entering or
