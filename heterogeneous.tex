@@ -566,7 +566,7 @@ the number of ones (unitation) $s_i$ takes the values shown in Table \ref{table:
 \begin{table}
 
 \centering
-{\scriptsize
+{\footnotesize %\scriptsize
 \caption{ Basic deceptive bipolar function ($s_i$) for MMDP.}
 \label{table:mmdpvalues}
 \begin{tabular}{|c|c|}
@@ -658,28 +658,28 @@ Five configurations of hardware and parameter settings have been tested:
 Two different computational systems have been used: a {\em heterogeneous cluster} and a {\em homogeneous cluster}. The first one is formed by different computers of our lab with different processors, operating systems and memory size. The latter is a dedicated scientific cluster formed by homogeneous nodes. Table \ref{tabcomputers} shows the features of every system and the name of the nodes.
 
 \begin{table*}
-\centering{\scriptsize
+\centering{\footnotesize %\scriptsize
 \caption{Details of the clusters used: a homogeneous cluster (Ho), and a heterogeneous cluster (He)}
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 {\em Name}     & {\em Processor}  & {\em Memory}  & {\em Operating System}  & {\em Network} & {\em Storage}  \\ \hline
 \multicolumn{6}{|c|}{Homogeneous cluster} \\ \hline
-HoN[1-8] &  Intel(R) Xeon(R) CPU   E5320  @ 1.86GHz       & 4GB & CentOS 6.7    &   Gigabit Ethernet    & Local\\ \hline
+HoN[1-8] &  Intel(R) Xeon(R) E5320 ($4\times1.86$GHz) & 4GB & CentOS 6.7           & 1GbE   & Local \\ \hline
 \hline
 \multicolumn{6}{|c|}{Heterogeneous cluster} \\ \hline
-HeN1  &  AMD A10-7700K APU                       @ 3.4GHz  & 7GB   & Fedora 21      (64 bits)&  Gigabit Ethernet & Local      \\ \hline
-HeN2  &  Intel(R) Core(TM)2 Quad CPU    Q6600    @ 2.4GHz  & 4GB   & Ubuntu 12.04 (64 bits)  & Gigabit Ethernet  & Local    \\ \hline
-HeN3  &  AMD Phenom(tm) 9950 Quad-Core Processor @ 1.3Ghz  & 4GB   & Ubuntu 13.10 (32 bits)  & 100MB Ethernet    & Local  \\ \hline
-HeN4  &  Intel(R) Pentium(R) D CPU               @ 2.4GHz  & 2GB   & Fedora 19     (64 bits) &  Gigabit Ethernet & NAS      \\ \hline
-HeN5  &  Intel(R) Core(TM) i5-4430 CPU           @ 3.00GHz & 16GB  & Ubuntu 14.04 (64 bits)  &  Gigabit Ethernet & Local      \\ \hline
-HeN6  &  Intel(R) Core(TM)2 Quad CPU    Q6600  @ 2.40GHz   & 8GB   & Ubuntu 11.10 (64 bits)  & 100MB Ethernet    & Local  \\ \hline
-HeN7  &  Intel(R) Core(TM) i7 CPU         870  @ 2.93GHz   & 8GB   & Fedora 17     (64 bits) &  Gigabit Ethernet & Local      \\ \hline
-HeN8  &  Intel(R) Core(TM)2 Quad  CPU   Q8200  @ 2.33GHz   & 4GB   & Ubuntu 14.04  (64 bits) &  Gigabit Ethernet & Local      \\ \hline
+HeN1  &  AMD A10-7700K APU  ($4\times3.4$GHz)         & 7GB   & Fedora 21    (64b) & 1GbE   & Local \\ \hline
+HeN2  &  Intel(R) Core(TM)2 Q6600 ($4\times2.4$GHz)   & 4GB   & Ubuntu 12.04 (64b) & 1GbE   & Local \\ \hline
+HeN3  &  AMD Phenom(tm) 9950 ($4\times1.3$Ghz)        & 4GB   & Ubuntu 13.10 (32b) & 100MbE & Local \\ \hline
+HeN4  &  Intel(R) Pentium(R) D ($2\times2.4$GHz)      & 2GB   & Fedora 19    (64b) & 1GbE   & NAS   \\ \hline
+HeN5  &  Intel(R) Core(TM) i5-4430 ($4\times3.00$GHz) & 16GB  & Ubuntu 14.04 (64b) & 1GbE   & Local \\ \hline
+HeN6  &  Intel(R) Core(TM)2 Q6600 ($4\times2.40$GHz ) & 8GB   & Ubuntu 11.10 (64b) & 100MbE & Local \\ \hline
+HeN7  &  Intel(R) Core(TM) i7 870  ($4\times2.93$GHz) & 8GB   & Fedora 17    (64b) & 1GbE   & Local \\ \hline
+HeN8  &  Intel(R) Core(TM)2 Q8200 ($4\times2.33$GHz) & 4GB   & Ubuntu 14.04 (64b) & 1GbE   & Local \\ \hline
 \end{tabular}
 \label{tabcomputers}
 }
 \end{table*}
 
-To study the scalability, two different number of nodes have been used in each problem/configuration: 4 nodes (from H1 to H4, referred as  {\em 4X} configuration for the rest of the paper) and 8 nodes (from H1 to H8, referred {\em 8X} configuration). The same amount of nodes been previously used in other works on dEAs in heterogeneous environments \cite{HETEROGENEOUSHARD,HYDROCM,Salto13Distributed}.
+To study the scalability, two different number of nodes have been used in each problem and configuration: 4 nodes (from H1 to H4, referred as  {\em 4X} configuration for the rest of the paper) and 8 nodes (from H1 to H8, referred {\em 8X} configuration). The same amount of nodes been previously used in other works on dEAs in heterogeneous environments \cite{HETEROGENEOUSHARD,HYDROCM,Salto13Distributed}.
 
 The global population size has been set to 1024 individuals. Other researchers that investigate in dEAs in heterogeneous environments have used 512 individuals (see the works \cite{HYDROCM,Dominguez13HydroCM,Salto13Distributed}). However, as using 512 individuals in  preliminary runs obtained extremely low sub-population sizes, a larger value has been used. 1024 individuals is a number big enough to test different sub-population sizes in different number of computational nodes (4 and 8), allowing an easier distribution among them. The stopping criterion for all approaches used in this work is to find the optimum of the problem, so that all runs have always finished when the optimum has been found in one of the nodes. This stopping criterion has been considered as Alba et al. did in \cite{EVALUATIONPARALLEL}, since it offers a fair way to compare the running time and behaviour of the tested configurations. Two-point crossover has been chosen, as it has been used previously in studies on parallel GAs  for binary problems \cite{CantuPazTopologies99}, and BLX-0.5 for real coded dEAs \cite{Robles09ParallelFuzzy}.
 
