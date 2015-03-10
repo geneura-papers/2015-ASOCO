@@ -1406,20 +1406,24 @@ system. % lo que tiene una influencia en el resultado de... - JJ
 Results also show how the stages of the algorithms depend on the execution
 node. For example, the node HeN4 requires a lot of time in the replacement stage,
  as it is the only one that writes into the log files. This node was the only one
-  using a network storage (see Table \ref{tabcomputers}).
+  using network storage (see Table \ref{tabcomputers}).
 
 Different proportion of times can be spent in each section depending on the problem.
 The reason might be the
 creation of new objects (memory allocation), which in Java and with
-limited memory (and swapping) requires higher time than the iteration of
+limited memory (and swapping) requires more time than the iteration of
 elements previously created (for example, in the mutation). Fitting
 the sub-population size makes the slower node of HeHa behave in similar
 way than the other nodes (same time in each stage). Moreover, the size
 of the individuals affects to some parts of the EA; for example, in 
 OneMax the mutation requires higher time than the replacement. However,
 it must be taken into account that the time spent in each part of the
-algorithm is not related to the time to attain the optimum, but rather to
-how the diversity and search guidance is maintained in the whole system.  
+algorithm is not related to the time needed to reach the optimum, but rather to
+how the diversity and search guidance is maintained in the whole
+system.  
+
+%So what? This proves or disproves some hypothesis? Is related to
+%research questions? Where is the analysis? - JJ
 
 
 
