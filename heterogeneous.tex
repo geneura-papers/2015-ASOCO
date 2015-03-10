@@ -1426,6 +1426,10 @@ system.
 %research questions? Where is the analysis? - JJ
 
 
+%Habría que hacer un ránking de métodos para hardware heterogéneo y
+%homogéneo. No hay un "smoking gun", no hay una conclusión fuerte. Al
+%final, la pregunta es: tengo hardware heterogéneo, ¿qué diablos uso?
+%- JJ 
 
 \section{Conclusions and future work}
 
@@ -1457,8 +1461,9 @@ machines, %argh. Eso es obvio - JJ
  space. % eso lo has probado o lo supones? Lo has medido? - JJ
 On the other hand, the same heterogeneous parameter setting in all
 islands of the homogeneous cluster could not improve the results than
-considering the same parameter value in all nodes. % Reescribe. Está
-                                % mal escrito - JJ
+considering the same parameter value in all nodes. % Reescribe. Todo
+                                % el párrafo está
+                                % mal escrito y no se entiende- JJ
 
 
  % o sea, tener
@@ -1482,7 +1487,10 @@ the migration. The sub-population size fitting is also affected by the problem b
 performance of each  node, using more suitable benchmarks or even in a dynamic way. 
 % Falta una discusi�n sobre si las mejoras se deben exclusivamente al
 % número de evaluaciones o hay algún otro factor �menos overhead?
-% �nodos m�s r�pidos? - JJ FERGU: no, de hecho el número de evaluaciones no siempre disminuye, lo digo arriba.
+% �nodos m�s r�pidos? - JJ FERGU: no, de hecho el
+% número de evaluaciones no siempre disminuye, lo digo arriba.
+% Entonces, a qué se debe la mejora? Si hay más evaluaciones, el
+% algoritmo es peor - JJ
 
 In future works, new methods to adapt online the sub-population sizes taking into account the nature of the problem will be used (for example, measuring the population diversity at the same time than the number of generations). Also, other parameters such as migration rate or
 crossover probability could be fit to the execution
