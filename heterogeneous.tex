@@ -781,10 +781,31 @@ In this configuration, each node has the same number of individuals, so the tota
 
 \subsubsection{Heterogeneous Size configuration}
 
-Our aim consists in validating the following hypothesis: fitting the sub-population size to the computational power of the heterogeneous cluster nodes presents an improvement in running time. 
+Our aim consists in validating the following hypothesis: fitting the
+sub-population size to the computational power of the heterogeneous
+cluster nodes presents an improvement in running time.  % yet you also
+                                % use heterogeneous size in
+                                % homogeneous cluster. What is the
+                                % objective of that experiment? - JJ
 
 
-In this work, for a possible offline way to calculate the computational performance of each node, the average number of generations obtained in the HoSi/HeHa configuration for the three problems is used in order to determine the computational power of the heterogeneous machines. This comparison takes into account all the evolutionary process in a fair manner (proportional to the memory, processor and network usage), instead a traditional benchmark that usually relies only on the CPU speed. Although this is not obviously the ideal way, it is a possible way to establish the computational power for the experiments of this work, and to determine if changing the sub-population size according the computational power reduces the computing time of the whole approach. It should be considered that the contribution of this work is not the method to compute these sizes, but the comparison and analysis of the algorithm with parameters fitted to their power.
+In this work, for a possible offline method to calculate the
+computational performance of each node, the average number of
+generations obtained in the HoSi/HeHa configuration for the three
+problems is used in order to determine the computational power of the
+heterogeneous machines. This comparison takes into account all the
+evolutionary process in a fair manner (proportional to the memory,
+processor and network usage), instead a traditional benchmark that
+usually relies only on the CPU speed. Although this is not obviously
+the ideal way, it is a possible way to establish the computational
+power for the experiments of this work, and to determine if changing
+the sub-population size according to the computational power reduces
+the computing time of the whole approach. It should be considered that
+the contribution of this work is not the method to compute these
+sizes, but the comparison and analysis of the algorithm with
+parameters fitted to their power. % REVISAR TODO EL INGLÉS. Cada
+                                % párrafo que reviso tiene uno o dos
+                                % errores - JJ
 
 Thus, the obtained average number of generations in the previous sub-section (Tables \ref{table:generations4X} and \ref{table:generations8X}) is used to set proportionally the sizes in the HeSi/HeHa and HeSi/HoHa configurations. This has been done by dividing the total number of individuals (1024) proportionally to the number of generations spent by each node in HoSi/HeHa to solve the same problem. Note that, even having two nodes with the same processors and memory (HeN1 and HeN2), they might have different computational power: this may be produced by different operating systems, virtual machine versions, or number of processes being executed (inside a node).
 
@@ -923,7 +944,20 @@ ones.
 % probar c�mo funciona en algoritmo. Se pueden comentar los dos juntos
 % y se deber�a hacer - JJ FERGU: okis, poni�ndolo todo junto.
 
-Table \ref{tab:resultsTIMEall} shows the average running times for  all the configurations and problems, while Table \ref{tab:resultsEVALSall} shows the total number of evaluations. In order to compare statistically  two methods (HoSi and HeSi in the homogeneous cluster) a Wilcoxon test has been applied. For a three methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a Kruskal-Wallis test has been used. A mark in the tables indicates if the comparison with the base configuration of each cluster (HoSi/HeHa and HoSi/HoHa respectively) is significantly higher (\ding{115}), significantly lower  (\ding{116}), or no significant difference found (\ding{117}). Since the aim is to reduce the computational time, the lower results the better.
+Table \ref{tab:resultsTIMEall} shows the average running times for
+all the configurations and problems, while Table
+\ref{tab:resultsEVALSall} shows the total number of evaluations. In
+order to compare statistically  two methods (HoSi and HeSi in the
+homogeneous cluster) a Wilcoxon test has been applied. For a three
+methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a
+Kruskal-Wallis test has been used. A mark in the tables indicates if
+the comparison with the base configuration of each cluster (HoSi/HeHa
+and HoSi/HoHa respectively) is significantly higher (\ding{115}),
+significantly lower  (\ding{116}), or no significant difference found
+(\ding{117}). Since the aim is to reduce the computational time, the
+lower results, the better. % Deberías expresarlo en términos de mejor o
+                          % peor, no higher o lower. ¿higher number of
+                          % evaluations is worse or better? - JJ
 
 
 
@@ -1429,7 +1463,14 @@ system.
 %Habría que hacer un ránking de métodos para hardware heterogéneo y
 %homogéneo. No hay un "smoking gun", no hay una conclusión fuerte. Al
 %final, la pregunta es: tengo hardware heterogéneo, ¿qué diablos uso?
-%- JJ 
+% Por otro lado, también es importante considerar si el beneficio de
+% diferente exploración de nodos heterogéneos es real o no. ¿Para qué
+% has probado hardware homogéneo? Para ver si la población diferente
+% trae algún beneficio en la exploración del sistema. Bueno, pues
+% resulta que NO. En la mayor parte de los casos, es PEOR resultado
+% que si el tamaño es homogéneo. Por lo tanto, si la población
+% heterogénea no trae mejores resultados, ¿qué es lo que  lo hace? ¿La
+% asincronía? - JJ
 
 \section{Conclusions and future work}
 
