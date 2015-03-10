@@ -880,11 +880,32 @@ In order to deal with the operating system and architecture heterogeneity (diffe
 \section{Results}
 \label{sec:results}
 
+% Aqu√≠ tienes que contestar a las preguntas de investigaci√≥n que has
+% planteado en la intro - JJ
 
-
-The three main objectives of parallel programming are to tackle large computational problems, increase the performance of algorithms in a finite time, or reduce computational time to solve the problem (reaching the optimum) \cite{EVALUATIONPARALLEL}.  This work is focused on the third one.
-As stated by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the performance of a parallel EA by the number of fitness function evaluations required to attain a solution may be misleading. In our case, for example, the evaluation time is different in each node of the heterogeneous cluster, so the actual algorithm speed (in running time) could not be reflected correctly. However, the number of evaluations has been included in this section to better understand the results. It is difficult to compare the performance of HoHa and HeHa for the same reason: the evaluation time is different in each system (and even in each node). Thus, in this work, our aim is not making the heterogeneous cluster comparable or better in time than the homogeneous one (because they are, obviously, different), but showing that the same parameter configuration can improve performance in time on heterogeneous clusters and could not have an effect on homogeneous ones.
-
+The three main objectives of parallel programming are to tackle large
+computational problems, increase the performance of algorithms in a
+finite time, or reduce computational time to solve the problem
+(reaching the optimum) \cite{EVALUATIONPARALLEL}.  This work is
+focused on the third one. % ¬øY las preguntas de investigaci√≥n? - JJ
+As stated by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing
+the performance of a parallel EA by the number of fitness function
+evaluations required to attain a solution may be misleading. In our
+case, for example, the evaluation time is different in each node of
+the heterogeneous cluster, so the actual algorithm speed (in running
+time) cannot be reflected correctly. However, the number of
+evaluations has been included in this section to better understand the
+results. % Pero no acabas de decir que es misleading? - JJ
+It is difficult to compare the performance of HoHa and HeHa
+for the same reason: the evaluation time is different in each system
+(and even in each node). Thus, in this work, our aim is not making the
+heterogeneous cluster comparable or better in time than the
+homogeneous one (because they are, obviously, different), but showing
+that the same parameter configuration can improve performance in time
+on heterogeneous clusters and could not have an effect on homogeneous
+ones. 
+% No me he enterado de nada. ¬øNo se puede reflejar la velocidad pero
+% vas a medir el tiempo? - JJ
 
 
 
@@ -941,6 +962,7 @@ Table \ref{tab:resultsTIMEall} shows the average running times for  all the conf
 \label{tab:resultsTIMEall}
 \end{table*}
 
+%No se puede poner apaisado en una p√°gina? Esto no se ve nada - JJ
 
 \begin{table*}
 \centering
@@ -950,7 +972,7 @@ Table \ref{tab:resultsTIMEall} shows the average running times for  all the conf
 
 
 
-                \multicolumn{7}{|c|}{MMDP}                                                                                                  \\ \hline
+                \multicolumn{7}{|c|}MMDP}                                                                                                  \\ \hline
 \multicolumn{2}{|c|}{}          &   \multicolumn{3}{|c|}{Heterogeneous Hardware}                                                            &   \multicolumn{2}{|c|}{Homogeneous Hardware}                                  \\ \hline
 \multicolumn{2}{|c|}{}          &   Homogeneous Size            &   Heterogeneous Size                  &   Adaptive Size                   &   Homogeneous Size            &   Heterogeneous Size                  \\ \hline
 \multirow{3}{*}{4}  &   150  &   3321990.40  $\pm$   3640752.80  &   1318095.10  $\pm$   1945414.55  \ding{116}      &   4495540  $\pm$   6076330.84  \ding{117}      &   1314204.80  $\pm$   2963639.11  &   593926.50   $\pm$   1344934.78  \ding{115}      \\ \cline{2-7}
@@ -1092,7 +1114,9 @@ Table \ref{tab:resultsTIMEall} shows the average running times for  all the conf
     \includegraphics[width =6cm] {boxplots/ROSENBROCK_50_EVALS.eps}
     \label{subfig:300evals}
 }
-\caption{Time (ms) and evalutions needed to obtain the optimum for the Rosenbrock function problem.}
+\caption{Time (ms) and evalutions needed to obtain the optimum for the
+  Rosenbrock function problem.}
+% ¬øQu√© significa el color gris? - JJ 
 \label{fig:boxplotsROSENBROCK}
 \end{figure}
 
@@ -1221,19 +1245,41 @@ Table \ref{tab:resultsTIMEall} shows the average running times for  all the conf
 Obtained results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:boxplotsMMDP}, \ref{fig:boxplotsONEMAX} and \ref{fig:boxplotsROSENBROCK}, for a better understanding of the behaviour of each configuration. To show the evolution in each configuration the average population fitness during all the runs has been plotted using boxplots into evolution graphs, with the best individual of all the runs and the average fitness of each method (Figures \ref{fig:graphsMMDP}, \ref{fig:graphsONEMAX} and \ref{fig:graphsROSENBROCK}). %As heterogeneous nodes are evolving asynchronously the individuals, the comparison is done using the execution time, and not the number of generations. %TODO descomentar esto si los gr·ficos tienen tiempo
 Only the 8X graphs have been shown in order to not extend too much the paper extension. %TODO ponemos que el 4X shows similar behaviours?
 
-The results show that, in general, there exist significant differences depending on the problem, configuration or number of nodes. Also, it can be seen that the number of evaluations may not be a good indicator when comparing heterogeneous environments. For example, for the OneMax problem (Figure \ref{fig:boxplotsONEMAX}), using 8 nodes instead of 4 requires more evaluations to finish, and yet, less time to achieve the optimum. Also, the average amount of time needed to solve the problems may vary in larger ranges for MMDP and Rosenbrock. 
+The results show that, in general, there are significant differences
+depending on the problem, configuration or number of nodes. Also, it
+can be seen that the number of evaluations may not be a good indicator
+when comparing heterogeneous environments. For example, for the OneMax
+problem (Figure \ref{fig:boxplotsONEMAX}), using 8 nodes instead of 4
+requires more evaluations to finish, and yet, less time to achieve the
+optimum.  % so what? more evaluations are being done at the same time
+          % - JJ
+Also, the average amount of time needed to solve the problems may vary
+in larger ranges for MMDP and Rosenbrock.  % so what? - JJ
 
-At a first glance, and as expected \cite{Wolpert97NFL}, fitting the population sub-sizes to heterogeneous clusters do not always imply an improvement in time. The HeSi parameter setting can improve time in the MMDP and Rosenbrock for HeHa, but in case of the OneMax problem, fitting offline the sub-population sizes significantly increase  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHa configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHa the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) do not converge as smoothly as in HoHa.
+At a first glance, and as expected \cite{Wolpert97NFL}, fitting the
+population sub-sizes to heterogeneous clusters do not always imply an
+improvement in time. The HeSi parameter setting can improve time in
+the MMDP and Rosenbrock for HeHa, but in case of the OneMax problem,
+offline fitting  the sub-population sizes significantly increases  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHa configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHa the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) do not converge as smoothly as in HoHa.
 This can be explained because the efficiency on OneMax problem depends mainly on the ability to mix
 the building-blocks, and less on the genetic diversity and size of the
-population (as with MMDP or Rosenbrock). No genetic diversity is particularly
+population (as with MMDP or Rosenbrock). A high genetic diversity is not particularly
 required. When properly tuned, a simple GA is able to solve OneMax in super-linear time, i.e., $l \times log(l)$, with $l$ being the string length \cite{Verma09MapReduce}. Sometimes, problems like OneMax are used
 as control functions, in order to check if very efficient algorithms
 on hard functions fail on easier ones. 
 
-On the contrary, for the MMDP and Rosenbrock, in the HoHa system, setting heterogeneous sizes to sub-populations makes no difference in time, that is, changing this parameter has no influence in the  algorithm's performance.
+On the contrary, for the MMDP and Rosenbrock, in the HoHa system,
+setting heterogeneous sizes to sub-populations makes no difference in
+time, that is, changing this parameter has no influence in the
+algorithm's performance. % because of... diversity? - JJ
 
-Finally, the number of nodes affect the behaviour of the algorithms. In the case of MMDP in the HeHa system, fitting offline the sub-population to the computational  power of each node makes the algorithm finish significantly earlier in all instances of the problem in the 4X configuration. However, in the 8X configuration the time is significantly lower only in the 150 instance. This can be due to the nature of this problem, as the population fitness may stagnate if the optimum is not found at the first steps (see the black line in Figure \ref{fig:graphsMMDP} with respect to the average population fitness boxplots). This behaviour is opposite in the case of the Rosenbrock function, where using a larger number of nodes improves the time with HeSi and AdSi. %TODO
+Finally, the number of nodes affect the behaviour of the
+algorithms. In the case of MMDP in the HeHa system, the offline
+fitting of the sub-population to the computational  power of each node
+makes the algorithm finish significantly earlier in all instances of
+the problem in the 4X configuration. However, in the 8X configuration
+the time is significantly lower only in the 150 instance. This can be
+due to the nature of this problem, as the fitness of the population may stagnate if the optimum is not found at the first steps (see the black line in Figure \ref{fig:graphsMMDP} with respect to the average population fitness boxplots). This behaviour is opposite in the case of the Rosenbrock function, where using a larger number of nodes improves the time with HeSi and AdSi. %TODO
 
 %Maribel, esto va a ser duro de explicar, quiz·s porque al haber m·s nodos, hay muchos m·s individuos y por lo tanto m·s diversidad y la diversidad es clave en este problema porque si no hay bloques buenos, da igual el mucho tiempo que lo evoluciones, que no se llegan a conseguir, pero con muchos individuos, tienes mucha diversidad y tienes disponibles bloques buenos que van combin·ndose mucho m·s r·pido.
 
@@ -1316,9 +1362,15 @@ Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each pr
 
 \subsection{Running time analysis}
 
-In this sub-section the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi) is analysed. For the shake of clarity in results, and due to the lack of space, the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} graphically compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
+In this sub-section the time spent by each node of the clusters in
+every stage of the EA for each configuration with fixed sizes (HoSi
+and HeSi) is analysed. For the shake of clarity in results, and due to
+the lack of space, % no puedes hablar de esto aqu√≠! - JJ
+ the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} graphically compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
 %TODO Comprobar esto!!
-This happens because a multi-purpose laboratory network to communicate the nodes is being used, instead of the specific one used in the HoHa system.
+This happens because a multi-purpose laboratory network to communicate
+the nodes is being used, instead of the specific one used in the HoHa
+system. % lo que tiene una influencia en el resultado de... - JJ
 % Note that the standard deviation of the migration is larger in the HeHa cluster because the network is having real conditions of traffic during the experiment.
  In the MMDP changing the sub-population size does not affect the migration time, but it affects the rest of the algorithm's stages. However, with larger data communications (individuals of 5000 elements of the OneMax problem), the sub-population size affects the migration time of all nodes. This might be due to the synchronization of migration buffers: if the slowest machine is sending/receiving, bottlenecks can be propagated.
 
@@ -1367,15 +1419,33 @@ how the diversity and search guidance is maintained in the whole system.
 
 
 
-The objective of this paper is to study if fitting the sub-population size of a distributed EA to the computational power of a heterogeneous cluster nodes presents an improvement in running time. Two parameter setting schemes (offline and online) that use information of the computational load of the algorithm have been tested, and three different problems that cover different characteristics and computational demands have been used. In this work, as a possible offline parameter setting, the computational power of each node has been calculated proportionally 
+The objective of this paper has been to study if fitting the
+sub-population size of a distributed EA to the computational power of
+a heterogeneous cluster nodes presents an improvement in running
+time. Two parameter setting schemes (offline and online) that use
+information of the computational load of the algorithm have been
+tested, and three different problems that cover different
+characteristics and computational demands have been used. In this
+work, as a possible offline parameter setting, the computational power
+of each node has been calculated proportionally  
 to the average number of generations required to find the optimum with the homogeneous parameter set. Moreover, a possible way to fit 
 online the sub-population sizes has been performed comparing the current generation 
-number between each node and its previous neighbour.
+number between each node and its previous neighbour. % research
+                                % questions!!!!! - JJ
 
  				% No. Tratamos de probar un objetivo, dilo aquÌ!!!!! FERGU: puesto el objetivo, reordenadas conclusiones
-Results show that fitting online or offline the sub-population size to the computational power of each node in the heterogeneous cluster
-can reduce significantly the running time compared to keep
-the same parameter value in all nodes. This advantage is due to the combination of the heterogeneous parameters with the heterogeneity of the machines, leading to different exploitation/exploration rates of the search space. On the contrary, the same heterogeneous parameter setting in all islands of the homogeneous cluster could not improve the results than considering the same parameter value in all nodes.
+Results show that  online or offline fitting the sub-population size to the computational power of each node in the heterogeneous cluster
+can reduce significantly the running time of an algorithm with respect
+to keeping
+the same size for all nodes. This reduction is due to the combination
+of the heterogeneous parameters with the heterogeneity of the
+machines, %argh. Eso es obvio - JJ
+ leading to different exploitation/exploration rates of the search
+ space. % eso lo has probado o lo supones? Lo has medido? - JJ
+On the other hand, the same heterogeneous parameter setting in all
+islands of the homogeneous cluster could not improve the results than
+considering the same parameter value in all nodes. % Reescribe. Est√°
+                                % mal escrito - JJ
 
 
  % o sea, tener
@@ -1388,8 +1458,12 @@ the same parameter value in all nodes. This advantage is due to the combination 
                                 % ser asÌ y propÛn experimentos para
                                 % probar que efectivamente se trata de
                                 % eso. - JJ FERGU: puestos nuevos experimentos y explicado
+% No se ha explicado lo suficiente. Las conclusiones deben ser m√°s
+% taxativas y apoyadas en datos de los experimentos. Si hay alguna
+% suposici√≥n que no se pueda comprobar, se deja como trabajo futuro -
+% JJ 
 
-Furthermore, changing the sub-population size affects to stages
+Furthermore, changing the sub-population size affects stages
 of the algorithm that are independent of this parameter, such as
 the migration. The sub-population size fitting is also affected by the problem being solved. These results are a promising starting for fitting EAs to the
 performance of each  node, using more suitable benchmarks or even in a dynamic way. 
@@ -1447,7 +1521,10 @@ This work has been supported in part by SIPESCA (Programa Operativo FEDER de And
 
 
 
-
+% Ten√©is que revisar la bibliograf√≠a. Por ejemplo, faltan muchos
+% editores en proceedings. Usad la de DBLP y la est√°ndar de
+% geneura. Por ejemplo, pones Guerv√≥s sin acento, Garc√≠a tambi√©n y en
+% uno pones Gu√©rvos!!!!- JJ
 \bibliographystyle{plain}
 \bibliography{heterogeneous}
 %Descomentar abajo cuando comentes arriba
