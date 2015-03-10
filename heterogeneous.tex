@@ -213,12 +213,7 @@ or online) of parameters to the computational power of the devices.
 % important? Was not the most important thing to leverage all
 % available resources? The OBJECTIVE of the paper must be clear and
 % the steps taken to make it sure too - JJ
- % why only two? Are these
-                                % enough? Do they cover a whole range
-                                % of possible situations? If they
-                                % don't you're up for trouble on the
-                                % reviewer front: they can ask for 3,
-                                % 4 or $n$ - JJ FERGU: mirar arriba el nuevo abstract
+
  %Two different things:
                                 %time and evaluations. If they
                                 %decrease time due to evaluations,
@@ -227,9 +222,7 @@ or online) of parameters to the computational power of the devices.
                                 %evaluations decrease with the
                                 %population in single-population
                                 %algorithm. - JJ
- %Improve with respect
-                                %to what? - JJ FERGU: ver arriba
-  % Never done before? If it has, it should go to the state of the art - JJ FERGU: TODO Revisa SOA
+
  
 \end{abstract}
 
@@ -245,24 +238,7 @@ Evolutionary Algorithms \sep Genetic Algorithms \sep Heterogeneous distributed c
 \section{Introduction}
 \label{sec:intro}
 
-%ARGUMENTO: 
-% 1) Existen nuevas tendencias que usan nodos heterogéneos
-% 2) Adaptar parámetros de un algoritmo (general) a la potencia de
-% esas máquinas heterogéneas puede hacer que mejore el tiempo de
-% ejecución 
-% Â¿Por quÃ©? Â¿Y por quÃ© quieres mejorar el tiempo de ejecuciÃ³n? - JJ
-% 3) En concreto, los EAs pueden adaptarse a estas máquinas 
 
-
-% Y seguimos con las introducciones... todo esto no lleva a nada. Y si
-% lleva, tiene que estar en el primer párrafo: ¿cuál es el marco?
-% ¿Nodos heterogéneos? ¿Computación distribuida? Pues al principio - JJ FERGU: adaptándome al ARGUMENTO (arriba) (Nota, la intro la escribí antes de que me revisaras la tesis, así que por eso no está bien hilado :)
-
-%FERGU2: RE-estructurada de nuevo
-
-% -> y aquí explicas lo que son. O pones este párrafo como primer
-% párrafo para enmarcar el trabajo, o lo abrevias y lo pones arriba
-% donde lo menciones - JJ FERGU: Reestructurada la intro y movido este párrafo al principio
 
 Evolutionary Algorithms (EAs) are a general method for solving
 optimization and search problems inspired by the evolution of species
@@ -300,12 +276,7 @@ computational capabilities of a heterogeneous cluster. % but why
                                 % on individual clusters?
                                 % MOTIVATION!!! - JJ
 
-%Estabas hablando de computación distribuida y ahora hablas de algo
-%totalmente diferente. Cada párrafo va por su lado. No hay una
-%narrativa.
-% Escribe tu argumento en tres o cuatro frases y desarrolla ese
-% argumento, cada frase en un párrafo. La argumentación debe quedar
-% clara. - JJ FERGU: reestructurando la intro
+
 % Mejor estructurada, pero falta motivaciÃ³n - JJ
 Distributed EAs run the algorithm in a set of nodes simultaneously,
 working with different sub-populations (or islands) at the same
@@ -329,10 +300,10 @@ parameters (heterogeneous dEAs) \cite{garcia2014randomized,tanabe2013evaluation,
 set of parameters for different problems. % Invierte el orden de estas
                                 % dos frases - JJ
 
-However, new trends in distributed computing such as Cloud Computing \cite{CLOUD}, GRID
+However, new trends in distributed computing such as Cloud Computing \cite{Derby13Cloud}, GRID
 \cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
 leading to heterogeneous computational devices, such as laptops,
-virtual machine instances, % cita a Una-May en EvoStar aquÃ­ - JJ
+virtual machine instances, % cita a Una-May en EvoStar aquÃ­ - JJ FERGU: Citada arriba con Derby13Cloud
 GPUs \cite{Acosta13GPUs},
 tablets or desktop PCs, working in the same
 environment. Thus, many laboratories, which do not include classic
@@ -360,9 +331,9 @@ homogeneous devices. This can be explained by different reasons, such
 as different memory access times, cache sizes, 
 or even implementation
 languages or compilers in each machine, leading to a different
-exploitation/exploration rate of the search space. % Ein? Sez who? FERGU: Alba en el artículo de arriba
-                                % Why? - JJ
-% pon la cita de nuevo - JJ
+exploitation/exploration rate of the search space \cite{HETEROGENEOUSHARD}. % Ein? Sez who? FERGU: Alba en el artículo de arriba
+
+% pon la cita de nuevo - JJ FERGU: Done
 
 These facts have motivated us to study a combination of both ideas in
 this paper: dEAs on a heterogeneous set of nodes with different
@@ -370,7 +341,7 @@ parameter values fitted to each node. The concept {\em parameter fitting} is pro
 
 In this case, the parameter to
 be fitted to the computational power of each node has been the
-sub-population size of each island. %why?????? - JJ FERGU: Abajo (by Carlos)
+sub-population size of each island. 
 The population size is of capital importance in the accuracy and
 convergence speed of an EA. The population is a repository of the
 building-blocks that an evolutionary computational process recombines
@@ -550,8 +521,7 @@ and computational demands have been used in this work.
 In these experiments, the Massively Multimodal Deceptive
 Problem (MMDP) \cite{goldberg92massive},  the OneMax problem
 \cite{ONEMAX}, and the Rosenbrock Function \cite{CEC2005_Benchmark} have been used. 
-% Antonio - Rosenbrock's o 'Shifted Rosenbrock'?
-% Rosenbrock. - JJ
+
 Each one requires different actions/abilities by the GA
 at the level of population sizing, individual selection and
 building-blocks mixing. Also, these problems have been previously used in other parameter adaptation algorithms, such as \cite{ParallelGATongchim02} (MMDP and OneMax) and \cite{DifferentialWeber09,AdaptationSizesSchlierkamp96} (Rosenbrock). 
@@ -632,27 +602,22 @@ This is a multi-modal shifted function, which is non-separable and scalable and 
 \subsection{Hardware and parameter configurations}
 
 
- % ¿Por qué? ¿Cubren el objetivo
-                                % del artículo? Si no, siempre llegará
-                                % el revisor que te diga "Prueba, no
-                                % sé, "migración de poblaciones
-                                % completas" o vaya usté a saber... -
-                                % JJ FERGU: explicado con la siguiente frase
 
-The main objective of this work is testing parameter fitting to hardware. Thus, different configurations should be used to compare and validate if the change in the parameters depends only on the parameters, the hardware heterogeneity, or the combination of both.
+
+The main objective of this work is testing parameter fitting to hardware. Thus, different configurations should be used to compare and validate if the change in the parameters depends only on the parameters, the hardware heterogeneity, or the combination of both. Therefore, the same parameters will be used in a homogeneous cluster as a control system for the experiments.
 Five configurations of hardware and parameter settings have been tested:
 
 
 \begin{itemize}
 % me estoy dando cuenta ahora de que no me gusta nada la
 % abreviatura. De toda la vida hardware es hw. Y size es mejor
-% ponerlo como sz que si.- JJ
-\item HoSi/HeHa: Homogeneous Size/Heterogeneous Hardware. The same sub-population size in each island on a heterogeneous cluster.
-\item HeSi/HeHa: Heterogeneous Size/Heterogeneous Hardware. Different sub-population sizes in each island on a heterogeneous cluster.
-\item HoSi/HoHa: Homogeneous Size/Homogeneous Hardware. The same sub-population size in each island on a homogeneous cluster.
-\item HeSi/HoHa: Heterogeneous Size/Homogeneous Hardware. Different sub-population sizes (the obtained for HeSi/HeHa) in each island on a homogeneous cluster.
+% ponerlo como sz que si.- JJ FERGU: Okis, lo cambio. Sin embargo, dejo el Size como 'si', que lo veo más natural (y para no cambiar las gráficas)
+\item HoSi/HeHw: Homogeneous Size/Heterogeneous Hardware. The same sub-population size in each island on a heterogeneous cluster.
+\item HeSi/HeHw: Heterogeneous Size/Heterogeneous Hardware. Different sub-population sizes in each island on a heterogeneous cluster.
+\item HoSi/HoHw: Homogeneous Size/Homogeneous Hardware. The same sub-population size in each island on a homogeneous cluster.
+\item HeSi/HoHw: Heterogeneous Size/Homogeneous Hardware. Different sub-population sizes (the obtained for HeSi/HeHw) in each island on a homogeneous cluster.
 
-\item AdSi/HeHa: Adaptive Size/Heterogeneous Hardware. Online fitting of sub-population sizes in each island on a heterogeneous cluster.
+\item AdSi/HeHw: Adaptive Size/Heterogeneous Hardware. Online fitting of sub-population sizes in each island on a heterogeneous cluster.
 \end{itemize}
 
 Two different computational systems have been used: a {\em heterogeneous cluster} and a {\em homogeneous cluster}. The first one is formed by different computers of our lab with different processors, operating systems and memory size. The latter is a dedicated scientific cluster formed by homogeneous nodes. Table \ref{tabcomputers} shows the features of every system and the name of the nodes.
@@ -687,11 +652,11 @@ The global population size has been set to 1024 individuals. Other researchers t
 
 
 
-In this configuration, each node has the same number of individuals, so the total amount is 1024.  The algorithm has been run 40 times per problem instance on the homogeneous (HoHa) and heterogeneous clusters (HeHa).  The average number of generations in each node of the HeHa cluster are shown in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained and their proportion in every node to reach the optimum depends on the problem considered, besides the hardware.
+In this configuration, each node has the same number of individuals, so the total amount is 1024.  The algorithm has been run 40 times per problem instance on the homogeneous (HoHw) and heterogeneous clusters (HeHw).  The average number of generations in each node of the HeHw cluster are shown in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained and their proportion in every node to reach the optimum depends on the problem considered, besides the hardware.
 
 \begin{table*}
 \centering{
-\caption{Average number of generations (and proportion) in each node of the 4X HoSi/HeHa configuration when the optimum is found in 40 runs. These values have been used to set proportionally the sub-population sizes in 4X HeSi (the offline approach).}
+\caption{Average number of generations (and proportion) in each node of the 4X HoSi/HeHw configuration when the optimum is found in 40 runs. These values have been used to set proportionally the sub-population sizes in 4X HeSi (the offline approach).}
 % Y la desviación? - JJ
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 {\em Instance} &         & {\em HeN1}     & {\em HeN2 }     & {\em HeN3 }    & {\em HeN4 }  \\ \hline
@@ -733,11 +698,11 @@ In this configuration, each node has the same number of individuals, so the tota
 \begin{table*}
 \centering{
 \caption{Average number of generations (and proportion) in each node
-  of the 8X HoSi/HeHa configuration when the optimum is found in 40
+  of the 8X HoSi/HeHw configuration when the optimum is found in 40
   runs. These values have been used to proportionally set the
   sub-population sizes in 8X HeSi (the offline approach).}
 % DeberÃ­ais poner nÃºmero de evaluaciones ademÃ¡s. La relaciÃ³n serÃ­a
-% mas exagerada - JJ
+% mas exagerada - JJ FERGU: si ponemos evaluaciones (que es simplemente Gen*128 o 256) salen números con más dígitos y creo que es más difícil de comparar
 
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
@@ -786,11 +751,11 @@ sub-population size to the computational power of the heterogeneous
 cluster nodes presents an improvement in running time.  % yet you also
                                 % use heterogeneous size in
                                 % homogeneous cluster. What is the
-                                % objective of that experiment? - JJ
+                                % objective of that experiment? - JJ FERGU: he puesto lo de control arriba al principio de la sección y abajo
 
 In this work, for a possible offline method to calculate the
 computational performance of each node, the average number of
-generations obtained in the HoSi/HeHa configuration for the three
+generations obtained in the HoSi/HeHw configuration for the three
 problems is used in order to determine the computational power of the
 heterogeneous machines. This comparison takes into account all the
 evolutionary process in a fair manner (proportionally to memory,
@@ -802,23 +767,28 @@ the sub-population size according to the computational power reduces
 the computing time of the whole approach. It should be considered that
 the contribution of this work is not the method to compute these
 sizes, but the comparison and analysis of the algorithm with
-parameters fitted to their power. % REVISAR TODO EL INGLÃ‰S. Cada
+parameters fitted to the computational power of the heterogeneous nodes. 
+
+
+% REVISAR TODO EL INGLÃ‰S. Cada
                                 % pÃ¡rrafo que reviso tiene uno o dos
-                                % errores - JJ
+                                % errores - JJ FERGU: porfa, marcame los errores, que me cuesta verlos
 
 Thus, the obtained average number of generations in the previous
 sub-section (Tables \ref{table:generations4X} and
 \ref{table:generations8X}) is used to set proportionally the sizes in
-the HeSi/HeHa and HeSi/HoHa configurations. This has been done by
+the HeSi/HeHw and HeSi/HoHw configurations. This has been done by
 dividing the total number of individuals (1024) proportionally to the
-number of generations spent by each node in HoSi/HeHa to solve the
+number of generations spent by each node in HoSi/HeHw to solve the
 same problem. Note that, even having two nodes with the same
 processors and memory (HeN1 and HeN2), they might have different
 computational power: this may be produced by different operating
 systems, virtual machine versions, or number of processes being
-executed (inside a node). 
+executed (inside a node). The same heterogeneous parameter set 
+will be tested in the control system (HoHw) to do a fair comparison 
+and properly study the performance of both systems.
 
-%EXPLAIN how you adapt size in homogeneour clusters - JJ
+%EXPLAIN how you adapt size in homogeneour clusters - JJ FERGU: en el HoHw no adaptamos el tamaño al nodo porque son los nodos iguales, pero para una comparativa justa, usamos los mismos parámetros en ambos sistemas (puesto arriba)
 
 
 
@@ -922,13 +892,15 @@ In order to deal with the operating system and architecture heterogeneity (diffe
 \label{sec:results}
 
 % AquÃ­ tienes que contestar a las preguntas de investigaciÃ³n que has
-% planteado en la intro - JJ
+% planteado en la intro - JJ FERGU: contestándolas
 
-The three main objectives of parallel programming are to tackle large
+The first question to answer in this study is to validate if a dEA can 
+be fitted to leverage the capability of a heterogeneous cluster. 
+As the three main objectives of parallel programming are to tackle large
 computational problems, increase the performance of algorithms in a
 finite time, or reduce computational time to solve the problem
-(reaching the optimum) \cite{EVALUATIONPARALLEL}.  This work is
-focused on the third one. % Â¿Y las preguntas de investigaciÃ³n? - JJ
+(reaching the optimum) \cite{EVALUATIONPARALLEL}  this work will be
+focused on the third objective as it is the most adequate to solve the second question. % Â¿Y las preguntas de investigaciÃ³n? - JJ FERGU: Puestas en el texto donde corresponde en varios sitios
 As stated by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing
 the performance of a parallel EA by the number of fitness function
 evaluations required to attain a solution may be misleading. In our
@@ -936,24 +908,21 @@ case, for example, the evaluation time is different in each node of
 the heterogeneous cluster, so the actual algorithm speed (in running
 time) cannot be reflected correctly. However, the number of
 evaluations has been included in this section to better understand the
-results. % Pero no acabas de decir que es misleading? - JJ
-It is difficult to compare the performance of HoHa and HeHa
+results, for example, to see if lower number of evaluations implies lower running time. % Pero no acabas de decir que es misleading? - JJ FERGU: completado
+It is difficult to compare the performance of HoHw and HeHw
 for the same reason: the evaluation time is different in each system
 (and even in each node). Thus, in this work, our aim is not making the
 heterogeneous cluster comparable or better in time than the
-homogeneous one (because they are, obviously, different), but showing
+homogeneous one (because they are, obviously, different), but use the HoHw as a control system to show
 that the same parameter configuration can improve performance in time
 on heterogeneous clusters and could not have an effect on homogeneous
-ones. 
+ones, helping to solve the third question of this work.
 % No me he enterado de nada. Â¿No se puede reflejar la velocidad pero
-% vas a medir el tiempo? - JJ
+% vas a medir el tiempo? - JJ FERGU: pongo lo del control para clarificarlo y sigo hablando de las preguntas
 
 
 
-% No tiene mucho sentido hablar de los resultados de los dos problemas
-% por separado, porque el objetivo no es resolver ese problema, sino
-% probar cómo funciona en algoritmo. Se pueden comentar los dos juntos
-% y se debería hacer - JJ FERGU: okis, poniéndolo todo junto.
+
 
 Table \ref{tab:resultsTIMEall} shows the average running times for
 all the configurations and problems, while Table
@@ -962,19 +931,19 @@ order to compare statistically  two methods (HoSi and HeSi in the
 homogeneous cluster) a Wilcoxon test has been applied. For a three
 methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a
 Kruskal-Wallis test has been used. A mark in the tables indicates if
-the comparison with the base configuration of each cluster (HoSi/HeHa
-and HoSi/HoHa respectively) is significantly higher (\ding{115}),
+the comparison with the base configuration of each cluster (HoSi/HeHw
+and HoSi/HoHw respectively) is significantly higher (\ding{115}),
 significantly lower  (\ding{116}), or no significant difference found
 (\ding{117}). Since the aim is to reduce the computational time, the
 lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
                           % peor, no higher o lower. Â¿higher number of
-                          % evaluations is worse or better? - JJ
+                          % evaluations is worse or better? - JJ FERGU: no puedo, en el paper siempre nos centramos en "menos tiempo es mejor", pero las evaluaciones dan información para saber qué está pasando, por lo que menos evaluaciones no tiene por qué ser mejor
 
 
 
 \begin{table*}
 \centering
-\caption{Time (ms) to reach the optimum (average $\pm$ std. dev. of 40 runs)  for each configuration. and comparison with the base configuration: HeHa/HoSi vs HeHa/HeSi and HeHa/AdSi; and HoHa/HoSi vs. HoHa/HeSi. \ding{115} significantly higher. \ding{116} significantly lower. \ding{117} = no significant difference}
+\caption{Time (ms) to reach the optimum (average $\pm$ std. dev. of 40 runs)  for each configuration. and comparison with the base configuration: HeHw/HoSi vs HeHw/HeSi and HeHw/AdSi; and HoHw/HoSi vs. HoHw/HeSi. \ding{115} significantly higher. \ding{116} significantly lower. \ding{117} = no significant difference}
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|} \hline
 
@@ -1016,11 +985,11 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
 \label{tab:resultsTIMEall}
 \end{table*}
 
-%No se puede poner apaisado en una pÃ¡gina? Esto no se ve nada - JJ
+%No se puede poner apaisado en una pÃ¡gina? Esto no se ve nada - JJ FERGU: TODO espero a ver qué me dicen los maquetadores de la revista
 
 \begin{table*}
 \centering
-\caption{Number of evaluations (average $\pm$ std. dev. of 40 runs)  for each configuration, and comparison with the base configuration: HeHa/HoSi vs HeHa/HeSi and HeHa/AdSi; and HoHa/HoSi vs. HoHa/HeSi. \ding{115} significantly higher. \ding{116} significantly lower. \ding{117} = no significant difference}
+\caption{Number of evaluations (average $\pm$ std. dev. of 40 runs)  for each configuration, and comparison with the base configuration: HeHw/HoSi vs HeHw/HeSi and HeHw/AdSi; and HoHw/HoSi vs. HoHw/HeSi. \ding{115} significantly higher. \ding{116} significantly lower. \ding{117} = no significant difference}
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|} \hline
 
@@ -1092,7 +1061,7 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
     \includegraphics[width =6cm] {boxplots/MMDP_300_EVALS.eps}
     \label{subfig:300evals}
 }
-\caption{Time (ms) and evaluations needed to obtain the optimum for the MMDP problem.}
+\caption{Time (ms) and evaluations needed to obtain the optimum for the MMDP problem. White colour is 4X and grey colour is 8X.}
 \label{fig:boxplotsMMDP}
 \end{figure}
 
@@ -1135,7 +1104,7 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
     \includegraphics[width =6cm] {boxplots/ONEMAX_15000_EVALS.eps}
     \label{subfig:15000evals}
 }
-\caption{Time (ms) and evaluations needed to obtain the optimum for the OneMax problem.}
+\caption{Time (ms) and evaluations needed to obtain the optimum for the OneMax problem. White colour is 4X and grey colour is 8X.}
 \label{fig:boxplotsONEMAX}
 \end{figure}
 
@@ -1168,9 +1137,9 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
     \includegraphics[width =6cm] {boxplots/ROSENBROCK_50_EVALS.eps}
     \label{subfig:300evals}
 }
-\caption{Time (ms) and evalutions needed to obtain the optimum for the
-  Rosenbrock function problem.}
-% Â¿QuÃ© significa el color gris? - JJ 
+\caption{Time (ms) and evaluations needed to obtain the optimum for the
+  Rosenbrock function problem. White colour is 4X and grey colour is 8X.}
+% Â¿QuÃ© significa el color gris? - JJ FERGU: lo explico
 \label{fig:boxplotsROSENBROCK}
 \end{figure}
 
@@ -1181,33 +1150,33 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
 
 \begin{figure}[htb]
 \centering
-\subfigure[150 MMDP HeHa]{
+\subfigure[150 MMDP HeHw]{
     \includegraphics[width =6cm] {graphs/mmdp-size-150-mut-0.006-xover-1-heterohardware.eps}
-   \label{subfig:graph150MMDPHeHa}
+   \label{subfig:graph150MMDPHeHw}
 }
-\subfigure[150 MMDP HoHa]{
+\subfigure[150 MMDP HoHw]{
     \includegraphics[width =6cm] {graphs/mmdp-size-150-mut-0.006-xover-1-homohardware.eps}
-   \label{subfig:graph150MMDPHoHa}
+   \label{subfig:graph150MMDPHoHw}
 }
-\subfigure[240 MMDP HeHa]{
+\subfigure[240 MMDP HeHw]{
     \includegraphics[width =6cm] {graphs/mmdp-size-240-mut-0.004-xover-1-heterohardware.eps}
-   \label{subfig:graph150MMDPHoHa}
+   \label{subfig:graph150MMDPHoHw}
 }
-\subfigure[240 MMDP HoHa]{
+\subfigure[240 MMDP HoHw]{
     \includegraphics[width =6cm] {graphs/mmdp-size-240-mut-0.004-xover-1-homohardware.eps}
-   \label{subfig:graph240MMDPHoHa}
+   \label{subfig:graph240MMDPHoHw}
 }
 
-\subfigure[300 MMDP HeHa]{
+\subfigure[300 MMDP HeHw]{
     \includegraphics[width =6cm] {graphs/mmdp-size-300-mut-0.003-xover-1-heterohardware.eps}
 
-   \label{subfig:graph300MMDPHeHa}
+   \label{subfig:graph300MMDPHeHw}
 }
-\subfigure[300 MMDP HoHa]{
+\subfigure[300 MMDP HoHw]{
     \includegraphics[width =6cm] {graphs/mmdp-size-300-mut-0.003-xover-1-homohardware.eps}
-    \label{subfig:graph300MMDPHoHa}
+    \label{subfig:graph300MMDPHoHw}
 }
-\caption{Average fitness value along the evolution of the individuals for MMDP problem in 8X/HeHa and 8X/HoHa.}
+\caption{Average fitness value along the evolution of the individuals for MMDP problem in 8X/HeHw and 8X/HoHw.}
 \label{fig:graphsMMDP}
 \end{figure}
 
@@ -1224,33 +1193,33 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
 %%%%%ONEMAX
 \begin{figure}[htb]
 \centering
-\subfigure[5000 ONEMAX HeHa]{
+\subfigure[5000 ONEMAX HeHw]{
     \includegraphics[width =6cm] {graphs/onemax-size-5000-mut-0.0002-xover-1-heterohardware.eps}
-   \label{subfig:graph150ONEMAXHeHa}
+   \label{subfig:graph150ONEMAXHeHw}
 }
-\subfigure[5000 ONEMAX HoHa]{
+\subfigure[5000 ONEMAX HoHw]{
     \includegraphics[width =6cm] {graphs/onemax-size-5000-mut-0.0002-xover-1-homohardware.eps}
-   \label{subfig:graph150ONEMAXHoHa}
+   \label{subfig:graph150ONEMAXHoHw}
 }
-\subfigure[5000 ONEMAX HeHa]{
+\subfigure[5000 ONEMAX HeHw]{
     \includegraphics[width =6cm] {graphs/onemax-size-10000-mut-0.0001-xover-1-heterohardware.eps}
-   \label{subfig:graph150ONEMAXHoHa}
+   \label{subfig:graph150ONEMAXHoHw}
 }
-\subfigure[10000 ONEMAX HoHa]{
+\subfigure[10000 ONEMAX HoHw]{
     \includegraphics[width =6cm] {graphs/onemax-size-10000-mut-0.0001-xover-1-homohardware.eps}
-   \label{subfig:graph240ONEMAXHoHa}
+   \label{subfig:graph240ONEMAXHoHw}
 }
 
-\subfigure[15000 ONEMAX HeHa]{
+\subfigure[15000 ONEMAX HeHw]{
     \includegraphics[width =6cm] {graphs/onemax-size-15000-mut-0.00006-xover-1-heterohardware.eps}
 
-   \label{subfig:graph300ONEMAXHeHa}
+   \label{subfig:graph300ONEMAXHeHw}
 }
-\subfigure[15000 ONEMAX HoHa]{
+\subfigure[15000 ONEMAX HoHw]{
     \includegraphics[width =6cm] {graphs/onemax-size-15000-mut-0.00006-xover-1-homohardware.eps}
-    \label{subfig:graph300ONEMAXHoHa}
+    \label{subfig:graph300ONEMAXHoHw}
 }
-\caption{Average fitness value along the evolution of the individuals for ONEMAX problem in 8X/HeHa and 8X/HoHa.}
+\caption{Average fitness value along the evolution of the individuals for ONEMAX problem in 8X/HeHw and 8X/HoHw.}
 \label{fig:graphsONEMAX}
 \end{figure}
 
@@ -1264,33 +1233,33 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
 %%%%%ROSENBROCK
 \begin{figure}[htb]
 \centering
-\subfigure[10 ROSENBROCK HeHa]{
+\subfigure[10 ROSENBROCK HeHw]{
     \includegraphics[width =6cm] {graphs/cec-size-10-mut-0.1-xover-1-heterohardware.eps}
-   \label{subfig:graph10ROSENBROCKHeHa}
+   \label{subfig:graph10ROSENBROCKHeHw}
 }
-\subfigure[10 ROSENBROCK HoHa]{
+\subfigure[10 ROSENBROCK HoHw]{
     \includegraphics[width =6cm] {graphs/cec-size-10-mut-0.1-xover-1-homohardware.eps}
-   \label{subfig:graph10ROSENBROCKHoHa}
+   \label{subfig:graph10ROSENBROCKHoHw}
 }
-\subfigure[30 ROSENBROCK HeHa]{
+\subfigure[30 ROSENBROCK HeHw]{
     \includegraphics[width =6cm] {graphs/cec-size-30-mut-0.03-xover-1-heterohardware.eps}
-   \label{subfig:graph30ROSENBROCKHeHa}
+   \label{subfig:graph30ROSENBROCKHeHw}
 }
-\subfigure[30 ROSENBROCK HoHa]{
+\subfigure[30 ROSENBROCK HoHw]{
     \includegraphics[width =6cm] {graphs/cec-size-30-mut-0.03-xover-1-homohardware.eps}
-   \label{subfig:graph30ROSENBROCKHoHa}
+   \label{subfig:graph30ROSENBROCKHoHw}
 }
 
-\subfigure[50 ROSENBROCK HeHa]{
+\subfigure[50 ROSENBROCK HeHw]{
     \includegraphics[width =6cm] {graphs/cec-size-50-mut-0.02-xover-1-heterohardware.eps}
 
-   \label{subfig:graph50ROSENBROCKHeHa}
+   \label{subfig:graph50ROSENBROCKHeHw}
 }
-\subfigure[50 ROSENBROCK HoHa]{
+\subfigure[50 ROSENBROCK HoHw]{
     \includegraphics[width =6cm] {graphs/cec-size-50-mut-0.02-xover-1-homohardware.eps}
-    \label{subfig:graph50ROSENBROCKHoHa}
+    \label{subfig:graph50ROSENBROCKHoHw}
 }
-\caption{Average fitness value along the evolution of the individuals for ROSENBROCK problem in 8X/HeHa and 8X/HoHa.}
+\caption{Average fitness value along the evolution of the individuals for ROSENBROCK problem in 8X/HeHw and 8X/HoHw.}
 \label{fig:graphsROSENBROCK}
 \end{figure}
 
@@ -1313,8 +1282,8 @@ in larger ranges for MMDP and Rosenbrock.  % so what? - JJ
 At a first glance, and as expected \cite{Wolpert97NFL}, fitting the
 population sub-sizes to heterogeneous clusters do not always imply an
 improvement in time. The HeSi parameter setting can improve time in
-the MMDP and Rosenbrock for HeHa, but in case of the OneMax problem,
-offline fitting  the sub-population sizes significantly increases  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHa configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHa the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) do not converge as smoothly as in HoHa.
+the MMDP and Rosenbrock for HeHw, but in case of the OneMax problem,
+offline fitting  the sub-population sizes significantly increases  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHw configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHw the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) do not converge as smoothly as in HoHw.
 This can be explained because the efficiency on OneMax problem depends mainly on the ability to mix
 the building-blocks, and less on the genetic diversity and size of the
 population (as with MMDP or Rosenbrock). A high genetic diversity is not particularly
@@ -1322,13 +1291,13 @@ required. When properly tuned, a simple GA is able to solve OneMax in super-line
 as control functions, in order to check if very efficient algorithms
 on hard functions fail on easier ones. 
 
-On the contrary, for the MMDP and Rosenbrock, in the HoHa system,
+On the contrary, for the MMDP and Rosenbrock, in the HoHw system,
 setting heterogeneous sizes to sub-populations makes no difference in
 time, that is, changing this parameter has no influence in the
 algorithm's performance. % because of... diversity? - JJ
 
 Finally, the number of nodes affect the behaviour of the
-algorithms. In the case of MMDP in the HeHa system, the offline
+algorithms. In the case of MMDP in the HeHw system, the offline
 fitting of the sub-population to the computational  power of each node
 makes the algorithm finish significantly earlier in all instances of
 the problem in the 4X configuration. However, in the 8X configuration
@@ -1343,14 +1312,6 @@ due to the nature of this problem, as the fitness of the population may stagnate
 
 
 
-
-
-
-% este junto con el anterior y un párrafo al final de los dos a
-% comentar conjuntamente los resultados obtenidos. - JJ FERGU: Comentando conjuntamente
-
-
-
 Summarizing, fitting the population sizes to the
   computational power of each machine (offline and online) can reduce
   the time to obtain the optimum. The same heterogeneous fixed sizes
@@ -1360,7 +1321,7 @@ Summarizing, fitting the population sizes to the
   %not applicable here because there are no differences of generations
   %during runtime.
 
-% No dices NADA sobre el "control", que es el HOHA. Si cambiar el
+% No dices NADA sobre el "control", que es el HoHw. Si cambiar el
 % tamaÃ±o de la poblaciÃ³n no mejora los resultados (salvo en el
 % OneMax), Â¿a quÃ© se debe? Debes usar HmHW (le he cambiado el nombre
 % ya) como CONTROL y comparar los resultados en uno y otro caso. Â¿CuÃ¡l
@@ -1369,7 +1330,7 @@ Summarizing, fitting the population sizes to the
 
 \subsection{Adaptive sub-population sizes during evolution}
 
-Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each problem of the AdSi/HeHa runs, focusing only in the larger problem instances for the 8X configuration, as the other instances behave in similar way. These graphs show the average sizes of all the populations during all the runs (boxplots), and the average size of each node (lines). As can be seen, the behaviour of these sizes is also affected by the problem used. In OneMax, Figure \ref{subfig:adaptONEMAX15000}, the average sizes of all runs increase during running time, covering almost all the values available for the size (from 8 to 256).  In this case, the faster nodes (HeN5, HeN7, HeN8 and HeN1) are using the maximum size at the same time, but as explained before, the nature of this problem requires faster nodes with less diversity. In the case of MMDP and Rosenbrock the average sizes are always under the size of 128 (original HoSi sizes), however, in the MMDP, the maximum size (256) is not always in one of the nodes (Figure \ref{subfig:adaptMMDP300}) as in Rosenbrock evolution (Figure \ref{subfig:adaptROSENBROCK50}), so it can affect the required diversity for these kind of problems. A common behaviour in all problems, is that the slower node (HeN4) converges to the lower size (8) and do not change during all the run. Therefore, in future new methods to take into account extra information of the sub-population (such as the diversity) should be used in conjunction with the generations attained by each node.
+Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each problem of the AdSi/HeHw runs, focusing only in the larger problem instances for the 8X configuration, as the other instances behave in similar way. These graphs show the average sizes of all the populations during all the runs (boxplots), and the average size of each node (lines). As can be seen, the behaviour of these sizes is also affected by the problem used. In OneMax, Figure \ref{subfig:adaptONEMAX15000}, the average sizes of all runs increase during running time, covering almost all the values available for the size (from 8 to 256).  In this case, the faster nodes (HeN5, HeN7, HeN8 and HeN1) are using the maximum size at the same time, but as explained before, the nature of this problem requires faster nodes with less diversity. In the case of MMDP and Rosenbrock the average sizes are always under the size of 128 (original HoSi sizes), however, in the MMDP, the maximum size (256) is not always in one of the nodes (Figure \ref{subfig:adaptMMDP300}) as in Rosenbrock evolution (Figure \ref{subfig:adaptROSENBROCK50}), so it can affect the required diversity for these kind of problems. A common behaviour in all problems, is that the slower node (HeN4) converges to the lower size (8) and do not change during all the run. Therefore, in future new methods to take into account extra information of the sub-population (such as the diversity) should be used in conjunction with the generations attained by each node.
 
 
 \begin{figure}[htb]
@@ -1427,12 +1388,12 @@ In this sub-section the time spent by each node of the clusters in
 every stage of the EA for each configuration with fixed sizes (HoSi
 and HeSi) is analysed. For the shake of clarity in results, and due to
 the lack of space, % no puedes hablar de esto aquÃ­! - JJ
- the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} graphically compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa.
+ the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} graphically compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHw more expensive than in HoHw.
 %TODO Comprobar esto!!
 This happens because a multi-purpose laboratory network to communicate
-the nodes is being used, instead of the specific one used in the HoHa
+the nodes is being used, instead of the specific one used in the HoHw
 system. % lo que tiene una influencia en el resultado de... - JJ
-% Note that the standard deviation of the migration is larger in the HeHa cluster because the network is having real conditions of traffic during the experiment.
+% Note that the standard deviation of the migration is larger in the HeHw cluster because the network is having real conditions of traffic during the experiment.
  In the MMDP changing the sub-population size does not affect the migration time, but it affects the rest of the algorithm's stages. However, with larger data communications (individuals of 5000 elements of the OneMax problem), the sub-population size affects the migration time of all nodes. This might be due to the synchronization of migration buffers: if the slowest machine is sending/receiving, bottlenecks can be propagated.
 
 \begin{figure}[ht]
@@ -1465,7 +1426,7 @@ The reason might be the
 creation of new objects (memory allocation), which in Java and with
 limited memory (and swapping) requires more time than the iteration of
 elements previously created (for example, in the mutation). Fitting
-the sub-population size makes the slower node of HeHa behave in similar
+the sub-population size makes the slower node of HeHw behave in similar
 way than the other nodes (same time in each stage). Moreover, the size
 of the individuals affects to some parts of the EA; for example, in 
 OneMax the mutation requires higher time than the replacement. However,
@@ -1509,7 +1470,7 @@ online the sub-population sizes has been performed comparing the current generat
 number between each node and its previous neighbour. % research
                                 % questions!!!!! - JJ
 
- 				% No. Tratamos de probar un objetivo, dilo aquí!!!!! FERGU: puesto el objetivo, reordenadas conclusiones
+ 				
 Results show that  online or offline fitting the sub-population size to the computational power of each node in the heterogeneous cluster
 can reduce significantly the running time of an algorithm with respect
 to keeping
