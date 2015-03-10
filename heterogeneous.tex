@@ -944,11 +944,10 @@ As claimed by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing the perform
 
 Table \ref{tab:resultsMMDP} shows the results for the MMDP problem. These results are also shown in the boxplots of Figure \ref{fig:timeMMDP} (time) and Figure \ref{fig:evalsMMDP} (evaluations). Table \ref{tab:significanceMMDP} shows the statistical significance of the results. First, a Kolmogorov-Smirnov test is performed to assess the normality of the distributions. As all distributions are not normal, we use non-parametric tests. To compare between two methods (HoSi and HeSi in the homogeneous cluster) a Wilcoxon test has been applied. For a three methods comparison (HoSi, HeSi and AdSi on heterogeneous cluster) a Kruskal-Wallis test has been used. %If the results fit a normal distribution, then a Student's T-Test is calculated. Otherwise, the non-parametric Wilcoxon test is applied (see \cite{TUTORIAL} for a tutorial for comparing EAs).
 
- In the HeHa system, adapting offline the sub-population to the computational
+ In the HeHa method, adapting offline the sub-population to the computational
  power of each node makes the algorithm finish significantly earlier,
  and also, needing a lower number of evaluations to reach the solution. On the other hand, in the HoHa system,
  setting the same sub-population sizes makes no difference in time and
-
  evaluations, that is, changing this parameter has no influence in the
  algorithm's performance (p-value=0.52 for time and 0.08 for evaluations).
 
@@ -1077,10 +1076,14 @@ Proportion  &  51.73 &  30.72 &   14.37 &  3.15  \\ \hline
 
 \subsection{Running time analysis}
 
-This sub-section analyses the time spent by each node of the clusters in every stage of the EA for each configuration with fixed sizes (HoSi and HeSi). Tables \ref{tab:mmdptimes} and \ref{tab:onemaxtimes} show the average and standard deviation of the time spent in each stage of the algorithm (He=Heterogeneous cluster, Ho=Homogeneous cluster). Figures \ref{fig:MMDPbars} and \ref{fig:ONEMAXbars} graphically compare these results. As it can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa. This happens because we are using the multi-purpose laboratory network to communicate the nodes, instead of the specific one used in the HoHa system. Note that the standard deviation of the migration is larger in the HeHa cluster because the network is having real conditions of traffic during the experiment. In the MMDP problem (Table \ref{tab:mmdptimes}) changing the sub-population size does not affect the migration time, but it affects the rest of the algorithm's stages. However, with larger data communications (individuals of 5000 elements of the OneMax problem), the sub-population size affects the migration time of all nodes. This might be due to the synchronization of migration buffers: if the slowest machine is sending/receiving, bottlenecks can be propagated (as it can be seen in Figure \ref{fig:gensonemaxhomosize}). 
+This sub-section analyses the time spent by each node of the clusters
+in every stage of the EA for each configuration with fixed sizes (HoSi
+and HeSi). % why? Include always motivation - JJ
+Tables \ref{tab:mmdptimes} and \ref{tab:onemaxtimes} show the average and standard deviation of the time spent in each stage of the algorithm (He=Heterogeneous cluster, Ho=Homogeneous cluster). Figures \ref{fig:MMDPbars} and \ref{fig:ONEMAXbars} graphically compare these results. As it can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHa more expensive than in HoHa. This happens because we are using the multi-purpose laboratory network to communicate the nodes, instead of the specific one used in the HoHa system. Note that the standard deviation of the migration is larger in the HeHa cluster because the network is having real conditions of traffic during the experiment. In the MMDP problem (Table \ref{tab:mmdptimes}) changing the sub-population size does not affect the migration time, but it affects the rest of the algorithm's stages. However, with larger data communications (individuals of 5000 elements of the OneMax problem), the sub-population size affects the migration time of all nodes. This might be due to the synchronization of migration buffers: if the slowest machine is sending/receiving, bottlenecks can be propagated (as it can be seen in Figure \ref{fig:gensonemaxhomosize}). 
 
 Results also show how the stages of the algorithms depends on the node
-of execution. For example, recombination needs more time than mutation
+of execution. %so what ? - JJ
+ For example, recombination needs more time than mutation
 in both problems only in the node HeN4. The reason might be the
 creation of new objects (memory allocation), which in Java and in
 limited memory (and swapping) requires more time than the iteration of
@@ -1091,7 +1094,8 @@ of the individuals affects to some parts of the EA; for example, in
 OneMax the mutation requires more time than the replacement. However,
 it must be taken into account that the duration of each part of the
 algorithm is not related to the time to attain the optimum, but rather to
-how the diversity and search guidance is maintained in the whole system.  
+how the diversity and search guidance is maintained in the whole
+system.  % so what? - JJ
 
 
 
@@ -1101,7 +1105,9 @@ how the diversity and search guidance is maintained in the whole system.
 
 
 
-\caption{Times of the stages of the algorithm for the MMDP problem (in ms).}
+\caption{Times needed for all stages of the algorithm for the MMDP
+  problem (in ms).}
+% Editado. Habría que editar el resto - JJ
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 \multicolumn{6}{|c|}{Heterogeneous Cluster} \\ \hline
@@ -1130,12 +1136,6 @@ HeSi HoN4    & 0.045 $\pm$  0.052  & 0.345  $\pm$ 1.121 &  0.217 $\pm$  0.142 & 
 }
 \label{tab:mmdptimes}
 \end{table}
-
-
-
-
-
-
 
 
 \begin{table}[htb]
@@ -1173,11 +1173,23 @@ HeSi HoN4 &   0.007 $\pm$  0.008 &  1.215  $\pm$ 1.133  & 2.470  $\pm$ 0.098  & 
 
 
 
-In this paper we describe a study on the adaptation of the sub-population sizes of a distributed EA to the computational power of the different nodes of an heterogeneous cluster. Two adaptation schemes (offline and online) that use information of the computational load of the algorithm have been tested.
+In this paper we describe a study on the adaptation of the
+sub-population sizes of a distributed EA to the computational power of
+the different nodes of an heterogeneous cluster. Two adaptation
+schemes (offline and online) that use information of the computational
+load of the algorithm have been tested. 
  				% No. Tratamos de
-                                % probar un objetivo, dilo aquí!!!!!
-Results show that adapting (online or offline) the sub-population size to the computational power of each node in the heterogeneous cluster yields significantly
-better results in time than keeping the same parameter in all nodes. This advantage is due to the combination of the heterogeneous parameters with the heterogeneity of the machines. On the contrary, the same (heterogeneous) parameter setting in all islands of the homogeneous cluster could not improve the results than considering the same parameter value in all nodes.
+                                % probar un objetivo, dilo
+                                % aquí!!!!! - JJ
+Results show that adapting (online or offline) the sub-population size
+to the computational power of each node in the heterogeneous cluster
+yields significantly 
+better results in time than keeping the same parameter in all
+nodes. This advantage is due to the combination of the heterogeneous
+parameters with the heterogeneity of the machines. On the contrary,
+the same (heterogeneous) parameter setting in all islands of the
+homogeneous cluster could not improve the results than considering the
+same parameter value in all nodes. % why? - JJ
 
 
  % o sea, tener
@@ -1193,7 +1205,8 @@ better results in time than keeping the same parameter in all nodes. This advant
 
 Furthermore, changing the sub-population size affects to stages
 of the algorithm that are independent of this parameter, such as
-the migration. The sub-population size adaptation is also affected by the problem to solve.
+the migration. The sub-population size adaptation is also affected by
+the problem to solve. %so what? - JJ
 
 In this work, as a possible offline parameter setting, we have calculated the computational power of each node proportionally 
 to the average number of generations of the homogeneous parameter set. Moreover, a possible way to adapt 
