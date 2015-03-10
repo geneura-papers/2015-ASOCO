@@ -734,9 +734,9 @@ In this configuration, each node has the same number of individuals, so the tota
 \centering{
 \caption{Average number of generations (and proportion) in each node
   of the 8X HoSi/HeHa configuration when the optimum is found in 40
-  runs. These values have been used to set proportionally the
+  runs. These values have been used to proportionally set the
   sub-population sizes in 8X HeSi (the offline approach).}
-% Deberíais poner número de evaluaciones además.La proporción sería
+% Deberíais poner número de evaluaciones además. La relación sería
 % mas exagerada - JJ
 
 \resizebox{14cm}{!}{
@@ -788,13 +788,12 @@ cluster nodes presents an improvement in running time.  % yet you also
                                 % homogeneous cluster. What is the
                                 % objective of that experiment? - JJ
 
-
 In this work, for a possible offline method to calculate the
 computational performance of each node, the average number of
 generations obtained in the HoSi/HeHa configuration for the three
 problems is used in order to determine the computational power of the
 heterogeneous machines. This comparison takes into account all the
-evolutionary process in a fair manner (proportional to the memory,
+evolutionary process in a fair manner (proportionally to memory,
 processor and network usage), instead a traditional benchmark that
 usually relies only on the CPU speed. Although this is not obviously
 the ideal way, it is a possible way to establish the computational
@@ -807,7 +806,19 @@ parameters fitted to their power. % REVISAR TODO EL INGLÉS. Cada
                                 % párrafo que reviso tiene uno o dos
                                 % errores - JJ
 
-Thus, the obtained average number of generations in the previous sub-section (Tables \ref{table:generations4X} and \ref{table:generations8X}) is used to set proportionally the sizes in the HeSi/HeHa and HeSi/HoHa configurations. This has been done by dividing the total number of individuals (1024) proportionally to the number of generations spent by each node in HoSi/HeHa to solve the same problem. Note that, even having two nodes with the same processors and memory (HeN1 and HeN2), they might have different computational power: this may be produced by different operating systems, virtual machine versions, or number of processes being executed (inside a node).
+Thus, the obtained average number of generations in the previous
+sub-section (Tables \ref{table:generations4X} and
+\ref{table:generations8X}) is used to set proportionally the sizes in
+the HeSi/HeHa and HeSi/HoHa configurations. This has been done by
+dividing the total number of individuals (1024) proportionally to the
+number of generations spent by each node in HoSi/HeHa to solve the
+same problem. Note that, even having two nodes with the same
+processors and memory (HeN1 and HeN2), they might have different
+computational power: this may be produced by different operating
+systems, virtual machine versions, or number of processes being
+executed (inside a node). 
+
+%EXPLAIN how you adapt size in homogeneour clusters - JJ
 
 
 
@@ -1348,6 +1359,13 @@ Summarizing, fitting the population sizes to the
   and not for the different island sizes. %Also, the AdSi proposal is
   %not applicable here because there are no differences of generations
   %during runtime.
+
+% No dices NADA sobre el "control", que es el HOHA. Si cambiar el
+% tamaño de la población no mejora los resultados (salvo en el
+% OneMax), ¿a qué se debe? Debes usar HmHW (le he cambiado el nombre
+% ya) como CONTROL y comparar los resultados en uno y otro caso. ¿Cuál
+% es el factor que hace que los resultados sean, en los casos más
+% complicados, mejores? Las tablas 6 y 7 son las fundamentales. - JJ
 
 \subsection{Adaptive sub-population sizes during evolution}
 
