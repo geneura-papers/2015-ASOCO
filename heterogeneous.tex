@@ -133,7 +133,7 @@
 \ead{jesusgonzalez@ugr.es}
 \author[ugr]{Antonio Miguel Mora}
 \ead{amorag@geneura.ugr.es}
-\author[ugr]{Maribel Garc\'ia Arenas}
+\author[ugr]{Maribel G. Arenas}
 \ead{maribel@ugr.es}
 \author[ugr]{Pedro A. Castillo}
 \ead{pacv@ugr.es}
@@ -161,8 +161,8 @@ to each node could reduce execution time. % why???? - JJ
 % población". Tendrás que recorrerlo con más cuidado, porque ahora no
 % se ve. ¿Por qué la población y no la frecuencia de inmigración? ¿La
 % conectividad? ¿Los parámetros de exploración y explotación? - JJ
-Since the dEAs include a whole range of parameters with an influence in the performance, 
-this paper proposes a study on the size of the population. This parameter  is one of the most important, 
+Since the dEAs include a whole range of parameters that influence the performance, 
+this paper proposes a study on the population size. This parameter  is one of the most important, 
 since it has a direct relationship with the number of iterations needed to find the solution, as it affects
 the exploration factor of the algorithm. 
 The aim of this paper consists in validating the following hypothesis: fitting the sub-population size 
@@ -173,7 +173,7 @@ problems with different characteristics and computational demands have
 been used. %why two and not three? - JJ
 Results show
 that setting the population size according to the computational power
-of the nodes in the heterogeneous cluster improves the time required
+of each node in the heterogeneous cluster improves the time required
 to obtain the optimal solution. % Spoileeeer! - JJ 
 Meanwhile, the same set of
 different size values could not improve the running time  to reach the optimum 
@@ -256,10 +256,10 @@ solved. % usually? - JJ
 % How do you define performance? Entre uno y otro párrafo debería
 % haber otro que dijera: The performance of an evolutionary algorithms
 % is measured by... - JJ
-These algorithms depend on a set of parameters which can be
+EAs depend on a set of parameters which can be
 adapted to increase its performance. Among them,
-the population size in EAs
- is the a key factor in the performance, because it has an effect on the quality of the
+the population size
+ is a key factor in the performance, because it has an effect on the quality of the
 solution and the running-time
 \cite{ShrinkageLaredo09}. % is it the only one? Which are the other
                           % parameters? Is it the one with the most
@@ -269,7 +269,7 @@ This parameter has been studied as a fixed
 \cite{SelfRegulatedSizeFernandes06,AdaptiveLobo07} value, but without taking
 into account the computational power of each machine in a
 heterogeneous cluster. This paper investigates whether
-adapting the population size of the nodes of a distributed
+adapting the sub-population size of each node in a distributed
 Evolutionary Algorithm (dEA) \cite{MULTIKULTI} can leverage the
 computational capabilities of a heterogeneous cluster. % but why
                                 % population? What effect does it have
@@ -300,8 +300,8 @@ parameters (heterogeneous dEAs) \cite{garcia2014randomized,tanabe2013evaluation,
 set of parameters for different problems. % Invierte el orden de estas
                                 % dos frases - JJ
 
-However, new trends in distributed computing such as Cloud Computing \cite{Derby13Cloud}, GRID
-\cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS} are
+However, new trends in distributed computing, such as Cloud Computing \cite{Derby13Cloud}, GRID
+\cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS}, are
 leading to heterogeneous computational devices, such as laptops,
 virtual machine instances, % cita a Una-May en EvoStar aquí - JJ FERGU: Citada arriba con Derby13Cloud
 GPUs \cite{Acosta13GPUs},
@@ -1462,7 +1462,7 @@ a heterogeneous cluster nodes presents an improvement in running
 time. Two parameter setting schemes (offline and online) that use
 information of the computational load of the algorithm have been
 tested, and three different problems that cover different
-characteristics and computational demands have been used. In this
+characteristics and computational requirements have been used. In this
 work, as a possible offline parameter setting, the computational power
 of each node has been calculated proportionally  
 to the average number of generations required to find the optimum with the homogeneous parameter set. Moreover, a possible way to fit 
