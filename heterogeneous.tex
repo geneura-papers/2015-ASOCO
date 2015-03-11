@@ -160,21 +160,21 @@ to each node could reduce execution time. % why???? - JJ
 % Hay un salto desde "heterogéneos" hasta "voy a alterar la
 % población". Tendrás que recorrerlo con más cuidado, porque ahora no
 % se ve. ¿Por qué la población y no la frecuencia de inmigración? ¿La
-% conectividad? ¿Los parámetros de exploración y explotación? - JJ
+% conectividad? ¿Los parámetros de exploración y explotación? - JJ FERGU: lo de exploration factor abajo. �C�mo sugieres?
 Since the dEAs include a whole range of parameters that influence the performance, 
 this paper proposes a study on the population size. This parameter  is one of the most important, 
 since it has a direct relationship with the number of iterations needed to find the solution, as it affects
 the exploration factor of the algorithm. 
 The aim of this paper consists in validating the following hypothesis: fitting the sub-population size 
 to the computational power of the heterogeneous cluster nodes presents
-an improvement in running time.  % with respect to... JJ
+an improvement in running time with respect to use the same population sizes in all nodes.  % with respect to... JJ FERGU: Done
 Two size parameter setting schemes have been tested, an offline and an online parameter setting, and three 
 problems with different characteristics and computational demands have
-been used. %why two and not three? - JJ
+been used. %why two and not three? - JJ FERGU, esto estaba de antes, lo arregl� diciendo lo de distintas caracter�sticas
 Results show
 that setting the population size according to the computational power
 of each node in the heterogeneous cluster improves the time required
-to obtain the optimal solution. % Spoileeeer! - JJ 
+to obtain the optimal solution. % Spoileeeer! - JJ FERGU: eso que quiere decir, que lo quite?
 Meanwhile, the same set of
 different size values could not improve the running time  to reach the optimum 
  in a homogeneous
@@ -221,7 +221,7 @@ or online) of parameters to the computational power of the devices.
                                 %varies. Besides, usually number of
                                 %evaluations decrease with the
                                 %population in single-population
-                                %algorithm. - JJ
+                                %algorithm. - JJ FERGU: a ver, el n�mero de evaluaciones no es importante que decrezca en un sistema heterog�neo.
 
  
 \end{abstract}
@@ -250,41 +250,25 @@ population evolves by means of selection and recombination/mutation operators
 creating a new set of candidates and this goes on until a {\em stopping criterion}
 (e.g. number of generations) is met. The fitness function expresses
 the quality of the solution, giving the grade of adaptation of an
-individual. This function usually describes the problem being
-solved. % usually? - JJ
+individual. This function describes the problem being
+solved. % usually? - JJ FERGU: lo le� de alguna tesis, pero lo quito
 
 % How do you define performance? Entre uno y otro párrafo debería
 % haber otro que dijera: The performance of an evolutionary algorithms
-% is measured by... - JJ
-EAs depend on a set of parameters which can be
-adapted to increase its performance. Among them,
-the population size
- is a key factor in the performance, because it has an effect on the quality of the
-solution and the running-time
-\cite{ShrinkageLaredo09}. % is it the only one? Which are the other
-                          % parameters? Is it the one with the most
-                          % influence? - JJ
-This parameter has been studied as a fixed
-\cite{SizingHarik99} or adaptive 
-\cite{SelfRegulatedSizeFernandes06,AdaptiveLobo07} value, but without taking
-into account the computational power of each machine in a
-heterogeneous cluster. This paper investigates whether
-adapting the sub-population size of each node in a distributed
-Evolutionary Algorithm (dEA) \cite{MULTIKULTI} can leverage the
-computational capabilities of a heterogeneous cluster. % but why
-                                % population? What effect does it have
-                                % on individual clusters?
-                                % MOTIVATION!!! - JJ
+% is measured by... - JJ FERGU: okis, reescrito abajo el primer p�rrafo y enlazado con dEAs
+The performance of an EA can be measured by the running time to find the optimum value 
+or the quality of the solution attained in a fixed time, and may be affected by a set 
+of parameters of the algorithm, such as the crossover rate, or population size, among others. 
+The latter has been studied as a fixed \cite{SizingHarik99} or adaptive 
+\cite{SelfRegulatedSizeFernandes06,AdaptiveLobo07} value, as it have a huge impact in the efficiency of an EA \cite{ShrinkageLaredo09}.
 
-
-% Mejor estructurada, pero falta motivación - JJ
-Distributed EAs run the algorithm in a set of nodes simultaneously,
+Performance can also be improved using Distributed EAs (dEAs) \cite{MULTIKULTI}, where the algorithm is run in a set of nodes simultaneously,
 working with different sub-populations (or islands) at the same
 time. Periodically one or more individuals are
 interchanged (migrated) between sub-populations, which are connected
 following a specific topology. Figure \ref{fig:islands} shows this
 model with a ring topology. % Este párrafo debería ir antes de que
-                            % digas qué es lo que vas a adaptar - JJ
+                            % digas qué es lo que vas a adaptar - JJ FERGU: okis, movido de sitio
 
 
 \begin{figure}[htb]
@@ -294,13 +278,28 @@ model with a ring topology. % Este párrafo debería ir antes de que
 \label{fig:islands}
 \end{figure}
 
+
+
+
+
+
 Cant{\'u}-Paz, in \cite{CantuPazTopologies99}, published a theoretical study about population size, migration rate and the degree of the topology.  This kind of algorithms have been usually executed in homogeneous clusters \cite{MULTIKULTI,Wakunda97EVA}, being used with the same
 parameters in all nodes (homogeneous dEAs), or with different
 parameters (heterogeneous dEAs) \cite{garcia2014randomized,tanabe2013evaluation,HETEROGENEOUSPARAMETERS}. These configurations can be more  efficient time-wise than a fixed
 set of parameters for different problems. % Invierte el orden de estas
                                 % dos frases - JJ
 
-However, new trends in distributed computing, such as Cloud Computing \cite{Derby13Cloud}, GRID
+As previously said, population size is a key factor for the performance 
+of dEAs \cite{ShrinkageLaredo09}, so this paper investigates whether
+adapting the sub-population size of each node in a distributed
+Evolutionary Algorithm can leverage the
+computational capabilities of a heterogeneous cluster. % but why
+                                % population? What effect does it have
+                                % on individual clusters?
+                                % MOTIVATION!!! - JJ FERGU: re-estructurando de nuevo la intro para poner 
+                                % cada cosa en su sitio y motivando el siguiente p�rrafo                              
+
+This is motivated because new trends in distributed computing, such as Cloud Computing \cite{Derby13Cloud}, GRID
 \cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS}, are
 leading to heterogeneous computational devices, such as laptops,
 virtual machine instances, % cita a Una-May en EvoStar aquí - JJ FERGU: Citada arriba con Derby13Cloud
@@ -355,15 +354,15 @@ supply of building-blocks (higher genetic diversity) and are more
 likely to overcome premature convergence. However, in large
 populations, convergence speed is the payoff for accuracy: in general,
 when the population size of an EA grows, the convergence speed is
-reduced. When having different processors with different computational
+reduced \cite{Cantu02Multiple}. When having different processors with different computational
 power computing sub-populations of an EA, it may be a good policy to
 distribute the individuals in a way that less efficient nodes are
-assigned with smaller populations. % smaller diversity? - JJ
+assigned with smaller populations. % smaller diversity? - JJ FERGU: TODO preguntarle a Carlos
 This solution not only integrates
 within an EA two different types of evolutionary search (fast, with
 the smaller populations, and accurate, with the larger), but also puts
 on the most efficient nodes the burden of computing larger
-sub-populations. % because... - JJ
+sub-populations. % because... - JJ FERGU: TODO preguntarle a carlos
 
 In this work, a heterogeneous distributed system has been used to
 answer  the following research questions:
