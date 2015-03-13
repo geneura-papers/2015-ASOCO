@@ -214,7 +214,7 @@ or online) of parameters to the computational power of the devices.
 % reduce total? Reduce single-node? Why is reducing execution time
 % important? Was not the most important thing to leverage all
 % available resources? The OBJECTIVE of the paper must be clear and
-% the steps taken to make it sure too - JJ 
+% the steps taken to make it sure too - JJ  FERGU: el objetivo del paper es reducir tiempo de ejecución. Si aumentamos las evaluaciones, pero tardamos menos tiempo (como sucede en este paper), pues mejor, antes nos vamos a casa. Ese tiempo se aprovecha mejor dandole tamaños pequeños a nodos lentos, porque explotan, pero no demasiado rápido.
 
  %Two different things:
                                 %time and evaluations. If they
@@ -223,7 +223,7 @@ or online) of parameters to the computational power of the devices.
                                 %varies. Besides, usually number of
                                 %evaluations decrease with the
                                 %population in single-population
-                                %algorithm. - JJ FERGU: a ver, el número de evaluaciones no es importante que decrezca en un sistema heterogéneo.
+                                %algorithm. - JJ FERGU: el número de evaluaciones no es importante que decrezca en un sistema heterogéneo.
 
  
 \end{abstract}
@@ -650,7 +650,7 @@ HeN8  &  Intel(R) Core(TM)2 Q8200 ($4\times2.33$GHz) & 4GB   & Ubuntu 14.04 (64b
 
 To study the scalability, two different number of nodes have been used in each problem and configuration: 4 nodes (from H1 to H4, referred as  {\em 4X} configuration for the rest of the paper) and 8 nodes (from H1 to H8, referred {\em 8X} configuration). The same amount of nodes been previously used in other works on dEAs in heterogeneous environments \cite{HETEROGENEOUSHARD,HYDROCM,Salto13Distributed}.
 
-The global population size has been set to 1024 individuals. Other researchers that investigate in dEAs in heterogeneous environments have used 512 individuals (see the works \cite{HYDROCM,Dominguez13HydroCM,Salto13Distributed}). However, as using 512 individuals in  preliminary runs obtained extremely low sub-population sizes, a larger value has been used. 1024 individuals is a number big enough to test different sub-population sizes in different number of computational nodes (4 and 8), allowing an easier distribution among them. The stopping criterion for all approaches used in this work is to find the optimum of the problem, so that all runs have always finished when the optimum has been found in one of the nodes. This stopping criterion has been considered as Alba et al. did in \cite{EVALUATIONPARALLEL}, since it offers a fair way to compare the running time and behaviour of the tested configurations. Two-point crossover has been chosen, as it has been used previously in studies on parallel GAs  for binary problems \cite{CantuPazTopologies99}, and BLX-0.5 for real coded dEAs \cite{Robles09ParallelFuzzy}.
+The global population size has been set to 1024 individuals. Other researchers that investigate in dEAs in heterogeneous environments have used 512 individuals (see the works \cite{HYDROCM,Dominguez13HydroCM,Salto13Distributed}). However, as using 512 individuals in  preliminary runs obtained extremely low sub-population sizes, a larger value has been used. 1024 individuals is a number big enough to test different sub-population sizes in different number of computational nodes (4 and 8), allowing a better distribution among them. The stopping criterion for all approaches used in this work is to find the optimum of the problem, so that all runs have always finished when the optimum has been found in one of the nodes. This stopping criterion has been considered as Alba et al. did in \cite{EVALUATIONPARALLEL}, since it offers a fair way to compare the running time and behaviour of the tested configurations. Two-point crossover has been chosen, as it has been used previously in studies on parallel GAs  for binary problems \cite{CantuPazTopologies99}, and BLX-0.5 for real coded dEAs \cite{Robles09ParallelFuzzy}.
 
 \subsubsection{Homogeneous Size configuration}
 
@@ -888,7 +888,7 @@ Initial island size in AdSi (8x) & 128 \\ \hline
 \end{table}
 
 \subsection{Framework}
-In order to deal with the operating system and architecture heterogeneity (different operating systems and versions, processors, compilers, etc.), the OSGiLiath framework \cite{SOASOCO}, based on Java, has been used in this work. This is a service-oriented evolutionary framework that automatically configures the services to be used in a local network. In this case, each node offers a migration buffer to accept foreign individuals. Also, in order to reduce bottlenecks in distributed runs, asynchronous communication has been provided to avoid idle time using reception buffers (that is, the algorithm does not wait until new individuals arrive, but the buffers cannot be used again until the reception is done). This kind of communication offers an excellent performance when working with different nodes and operating systems, as proved in \cite{HETEROGENEOUSHARD,AsynchronousMerelo08}. The transmission mechanism is based on ECF Generic server (over TCP)\footnote{\url{http://www.eclipse.org/ecf/}}.  The source code of the algorithms used in this work is available at \url{http://www.osgiliath.org} under a LGPL V3 License. 
+In order to deal with the operating system and architecture heterogeneity (different operating systems and versions, processors, compilers, etc.), the OSGiLiath framework \cite{SOASOCO}, based on Java, has been used in this work. This is a service-oriented evolutionary framework that automatically configures the services to be used in a local network. In this case, each node offers a migration buffer to accept foreign individuals. Also, in order to reduce bottlenecks in distributed runs, asynchronous communication has been provided to avoid idle time (that is, the algorithm continues evolving the sub-population while individuals are being received, although the buffers cannot be used for communication until the reception is done). This kind of communication offers an excellent performance when working with different nodes and operating systems, as proved in \cite{HETEROGENEOUSHARD,AsynchronousMerelo08}. The transmission mechanism is based on ECF Generic server (over TCP)\footnote{\url{http://www.eclipse.org/ecf/}}.  The source code of the algorithms used in this work is available at \url{http://www.osgiliath.org} under a LGPL V3 License. 
 
 %%%%%%%%%%%%%%%%%%  Results  %%%%%%%%%%%%%%%%%%%
 
@@ -907,7 +907,7 @@ finite time, or reduce computational time to solve the problem
 focused on the third objective as it is the most adequate to solve the second research question presented in the Introduction. % Â¿Y las preguntas de investigaciÃ³n? - JJ FERGU: Puestas en el texto donde corresponde en varios sitios
 
 
-\subsection{Running time of each stage of the algorithm}
+\subsection{Running time analysis}
 
 As stated by Alba and Luque in \cite{EVALUATIONPARALLEL}, assessing
 the performance of a parallel EA by the number of fitness function
@@ -1283,10 +1283,10 @@ can be seen that the number of evaluations may not be a good indicator
 when comparing heterogeneous environments. For example, for the OneMax
 problem (Figure \ref{fig:boxplotsONEMAX}), using 8 nodes instead of 4
 requires more evaluations to finish, and yet, less time to achieve the
-optimum.  % so what? more evaluations are being done at the same time
-          % - JJ
+optimum.  % so what? more evaluations are being done at the same time - JJ
 Also, the average amount of time needed to solve the problems may vary
-in larger ranges for MMDP and Rosenbrock.  % so what? - JJ
+in larger ranges for MMDP and Rosenbrock. This can explain the different results
+among the problems.  % so what? - JJ FERGU: puesta la razón
 
 At a first glance, and as expected \cite{Wolpert97NFL}, fitting the
 population sub-sizes to heterogeneous clusters do not always imply an
@@ -1393,19 +1393,16 @@ Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each pr
 
 
 
-\subsection{Running time analysis}
+\subsection{Running time of each stage of the algorithm}
 
-In this sub-section the time spent by each node of the clusters in
+As a final analysis the time spent by each node of the clusters in
 every stage of the EA for each configuration with fixed sizes (HoSi
-and HeSi) is analysed. For the shake of clarity in results, and due to
-the lack of space, % no puedes hablar de esto aquÃ­! - JJ
- the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} graphically compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHW more expensive than in HoHW.
-%TODO Comprobar esto!!
-This happens because a multi-purpose laboratory network to communicate
+and HeSi) is taken into account. For the shake of clarity in results,  % no puedes hablar de esto aquÃ­! - JJ FERGU: Ok, quitado
+ the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHW more expensive than in HoHW. This happens because a multi-purpose laboratory network to communicate
 the nodes is being used, instead of the specific one used in the HoHW
-system. % lo que tiene una influencia en el resultado de... - JJ
-% Note that the standard deviation of the migration is larger in the HeHW cluster because the network is having real conditions of traffic during the experiment.
- In the MMDP changing the sub-population size does not affect the migration time, but it affects the rest of the algorithm's stages. However, with larger data communications (individuals of 5000 elements of the OneMax problem), the sub-population size affects the migration time of all nodes. This might be due to the synchronization of migration buffers: if the slowest machine is sending/receiving, bottlenecks can be propagated.
+system.  % lo que tiene una influencia en el resultado de... - JJ
+
+ In problems with larger data communications (300 or 5000 elements of individuals of the MMDP and OneMax problem) changing the sub-population size decreases the migration time in HeHW, but increased in HoHW. This might be due to the synchronization of migration buffers: if all machines are sending/receiving at the same time, bottlenecks can be propagated.
 
 \begin{figure}[ht]
 \centering
@@ -1460,7 +1457,7 @@ system.
 % resulta que NO. En la mayor parte de los casos, es PEOR resultado
 % que si el tamaÃ±o es homogÃ©neo. Por lo tanto, si la poblaciÃ³n
 % heterogÃ©nea no trae mejores resultados, Â¿quÃ© es lo que  lo hace? Â¿La
-% asincronÃ­a? - JJ
+% asincronÃ­a? - JJ FERGU: puesto abajo en las conclusiones lo de la asincronia
 
 \section{Conclusions and future work}
 
