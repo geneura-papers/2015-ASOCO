@@ -38,13 +38,6 @@
 %% \documentclass[final,5p,times]{elsarticle}
 %%\documentclass[final,5p,times,twocolumn]{elsarticle}%%DOS COLUMNAS
 
-%% if you use PostScript figures in your article
-%% use the graphics package for simple commands
-%% \usepackage{graphics}
-%% or use the graphicx package for more complicated commands
-%% \usepackage{graphicx}
-%% or use the epsfig package if you prefer to use the old commands
-%% \usepackage{epsfig}
 
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
@@ -118,12 +111,7 @@
 
 \title{Studying the effect of population size in distributed evolutionary
   algorithms on heterogeneous clusters}
-% no studying? o testing?  - JJ FERGU: Ok
 
-%% use optional labels to link authors explicitly to addresses:
-%% \author[label1,label2]{<author name>}
-%% \address[label1]{<address>}
-%% \address[label2]{<address>}
 
 \author[ugr]{Pablo Garc\'ia-S\'anchez}
 \ead{pablogarcia@ugr.es}
@@ -156,26 +144,22 @@ Fitting this kind of algorithms to these environments, so that they
 can take advantage of their heterogeneity to save running time, is
 still an issue. The different computational power of the nodes affects
 the performance of the algorithm, and properly tuning or fitting it
-to each node could reduce execution time. % why???? - JJ
-% Hay un salto desde "heterogÃ©neos" hasta "voy a alterar la
-% poblaciÃ³n". TendrÃ¡s que recorrerlo con mÃ¡s cuidado, porque ahora no
-% se ve. Â¿Por quÃ© la poblaciÃ³n y no la frecuencia de inmigraciÃ³n? Â¿La
-% conectividad? Â¿Los parÃ¡metros de exploraciÃ³n y explotaciÃ³n? - JJ FERGU: lo de exploration factor abajo. ¿Cómo sugieres?
+to each node could reduce execution time. 
 
 Since the distributed Evolutionary Algorithms include a whole range of parameters that influence the performance, 
 this paper proposes a study on the population size. This parameter  is one of the most important, 
 since it has a direct relationship with the number of iterations needed to find the solution, as it affects
 the exploration factor of the algorithm. 
-The aim of this paper consists in validating the following hypothesis: fitting the sub-population size to the computational power of the heterogeneous cluster node can lead to an improvement in running time with respect to the use of the same population size in every node. % gustavo
-%presents an improvement in running time with respect to use the same population sizes in all nodes. % with respect to... JJ FERGU: Done
+The aim of this paper consists in validating the following hypothesis: fitting the sub-population size to the computational power of the heterogeneous cluster node can lead to an improvement in running time with respect to the use of the same population size in every node. 
+
 Two  parameter size schemes have been tested, an offline and an online parameter setting, and three 
 problems with different characteristics and computational demands have
-been used. %why two and not three? - JJ FERGU, esto estaba de antes, lo arreglé diciendo lo de distintas características
+been used. 
 
 Results show
 that setting the population size according to the computational power
 of each node in the heterogeneous cluster improves the time required
-to obtain the optimal solution. % Spoileeeer! - JJ FERGU: eso que quiere decir, que lo quite?
+to obtain the optimal solution. 
 Meanwhile, the same set of
 different size values could not improve the running time  to reach the optimum 
  in a homogeneous
@@ -187,42 +171,7 @@ or online) of parameters of the distributed Evolutionary Algorithms to the compu
 
 
 
-% Por favor, mucho cuidado con el argumento aquí, porque no está nada
-% claro por dónde va. Hay que enmarcar claramente el problema y por
-% qué a la segunda frase del abstract estamos hablando de la población
-% En todo caso, en la introducción habrá que dejar claro por qué nos
-% centramos en la población y no en otras cosas. ¿Qué estamos
-% buscando? ¿Que se sincronicen todos los nodos? Si es así hay que
-% decirlo arriba. - JJ FERGU: No, no se busca una sincronización tal cual, escribo al principio de la intro un argumento y desarrollaré desde allí.
-% El argumento sigue sin estar claro. ``Estamos preocupados con AEs
-% distribuidos... donde la población es muy importante''. ¿Qué tiene
-% esto que ver con los sistemas heterogéneos? Para empezar, el marco
-% debería estar en la primera frase: estamos hablando de algoritmos
-% evolutivos distribuidos. Para seguir, el problema es usar todos los
-% recursos. Para usar todos los recursos, debemos ¿qué? ¿Que los nodos
-% funcionen de forma síncrona? ¿Que las prestaciones sean similares?
-% ¿Qué tiene que ver esto con las prestaciones= Y para hacer eso, lo más importante es
-% controlar la población... Por favor, déjalo bien claro porque la
-% línea de argumentación es lo más importante del paper - JJ
 
-% lo de arriba sigue sin contestar - JJ FERGU: lo del orden de arriba lo había cambiado a como sugerías: Primero AEs, luego distribuidos, luego los recursos, pero meto abajo lo de sincronismo y asincronismo
-
-
- 
-% or to be able to synchronize all nodes? - JJ
-% reduce total? Reduce single-node? Why is reducing execution time
-% important? Was not the most important thing to leverage all
-% available resources? The OBJECTIVE of the paper must be clear and
-% the steps taken to make it sure too - JJ  FERGU: el objetivo del paper es reducir tiempo de ejecución. Si aumentamos las evaluaciones, pero tardamos menos tiempo (como sucede en este paper), pues mejor, antes nos vamos a casa. Ese tiempo se aprovecha mejor dandole tamaños pequeños a nodos lentos, porque explotan, pero no demasiado rápido.
-
- %Two different things:
-                                %time and evaluations. If they
-                                %decrease time due to evaluations,
-                                %then it's something: the algorithm
-                                %varies. Besides, usually number of
-                                %evaluations decrease with the
-                                %population in single-population
-                                %algorithm. - JJ FERGU: el número de evaluaciones no es importante que decrezca en un sistema heterogéneo.
 
  
 \end{abstract}
@@ -230,8 +179,7 @@ or online) of parameters of the distributed Evolutionary Algorithms to the compu
 \begin{keyword}
 
 Evolutionary Algorithms \sep Genetic Algorithms \sep Heterogeneous distributed computation \sep Distributed computing \sep Parameter Tuning \sep Parameter Control
-%% MSC codes here, in the form: \MSC code \sep code
-%% or \MSC[2008] code \sep code (2000 is the default)
+
 \end{keyword}
 
 \end{frontmatter}
@@ -252,11 +200,8 @@ creating a new set of candidates and this goes on until a {\em stopping criterio
 (e.g. number of generations) is met. The fitness function expresses
 the quality of the solution, giving the grade of adaptation of an
 individual. This function describes the problem being
-solved. % usually? - JJ FERGU: lo leí de alguna tesis, pero lo quito
+solved. 
 
-% How do you define performance? Entre uno y otro pÃ¡rrafo deberÃ­a
-% haber otro que dijera: The performance of an evolutionary algorithms
-% is measured by... - JJ FERGU: okis, reescrito abajo el primer párrafo y enlazado con dEAs
 The performance of an EA can be measured by the running time to find the optimum value 
 or the quality of the solution attained in a fixed time, and may be affected by a set 
 of parameters of the algorithm, such as the crossover rate, or population size, among others. 
@@ -268,8 +213,7 @@ working with different sub-populations (or islands) at the same
 time. Periodically one or more individuals are
 interchanged (migrated) between sub-populations, which are connected
 following a specific topology. Figure \ref{fig:islands} shows this
-model with a ring topology. % Este pÃ¡rrafo deberÃ­a ir antes de que
-                            % digas quÃ© es lo que vas a adaptar - JJ FERGU: okis, movido de sitio
+model with a ring topology. 
 
 
 \begin{figure}[htb]
@@ -288,23 +232,18 @@ Cant{\'u}-Paz, in \cite{CantuPazTopologies99}, published a theoretical study abo
 parameters in all nodes (homogeneous dEAs), or with different
 parameters (heterogeneous dEAs) \cite{garcia2014randomized,tanabe2013evaluation,HETEROGENEOUSPARAMETERS}. 
 
-%These configurations can be more  efficient time-wise than a fixed set of parameters for different problems. % Invierte el orden de estas
-                                % dos frases - JJ FERGU: la comento directamente, que no queda claro
+
 
 As previously said, population size is a key factor for the performance 
 of dEAs \cite{ShrinkageLaredo09}, so this paper investigates whether
 adapting the sub-population size of each node in a distributed
 Evolutionary Algorithm can leverage the
-computational capabilities of a heterogeneous cluster. % but why
-                                % population? What effect does it have
-                                % on individual clusters?
-                                % MOTIVATION!!! - JJ FERGU: re-estructurando de nuevo la intro para poner 
-                                % cada cosa en su sitio y motivando el siguiente párrafo                              
+computational capabilities of a heterogeneous cluster.                             
 
 This is motivated because new trends in distributed computing, such as Cloud Computing \cite{Derby13Cloud}, GRID
 \cite{OPENSCIENCEGRID} or Service Oriented Science \cite{GLOBUS}, are
 leading to heterogeneous computational devices, such as laptops,
-virtual machine instances, % cita a Una-May en EvoStar aquÃ­ - JJ FERGU: Citada arriba con Derby13Cloud
+virtual machine instances, 
 GPUs \cite{Acosta13GPUs},
 tablets or desktop PCs, working in the same
 environment. Thus, many laboratories, which do not include classic
@@ -319,9 +258,8 @@ homogeneous devices. This can be explained by different reasons, such
 as different memory access times, cache sizes, 
 or even implementation
 languages or compilers in each machine, leading to a different
-exploitation/exploration rate of the search space \cite{HETEROGENEOUSHARD}. % Ein? Sez who? FERGU: Alba en el artículo de arriba
+exploitation/exploration rate of the search space \cite{HETEROGENEOUSHARD}. 
 
-% pon la cita de nuevo - JJ FERGU: Done
 
 These facts have motivated the study of a combination of both ideas in
 this paper: asynchronous dEAs on a heterogeneous set of nodes with different
@@ -346,14 +284,14 @@ when the population size of an EA grows, the convergence speed is
 reduced \cite{Cantu02Multiple}. When having different processors with different computational
 power computing sub-populations of an EA, it may be a good policy to
 distribute the individuals in a way that less efficient nodes are
-assigned with smaller populations, having smaller diversity. % smaller diversity? - JJ FERGU: Puesto (con Carlos aquí)
+assigned with smaller populations, having smaller diversity. 
 This solution not only integrates
 within an EA two different types of evolutionary search (fast, with
 the smaller populations, and accurate, with the larger), but also puts
 on the most efficient nodes the burden of computing larger
 sub-populations. This combination can reduce computation time
 as slower nodes can exploit solutions without premature convergence and,
- at the same time, benefit from the diversity of the faster ones. % because... - JJ FERGU: puesta la última frase, mira a ver si te mola
+ at the same time, benefit from the diversity of the faster ones. 
 
 In this work, a heterogeneous distributed system has been used to
 answer  the following research questions:
@@ -366,10 +304,7 @@ answer  the following research questions:
    configurations?
 \end{itemize}
 
-%Hasta aquí no has dicho nada de que lo que vas buscando es una
-%sincronización de los nodos o, para el caso, si lo que usas es un
-%algoritmo síncrono o asíncrono. Lo que será importante luego para
-%explicar los resultados. - JJ FERGU: puesto lo de asincrono aquí, y más abajo
+
 
 The rest of the work is structured as follows: after a background in the algorithm parameter fitting to computational substrate in dEAs, 
  the developed algorithms and experimental setting (Section \ref{sec:experiments}) are presented. 
@@ -447,8 +382,7 @@ results than homogeneous periods, as explained by Salto and Alba in
 
 This work is focused on the sub-population sizes, as this parameter has been previously studied in different works due to its huge impact in the results. In the work of Weber et al. \cite{DifferentialWeber09} two different sub-population sizes are used: higher size value for exploration, and a variable lower size value for exploitation. Schlierkamp-Voosen et al. \cite{AdaptationSizesSchlierkamp96} proposed a quality measure to be used in each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, those works are based on the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not from the machines that are executing the distributed EAs.
 
-%OJO! En AdaptationSizesSchlierkamp96 dicen que cuando no ponen tamaño global fijo, el tamaño de las subpoblaciones y los resultados son menos claros (usarlo más alante)
-%TODO reescribe bien lo siguiente
+
 In this work, the sizes of the sub-populations of a dEA are fitted (offline and online) to the computational power of each machine, using the information obtained from the algorithm itself, and compared in different hardware systems.
  To the best of our knowledge, there are no works that
  modify parameters of the EA, such as the size, depending on the
@@ -463,7 +397,7 @@ In this work, the sizes of the sub-populations of a dEA are fitted (offline and 
 \label{sec:experiments}
 In this section two different parameter setting schemes are proposed to test if fitting the sub-population sizes of an asynchronous dEA to the nodes of a  heterogeneous cluster leads to time reduction. In the field of  Evolutionary Computation (EC) there are two different approaches about the algorithm parameter setting: {\em parameter tuning} and {\em parameter control} \cite{PARAMETERTUNING}. The former consists in establishing a good set of parameters before the run (offline), and do not change them during the execution. On the other hand, parameter control refers to setting up a number of  the EA parameters  and changing these values in running time (online). 
 
-In this study, a dEA with the same sub-population sizes  has been executed in the heterogeneous cluster until the optimal solution is found, as a baseline. Then, the obtained number of generations have been used, to proportionally distribute the number of individual among the nodes, that is, offline. The same set of sizes is used in an homogeneous cluster (as control system) to validate if the changes in performance are due to the parameters or the fitting to the nodes. Finally, an online parameter setting that extract relative information about the performance of the nodes has been tested to validate our approach. %TODO esto de validate our approach no mola, cambiarlo también en las contestaciones a los revisores
+In this study, a dEA with the same sub-population sizes  has been executed in the heterogeneous cluster until the optimal solution is found, as a baseline. Then, the obtained number of generations have been used, to proportionally distribute the number of individual among the nodes, that is, offline. The same set of sizes is used in an homogeneous cluster (as control system) to validate if the changes in performance are due to the parameters or the fitting to the nodes. Finally, an online parameter setting that extract relative information about the performance of the nodes has been tested to validate our approach. 
 
 
 
@@ -471,9 +405,6 @@ In this study, a dEA with the same sub-population sizes  has been executed in th
 The experimentation is focused on a distributed GA, one of the most extended EAs \cite{GeneticAlgorithmsEiben03}. Algorithm \ref{alg:EA} shows the pseudo-code of the  used algorithm.
 It is a steady-state approach, i.e. every generation the offspring is mixed with the parents and the worst individuals are removed. The used neighbourhood topology for migration between islands (nodes) is a ring (see Figure \ref{fig:islands}). The best individual is sent to the neighbour in the ring, after a fixed number of generations in each island. The algorithm stops when the optimum (the solution to the problem) is found.  
 
-%Tienes que justificarlo absolutamente todo. ¿Si se usa otro
-%algoritmo, cambiarían los resultados? ¿Por qué se ha usado
-%precisamente este? - JJ FERGU: TODO
 
 
 \begin{algorithm}[htb]
@@ -514,11 +445,7 @@ It is a steady-state approach, i.e. every generation the offspring is mixed with
 
 
 \subsection{Problems}
-%No empieces con "the problems to evaluate". Di que los resultados
-%deberían ser más o menos independientes del problema, pero se han
-%elegido estos por tal y cual. Tienes que justificar que con estos es
-%suficientes, para que no te digan el clásico "Prueba otro algoritmo"
-%- JJ %FERGU: esto ya lo cambié
+
 
 Although results may be independent of the problem as an adaptive algorithm can not replace a specific problem adaptation \cite{PanaceasClune05}, different types of problems that cover different characteristics
 and computational demands have been used in this work.
@@ -529,7 +456,7 @@ Problem (MMDP) \cite{goldberg92massive},  the OneMax problem
 at the level of population sizing, individual selection and
 building-blocks mixing. Also, these problems have been previously used in other parameter adaptation algorithms, such as \cite{ParallelGATongchim02} (MMDP and OneMax) and \cite{DifferentialWeber09,AdaptationSizesSchlierkamp96} (Rosenbrock). 
 
-%TODO ESTO DE ARRIBA TIENE QUE PONERSE MEJOR
+
 
 The MMDP
  is designed to be difficult for an EA, due to
@@ -539,7 +466,7 @@ the number of ones (unitation) $s_i$ takes the values shown in Table \ref{table:
 \begin{table}
 
 \centering
-{\footnotesize %\scriptsize
+{\footnotesize 
 \caption{ Basic deceptive bipolar function ($s_i$) for MMDP.}
 \label{table:mmdpvalues}
 \begin{tabular}{|c|c|}
@@ -612,9 +539,6 @@ Five configurations of hardware and parameter settings have been tested:
 
 
 \begin{itemize}
-% me estoy dando cuenta ahora de que no me gusta nada la
-% abreviatura. De toda la vida hardware es hw. Y size es mejor
-% ponerlo como sz que si.- JJ FERGU: Okis, lo cambio. Sin embargo, dejo el Size como 'si', que lo veo más natural (y para no cambiar las gráficas)
 \item HoSi/HeHW: Homogeneous Size/Heterogeneous Hardware. The same sub-population size in each island on a heterogeneous cluster.
 \item HeSi/HeHW: Heterogeneous Size/Heterogeneous Hardware. Different sub-population sizes in each island on a heterogeneous cluster.
 \item HoSi/HoHW: Homogeneous Size/Homogeneous Hardware. The same sub-population size in each island on a homogeneous cluster.
@@ -626,7 +550,7 @@ Five configurations of hardware and parameter settings have been tested:
 Two different computational systems have been used: a {\em heterogeneous cluster} and a {\em homogeneous cluster}. The first one is formed by different computers of our lab with different processors, operating systems and memory size. The latter is a dedicated scientific cluster formed by homogeneous nodes. Table \ref{tabcomputers} shows the features of every system and the name of the nodes.
 
 \begin{table*}
-\centering{\footnotesize %\scriptsize
+\centering{\footnotesize 
 \caption{Details of the clusters used: a homogeneous cluster (Ho), and a heterogeneous cluster (He)}
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 {\em Name}     & {\em Processor}  & {\em Memory}  & {\em Operating System}  & {\em Network} & {\em Storage}  \\ \hline
@@ -660,7 +584,7 @@ In this configuration, each node has the same number of individuals, so the tota
 \begin{table*}
 \centering{
 \caption{Average number of generations (and proportion) in each node of the 4X HoSi/HeHW configuration when the optimum is found in 40 runs. These values have been used to set proportionally the sub-population sizes in 4X HeSi (the offline approach).}
-% Y la desviación? - JJ
+
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 {\em Instance} &         & {\em HeN1}     & {\em HeN2 }     & {\em HeN3 }    & {\em HeN4 }  \\ \hline
 \multicolumn{6}{|c|}{{\em MMDP problem}} \\ \hline
@@ -704,8 +628,7 @@ In this configuration, each node has the same number of individuals, so the tota
   of the 8X HoSi/HeHW configuration when the optimum is found in 40
   runs. These values have been used to proportionally set the
   sub-population sizes in 8X HeSi (the offline approach).}
-% DeberÃ­ais poner nÃºmero de evaluaciones ademÃ¡s. La relaciÃ³n serÃ­a
-% mas exagerada - JJ FERGU: si ponemos evaluaciones (que es simplemente Gen*128 o 256) salen números con más dígitos y creo que es más difícil de comparar
+
 
 \resizebox{14cm}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
@@ -751,10 +674,7 @@ In this configuration, each node has the same number of individuals, so the tota
 
 Our aim consists in validating the following hypothesis: fitting the
 sub-population size to the computational power of the heterogeneous
-cluster nodes presents an improvement in running time.  % yet you also
-                                % use heterogeneous size in
-                                % homogeneous cluster. What is the
-                                % objective of that experiment? - JJ FERGU: he puesto lo de control arriba al principio de la sección y abajo
+cluster nodes presents an improvement in running time.  
 
 In this work, for a possible offline method to calculate the
 computational performance of each node, the average number of
@@ -773,9 +693,7 @@ sizes, but the comparison and analysis of the algorithm with
 parameters fitted to the computational power of the heterogeneous nodes. 
 
 
-% REVISAR TODO EL INGLÃ‰S. Cada
-                                % pÃ¡rrafo que reviso tiene uno o dos
-                                % errores - JJ FERGU: porfa, marcame los errores, que me cuesta verlos
+
 
 Thus, the obtained average number of generations in the previous
 sub-section, in Tables \ref{table:generations4X} and
@@ -791,7 +709,7 @@ executed inside a node. The same heterogeneous parameter set
 will be tested in the control system (HoHW) to do a fair comparison 
 and properly study the performance of both systems.
 
-%EXPLAIN how you adapt size in homogeneour clusters - JJ FERGU: en el HoHW no adaptamos el tamaño al nodo porque son los nodos iguales, pero para una comparativa justa, usamos los mismos parámetros en ambos sistemas (puesto arriba)
+
 
 
 
@@ -894,8 +812,7 @@ In order to deal with the operating system and architecture heterogeneity (diffe
 \section{Results}
 \label{sec:results}
 
-% AquÃ­ tienes que contestar a las preguntas de investigaciÃ³n que has
-% planteado en la intro - JJ FERGU: contestándolas
+
 
 The first question to answer in this study is to validate if a dEA can 
 be fitted to leverage the capability of a heterogeneous cluster. 
@@ -903,7 +820,7 @@ As the three main objectives of parallel programming are to tackle large
 computational problems, increase the performance of algorithms in a
 finite time, or reduce computational time to solve the problem
 (reaching the optimum) \cite{EVALUATIONPARALLEL}  this work will be
-focused on the third objective as it is the most adequate to solve the second research question presented in the Introduction. % Â¿Y las preguntas de investigaciÃ³n? - JJ FERGU: Puestas en el texto donde corresponde en varios sitios
+focused on the third objective as it is the most adequate to solve the second research question presented in the Introduction. 
 
 
 \subsection{Running time analysis}
@@ -915,7 +832,7 @@ case, for example, the evaluation time is different in each node of
 the heterogeneous cluster, so the actual algorithm speed (in running
 time) cannot be reflected correctly. However, the number of
 evaluations has been included in this section to better understand the
-results, for example, to see if lower number of evaluations implies lower running time. % Pero no acabas de decir que es misleading? - JJ FERGU: completado
+results, for example, to see if lower number of evaluations implies lower running time. 
 
 It is difficult to compare the performance of HoHW and HeHW
 for the same reason: the evaluation time is different in each system
@@ -925,8 +842,7 @@ homogeneous one (because they are, obviously, different), but use the HoHW as a 
 that the same parameter configuration can improve performance in time
 on heterogeneous clusters and could not have an effect on homogeneous
 ones, helping to solve the third question of this work.
-% No me he enterado de nada. Â¿No se puede reflejar la velocidad pero
-% vas a medir el tiempo? - JJ FERGU: pongo lo del control para clarificarlo y sigo hablando de las preguntas
+
 
 
 
@@ -943,9 +859,7 @@ the comparison with the base configuration of each cluster (HoSi/HeHW
 and HoSi/HoHW respectively) is significantly higher (\ding{115}),
 significantly lower  (\ding{116}), or no significant difference found
 (\ding{117}). Since the aim is to reduce the computational time, the
-lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
-                          % peor, no higher o lower. Â¿higher number of
-                          % evaluations is worse or better? - JJ FERGU: no puedo, en el paper siempre nos centramos en "menos tiempo es mejor", pero las evaluaciones dan información para saber qué está pasando, por lo que menos evaluaciones no tiene por qué ser mejor
+lower results, the better. 
 
 
 
@@ -993,7 +907,6 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
 \label{tab:resultsTIMEall}
 \end{table*}
 
-%No se puede poner apaisado en una pÃ¡gina? Esto no se ve nada - JJ FERGU: TODO espero a ver qué me dicen los maquetadores de la revista
 
 \begin{table*}
 \centering
@@ -1147,7 +1060,7 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
 }
 \caption{Time (ms) and evaluations needed to obtain the optimum for the
   Rosenbrock function problem. White colour is 4X and grey colour is 8X.}
-% Â¿QuÃ© significa el color gris? - JJ FERGU: lo explico
+
 \label{fig:boxplotsROSENBROCK}
 \end{figure}
 
@@ -1273,8 +1186,8 @@ lower results, the better. % DeberÃ­as expresarlo en tÃ©rminos de mejor o
 
 
 
-Obtained results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:boxplotsMMDP}, \ref{fig:boxplotsONEMAX} and \ref{fig:boxplotsROSENBROCK}, for a better understanding of the behaviour of each configuration. To show the evolution in each configuration the average population fitness during all the runs has been plotted using boxplots into evolution graphs, with the best individual of all the runs and the average fitness of each method (Figures \ref{fig:graphsMMDP}, \ref{fig:graphsONEMAX} and \ref{fig:graphsROSENBROCK}). %As heterogeneous nodes are evolving asynchronously the individuals, the comparison is done using the execution time, and not the number of generations. %TODO descomentar esto si los gráficos tienen tiempo
-Only the 8X graphics have been shown in order to not extend too much the paper extension. %TODO ponemos que el 4X shows similar behaviours?
+Obtained results, grouped by problem, are also plotted in the boxplots of Figures \ref{fig:boxplotsMMDP}, \ref{fig:boxplotsONEMAX} and \ref{fig:boxplotsROSENBROCK}, for a better understanding of the behaviour of each configuration. To show the evolution in each configuration the average population fitness during all the runs has been plotted using boxplots into evolution graphs, with the best individual of all the runs and the average fitness of each method (Figures \ref{fig:graphsMMDP}, \ref{fig:graphsONEMAX} and \ref{fig:graphsROSENBROCK}). 
+Only the 8X graphics have been shown in order to not extend too much the paper extension. 
 
 The results show that, in general, there are significant differences
 depending on the problem, configuration or number of nodes. Also, it
@@ -1282,10 +1195,10 @@ can be seen that the number of evaluations may not be a good indicator
 when comparing heterogeneous environments. For example, for the OneMax
 problem (Figure \ref{fig:boxplotsONEMAX}), using 8 nodes instead of 4
 requires more evaluations to finish, and yet, less time to achieve the
-optimum.  % so what? more evaluations are being done at the same time - JJ
+optimum.  
 Also, the average amount of time needed to solve the problems may vary
 in larger ranges for MMDP and Rosenbrock. This can explain the different results
-among the problems.  % so what? - JJ FERGU: puesta la razón
+among the problems.  
 
 At a first glance, and as expected \cite{Wolpert97NFL}, fitting the
 population sub-sizes to heterogeneous clusters do not always imply an
@@ -1304,7 +1217,7 @@ setting heterogeneous sizes to sub-populations makes no difference in
 time, that is, changing this parameter has no influence in the
 algorithm's performance. Homogeneous nodes exploring different population sizes at the same speed implies less diversity during the runs. This can be seen in Figures \ref{fig:graphsMMDP} and \ref{fig:graphsROSENBROCK}, where in all the instances of those problems, the average population fitness in HoHW is closer to the best average value attained. This behaviour is opposed to the same problems executed on HeHW, where the difference of the average best fitness and the average population fitness is larger. This difference is more large at the beginning of the runs (local optima are found faster) but the diversity is still maintained, and being reduced with time.
 
-% because of... diversity? - JJ FERGU: enlanzando a las gráficas y explicándolas
+
 
 Finally, the number of nodes affect the behaviour of the
 algorithms. In the case of MMDP in the HeHW system, the offline
@@ -1314,7 +1227,7 @@ the problem in the 4X configuration. However, in the 8X configuration
 the time is significantly lower only in the 150 instance. This can be
 due to the nature of this problem, as the fitness of the population may stagnate if the optimum is not found at the first steps (see the black line in Figure \ref{fig:graphsMMDP} with respect to the average population fitness boxplots). This behaviour is opposite in the case of the Rosenbrock function, where using a larger number of nodes improves the time with HeSi and AdSi. %TODO
 
-%Maribel, esto va a ser duro de explicar, quizás porque al haber más nodos, hay muchos más individuos y por lo tanto más diversidad y la diversidad es clave en este problema porque si no hay bloques buenos, da igual el mucho tiempo que lo evoluciones, que no se llegan a conseguir, pero con muchos individuos, tienes mucha diversidad y tienes disponibles bloques buenos que van combinándose mucho más rápido.
+
 
  
 
@@ -1327,16 +1240,7 @@ Summarizing, fitting the population sizes to the
   the time to obtain the optimum. The same heterogeneous fixed sizes
   in the homogeneous cluster does not produces a significant decrease
   of running time, so the improvement is produced by the heterogeneity
-  and not for the different island sizes. %Also, the AdSi proposal is
-  %not applicable here because there are no differences of generations
-  %during runtime.
-
-% No dices NADA sobre el "control", que es el HoHW. Si cambiar el
-% tamaÃ±o de la poblaciÃ³n no mejora los resultados (salvo en el
-% OneMax), Â¿a quÃ© se debe? Debes usar HmHW (le he cambiado el nombre
-% ya) como CONTROL y comparar los resultados en uno y otro caso. Â¿CuÃ¡l
-% es el factor que hace que los resultados sean, en los casos mÃ¡s
-% complicados, mejores? Las tablas 6 y 7 son las fundamentales. - JJ FERGU: puesto cosas del control y explicando más las diferencias
+  and not for the different island sizes. 
 
 \subsection{Adaptive sub-population sizes during evolution}
 
@@ -1345,42 +1249,17 @@ Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each pr
 
 \begin{figure}[htb]
 \centering
-%\subfigure[150 MMDP ]{
-%    \includegraphics[width =4cm] {mmdp-size-150-mut-0.006-xover-1-heterohardware-adaptsize.eps}
-%   \label{subfig:adaptMMDP150}
-%}
-%\subfigure[240 MMDP ]{
-%    \includegraphics[width =4cm] {mmdp-size-240-mut-0.004-xover-1-heterohardware-adaptsize.eps}
-%   \label{subfig:adaptMMDP240}
-%}
+
 \subfigure[300 MMDP]{
     \includegraphics[width =8.0cm] {mmdp-size-300-mut-0.003-xover-1-heterohardware-adaptsize.eps}
    \label{subfig:adaptMMDP300}
 }
-%\newline
-%\subfigure[5000 OneMax]{
-%    \includegraphics[width =4cm] {onemax-size-5000-mut-0.0002-xover-1-heterohardware-adaptsize.eps}
-%   \label{subfig:adaptONEMAX5000}
-%}
-%\subfigure[10000 OneMax]{
-%    \includegraphics[width =4cm] {onemax-size-10000-mut-0.0001-xover-1-heterohardware-adaptsize.eps}%
 
-%   \label{subfig:adaptONEMAX10000}
-%}
 \subfigure[15000 OneMax]{
     \includegraphics[width =8.0cm] {onemax-size-15000-mut-0.00006-xover-1-heterohardware-adaptsize.eps}
     \label{subfig:adaptONEMAX15000}
 }
-%\newline
-%\subfigure[10 Rosenbrock]{
-%    \includegraphics[width =4cm] {cec-size-10-mut-0.1-xover-1-heterohardware-adaptsize.eps}
-%   \label{subfig:adaptROSENBROCK10}
-%}
-%\subfigure[30 Rosenbrock]{
-%    \includegraphics[width =4cm] {cec-size-30-mut-0.03-xover-1-heterohardware-adaptsize.eps}%
 
-%   \label{subfig:adaptROSENBROCK30}
-%}
 \subfigure[50 Rosenbrock]{
     \includegraphics[width =8.0cm] {cec-size-50-mut-0.02-xover-1-heterohardware-adaptsize.eps}
     \label{subfig:adaptROSENBROCK50}
@@ -1396,10 +1275,10 @@ Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each pr
 
 As a final analysis the time spent by each node of the clusters in
 every stage of the EA for each configuration with fixed sizes (HoSi
-and HeSi) is taken into account. For the shake of clarity in results,  % no puedes hablar de esto aquÃ­! - JJ FERGU: Ok, quitado
+and HeSi) is taken into account. For the shake of clarity in results, 
  the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHW more expensive than in HoHW. This happens because a multi-purpose laboratory network to communicate
 the nodes is being used, instead of the specific one used in the HoHW
-system.  % lo que tiene una influencia en el resultado de... - JJ
+system. 
 
  In problems with larger data communications (300 or 5000 elements of individuals of the MMDP and OneMax problem) changing the sub-population size decreases the migration time in HeHW, but increased in HoHW. This might be due to the synchronization of migration buffers: if all machines are sending/receiving at the same time, bottlenecks can be propagated.
 
@@ -1442,25 +1321,11 @@ algorithm is not related to the time needed to reach the optimum, but rather to
 how the diversity and search guidance is maintained in the whole
 system.  
 
-%So what? This proves or disproves some hypothesis? Is related to
-%research questions? Where is the analysis? - JJ
 
-
-%HabrÃ­a que hacer un rÃ¡nking de mÃ©todos para hardware heterogÃ©neo y
-%homogÃ©neo. No hay un "smoking gun", no hay una conclusiÃ³n fuerte. Al
-%final, la pregunta es: tengo hardware heterogÃ©neo, Â¿quÃ© diablos uso?
-% Por otro lado, tambiÃ©n es importante considerar si el beneficio de
-% diferente exploraciÃ³n de nodos heterogÃ©neos es real o no. Â¿Para quÃ©
-% has probado hardware homogÃ©neo? Para ver si la poblaciÃ³n diferente
-% trae algÃºn beneficio en la exploraciÃ³n del sistema. Bueno, pues
-% resulta que NO. En la mayor parte de los casos, es PEOR resultado
-% que si el tamaÃ±o es homogÃ©neo. Por lo tanto, si la poblaciÃ³n
-% heterogÃ©nea no trae mejores resultados, Â¿quÃ© es lo que  lo hace? Â¿La
-% asincronÃ­a? - JJ FERGU: puesto abajo en las conclusiones lo de la asincronia
 
 \section{Conclusions and future work}
 
-%Different research questions have been proposed in this paper to study if fitting the sub-population size of a distributed EA to the computational power of a heterogeneous cluster nodes presents an improvement in running time. To answer these questions two parameter setting schemes (offline and online) that use information of the computational load of the algorithm have been tested, and three different problems that cover different characteristics and computational requirements have been used.
+
 
 The main question to address in this work is: Is it worth fitting the 
 sub-populations sizes of a dEA to the computational power of every node 
@@ -1472,57 +1337,22 @@ computational demands with different lengths. Finally, two different hardware
 systems (homogeneous and heterogeneous clusters),  each one with different number
  of nodes (4 and 8).
 
-A base configuration with the same sub-population sizes has been used on a heterogeneous cluster. The results have been used to calculate offline the computational power of each node, comparing the average number of generations to find the optimal solution. These proportions are used to set the new sub-population sizes. Also, a possible way to fit online the sub-population sizes has been performed comparing the current generation number between each node and its previous neighbour in the topology. % research
-                                % questions!!!!! - JJ FERGU: poniéndolas y contestándolas en las conclusiones
+A base configuration with the same sub-population sizes has been used on a heterogeneous cluster. The results have been used to calculate offline the computational power of each node, comparing the average number of generations to find the optimal solution. These proportions are used to set the new sub-population sizes. Also, a possible way to fit online the sub-population sizes has been performed comparing the current generation number between each node and its previous neighbour in the topology. 
 
 Results show that online or offline fitting the sub-population size to the computational power of each node in a heterogeneous cluster
 can reduce significantly the running time of an algorithm with respect
 to keeping the same size for all nodes. The sub-population size fitting is also affected by the problem being solved. Also, to answer the question about the difference of using these same sub-populations sizes in an homogeneous cluster, a control system has also been used for comparison. In this case, the same parameter sets used in an homogeneous cluster do not improve the running time in multi-modal problems, as the average fitness of the population remains close to the average best fitness during all the evolution, and therefore, fitness diversity is not as well maintained as in the heterogeneous cluster.
 
-%This reduction is due to the combination
-%of the heterogeneous parameters with the heterogeneity of the
-%machines, %argh. Eso es obvio - JJ
-% leading to different exploitation/exploration rates of the search
-% space. % eso lo has probado o lo supones? Lo has medido? - JJ FERGU: lo borro y explico arriba usando los resultados obtenidos
 
-
-%On the other hand, the same heterogeneous parameter setting in all
-%islands of the homogeneous cluster could not improve the results than
-%considering the same parameter value in all nodes. % Reescribe. Todo
-                                % el pÃ¡rrafo estÃ¡
-                                % mal escrito y no se entiende- JJ FERGU: reescribo y lo pongo relacionado con las questions arriba también
-
-
- % o sea, tener
-                                % maquinas heterogéneas y parámetros
-                                % heterogéneos es mejor porque usamos
-                                % parámetros heterogéneos en máquinas
-                                % heterogéneas. Di en qué puede
-                                % influir eso en la mejora de los
-                                % resultados y discute por qué podría
-                                % ser así y propón experimentos para
-                                % probar que efectivamente se trata de
-                                % eso. - JJ FERGU: puestos nuevos experimentos y explicado
-% No se ha explicado lo suficiente. Las conclusiones deben ser mÃ¡s
-% taxativas y apoyadas en datos de los experimentos. Si hay alguna
-% suposiciÃ³n que no se pueda comprobar, se deja como trabajo futuro -
-% JJ FERGU: reescritas, mira a ver si ahora está más claro
 
 Furthermore, the answer to the question about the influence of the sub-population size effect of the stages
 of the algorithm is that results show that, in fact, there exist an effect on stages that are independent of this parameter, such as
 the migration.  These results are a promising starting for fitting EAs to the performance of each  node, using more suitable benchmarks or even in a dynamic way. 
-% Falta una discusión sobre si las mejoras se deben exclusivamente al
-% nÃºmero de evaluaciones o hay algÃºn otro factor ¿menos overhead?
-% ¿nodos más rápidos? - JJ FERGU: no, de hecho el
-% nÃºmero de evaluaciones no siempre disminuye, lo digo arriba.
-% Entonces, a quÃ© se debe la mejora? Si hay mÃ¡s evaluaciones, el
-% algoritmo es peor - JJ
 
-%In future works, new methods to adapt online the sub-population sizes taking into account the nature of the problem will be used (for example, measuring the population diversity at the same time than the number of generations). Also, other parameters such as migration rate or crossover probability could be fit to the execution nodes. Other appropriate benchmarks to analyse the algorithm will be also used to lead to automatic parameter fit in runtime (online), with different nodes entering or exiting in the topology, or fitting the parameters to the current load of the system.
 In a future work, new online adaptation methods for sub-population sizes will take into account the nature of the problem at hand. For example, measuring the population diversity along with the generation number. Also, parameters such as migration rate or crossover probability could be fitted to the node's execution characteristics. Other appropriate benchmarks to analyse the algorithm will be used to get an online automatic parameter fitting while nodes enter or exit the topology net, or fitting the parameters to the current system load.
 
 \section*{Acknowledgements}
-This work has been supported in part by SIPESCA (Programa Operativo FEDER de Andalucía 2007-2013), TIN2011-28627-C04-02 and TIN2014-56494-C4-3-P (Spanish Ministry of Economy and Competitivity), SPIP2014-01437 (Direcci{\'o}n General de Tr{\'a}fico), PRY142/14 (Fundaci{\'o}n P{\'u}blica Andaluza Centro de Estudios Andaluces en la IX Convocatoria de Proyectos de Investigaci{\'o}n), and PYR-2014-17 GENIL project (CEI-BIOTIC Granada). Authors wish to thank reviewers' comments, whose suggestion and guidelines have contributed to improve this work.
+This work has been supported in part by SIPESCA (Programa Operativo FEDER de AndalucÃ­a 2007-2013), TIN2011-28627-C04-02 and TIN2014-56494-C4-3-P (Spanish Ministry of Economy and Competitivity), SPIP2014-01437 (Direcci{\'o}n General de Tr{\'a}fico), PRY142/14 (Fundaci{\'o}n P{\'u}blica Andaluza Centro de Estudios Andaluces en la IX Convocatoria de Proyectos de Investigaci{\'o}n), and PYR-2014-17 GENIL project (CEI-BIOTIC Granada). Authors wish to thank reviewers' comments, whose suggestion and guidelines have contributed to improve this work.
 
 
 
@@ -1564,25 +1394,343 @@ This work has been supported in part by SIPESCA (Programa Operativo FEDER de And
 
 
 
-% TenÃ©is que revisar la bibliografÃ­a. Por ejemplo, faltan muchos
-% editores en proceedings. Usad la de DBLP y la estÃ¡ndar de
-% geneura. Por ejemplo, pones GuervÃ³s sin acento, GarcÃ­a tambiÃ©n y en
-% uno pones GuÃ©rvos!!!!- JJ FERGU: Corregida la bibliografía entera (nota, el Guervos ese es oficial del bib de la Soft Computing...)
-\bibliographystyle{plain}
-\bibliography{heterogeneous}
+
+%\bibliographystyle{plain}
+%\bibliography{heterogeneous}
 %Descomentar abajo cuando comentes arriba
 %\section*{References}
 
-%\begin{thebibliography}{10}
 
-%\bibitem{AutomaticallyConfiguringStyles12}
-%James Styles, HolgerH. Hoos, and Martin MâˆšÂºller.
-%\newblock Automatically configuring algorithms for scaling performance.
-%\newblock In Youssef Hamadi and Marc Schoenauer, editors, {\em Learning and
-%  Intelligent Optimization}, Lecture Notes in Computer Science, pages 205--219.
-%  Springer Berlin Heidelberg, 2012.
 
-%\end{thebibliography}
+\begin{thebibliography}{10}
+
+\bibitem{Acosta13GPUs}
+Alejandro Acosta, Vicente Blanco, and Francisco Almeida.
+\newblock Dynamic load balancing on heterogeneous multi-gpu systems.
+\newblock {\em Computers \& Electrical Engineering}, 39(8):2591 -- 2602, 2013.
+
+\bibitem{EVALUATIONPARALLEL}
+Enrique Alba and Gabriel Luque.
+\newblock Evaluation of parallel metaheuristics.
+\newblock In Lu\'is Paquete, Marco Chiarandini, and Dario Basso, editors, {\em
+  Empirical Methods for the Analysis of Algorithms, Workshop EMAA 2006,
+  Proceedings}, pages 9--14, Reykjavik, Iceland, 2006.
+
+\bibitem{HETEROGENEOUSHARD}
+Enrique Alba, Antonio~J. Nebro, and Jos\'e~M. Troya.
+\newblock Heterogeneous computing and parallel genetic algorithms.
+\newblock {\em Journal of Parallel and Distributed Computing}, 62(9):1362 --
+  1385, 2002.
+
+\bibitem{alba2002parallelism}
+Enrique Alba and Marco Tomassini.
+\newblock Parallelism and evolutionary algorithms.
+\newblock {\em Evolutionary Computation, IEEE Transactions on}, 6(5):443--462,
+  2002.
+
+\bibitem{OPENSCIENCEGRID}
+Mine Altunay, Paul Avery, Kent Blackburn, Brian Bockelman, Michael Ernst, Dan
+  Fraser, Robert Quick, Robert Gardner, Sebastien Goasguen, Tanya Levshina,
+  Miron Livny, John McGee, Doug Olson, Ruth Pordes, Maxim Potekhin, Abhishek
+  Rana, Alain Roy, Chander Sehgal, Igor Sfiligoi, Frank Wuerthwein, and {Open
+  Sci Grid Executive Board}.
+\newblock {A Science Driven Production Cyberinfrastructure-the Open Science
+  Grid}.
+\newblock {\em {Journal of GRID Computing}}, {9}({2, Sp. Iss. SI}):{201--218},
+  {JUN} 2011.
+
+\bibitem{MULTIKULTI}
+Lourdes Araujo and Juan Juli{\'a}n~Merelo Guerv{\'o}s.
+\newblock Diversity through multiculturality: Assessing migrant choice policies
+  in an island model.
+\newblock {\em IEEE Trans. Evolutionary Computation}, 15(4):456--469, 2011.
+
+\bibitem{LoadBalancingBohn02}
+Christopher~A. Bohn and Gary~B. Lamont.
+\newblock Load balancing for heterogeneous clusters of {PCs}.
+\newblock {\em Future Generation Computer Systems}, 18(3):389 -- 400, 2002.
+
+\bibitem{CantuPazTopologies99}
+Erick Cant{\'{u}}{-}Paz.
+\newblock Topologies, migration rates, and multi-population parallel genetic
+  algorithms.
+\newblock In Wolfgang Banzhaf, Jason~M. Daida, A.~E. Eiben, Max~H. Garzon,
+  Vasant Honavar, Mark~J. Jakiela, and Robert~E. Smith, editors, {\em
+  Proceedings of the Genetic and Evolutionary Computation Conference {(GECCO}
+  1999), 13-17 July 1999, Orlando, Florida, {USA}}, pages 91--98. Morgan
+  Kaufmann, 1999.
+
+\bibitem{Cantu02Multiple}
+Erick Cant{\'{u}}{-}Paz and David~E. Goldberg.
+\newblock Are multiple runs of genetic algorithms better than one?
+\newblock In Erick Cant{\'{u}}{-}Paz, James~A. Foster, Kalyanmoy Deb, Lawrence
+  Davis, Rajkumar Roy, Una{-}May O'Reilly, Hans{-}Georg Beyer, Russell~K.
+  Standish, Graham Kendall, Stewart~W. Wilson, Mark Harman, Joachim Wegener,
+  Dipankar Dasgupta, Mitchell~A. Potter, Alan~C. Schultz, Kathryn~A. Dowsland,
+  Natasa Jonoska, and Julian~F. Miller, editors, {\em Genetic and Evolutionary
+  Computation - {GECCO} 2003, Genetic and Evolutionary Computation Conference,
+  Chicago, IL, USA, July 12-16, 2003. Proceedings, Part {I}}, volume 2723 of
+  {\em Lecture Notes in Computer Science}, pages 801--812. Springer, 2003.
+
+\bibitem{PanaceasClune05}
+Jeff Clune, Sherri Goings, Bill Punch, and Eric Goodman.
+\newblock Investigations in meta-{GAs}: panaceas or pipe dreams?
+\newblock In Franz Rothlauf, editor, {\em Genetic and Evolutionary Computation
+  Conference, {GECCO} 2005, Workshop Proceedings, Washington DC, USA, June
+  25-26, 2005}, pages 235--241. {ACM}, 2005.
+
+\bibitem{Derby13Cloud}
+Owen Derby, Kalyan Veeramachaneni, and Una{-}May O'Reilly.
+\newblock Cloud driven design of a distributed genetic programming platform.
+\newblock In Anna~Isabel Esparcia{-}Alc{\'{a}}zar, editor, {\em Applications of
+  Evolutionary Computation - 16th European Conference, EvoApplications 2013,
+  Vienna, Austria, April 3-5, 2013. Proceedings}, volume 7835 of {\em Lecture
+  Notes in Computer Science}, pages 509--518. Springer, 2013.
+
+\bibitem{Dominguez13HydroCM}
+Juli{\'{a}}n Dom{\'{\i}}nguez and Enrique Alba.
+\newblock Dealing with hardware heterogeneity: a new parallel search model.
+\newblock {\em Natural Computing}, 12(2):179--193, 2013.
+
+\bibitem{HYDROCM}
+Juli{\'{a}}n Dom{\'{\i}}nguez and Enrique Alba.
+\newblock Hydrocm: {A} hybrid parallel search model for heterogeneous
+  platforms.
+\newblock In El{-}Ghazali Talbi, editor, {\em Hybrid Metaheuristics}, volume
+  434 of {\em Studies in Computational Intelligence}, pages 219--235. Springer,
+  2013.
+
+\bibitem{LinpackDongarra03}
+Jack~J. Dongarra, Piotr Luszczek, and Antoine Petitet.
+\newblock The {LINPACK} benchmark: Past, present, and future.
+\newblock {\em Concurrency and Computation: Practice and Experience}, 15:2003,
+  2003.
+
+\bibitem{Eiben05Shared}
+A.~E. Eiben.
+\newblock Evolutionary computing and autonomic computing: Shared problems,
+  shared solutions?
+\newblock In {\"{O}}zalp Babaoglu, M{\'{a}}rk Jelasity, Alberto Montresor,
+  Christof Fetzer, Stefano Leonardi, Aad P.~A. van Moorsel, and Maarten van
+  Steen, editors, {\em Self-star Properties in Complex Information Systems,
+  Conceptual and Practical Foundations [the book is a result from a workshop at
+  Bertinoro, Italy, Summer 2004]}, volume 3460 of {\em Lecture Notes in
+  Computer Science}, pages 36--48. Springer, 2005.
+
+\bibitem{PARAMETERTUNING}
+A.~E. Eiben and Selmar~K. Smit.
+\newblock Parameter tuning for configuring and analyzing evolutionary
+  algorithms.
+\newblock {\em Swarm and Evolutionary Computation}, 1(1):19--31, 2011.
+
+\bibitem{GeneticAlgorithmsEiben03}
+A.E. Eiben and J.E. Smith.
+\newblock Genetic algorithms.
+\newblock In {\em Introduction to Evolutionary Computing}, Natural Computing
+  Series, pages 37--70. Springer Berlin Heidelberg, 2003.
+
+\bibitem{LinpackEndo10}
+Toshio Endo, Akira Nukada, Satoshi Matsuoka, and Naoya Maruyama.
+\newblock Linpack evaluation on a supercomputer with heterogeneous
+  accelerators.
+\newblock In {\em 24th {IEEE} International Symposium on Parallel and
+  Distributed Processing, {IPDPS} 2010, Atlanta, Georgia, USA, 19-23 April 2010
+  - Conference Proceedings}, pages 1--8. {IEEE}, 2010.
+
+\bibitem{SelfRegulatedSizeFernandes06}
+Carlos~M. Fernandes and Agostinho~C. Rosa.
+\newblock Self-regulated population size in evolutionary algorithms.
+\newblock In Thomas~Philip Runarsson, Hans{-}Georg Beyer, Edmund~K. Burke, Juan
+  J.~Merelo Guerv{\'{o}}s, L.~Darrell Whitley, and Xin Yao, editors, {\em
+  Parallel Problem Solving from Nature - {PPSN} IX, 9th International
+  Conference, Reykjavik, Iceland, September 9-13, 2006, Procedings}, volume
+  4193 of {\em Lecture Notes in Computer Science}, pages 920--929. Springer,
+  2006.
+
+\bibitem{GLOBUS}
+Ian~T. Foster.
+\newblock Globus toolkit version 4: Software for service-oriented systems.
+\newblock {\em J. Comput. Sci. Technol.}, 21(4):513--520, 2006.
+
+\bibitem{PARALLELIMPLEMENTATION}
+Juan~Francisco Garamendi and Jos{\'{e}}~Luis Bosque.
+\newblock Parallel implementation of evolutionary strategies on heterogeneous
+  clusters with load balancing.
+\newblock In {\em 20th International Parallel and Distributed Processing
+  Symposium {(IPDPS} 2006), Proceedings, 25-29 April 2006, Rhodes Island,
+  Greece}. {IEEE}, 2006.
+
+\bibitem{SOASOCO}
+Pablo Garc{\'{\i}}a{-}S{\'{a}}nchez, J.~Gonz{\'{a}}lez, Pedro~A. Castillo,
+  Maribel~Garc{\'{\i}}a Arenas, and Juan Juli{\'{a}}n~Merelo Guerv{\'{o}}s.
+\newblock Service oriented evolutionary algorithms.
+\newblock {\em Soft Comput.}, 17(6):1059--1075, 2013.
+
+\bibitem{goldberg92massive}
+David~E. Goldberg, Kalyanmoy Deb, and Jeffrey Horn.
+\newblock Massive multimodality, deception, and genetic algorithms.
+\newblock In Reinhard M{\"{a}}nner and Bernard Manderick, editors, {\em
+  Parallel Problem Solving from Nature 2, PPSN-II, Brussels, Belgium, September
+  28-30, 1992}, pages 37--48. Elsevier, 1992.
+
+\bibitem{HETEROGENEOUSPARAMETERS}
+Yiyuan Gong and Alex Fukunaga.
+\newblock Distributed island-model genetic algorithms using heterogeneous
+  parameter settings.
+\newblock In {\em Proceedings of the {IEEE} Congress on Evolutionary
+  Computation, {CEC} 2011, New Orleans, LA, USA, 5-8 June, 2011}, pages
+  820--827. {IEEE}.
+
+\bibitem{HETEROGENEOUSTOPOLOGY}
+Yiyuan Gong, Morikazu Nakamura, and Shiro Tamaki.
+\newblock Parallel genetic algorithms on line topology of heterogeneous
+  computing resources.
+\newblock In Hans{-}Georg Beyer and Una{-}May O'Reilly, editors, {\em Genetic
+  and Evolutionary Computation Conference, {GECCO} 2005, Proceedings,
+  Washington DC, USA, June 25-29, 2005}, pages 1447--1454. {ACM}, 2005.
+
+\bibitem{AsynchronousMerelo08}
+Juan Juli{\'{a}}n~Merelo Guerv{\'{o}}s, Pedro A.~Castillo Valdivieso, Juan
+  Lu{\'{\i}}s~Jim{\'{e}}nez Laredo, Antonio~Mora Garc{\'{\i}}a, and Alberto
+  Prieto.
+\newblock Asynchronous distributed genetic algorithms with javascript and
+  {JSON}.
+\newblock In {\em Proceedings of the {IEEE} Congress on Evolutionary
+  Computation, {CEC} 2008, June 1-6, 2008, Hong Kong, China}, pages 1372--1379.
+  {IEEE}, 2008.
+
+\bibitem{SizingHarik99}
+George Harik, Erick Cant\'{u}-Paz, David~E. Goldberg, and Brad~L. Miller.
+\newblock The gambler's ruin problem, genetic algorithms, and the sizing of
+  populations.
+\newblock {\em Evolutionary Computation}, 7(3):231--253, September 1999.
+
+\bibitem{ShrinkageLaredo09}
+Juan Lu{\'{\i}}s~Jim{\'{e}}nez Laredo, Carlos~M. Fernandes, Juan
+  Juli{\'{a}}n~Merelo Guerv{\'{o}}s, and Christian Gagn{\'{e}}.
+\newblock Improving genetic algorithms performance via deterministic population
+  shrinkage.
+\newblock In Franz Rothlauf, editor, {\em Genetic and Evolutionary Computation
+  Conference, {GECCO} 2009, Proceedings, Montreal, Qu{\'{e}}bec, Canada, July
+  8-12, 2009}, pages 819--826. {ACM}, 2009.
+
+\bibitem{AdaptiveLobo07}
+Fernando~G. Lobo and Cl\'{a}udio~F. Lima.
+\newblock Adaptive population sizing schemes in genetic algorithms.
+\newblock In Fernando~G. Lobo, Cl\'{a}udio~F. Lima, and Zbigniew Michalewicz,
+  editors, {\em Parameter Setting in Evolutionary Algorithms}, volume~54 of
+  {\em Studies in Computational Intelligence}, pages 185--204. Springer Berlin
+  Heidelberg, 2007.
+
+\bibitem{Martinez11Nondedicated}
+J.~A. Mart{\'{\i}}nez, Francisco Almeida, Ester~M. Garz{\'{o}}n, Alejandro
+  Acosta, and Vicente~Blanco P{\'{e}}rez.
+\newblock Adaptive load balancing of iterative computation on heterogeneous
+  nondedicated systems.
+\newblock {\em The Journal of Supercomputing}, 58(3):385--393, 2011.
+
+\bibitem{Robles09ParallelFuzzy}
+Ignacio Robles, Rafael Alcal{\'{a}}, Jos{\'{e}}~Manuel Ben{\'{\i}}tez, and
+  Francisco Herrera.
+\newblock Evolutionary parallel and gradually distributed lateral tuning of
+  fuzzy rule-based systems.
+\newblock {\em Evolutionary Intelligence}, 2(1-2):5--19, 2009.
+
+\bibitem{HETEROGENEOUSMIGRATION}
+Carolina Salto and Enrique Alba.
+\newblock Designing heterogeneous distributed gas by efficiently self-adapting
+  the migration period.
+\newblock {\em Applied Intelligence}, 36:800--808, 2012.
+
+\bibitem{Salto13Distributed}
+Carolina Salto, Francisco Luna, and Enrique Alba.
+\newblock Distributed evolutionary algorithms in heterogeneous environments.
+\newblock In Fatos Xhafa, Leonard Barolli, Dritan Nace, Salvatore Venticinque,
+  and Alain Bui, editors, {\em Eighth International Conference on P2P,
+  Parallel, Grid, Cloud and Internet Computing, 3PGCIC 2013, Compiegne, France,
+  October 28-30, 2013}, pages 606--611. {IEEE}, 2013.
+
+\bibitem{ONEMAX}
+J.~David Schaffer and Larry~J. Eshelman.
+\newblock On crossover as an evolutionarily viable strategy.
+\newblock In Richard~K. Belew and Lashon~B. Booker, editors, {\em Proceedings
+  of the 4th International Conference on Genetic Algorithms, San Diego, CA,
+  USA, July 1991}, pages 61--68. Morgan Kaufmann, 1991.
+
+\bibitem{AdaptationSizesSchlierkamp96}
+Dirk Schlierkamp{-}Voosen and Heinz M{\"{u}}hlenbein.
+\newblock Adaptation of population sizes by competing subpopulations.
+\newblock In {\em International Conference on Evolutionary Computation}, pages
+  330--335, 1996.
+
+\bibitem{AutomaticallyConfiguringStyles12}
+James Styles, HolgerH. Hoos, and Martin MâˆšÂºller.
+\newblock Automatically configuring algorithms for scaling performance.
+\newblock In Youssef Hamadi and Marc Schoenauer, editors, {\em Learning and
+  Intelligent Optimization}, Lecture Notes in Computer Science, pages 205--219.
+  Springer Berlin Heidelberg, 2012.
+
+\bibitem{CEC2005_Benchmark}
+P.~N. Suganthan, N.~Hansen, J.~J. Liang, K.~Deb, Y.~P. Chen, A.~Auger, and
+  S.~Tiwari.
+\newblock Problem definitions and evaluation criteria for the cec 2005 special
+  session on real-parameter optimization.
+\newblock Technical report, Nanyang Technological University, Singapore, 2005.
+\newblock http://www.ntu.edu.sg/home/EPNSugan.
+
+\bibitem{tanabe2013evaluation}
+Ryoji Tanabe and Alex Fukunaga.
+\newblock Evaluation of a randomized parameter setting strategy for
+  island-model evolutionary algorithms.
+\newblock In {\em Proceedings of the {IEEE} Congress on Evolutionary
+  Computation, {CEC} 2013, Cancun, Mexico, June 20-23, 2013}, pages 1263--1270.
+  {IEEE}, 2013.
+
+\bibitem{ParallelGATongchim02}
+Shisanu Tongchim and Prabhas Chongstitvatana.
+\newblock Parallel genetic algorithm with parameter adaptation.
+\newblock {\em Inf. Process. Lett.}, 82(1):47--54, 2002.
+
+\bibitem{garcia2014randomized}
+Mario~Garc{\'{\i}}a Valdez, Leonardo Trujillo, Juan Juli{\'{a}}n~Merelo
+  Guerv{\'{o}}s, and Francisco~Fern{\'{a}}ndez de~Vega.
+\newblock Randomized parameter settings for heterogeneous workers in a
+  pool-based evolutionary algorithm.
+\newblock In Thomas Bartz{-}Beielstein, J{\"{u}}rgen Branke, Bogdan Filipic,
+  and Jim Smith, editors, {\em Parallel Problem Solving from Nature - {PPSN}
+  {XIII} - 13th International Conference, Ljubljana, Slovenia, September 13-17,
+  2014. Proceedings}, volume 8672 of {\em Lecture Notes in Computer Science},
+  pages 702--710. Springer, 2014.
+
+\bibitem{Verma09MapReduce}
+Abhishek Verma, Xavier Llor{\`{a}}, David~E. Goldberg, and Roy~H. Campbell.
+\newblock Scaling genetic algorithms using mapreduce.
+\newblock In {\em Ninth International Conference on Intelligent Systems Design
+  and Applications, {ISDA} 2009, Pisa, Italy , November 30-December 2, 2009},
+  pages 13--18. {IEEE} Computer Society, 2009.
+
+\bibitem{Wakunda97EVA}
+J{\"{u}}rgen Wakunda and Andreas Zell.
+\newblock Eva - {A} tool for optimization with evolutionary algorithms.
+\newblock In {\em 23rd {EUROMICRO} Conference '97, New Frontiers of Information
+  Technology, 1-4 September 1997, Budapest, Hungary}, page 644. {IEEE} Computer
+  Society, 1997.
+
+\bibitem{DifferentialWeber09}
+Matthieu Weber, Ferrante Neri, and Ville Tirronen.
+\newblock Distributed differential evolution with explorative-exploitative
+  population families.
+\newblock {\em Genetic Programming and Evolvable Machines}, 10(4):343--371,
+  2009.
+
+\bibitem{Wolpert97NFL}
+David Wolpert and William~G. Macready.
+\newblock No free lunch theorems for optimization.
+\newblock {\em {IEEE} Trans. Evolutionary Computation}, 1(1):67--82, 1997.
+
+
+
+\end{thebibliography}
 
 \end{document}
 
