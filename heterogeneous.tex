@@ -1462,15 +1462,19 @@ system.
 
 %Different research questions have been proposed in this paper to study if fitting the sub-population size of a distributed EA to the computational power of a heterogeneous cluster nodes presents an improvement in running time. To answer these questions two parameter setting schemes (offline and online) that use information of the computational load of the algorithm have been tested, and three different problems that cover different characteristics and computational requirements have been used.
 
-The main question we try to address int this work is: Is it worth fitting the sub-populations sizes of a dEA to the computational power of every node? To best answer this question we build a set of experiments with several characteristics in mind:
+The main question to address in this work is: Is it worth fitting the sub-populations sizes of a dEA to the computational power of every node? To best answer this question a set of experiments has been built with several characteristics in mind:
 \begin{itemize}
 \item The separate study of two parameter settings: offline and online.
-\item Three problems as different as we can find.
+\item Three problems with different characteristics and computational demands have been used.
 \end{itemize}
 
-In this paper, as a possible offline parameter setting, the computational power
+A base execution has been in an homogeneous and heterogeneous clusters. The results of the latter has been used to calculate proportionally the computational power of each node. This 
+
+as a possible offline parameter setting, the computational power
 of each node has been calculated proportionally  
-to the average number of generations required to find the optimum with the homogeneous parameter set. Moreover, a possible way to fit 
+to the average number of generations required to find the optimum with the homogeneous parameter set. 
+
+Moreover, a possible way to fit 
 online the sub-population sizes has been performed comparing the current generation 
 number between each node and its previous neighbour. % research
                                 % questions!!!!! - JJ FERGU: poniéndolas y contestándolas en las conclusiones
