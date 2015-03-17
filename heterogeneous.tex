@@ -208,7 +208,7 @@ of parameters of the algorithm, such as the crossover rate, or population size, 
 The latter has been studied as a fixed \cite{SizingHarik99} or adaptive 
 \cite{SelfRegulatedSizeFernandes06,AdaptiveLobo07} value, as it have a huge impact in the efficiency of an EA \cite{ShrinkageLaredo09}.
 
-Performance can also be improved using Distributed EAs (dEAs) \cite{MULTIKULTI}, where the algorithm is run in a set of nodes simultaneously,
+Performance can also be improved using Distributed EAs (dEAs) \cite{MULTIKULTI}, where the algorithm is run on a set of nodes simultaneously,
 working with different sub-populations (or islands) at the same
 time. Periodically one or more individuals are
 interchanged (migrated) between sub-populations, which are connected
@@ -253,7 +253,7 @@ this motley set as a heterogeneous cluster.
 It  has  been shown that
 \cite{HETEROGENEOUSHARD} asynchronous dEAs with the same parameter
 configuration are even 
-more efficient in time and number of evaluations in reaching the optimal solution on this kind of environments  than on clusters with
+more efficient in time and the number of evaluations in reaching the optimal solution on this kind of environments  than on clusters with
 homogeneous devices. This can be explained by different reasons, such
 as different memory access times, cache sizes, 
 or even implementation
@@ -299,7 +299,7 @@ answer  the following research questions:
  \item Can an asynchronous distributed EA be fitted to leverage the capability of a
    heterogeneous cluster? 
  \item How does the fitting of the sub-population size to the computational power affect the running time and number of evaluations?
- \item Is there any difference between using the same sub-population sizes in a homogeneous and a heterogeneous cluster?
+ \item Is there any difference between using the same sub-population sizes on a homogeneous and a heterogeneous cluster?
  \item How is each stage of the algorithm (selection, recombination, mutation, replacement and migration) affected by the different
    configurations?
 \end{itemize}
@@ -332,7 +332,7 @@ the computational load representation. It depends on the algorithm, size of the 
 language, compiler or hardware characteristics, so the results obtained from artificial 
 benchmarks, such as  Linpack \cite{LinpackEndo10}, should not be extolled as identificative 
 of the system performance \cite{LinpackDongarra03}. For example, in the work of Garamendi 
-et al. \cite{PARALLELIMPLEMENTATION},  a small benchmark was executed in all nodes at the beginning
+et al. \cite{PARALLELIMPLEMENTATION},  a small benchmark was executed on all nodes at the beginning
 of the algorithm in order to distribute individuals of an Evolutionary Strategy
  (ES), following a master-slave model. The computational load by artificial benchmarks may not accurately 
  represent the correct load of the algorithm, so, as proposed in this paper, information 
@@ -364,7 +364,7 @@ The heterogeneous computational performance of nodes or network speed can affect
  Super-linear performance in terms of number of iterations to find the optimum was obtained on the heterogeneous ones,
  being more efficient than the same algorithm running on homogeneous
  machines. However, the parameter setting was the same in both
- clusters and authors did not fitted the parameters to the machines used. 
+ clusters and authors did not fit the parameters to the machines used. 
 
 
 
@@ -372,7 +372,7 @@ Fitting algorithm parameters to computational nodes derives on heterogeneous par
 performance of a dGA, as explained by Gong
 and Fukunaga in \cite{HETEROGENEOUSPARAMETERS}. That model
 outperformed a tuned canonical dGA with the same parameter values in
-all islands. Other approaches \cite{PanaceasClune05,ParallelGATongchim02} optimize sets of heterogeneous parameters using meta-GAs. Single parameter fitting have also been  studied. For example, adapting the migration rate produced better
+all islands. Other approaches \cite{PanaceasClune05,ParallelGATongchim02} optimize sets of heterogeneous parameters using meta-GAs. Single parameter fitting has also been  studied. For example, adapting the migration rate produced better
 results than homogeneous periods, as explained by Salto and Alba in
 \cite{HETEROGENEOUSMIGRATION}. This indicates that heterogeneous parameters
  may lead to an increase of performance, so it is necessary to validate if the 
@@ -380,7 +380,7 @@ results than homogeneous periods, as explained by Salto and Alba in
 
 
 
-This work is focused on the sub-population sizes, as this parameter has been previously studied in different works due to its huge impact in the results. In the work of Weber et al. \cite{DifferentialWeber09} two different sub-population sizes are used: higher size value for exploration, and a variable lower size value for exploitation. Schlierkamp-Voosen et al. \cite{AdaptationSizesSchlierkamp96} proposed a quality measure to be used in each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, those works are based on the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not from the machines that are executing the distributed EAs.
+This work is focused on the sub-population sizes, as this parameter has been previously studied in different works due to its huge impact on the results. In the work of Weber et al. \cite{DifferentialWeber09} two different sub-population sizes are used: higher size value for exploration, and a variable lower size value for exploitation. Schlierkamp-Voosen et al. \cite{AdaptationSizesSchlierkamp96} proposed a quality measure to be used in each subpopulation to adapt the size, also taking into account the migration and crossover mechanisms. However, these works are based on the competition of sub-populations, taking into account only the information provided by the fitness of the population, and not from the machines that are executing the distributed EAs.
 
 
 In this work, the sizes of the sub-populations of a dEA are fitted (offline and online) to the computational power of each machine, using the information obtained from the algorithm itself, and compared in different hardware systems.
@@ -397,7 +397,7 @@ In this work, the sizes of the sub-populations of a dEA are fitted (offline and 
 \label{sec:experiments}
 In this section two different parameter setting schemes are proposed to test if fitting the sub-population sizes of an asynchronous dEA to the nodes of a  heterogeneous cluster leads to time reduction. In the field of  Evolutionary Computation (EC) there are two different approaches about the algorithm parameter setting: {\em parameter tuning} and {\em parameter control} \cite{PARAMETERTUNING}. The former consists in establishing a good set of parameters before the run (offline), and do not change them during the execution. On the other hand, parameter control refers to setting up a number of  the EA parameters  and changing these values in running time (online). 
 
-In this study, a dEA with the same sub-population sizes  has been executed in the heterogeneous cluster until the optimal solution is found, as a baseline. Then, the obtained number of generations have been used, to proportionally distribute the number of individual among the nodes, that is, offline. The same set of sizes is used in an homogeneous cluster (as control system) to validate if the changes in performance are due to the parameters or the fitting to the nodes. Finally, an online parameter setting that extract relative information about the performance of the nodes has been tested to validate our approach. 
+In this study, a dEA with the same sub-population sizes  has been executed in the heterogeneous cluster until the optimal solution is found, as a baseline. Then, the obtained number of generations has been used, to proportionally distribute the number of individuals among the nodes, that is, offline. The same set of sizes is used in an homogeneous cluster (as control system) to validate if the changes in performance are due to the parameters or the fitting to the nodes. Finally, an online parameter setting that extract relative information about the performance of the nodes has been tested to validate our approach. 
 
 
 
@@ -498,7 +498,7 @@ the number of ones (unitation) $s_i$ takes the values shown in Table \ref{table:
 The fitness value is defined as the sum of the $s_i$ subproblems with an optimum of $k$ (Equation \ref{eq:mmdp}).
 The search space is composed of $2^{6k}$ combinations from which there
 are only $2^k$ global solutions with $22^k$ deceptive
-attractors. Hence, a search method have to find a global solution
+attractors. Hence, a search method has to find a global solution
 out of $2^{5k}$ additionally to deceptiveness. In this work, three different problem sizes have been used: $k=25$ (150 bits), $k=40$ (240 bits) and $k=50$ (300 bits). 
 
 \begin{equation}\label{eq:mmdp}
@@ -571,7 +571,7 @@ HeN8  &  Intel(R) Core(TM)2 Q8200 ($4\times2.33$GHz) & 4GB   & Ubuntu 14.04 (64b
 }
 \end{table*}
 
-To study the scalability, two different number of nodes have been used in each problem and configuration: 4 nodes (from H1 to H4, referred as  {\em 4X} configuration for the rest of the paper) and 8 nodes (from H1 to H8, referred {\em 8X} configuration). The same amount of nodes been previously used in other works on dEAs on heterogeneous environments \cite{HETEROGENEOUSHARD,HYDROCM,Salto13Distributed}.
+To study the scalability, two different numbers of nodes have been used in each problem and configuration: 4 nodes (from H1 to H4, referred as  {\em 4X} configuration for the rest of the paper) and 8 nodes (from H1 to H8, referred {\em 8X} configuration). The same amount of nodes been previously used in other works on dEAs on heterogeneous environments \cite{HETEROGENEOUSHARD,HYDROCM,Salto13Distributed}.
 
 The global population size has been set to 1024 individuals. Other researchers that investigate in dEAs on heterogeneous environments have used 512 individuals (see the works \cite{HYDROCM,Dominguez13HydroCM,Salto13Distributed}). However, as using 512 individuals in  preliminary runs obtained extremely low sub-population sizes, a larger value has been used. 1024 individuals is a number big enough to test different sub-population sizes in different number of computational nodes (4 and 8), allowing a better distribution among them. The stopping criterion for all approaches used in this work is to find the optimum of the problem, so that all runs have always finished when the optimum has been found in one of the nodes. This stopping criterion has been considered as Alba et al. did in \cite{EVALUATIONPARALLEL}, since it offers a fair way to compare the running time and behaviour of the tested configurations. Two-point crossover has been chosen, as it has been used previously in studies on parallel GAs  for binary problems \cite{CantuPazTopologies99}, and BLX-0.5 for real coded dEAs \cite{Robles09ParallelFuzzy}.
 
@@ -579,7 +579,7 @@ The global population size has been set to 1024 individuals. Other researchers t
 
 
 
-In this configuration, each node has the same number of individuals, so the total amount is 1024.  The algorithm has been run 40 times per problem instance on the homogeneous (HoHW) and heterogeneous clusters (HeHW).  The average number of generations in each node of the HeHW cluster are shown in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained and their proportion in every node to reach the optimum depends on the problem considered, besides the hardware.
+In this configuration, each node has the same number of individuals, so the total amount is 1024.  The algorithm has been run 40 times per problem instance on the homogeneous (HoHW) and heterogeneous clusters (HeHW).  The average number of generations in each node of the HeHW cluster is shown in Table \ref{table:generations4X} (for 4X) and Table \ref{table:generations8X} (for 8X). Note how the generations attained and their proportion in every node to reach the optimum depends on the problem considered, besides the hardware.
 
 \begin{table*}
 \centering{
@@ -766,7 +766,7 @@ If the new size is larger than the current size, new individuals are added to th
 \label{alg:EAadaptive}
 \end{algorithm}
 
-Using this possible online fitting scheme, each node only requires to receive information about one of the neighbours and not from the whole system. Thus, each node tends to have a number of individuals proportional to its computational power with respect to the other nodes. Experiments on homogeneous cluster do not affect the sub-population sizes, as the number of current generations are equal in all nodes during runtime.
+Using this possible online fitting scheme, each node only requires to receive information about one of the neighbours and not from the whole system. Thus, each node tends to have a number of individuals proportional to its computational power with respect to the other nodes. Experiments on homogeneous cluster do not affect the sub-population sizes, as the number of current generations is equal in all nodes during runtime.
 
 Table \ref{table:parameters} summarizes  the parameter set used in the experiments.
 
@@ -859,7 +859,7 @@ the comparison with the base configuration of each cluster (HoSi/HeHW
 and HoSi/HoHW respectively) is significantly higher (\ding{115}),
 significantly lower  (\ding{116}), or no significant difference found
 (\ding{117}). Since the aim is to reduce the computational time, the
-lower results, the better. 
+lower the results, the better. 
 
 
 
@@ -1035,28 +1035,28 @@ lower results, the better.
 \centering
 \subfigure[]{
     \includegraphics[width =6.5cm] {ROSENBROCK_10_TIME.eps}
-   \label{subfig:150time}
+   \label{subfig:10time}
 }
 \subfigure[]{
     \includegraphics[width =6.5cm] {ROSENBROCK_10_EVALS.eps}
-   \label{subfig:150evals}
+   \label{subfig:10evals}
 }
 \subfigure[]{
     \includegraphics[width =6.5cm] {ROSENBROCK_30_TIME.eps}
-   \label{subfig:240time}
+   \label{subfig:30time}
 }
 \subfigure[]{
     \includegraphics[width =6.5cm] {ROSENBROCK_30_EVALS.eps}
-   \label{subfig:240evals}
+   \label{subfig:30evals}
 }
 
 \subfigure[]{
     \includegraphics[width =6.5cm] {ROSENBROCK_50_TIME.eps}
-    \label{subfig:300time}
+    \label{subfig:50time}
 }
 \subfigure[]{
     \includegraphics[width =6.5cm] {ROSENBROCK_50_EVALS.eps}
-    \label{subfig:300evals}
+    \label{subfig:50evals}
 }
 \caption{Time (ms) and evaluations needed to obtain the optimum for the
   Rosenbrock function problem. White colour is 4X and grey colour is 8X.}
@@ -1081,7 +1081,7 @@ lower results, the better.
 }
 \subfigure[240 MMDP HeHW]{
     \includegraphics[width =6.5cm] {mmdp-size-240-mut-0.004-xover-1-heterohardware.eps}
-   \label{subfig:graph150MMDPHoHW}
+   \label{subfig:graph240MMDPHeHW}
 }
 \subfigure[240 MMDP HoHW]{
     \includegraphics[width =6.5cm] {mmdp-size-240-mut-0.004-xover-1-homohardware.eps}
@@ -1201,10 +1201,10 @@ in larger ranges for MMDP and Rosenbrock. This can explain the different results
 among the problems.  
 
 At a first glance, and as expected \cite{Wolpert97NFL}, fitting the
-population sub-sizes to heterogeneous clusters do not always imply an
+population sub-sizes to heterogeneous clusters does not always imply an
 improvement in time. The HeSi parameter setting can improve time in
 the MMDP and Rosenbrock for HeHW, but in case of the OneMax problem,
-offline fitting  the sub-population sizes significantly increases  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHW configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHW the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) do not converge as smoothly as in HoHW.
+offline fitting  the sub-population sizes significantly increases  the running time for solving it in the heterogeneous cluster. This can be seen in the average evolution of the OneMax problem in Figure \ref{fig:graphsONEMAX}, in all HeHW configurations the average fitness of the population is located in the lower parts of the boxplots with respect to the best fitness, while in the HoHW the evolution is more close this value. The HeSi and HoSi lines are always moving closer during all the evolution, while the AdSi is obtaining better results in the same time. Also, the best individual of all runs (black line) does not converge as smoothly as in HoHW.
 This can be explained because the efficiency on OneMax problem depends mainly on the ability to mix
 the building-blocks, and less on the genetic diversity and size of the
 population (as with MMDP or Rosenbrock). A high genetic diversity is not particularly
@@ -1215,17 +1215,17 @@ on hard functions fail on easier ones.
 On the contrary, for the MMDP and Rosenbrock, in the HoHW system,
 setting heterogeneous sizes to sub-populations makes no difference in
 time, that is, changing this parameter has no influence in the
-algorithm's performance. Homogeneous nodes exploring different population sizes at the same speed implies less diversity during the runs. This can be seen in Figures \ref{fig:graphsMMDP} and \ref{fig:graphsROSENBROCK}, where in all the instances of those problems, the average population fitness in HoHW is closer to the best average value attained. This behaviour is opposed to the same problems executed on HeHW, where the difference of the average best fitness and the average population fitness is larger. This difference is more large at the beginning of the runs (local optima are found faster) but the diversity is still maintained, and being reduced with time.
+algorithm's performance. Homogeneous nodes exploring different population sizes at the same speed implies less diversity during the runs. This can be seen in Figures \ref{fig:graphsMMDP} and \ref{fig:graphsROSENBROCK}, where in all the instances of those problems, the average population fitness in HoHW is closer to the best average value attained. This behaviour is opposed to the same problems executed on HeHW, where the difference of the average best fitness and the average population fitness is larger. This difference is  larger at the beginning of the runs (local optima are found faster) but the diversity is still maintained, and being reduced with time.
 
 
 
-Finally, the number of nodes affect the behaviour of the
+Finally, the number of nodes affects the behaviour of the
 algorithms. In the case of MMDP in the HeHW system, the offline
 fitting of the sub-population to the computational  power of each node
 makes the algorithm finish significantly earlier in all instances of
 the problem in the 4X configuration. However, in the 8X configuration
 the time is significantly lower only in the 150 instance. This can be
-due to the nature of this problem, as the fitness of the population may stagnate if the optimum is not found at the first steps (see the black line in Figure \ref{fig:graphsMMDP} with respect to the average population fitness boxplots). This behaviour is opposite in the case of the Rosenbrock function, where using a larger number of nodes improves the time with HeSi and AdSi. %TODO
+due to the nature of this problem, as the fitness of the population may stagnate if the optimum is not found on the first steps (see the black line in Figure \ref{fig:graphsMMDP} with respect to the average population fitness boxplots). This behaviour is opposite in the case of the Rosenbrock function, where using a larger number of nodes improves the time with HeSi and AdSi. %TODO
 
 
 
@@ -1238,13 +1238,13 @@ due to the nature of this problem, as the fitness of the population may stagnate
 Summarizing, fitting the population sizes to the
   computational power of each machine (offline and online) can reduce
   the time to obtain the optimum. The same heterogeneous fixed sizes
-  in the homogeneous cluster does not produces a significant decrease
+  in the homogeneous cluster does not produce a significant decrease
   of running time, so the improvement is produced by the heterogeneity
   and not for the different island sizes. 
 
 \subsection{Adaptive sub-population sizes during evolution}
 
-Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each problem of the AdSi/HeHW runs, focusing only in the larger problem instances for the 8X configuration, as the other instances behave in similar way. These graphics show the average sizes of all the populations during all the runs (boxplots), and the average size of each node (lines). As can be seen, the behaviour of these sizes is also affected by the problem used. In OneMax, Figure \ref{subfig:adaptONEMAX15000}, the average sizes of all runs increase during running time, covering almost all the values available for the size, from 8 to 256.  In this case, the faster nodes (HeN5, HeN7, HeN8 and HeN1) are using the maximum size at the same time, but as explained before, the nature of this problem requires faster nodes with less diversity. In the case of MMDP and Rosenbrock the average sizes are always under the size of 128, the original HoSi sizes. However, in the MMDP, the maximum size (256) is not always in one of the nodes (Figure \ref{subfig:adaptMMDP300}) as in Rosenbrock evolution (Figure \ref{subfig:adaptROSENBROCK50}), so it can affect the required diversity for these kind of problems. A common behaviour in all problems, is that the slower node (HeN4) converges to the lower size (8) and do not change during all the run. Therefore, in future new methods to take into account extra information of the sub-population (such as the diversity) should be used in conjunction with the generations attained by each node.
+Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each problem of the AdSi/HeHW runs, focusing only in the larger problem instances for the 8X configuration, as the other instances behave in a similar way. These graphics show the average sizes of all the populations during all the runs (boxplots), and the average size of each node (lines). As can be seen, the behaviour of these sizes is also affected by the problem used. In OneMax, Figure \ref{subfig:adaptONEMAX15000}, the average sizes of all runs increase during running time, covering almost all the values available for the size, from 8 to 256.  In this case, the faster nodes (HeN5, HeN7, HeN8 and HeN1) are using the maximum size at the same time, but as explained before, the nature of this problem requires faster nodes with less diversity. In the case of MMDP and Rosenbrock the average sizes are always under the size of 128, the original HoSi sizes. However, in the MMDP, the maximum size (256) is not always in one of the nodes (Figure \ref{subfig:adaptMMDP300}) as in Rosenbrock evolution (Figure \ref{subfig:adaptROSENBROCK50}), so it can affect the required diversity for these kind of problems. A common behaviour in all problems, is that the slower node (HeN4) converges to the lower size (8) and do not change during all the run. Therefore, in future new methods to take into account extra information of the sub-population (such as the diversity) should be used in conjunction with the generations attained by each node.
 
 
 \begin{figure}[htb]
@@ -1275,7 +1275,7 @@ Figure \ref{fig:adaptivesize} shows the average sub-population sizes for each pr
 
 As a final analysis the time spent by each node of the clusters in
 every stage of the EA for each configuration with fixed sizes (HoSi
-and HeSi) is taken into account. For the shake of clarity in results, 
+and HeSi) is taken into account. For the sake of clarity in results, 
  the 4X configuration for the smallest instance of each problem is shown. Figure \ref{fig:bars} compare these results. As can be seen, the migration is the most time consuming operation in all configurations, being the migration in HeHW more expensive than in HoHW. This happens because a multi-purpose laboratory network to communicate
 the nodes is being used, instead of the specific one used in the HoHW
 system. 
@@ -1312,7 +1312,7 @@ The reason might be the
 creation of new objects (memory allocation), which in Java and with
 limited memory (and swapping) requires more time than the iteration of
 elements previously created, for example, in the mutation. Fitting
-the sub-population size makes the slower node of HeHW behave in similar
+the sub-population size makes the slowest node of HeHW behave in similar
 way than the other nodes (same time in each stage). Moreover, the size
 of the individuals affects to some parts of the EA; for example, in 
 OneMax the mutation requires higher time than the replacement. However,
@@ -1345,14 +1345,14 @@ to keeping the same size for all nodes. The sub-population size fitting is also 
 
 
 
-Furthermore, the answer to the question about the influence of the sub-population size effect of the stages
+Furthermore, the answer to the question about the influence of the sub-population size effect on the stages
 of the algorithm is that results show that, in fact, there exist an effect on stages that are independent of this parameter, such as
-the migration.  These results are a promising starting for fitting EAs to the performance of each  node, using more suitable benchmarks or even in a dynamic way. 
+the migration.  These results are a promising star for fitting EAs to the performance of each  node, using more suitable benchmarks or even in a dynamic way. 
 
 In a future work, new online adaptation methods for sub-population sizes will take into account the nature of the problem at hand. For example, measuring the population diversity along with the generation number. Also, parameters such as migration rate or crossover probability could be fitted to the node's execution characteristics. Other appropriate benchmarks to analyse the algorithm will be used to get an online automatic parameter fitting while nodes enter or exit the topology net, or fitting the parameters to the current system load.
 
 \section*{Acknowledgements}
-This work has been supported in part by SIPESCA (Programa Operativo FEDER de Andalucía 2007-2013), TIN2011-28627-C04-02 and TIN2014-56494-C4-3-P (Spanish Ministry of Economy and Competitivity), SPIP2014-01437 (Direcci{\'o}n General de Tr{\'a}fico), PRY142/14 (Fundaci{\'o}n P{\'u}blica Andaluza Centro de Estudios Andaluces en la IX Convocatoria de Proyectos de Investigaci{\'o}n), and PYR-2014-17 GENIL project (CEI-BIOTIC Granada). Authors wish to thank reviewers' comments, whose suggestion and guidelines have contributed to improve this work.
+This work has been supported in part by SIPESCA (Programa Operativo FEDER de Andalucía 2007-2013), TIN2011-28627-C04-02 and TIN2014-56494-C4-3-P (Spanish Ministry of Economy and Competitivity), SPIP2014-01437 (Direcci{\'o}n General de Tr{\'a}fico), PRY142/14 (Fundaci{\'o}n P{\'u}blica Andaluza Centro de Estudios Andaluces en la IX Convocatoria de Proyectos de Investigaci{\'o}n), and PYR-2014-17 GENIL project (CEI-BIOTIC Granada). Authors wish to thank the reviewers' comments, whose suggestion and guidelines have contributed to improve this work.
 
 
 
