@@ -518,8 +518,8 @@ Finally, the Shifted Rosenbrock function is defined in Equation \ref{eq:rosenbro
 
 
 \begin{equation}\label{eq:rosenbrock}
-f_{Rosenbrock}(\vec{x})= \sum_{i=1}^{D-1} (100 \cdot (z_{i}^{2}-z_{i+1}^{2}) + 
-                                     (z_{i}-1)^2)+f_{bias}
+%f_{Rosenbrock}(\vec{x})= \sum_{i=1}^{D-1} (100 \cdot (z_{i}^{2}-z_{i+1}^{2}) +                                      (z_{i}-1)^2)+f_{bias}
+f_{Rosenbrock}(\vec{x}) = \sum^{D-1}_{i = 1} [100(z_{i + 1} - z^2_i)^2 + (z_i - 1)^2] + f_{bias}
 \end{equation}
 
 With $z=x-o+1$ and $\vec{x}=[x_1,x_2,...,x_D]$, and considering $D$ as the number of dimensions, and $o=[o_1,o_2,...,o_D]$ as the shifted global optimum.
@@ -1327,27 +1327,27 @@ system.
 
 
 
-The main question to address in this work is: Is it worth fitting the 
+The main question addressed in this work was: Is it worth fitting the 
 sub-populations sizes of a dEA to the computational power of every node 
 of a heterogeneous cluster? To best answer this question a set of 
-experiments has been built with several characteristics in mind. 
+experiments was designed with several characteristics in mind. 
 First, the separate study of two parameter settings: offline and 
 online. Also, the usage of three problems with different characteristics and 
 computational demands with different lengths. Finally, two different hardware 
 systems (homogeneous and heterogeneous clusters),  each one with different number
  of nodes (4 and 8).
 
-A base configuration with the same sub-population sizes has been used on a heterogeneous cluster. The results have been used to calculate offline the computational power of each node, comparing the average number of generations to find the optimal solution. These proportions are used to set the new sub-population sizes. Also, a possible way to fit online the sub-population sizes has been performed comparing the current generation number between each node and its previous neighbour in the topology. 
+A base configuration with the same sub-population sizes was used on a heterogeneous cluster. The results were used to calculate offline the computational power of each node, comparing the average number of generations to find the optimal solution. These proportions were used to set the new sub-population sizes. Also, a possible way to fit online the sub-population sizes was performed comparing the current generation number between each node and its previous neighbour in the topology. 
 
-Results show that online or offline fitting the sub-population size to the computational power of each node in a heterogeneous cluster
+Results showed that online or offline fitting the sub-population size to the computational power of each node in a heterogeneous cluster
 can reduce significantly the running time of an algorithm with respect
-to keeping the same size for all nodes. The sub-population size fitting is also affected by the problem being solved. Also, to answer the question about the difference of using these same sub-populations sizes in an homogeneous cluster, a control system has also been used for comparison. In this case, the same parameter sets used in an homogeneous cluster do not improve the running time in multi-modal problems, as the average fitness of the population remains close to the average best fitness during all the evolution, and therefore, fitness diversity is not as well maintained as in the heterogeneous cluster.
+to keeping the same size for all nodes. The sub-population size fitting was also affected by the problem being solved. Also, to answer the question about the difference of using these same sub-populations sizes in an homogeneous cluster, a control system was also used for comparison. In this case, the same parameter sets used in an homogeneous cluster did not improve the running time in multi-modal problems, as the average fitness of the population remained close to the average best fitness during all the evolution, and therefore, fitness diversity was not as well maintained as in the heterogeneous cluster.
 
 
 
 Furthermore, the answer to the question about the influence of the sub-population size effect on the stages
-of the algorithm is that results show that, in fact, there exist an effect on stages that are independent of this parameter, such as
-the migration.  These results are a promising star for fitting EAs to the performance of each  node, using more suitable benchmarks or even in a dynamic way. 
+of the algorithm was that results shown that, in fact, there existed an effect on stages that are independent of this parameter, such as
+the migration.  These results are a promising start for fitting EAs to the performance of each  node, using more suitable benchmarks or even in a dynamic way. 
 
 In a future work, new online adaptation methods for sub-population sizes will take into account the nature of the problem at hand. For example, measuring the population diversity along with the generation number. Also, parameters such as migration rate or crossover probability could be fitted to the node's execution characteristics. Other appropriate benchmarks to analyse the algorithm will be used to get an online automatic parameter fitting while nodes enter or exit the topology net, or fitting the parameters to the current system load.
 
@@ -1440,7 +1440,7 @@ Mine Altunay, Paul Avery, Kent Blackburn, Brian Bockelman, Michael Ernst, Dan
   {JUN} 2011.
 
 \bibitem{MULTIKULTI}
-Lourdes Araujo and Juan Juli{\'a}n~Merelo Guerv{\'o}s.
+Lourdes Araujo and Juan J.~Merelo Guerv{\'o}s.
 \newblock Diversity through multiculturality: Assessing migrant choice policies
   in an island model.
 \newblock {\em IEEE Trans. Evolutionary Computation}, 15(4):456--469, 2011.
@@ -1454,7 +1454,7 @@ Christopher~A. Bohn and Gary~B. Lamont.
 Erick Cant{\'{u}}{-}Paz.
 \newblock Topologies, migration rates, and multi-population parallel genetic
   algorithms.
-\newblock In Wolfgang Banzhaf, Jason~M. Daida, A.~E. Eiben, Max~H. Garzon,
+\newblock In Wolfgang Banzhaf, Jason~M. Daida, Agoston~E. Eiben, Max~H. Garzon,
   Vasant Honavar, Mark~J. Jakiela, and Robert~E. Smith, editors, {\em
   Proceedings of the Genetic and Evolutionary Computation Conference {(GECCO}
   1999), 13-17 July 1999, Orlando, Florida, {USA}}, pages 91--98. Morgan
@@ -1507,7 +1507,7 @@ Jack~J. Dongarra, Piotr Luszczek, and Antoine Petitet.
   2003.
 
 \bibitem{Eiben05Shared}
-A.~E. Eiben.
+Agoston~E. Eiben.
 \newblock Evolutionary computing and autonomic computing: Shared problems,
   shared solutions?
 \newblock In {\"{O}}zalp Babaoglu, M{\'{a}}rk Jelasity, Alberto Montresor,
@@ -1518,13 +1518,13 @@ A.~E. Eiben.
   Computer Science}, pages 36--48. Springer, 2005.
 
 \bibitem{PARAMETERTUNING}
-A.~E. Eiben and Selmar~K. Smit.
+Agoston~E. Eiben and Selmar~K. Smit.
 \newblock Parameter tuning for configuring and analyzing evolutionary
   algorithms.
 \newblock {\em Swarm and Evolutionary Computation}, 1(1):19--31, 2011.
 
 \bibitem{GeneticAlgorithmsEiben03}
-A.E. Eiben and J.E. Smith.
+Agoston~E. Eiben and James~E. Smith.
 \newblock Genetic algorithms.
 \newblock In {\em Introduction to Evolutionary Computing}, Natural Computing
   Series, pages 37--70. Springer Berlin Heidelberg, 2003.
@@ -1553,7 +1553,7 @@ Ian~T. Foster.
 \newblock {\em J. Comput. Sci. Technol.}, 21(4):513--520, 2006.
 
 \bibitem{PARALLELIMPLEMENTATION}
-Juan~Francisco Garamendi and Jos{\'{e}}~Luis Bosque.
+Juan~Francisco Garamendi and Jos{\'{e}}~L. Bosque.
 \newblock Parallel implementation of evolutionary strategies on heterogeneous
   clusters with load balancing.
 \newblock In {\em 20th International Parallel and Distributed Processing
@@ -1561,8 +1561,8 @@ Juan~Francisco Garamendi and Jos{\'{e}}~Luis Bosque.
   Greece}. {IEEE}, 2006.
 
 \bibitem{SOASOCO}
-Pablo Garc{\'{\i}}a{-}S{\'{a}}nchez, J.~Gonz{\'{a}}lez, Pedro~A. Castillo,
-  Maribel~Garc{\'{\i}}a Arenas, and Juan Juli{\'{a}}n~Merelo Guerv{\'{o}}s.
+Pablo Garc{\'{\i}}a{-}S{\'{a}}nchez, Jes{\'{u}}s~Gonz{\'{a}}lez, Pedro~A. Castillo,
+  Maribel~Garc{\'{\i}}a Arenas, and Juan J.~Merelo Guerv{\'{o}}s.
 \newblock Service oriented evolutionary algorithms.
 \newblock {\em Soft Comput.}, 17(6):1059--1075, 2013.
 
@@ -1590,8 +1590,8 @@ Yiyuan Gong, Morikazu Nakamura, and Shiro Tamaki.
   Washington DC, USA, June 25-29, 2005}, pages 1447--1454. {ACM}, 2005.
 
 \bibitem{AsynchronousMerelo08}
-Juan Juli{\'{a}}n~Merelo Guerv{\'{o}}s, Pedro A.~Castillo Valdivieso, Juan
-  Lu{\'{\i}}s~Jim{\'{e}}nez Laredo, Antonio~Mora Garc{\'{\i}}a, and Alberto
+Juan J.~Merelo Guerv{\'{o}}s, Pedro A.~Castillo Valdivieso, Juan
+  L.~Jim{\'{e}}nez Laredo, Antonio~Mora Garc{\'{\i}}a, and Alberto
   Prieto.
 \newblock Asynchronous distributed genetic algorithms with javascript and
   {JSON}.
@@ -1607,7 +1607,7 @@ George Harik, Erick Cant\'{u}-Paz, David~E. Goldberg, and Brad~L. Miller.
 
 \bibitem{ShrinkageLaredo09}
 Juan Lu{\'{\i}}s~Jim{\'{e}}nez Laredo, Carlos~M. Fernandes, Juan
-  Juli{\'{a}}n~Merelo Guerv{\'{o}}s, and Christian Gagn{\'{e}}.
+  J.~Merelo Guerv{\'{o}}s, and Christian Gagn{\'{e}}.
 \newblock Improving genetic algorithms performance via deterministic population
   shrinkage.
 \newblock In Franz Rothlauf, editor, {\em Genetic and Evolutionary Computation
@@ -1623,7 +1623,7 @@ Fernando~G. Lobo and Cl\'{a}udio~F. Lima.
   Heidelberg, 2007.
 
 \bibitem{Martinez11Nondedicated}
-J.~A. Mart{\'{\i}}nez, Francisco Almeida, Ester~M. Garz{\'{o}}n, Alejandro
+Jose~A. Mart{\'{\i}}nez, Francisco Almeida, Ester~M. Garz{\'{o}}n, Alejandro
   Acosta, and Vicente~Blanco P{\'{e}}rez.
 \newblock Adaptive load balancing of iterative computation on heterogeneous
   nondedicated systems.
@@ -1664,15 +1664,15 @@ Dirk Schlierkamp{-}Voosen and Heinz M{\"{u}}hlenbein.
   330--335, 1996.
 
 \bibitem{AutomaticallyConfiguringStyles12}
-James Styles, HolgerH. Hoos, and Martin M√ºller.
+James Styles, Holger H. Hoos, and Martin M{\"{u}}ller.
 \newblock Automatically configuring algorithms for scaling performance.
 \newblock In Youssef Hamadi and Marc Schoenauer, editors, {\em Learning and
   Intelligent Optimization}, Lecture Notes in Computer Science, pages 205--219.
   Springer Berlin Heidelberg, 2012.
 
 \bibitem{CEC2005_Benchmark}
-P.~N. Suganthan, N.~Hansen, J.~J. Liang, K.~Deb, Y.~P. Chen, A.~Auger, and
-  S.~Tiwari.
+Ponnuthurai~N. Suganthan, Nikolaus~Hansen, Jing~J. Liang, Kalyanmoy~Deb, Ying~P. Chen, Anne~Auger, and
+  Santosh~Tiwari.
 \newblock Problem definitions and evaluation criteria for the cec 2005 special
   session on real-parameter optimization.
 \newblock Technical report, Nanyang Technological University, Singapore, 2005.
@@ -1692,7 +1692,7 @@ Shisanu Tongchim and Prabhas Chongstitvatana.
 \newblock {\em Inf. Process. Lett.}, 82(1):47--54, 2002.
 
 \bibitem{garcia2014randomized}
-Mario~Garc{\'{\i}}a Valdez, Leonardo Trujillo, Juan Juli{\'{a}}n~Merelo
+Mario~Garc{\'{\i}}a Valdez, Leonardo Trujillo, Juan J.~Merelo
   Guerv{\'{o}}s, and Francisco~Fern{\'{a}}ndez de~Vega.
 \newblock Randomized parameter settings for heterogeneous workers in a
   pool-based evolutionary algorithm.
